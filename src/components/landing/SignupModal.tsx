@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Loader2, CheckCircle2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { Confetti } from "@/components/ui/confetti";
 
 interface SignupModalProps {
   children: React.ReactNode;
@@ -42,6 +43,12 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
 
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
+    if (!newOpen) {
+      // Reset form on close after a delay if needed, or keep state
+      if (step === "success") {
+        setTimeout(() => setStep("form"), 500);
+      }
+    }
     if (newOpen) {
       trackEvent("cta_click_primary", { location: triggerLocation });
     }
@@ -70,7 +77,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] overflow-hidden">
         {step === "form" ? (
           <>
             <DialogHeader>
@@ -137,7 +144,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                 </Select>
               </div>
 
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 mt-2" disabled={loading}>
+              <Button type="submit" className="w-full bg-black hover:bg-gray-800 text-white mt-2" disabled={loading}>
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Joining...
@@ -149,15 +156,16 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
             </form>
           </>
         ) : (
-          <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-2">
-              <CheckCircle2 className="w-8 h-8 text-green-600" />
+          <div className="flex flex-col items-center justify-center py-10 text-center space-y-4 relative">
+            <Confetti />
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-2 animate-bounce">
+              <CheckCircle2 className="w-10 h-10 text-green-600" />
             </div>
             <h3 className="text-2xl font-bold">You're on the list!</h3>
             <p className="text-muted-foreground">
               We've sent a confirmation email. Keep an eye on your inbox for your invite code.
             </p>
-            <Button variant="outline" onClick={() => setOpen(false)} className="mt-4">
+            <Button variant="outline" onClick={() => setOpen(false)} className="mt-4 border-2 border-black font-bold">
               Close
             </Button>
           </div>
