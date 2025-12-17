@@ -11,7 +11,7 @@ const Features = () => {
         <div className="mb-20 max-w-3xl">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900">
             Everything you need to <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">sound like a local.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">sound like a native.</span>
           </h2>
         </div>
 
@@ -30,11 +30,11 @@ const Features = () => {
                  <MessageSquare className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-3 text-gray-900">Scenario Engine</h3>
-              <p className="text-gray-500 text-lg leading-relaxed max-w-md">Practice high-stakes conversations: Job interviews, dates, ordering food, or arguing a bill.</p>
+              <p className="text-gray-500 text-lg leading-relaxed max-w-md">Practice real life: Asking for directions in Madrid, ordering tapas, or negotiating a taxi in Bogotá.</p>
             </div>
             
             <div className="flex gap-2 mt-8">
-                {["Travel", "Business", "Dating"].map((tag, i) => (
+                {["Travel", "Restaurant", "Dating"].map((tag, i) => (
                     <span key={i} className="px-3 py-1 rounded-full bg-gray-100 text-xs font-bold text-gray-600 border border-gray-200">{tag}</span>
                 ))}
             </div>
@@ -52,14 +52,14 @@ const Features = () => {
                     <Zap className="w-6 h-6 text-yellow-400 fill-current" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4">Smart Fixes</h3>
-                <p className="text-gray-400 mb-8 leading-relaxed">Not just grammar checks. Sophie rewrites your sentences to sound more natural and polite.</p>
+                <p className="text-gray-400 mb-8 leading-relaxed">Stop sounding like a gringo. Sophie corrects accent, gender agreement, and awkward phrasing.</p>
                 
                 {/* Visual */}
                 <div className="mt-auto bg-white/5 p-4 rounded-xl border border-white/10 backdrop-blur-sm">
-                    <div className="text-xs text-red-400/70 line-through mb-2">I want go now.</div>
+                    <div className="text-xs text-red-400/70 line-through mb-2">Estoy embarazado.</div>
                     <div className="flex items-center gap-2 text-sm font-bold text-green-400">
                         <Sparkles className="w-3 h-3" />
-                        I need to leave.
+                        Tengo vergüenza.
                     </div>
                 </div>
              </div>
@@ -77,13 +77,12 @@ const Features = () => {
                         <Brain className="w-6 h-6" />
                     </div>
                     <h3 className="text-xl font-bold mb-2">Memory</h3>
-                    <p className="text-gray-500 text-sm">Sophie remembers that you struggle with "Ser vs Estar".</p>
+                    <p className="text-gray-500 text-sm">Sophie knows you always forget "Por" vs "Para" and will drill you on it.</p>
                 </div>
              </div>
           </motion.div>
 
           {/* 4. Immersion (Bottom Left - 2 Cols) */}
-          {/* Swapped position to fit under Scenario Engine */}
           <motion.div 
             whileHover={{ y: -5 }}
             className="md:col-span-2 bg-gradient-to-br from-[#FF0080] to-[#7B61FF] text-white p-10 rounded-[2rem] shadow-lg flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
@@ -112,7 +111,6 @@ const Features = () => {
           </motion.div>
 
            {/* 5. Tutor Mode (Bottom Right - 1 Col) */}
-           {/* Swapped position to fit under Memory */}
           <motion.div 
             whileHover={{ y: -5 }}
             className="md:col-span-1 bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 group relative overflow-hidden"
@@ -124,7 +122,7 @@ const Features = () => {
                         <GraduationCap className="w-6 h-6" />
                     </div>
                     <h3 className="text-xl font-bold mb-2">Tutor Mode</h3>
-                    <p className="text-gray-500 text-sm">Ask "How do I say..." in your native language anytime.</p>
+                    <p className="text-gray-500 text-sm">Ask "Why did you use the subjunctive there?" in English anytime.</p>
                 </div>
              </div>
           </motion.div>

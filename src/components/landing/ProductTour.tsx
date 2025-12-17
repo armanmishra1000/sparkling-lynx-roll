@@ -8,20 +8,20 @@ import { cn } from "@/lib/utils";
 const tabs = [
   { 
     id: "speak", 
-    label: "Natural Speaking", 
-    desc: "Just talk. No tapping words.",
+    label: "Speak Freely", 
+    desc: "Order food, ask directions.",
     icon: Mic 
   },
   { 
     id: "correct", 
-    label: "Instant Feedback", 
-    desc: "Corrections that stick.",
+    label: "Fix Spanglish", 
+    desc: "Stop translating literally.",
     icon: CheckCircle2 
   },
   { 
     id: "track", 
-    label: "Neural Progress", 
-    desc: "See your brain adapt.",
+    label: "Master Grammar", 
+    desc: "Ser vs Estar, Para vs Por.",
     icon: BarChart3 
   },
 ];
@@ -38,7 +38,8 @@ const content = {
             <Mic className="w-10 h-10 text-white" />
          </div>
          
-         <p className="text-2xl font-medium text-gray-900 leading-snug">"I would like to order a coffee, please."</p>
+         <p className="text-2xl font-medium text-gray-900 leading-snug">"Estoy buscando para el baño."</p>
+         <p className="text-sm text-gray-500 mt-2">(I am looking for the bathroom)</p>
          
          {/* Audio Waveform Visualization */}
          <div className="mt-8 flex items-center justify-center gap-1 h-12">
@@ -65,7 +66,7 @@ const content = {
             {/* User Bubble */}
             <div className="flex justify-end">
                 <div className="bg-gray-100 text-gray-500 px-6 py-4 rounded-2xl rounded-tr-sm">
-                    <span className="line-through decoration-red-400/50 decoration-2">I want order coffee.</span>
+                    <span className="line-through decoration-red-400/50 decoration-2">Estoy buscando para el baño.</span>
                 </div>
             </div>
             
@@ -80,10 +81,10 @@ const content = {
                         <Sparkles className="w-3 h-3 text-yellow-400" /> Suggestion
                     </div>
                     <div className="text-xl font-medium mb-2">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">I'd like to order</span> a coffee.
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Busco el baño.</span>
                     </div>
                     <div className="h-px bg-white/10 my-3"></div>
-                    <p className="text-sm text-gray-400">"I'd like" is softer and more polite than "I want".</p>
+                    <p className="text-sm text-gray-400">In Spanish, "buscar" (to look for) includes the "for". You don't need "para".</p>
                 </div>
             </motion.div>
         </div>
@@ -93,12 +94,12 @@ const content = {
     <div className="bg-white rounded-3xl shadow-2xl p-8 h-full flex flex-col justify-center relative overflow-hidden border border-gray-100">
       <div className="w-full max-w-sm mx-auto space-y-8 relative z-10">
         <div>
-            <h4 className="text-lg font-bold text-gray-900 mb-6">Fluency Metrics</h4>
+            <h4 className="text-lg font-bold text-gray-900 mb-6">Spanish Mastery</h4>
             <div className="space-y-6">
                 {[
-                    { label: "Vocabulary", val: 85, color: "bg-pink-500" },
-                    { label: "Pronunciation", val: 62, color: "bg-orange-500" },
-                    { label: "Confidence", val: 94, color: "bg-cyan-500" }
+                    { label: "Ser vs Estar", val: 85, color: "bg-pink-500" },
+                    { label: "Gender (El/La)", val: 62, color: "bg-orange-500" },
+                    { label: "Subjunctive", val: 34, color: "bg-cyan-500" }
                 ].map((item, i) => (
                     <div key={i}>
                         <div className="flex justify-between text-sm font-medium text-gray-600 mb-2">

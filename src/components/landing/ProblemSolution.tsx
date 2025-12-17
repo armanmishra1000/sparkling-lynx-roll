@@ -30,8 +30,8 @@ const ProblemSolution = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-medium tracking-tight mb-6 leading-[1.1]"
           >
-            Recognition is <span className="text-gray-600 line-through decoration-red-500/50 decoration-2">easy</span>. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-white font-bold">Speaking is the unlock.</span>
+            Conjugation tables <span className="text-gray-600 line-through decoration-red-500/50 decoration-2">don't work</span>. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-white font-bold">Real conversation does.</span>
           </motion.h2>
         </div>
 
@@ -45,15 +45,15 @@ const ProblemSolution = () => {
             className="bg-zinc-900/50 backdrop-blur-md p-10 rounded-[2.5rem] border border-white/5 relative group hover:bg-zinc-900/80 transition-all duration-500"
           >
             <div className="mb-8">
-                <h3 className="text-2xl font-semibold mb-2 text-gray-200">The Old Way</h3>
-                <p className="text-gray-500 text-sm">Passive consumption & drills</p>
+                <h3 className="text-2xl font-semibold mb-2 text-gray-200">The Classroom Way</h3>
+                <p className="text-gray-500 text-sm">Memorizing "La Gato" & Verb Drills</p>
             </div>
             
             <ul className="space-y-8">
               {[
-                { text: "Freeze up in real conversations", icon: X },
-                { text: "Wait days for teacher corrections", icon: X },
-                { text: "Drill sentences you'll never use", icon: X }
+                { text: "Struggling with Ser vs Estar rules", icon: X },
+                { text: "Translating words literally from English", icon: X },
+                { text: "Freezing when locals speak fast", icon: X }
               ].map((item, i) => (
                 <li key={i} className="flex items-center space-x-4 text-gray-400 group-hover:text-gray-300 transition-colors">
                   <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
@@ -82,9 +82,9 @@ const ProblemSolution = () => {
                 <div className="mb-8 flex justify-between items-start">
                     <div>
                         <h3 className="text-2xl font-bold mb-2 text-white flex items-center gap-2">
-                            Sophie.ai
+                            The Sophie Way
                         </h3>
-                        <p className="text-purple-300 text-sm">Active recall & adaptation</p>
+                        <p className="text-purple-300 text-sm">Immersion & Instant Correction</p>
                     </div>
                     <div className="bg-gradient-to-r from-[#FF0080] to-[#7B61FF] w-10 h-10 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/20">
                         <Zap className="text-white w-5 h-5 fill-current" />
@@ -93,9 +93,9 @@ const ProblemSolution = () => {
                 
                 <ul className="space-y-8 relative z-10">
                 {[
-                    "Simulate high-pressure scenarios",
-                    "Get fixed instantly, mid-sentence",
-                    "Learn straight from your life context"
+                    "Practice ordering tacos in Mexico City",
+                    "Fix gender mistakes (El/La) instantly",
+                    "Learn slang: 'Qué onda' vs 'Hola'"
                 ].map((item, i) => (
                     <li key={i} className="flex items-center space-x-4">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400/20 to-green-500/20 flex items-center justify-center border border-green-500/30 text-green-400">
@@ -107,7 +107,7 @@ const ProblemSolution = () => {
                 </ul>
 
                 <div className="mt-10 pt-8 border-t border-white/10 flex items-center text-sm font-medium text-gray-400 gap-2">
-                    <span className="text-white">Result:</span> 3x faster fluency acquisition <ArrowRight className="w-4 h-4 ml-1" />
+                    <span className="text-white">Result:</span> Fluent confidence in 30 days <ArrowRight className="w-4 h-4 ml-1" />
                 </div>
             </div>
           </motion.div>

@@ -5,21 +5,21 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
     {
-        quote: "Finally an app that actually lets me speak. I used to freeze in meetings, now I just talk.",
-        author: "Elena R.",
-        role: "Product Manager",
+        quote: "I took 4 years of Spanish in high school but couldn't order a taco. Sophie fixed my fear of speaking in 2 weeks.",
+        author: "James T.",
+        role: "Traveler",
         gradient: "from-pink-500/10 to-rose-500/10"
     },
     {
-        quote: "The corrections are spot on. It doesn't just correct grammar, it corrects style.",
-        author: "Marco D.",
-        role: "Software Engineer",
+        quote: "Ser vs Estar finally makes sense. Sophie explained it in context while we were roleplaying a party scene.",
+        author: "Sarah M.",
+        role: "Expat in Madrid",
         gradient: "from-blue-500/10 to-cyan-500/10"
     },
     {
-        quote: "I love that it remembers my mistakes. It feels like a real tutor that knows me.",
-        author: "Sarah K.",
-        role: "Student",
+        quote: "The accent correction is brutal but effective. I finally stopped pronouncing 'H' like an English 'H'.",
+        author: "David K.",
+        role: "Digital Nomad",
         gradient: "from-purple-500/10 to-violet-500/10"
     }
 ];
