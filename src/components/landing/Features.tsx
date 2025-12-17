@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { MessageSquare, GraduationCap, Headphones, Zap, Ear, Brain, ArrowUpRight, Sparkles } from "lucide-react";
+import { MessageSquare, GraduationCap, Headphones, Zap, Brain, Sparkles, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Features = () => {
