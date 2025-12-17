@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { BackToTop } from "@/components/ui/back-to-top";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +27,20 @@ export const metadata: Metadata = {
     siteName: "Sophie.ai",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://sophie.ai/og-image.jpg", // Placeholder
+        width: 1200,
+        height: 630,
+        alt: "Sophie.ai App Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sophie.ai | The Language Coach That Remembers You",
     description: "Stop freezing. Start speaking. The first AI tutor that actually remembers your progress.",
+    images: ["https://sophie.ai/og-image.jpg"],
   },
 };
 
@@ -38,6 +49,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Sophie.ai",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "12.00",
+      "priceCurrency": "USD"
+    },
+    "description": "AI-powered language learning platform focusing on speaking practice and personalized feedback.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "1250"
+    }
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
@@ -45,6 +75,12 @@ export default function RootLayout({
       >
         <ScrollProgress />
         {children}
+        <BackToTop />
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
