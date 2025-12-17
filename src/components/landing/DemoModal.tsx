@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Play, Mic, RefreshCw, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import InteractiveRainbowWave from "./InteractiveRainbowWave";
 
 interface DemoModalProps {
   children: React.ReactNode;
@@ -30,8 +31,8 @@ const DemoModal = ({ children }: DemoModalProps) => {
 
   const startDemo = () => {
     setStage("listening");
-    setTimeout(() => setStage("processing"), 2000);
-    setTimeout(() => setStage("result"), 3500);
+    setTimeout(() => setStage("processing"), 3000); // Extended slightly for wave enjoyment
+    setTimeout(() => setStage("result"), 4500);
   };
 
   const resetDemo = () => {
@@ -67,7 +68,7 @@ const DemoModal = ({ children }: DemoModalProps) => {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            className="flex flex-col items-center justify-center space-y-4"
+                            className="flex flex-col items-center justify-center space-y-8 w-full"
                         >
                             <div className="relative">
                                 <div className="absolute inset-0 bg-red-500/20 rounded-full animate-ping"></div>
@@ -75,16 +76,13 @@ const DemoModal = ({ children }: DemoModalProps) => {
                                     <Mic className="w-8 h-8 text-white" />
                                 </div>
                             </div>
-                            <p className="text-xl font-bold text-gray-800">Listening...</p>
-                            <div className="h-8 flex items-center gap-1">
-                                {[...Array(5)].map((_, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className="w-1 bg-gray-400 rounded-full"
-                                        animate={{ height: [10, 24, 10] }}
-                                        transition={{ repeat: Infinity, duration: 0.8, delay: i * 0.1 }}
-                                    />
-                                ))}
+                            <div className="text-center">
+                                <p className="text-xl font-bold text-gray-800">Listening...</p>
+                                <p className="text-sm text-gray-400">Speak clearly into your microphone</p>
+                            </div>
+                            
+                            <div className="w-full max-w-[80%] h-16">
+                                <InteractiveRainbowWave className="h-16" />
                             </div>
                         </motion.div>
                     )}

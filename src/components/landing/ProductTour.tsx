@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mic, CheckCircle2, BarChart3, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import InteractiveRainbowWave from "./InteractiveRainbowWave";
 
 const tabs = [
   { 
@@ -40,37 +41,9 @@ const content = {
          
          <p className="text-2xl font-medium text-gray-900 leading-snug">"I would like to order a coffee, please."</p>
          
-         {/* Audio Waveform Visualization - Rainbow Line */}
-         <div className="mt-8 h-16 w-full flex items-center justify-center">
-            <svg width="100%" height="40" viewBox="0 0 300 40" className="w-full max-w-xs overflow-visible">
-              <defs>
-                <linearGradient id="rainbowWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#FF0080" />
-                  <stop offset="50%" stopColor="#FFD700" />
-                  <stop offset="100%" stopColor="#7B61FF" />
-                </linearGradient>
-              </defs>
-              <motion.path
-                d="M0 20 Q 75 5, 150 20 T 300 20"
-                fill="none"
-                stroke="url(#rainbowWaveGradient)"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                animate={{ 
-                  d: [
-                      "M0 20 Q 75 5, 150 20 T 300 20",   // High arch
-                      "M0 20 Q 75 35, 150 20 T 300 20"   // Low arch
-                  ]
-                }}
-                transition={{
-                  duration: 0.8,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut"
-                }}
-              />
-            </svg>
+         {/* Audio Waveform Visualization */}
+         <div className="mt-8 w-full">
+            <InteractiveRainbowWave />
          </div>
       </div>
     </div>

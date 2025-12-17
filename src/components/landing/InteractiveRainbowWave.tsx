@@ -1,71 +1,79 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
-const InteractiveRainbowWave = () => {
+interface InteractiveRainbowWaveProps {
+  className?: string;
+  lineColor?: string;
+}
+
+const InteractiveRainbowWave = ({ className, lineColor }: InteractiveRainbowWaveProps) => {
   const pathRef = useRef<SVGPathElement>(null);
+  const pathRef2 = useRef<SVGPathElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Animation state refs
   const progressRef = useRef(0);
-  const amplitudeRef = useRef(15);
-  const targetAmplitudeRef = useRef(15);
-  const frequencyRef = useRef(0.02);
-  const targetFrequencyRef = useRef(0.02);
+  const mouseXRef = useRef(0.5); // 0 to 1
+  const amplitudeRef = useRef(10);
+  const targetAmplitudeRef = useRef(10);
+  const speedRef = useRef(0.02);
+  const targetSpeedRef = useRef(0.02);
 
   useEffect(() => {
     let animationFrameId: number;
     const path = pathRef.current;
+    const path2 = pathRef2.current;
     
-    if (!path) return;
+    if (!path || !path2) return;
 
     const animate = () => {
-      progressRef.current += 0.08; // Base speed
+      // Lerp values for smooth transitions
+      amplitudeRef.current += (targetAmplitudeRef.current - amplitudeRef.current) * 0.1;
+      speedRef.current += (targetSpeedRef.current - speedRef.current) * 0.1;
       
-      // Smooth lerp for interactivity
-      amplitudeRef.current += (targetAmplitudeRef.current - amplitudeRef.current) * 0.05;
-      frequencyRef.current += (targetFrequencyRef.current - frequencyRef.current) * 0.05;
+      progressRef.current += speedRef.current;
 
-      const points = [];
-      const width = 300; // coordinate system width
-      const height = 100; // coordinate system height
+      const width = 300;
+      const height = 100;
       const centerY = height / 2;
+      const points1: string[] = [];
+      const points2: string[] = [];
       
-      // Resolution of points
+      // Reduce resolution for performance, increase for smoothness if needed
+      // Step 2 is good balance
       for (let x = 0; x <= width; x += 2) {
-        
-        // Normalize x from 0 to 1
         const normalizedX = x / width;
         
-        // Dampening factor (0 at edges, 1 at center)
-        // Using a power curve to keep the center wider
-        const dampening = Math.sin(normalizedX * Math.PI);
+        // Bell curve dampening: forces strict 0 at ends, high in center
+        // Power of 2.5 gives nice tapered look
+        const dampening = Math.pow(Math.sin(normalizedX * Math.PI), 2.5);
 
-        // Wave composition
+        // Calculate wave distortion based on mouse X position
+        // When mouse is near this X, increase frequency/chaos slightly
+        const mouseInfluence = 1 - Math.abs(normalizedX - mouseXRef.current);
+        const localizedAmp = amplitudeRef.current * (1 + (Math.max(0, mouseInfluence) * 0.5));
+
         const t = progressRef.current;
-        const f = frequencyRef.current;
 
-        // Main carrier wave
-        const y1 = Math.sin(x * f + t);
+        // Wave 1: Main vocal line
+        const y1 = Math.sin(x * 0.03 + t) 
+                 + Math.sin(x * 0.08 - t * 0.5) * 0.5;
         
-        // Secondary harmonic
-        const y2 = Math.sin(x * (f * 2.5) - t * 1.5);
-        
-        // Third harmonic for detail
-        const y3 = Math.sin(x * (f * 5.0) + t * 3.0) * 0.3;
+        // Wave 2: Harmonic echo (ghost line)
+        const y2 = Math.cos(x * 0.04 - t * 0.8) 
+                 + Math.sin(x * 0.1 + t) * 0.3;
 
-        // Combine
-        const combinedY = y1 + y2 * 0.5 + y3;
-        
-        // Apply amplitude and dampening
-        const y = centerY + combinedY * amplitudeRef.current * dampening;
-        
-        points.push(`${x},${y}`);
+        const finalY1 = centerY + y1 * localizedAmp * dampening;
+        const finalY2 = centerY + y2 * (localizedAmp * 0.7) * dampening; // Slightly smaller amp
+
+        points1.push(`${x},${finalY1}`);
+        points2.push(`${x},${finalY2}`);
       }
 
-      // Smooth curve
-      // For pure SVG path simplicity we use L (LineTo) with high point density
-      // It looks perfectly curved on screen
-      const d = `M ${points.join(" L ")}`;
-      path.setAttribute("d", d);
+      path.setAttribute("d", `M ${points1.join(" L ")}`);
+      path2.setAttribute("d", `M ${points2.join(" L ")}`);
       
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -75,53 +83,67 @@ const InteractiveRainbowWave = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  const handleMouseEnter = () => {
-    targetAmplitudeRef.current = 35; // Higher waves
-    targetFrequencyRef.current = 0.04; // Faster frequency
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    mouseXRef.current = x;
+    
+    // Increase energy when interacting
+    targetAmplitudeRef.current = 25; 
+    targetSpeedRef.current = 0.08;
   };
 
   const handleMouseLeave = () => {
-    targetAmplitudeRef.current = 15; // Reset
-    targetFrequencyRef.current = 0.02; // Reset
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-     // We could do complex X/Y tracking here, but simple excitement state is often cleaner for UI
+    // Reset to calm state
+    targetAmplitudeRef.current = 10;
+    targetSpeedRef.current = 0.02;
+    mouseXRef.current = 0.5;
   };
 
   return (
     <div 
         ref={containerRef} 
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
-        className="w-full h-16 relative flex items-center justify-center cursor-pointer touch-none select-none"
+        onMouseLeave={handleMouseLeave}
+        className={cn("w-full h-24 relative flex items-center justify-center cursor-crosshair touch-none select-none", className)}
     >
        <svg 
          viewBox="0 0 300 100" 
-         className="w-full h-full overflow-visible drop-shadow-[0_0_10px_rgba(123,97,255,0.3)]"
+         className="w-full h-full overflow-visible"
          preserveAspectRatio="none"
        >
          <defs>
            <linearGradient id="rainbowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-             <stop offset="0%" stopColor="#FF0080">
-                <animate attributeName="stop-color" values="#FF0080;#FF8C00;#FF0080" dur="3s" repeatCount="indefinite" />
-             </stop>
-             <stop offset="50%" stopColor="#7B61FF">
-                <animate attributeName="stop-color" values="#7B61FF;#FF0080;#7B61FF" dur="3s" repeatCount="indefinite" />
-             </stop>
-             <stop offset="100%" stopColor="#40E0D0">
-                <animate attributeName="stop-color" values="#40E0D0;#7B61FF;#40E0D0" dur="3s" repeatCount="indefinite" />
-             </stop>
+             <stop offset="0%" stopColor="#FF0080" />
+             <stop offset="50%" stopColor="#FFD700" />
+             <stop offset="100%" stopColor="#7B61FF" />
+           </linearGradient>
+           
+           <linearGradient id="ghostGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+             <stop offset="0%" stopColor="#FF0080" stopOpacity="0.2" />
+             <stop offset="50%" stopColor="#FFD700" stopOpacity="0.2" />
+             <stop offset="100%" stopColor="#7B61FF" stopOpacity="0.2" />
            </linearGradient>
          </defs>
          
+         {/* Ghost Wave (Echo) */}
+         <path 
+            ref={pathRef2} 
+            fill="none" 
+            stroke={lineColor ? lineColor : "url(#ghostGradient)"}
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className={lineColor ? "opacity-30" : ""}
+         />
+
          {/* Main Wave */}
          <path 
             ref={pathRef} 
             fill="none" 
-            stroke="url(#rainbowGradient)" 
-            strokeWidth="4" 
+            stroke={lineColor ? lineColor : "url(#rainbowGradient)"} 
+            strokeWidth="3" 
             strokeLinecap="round" 
             strokeLinejoin="round"
          />
