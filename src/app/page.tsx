@@ -4,6 +4,7 @@ import SocialProof from "@/components/landing/SocialProof";
 import ProblemSolution from "@/components/landing/ProblemSolution";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Features from "@/components/landing/Features";
+import PersonalizationEngine from "@/components/landing/PersonalizationEngine";
 import ProductTour from "@/components/landing/ProductTour";
 import Testimonials from "@/components/landing/Testimonials";
 import Pricing from "@/components/landing/Pricing";
@@ -19,6 +20,7 @@ export default function Home() {
       <ProblemSolution />
       <HowItWorks />
       <Features />
+      <PersonalizationEngine />
       <ProductTour />
       <Testimonials />
       <Pricing />

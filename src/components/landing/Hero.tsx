@@ -4,6 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import SignupModal from "./SignupModal";
 
 const Hero = () => {
   return (
@@ -52,9 +53,11 @@ const Hero = () => {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto"
           >
-            <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 shadow-xl shadow-primary/20">
-              Get Early Access <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <SignupModal>
+              <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 shadow-xl shadow-primary/20">
+                Get Early Access <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </SignupModal>
             <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 border-2">
               <Play className="mr-2 w-4 h-4 fill-current" /> Watch 60-sec demo
             </Button>

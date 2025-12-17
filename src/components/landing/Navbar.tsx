@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
+import SignupModal from "./SignupModal";
 
 const Navbar = () => {
   const { scrollY } = useScroll();
@@ -50,9 +51,11 @@ const Navbar = () => {
           <Link href="#" className="hidden sm:block text-sm font-medium text-muted-foreground hover:text-foreground">
             Sign in
           </Link>
-          <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
-            Get Early Access
-          </Button>
+          <SignupModal>
+            <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20">
+              Get Early Access
+            </Button>
+          </SignupModal>
         </div>
       </div>
     </motion.nav>
