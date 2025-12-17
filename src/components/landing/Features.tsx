@@ -15,10 +15,10 @@ const Features = () => {
           </h2>
         </div>
 
-        {/* Bento Grid Layout */}
+        {/* Bento Grid Layout - Fixed Order for Tight Fit */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[350px]">
           
-          {/* Card 1: Scenario Engine (Large) */}
+          {/* 1. Scenario Engine (Top Left - 2 Cols) */}
           <motion.div 
             whileHover={{ y: -5 }}
             className="md:col-span-2 md:row-span-1 bg-white p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col justify-between relative overflow-hidden group"
@@ -40,7 +40,7 @@ const Features = () => {
             </div>
           </motion.div>
 
-          {/* Card 2: Instant Fixes (Vertical) */}
+          {/* 2. Smart Fixes (Right Middle - 1 Col, 2 Rows) */}
           <motion.div 
              whileHover={{ y: -5 }}
              className="md:col-span-1 md:row-span-2 bg-black text-white p-8 rounded-[2rem] shadow-xl flex flex-col relative overflow-hidden group"
@@ -65,7 +65,7 @@ const Features = () => {
              </div>
           </motion.div>
 
-          {/* Card 3: Personalization (Square) */}
+          {/* 3. Memory (Top Right - 1 Col) */}
           <motion.div 
             whileHover={{ y: -5 }}
             className="md:col-span-1 bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 group relative overflow-hidden"
@@ -82,24 +82,8 @@ const Features = () => {
              </div>
           </motion.div>
 
-           {/* Card 4: Tutor Mode (Square) */}
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="md:col-span-1 bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 group relative overflow-hidden"
-          >
-             <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-             <div className="relative z-10 h-full flex flex-col justify-between">
-                <div>
-                    <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center mb-6 text-purple-600">
-                        <GraduationCap className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Tutor Mode</h3>
-                    <p className="text-gray-500 text-sm">Ask "How do I say..." in your native language anytime.</p>
-                </div>
-             </div>
-          </motion.div>
-
-          {/* Card 5: Immersion (Wide) */}
+          {/* 4. Immersion (Bottom Left - 2 Cols) */}
+          {/* Swapped position to fit under Scenario Engine */}
           <motion.div 
             whileHover={{ y: -5 }}
             className="md:col-span-2 bg-gradient-to-br from-[#FF0080] to-[#7B61FF] text-white p-10 rounded-[2rem] shadow-lg flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
@@ -125,6 +109,24 @@ const Features = () => {
                     </div>
                  </div>
             </div>
+          </motion.div>
+
+           {/* 5. Tutor Mode (Bottom Right - 1 Col) */}
+           {/* Swapped position to fit under Memory */}
+          <motion.div 
+            whileHover={{ y: -5 }}
+            className="md:col-span-1 bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 group relative overflow-hidden"
+          >
+             <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+             <div className="relative z-10 h-full flex flex-col justify-between">
+                <div>
+                    <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center mb-6 text-purple-600">
+                        <GraduationCap className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">Tutor Mode</h3>
+                    <p className="text-gray-500 text-sm">Ask "How do I say..." in your native language anytime.</p>
+                </div>
+             </div>
           </motion.div>
 
         </div>
