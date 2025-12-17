@@ -10,35 +10,47 @@ import {
 
 const FAQ = () => {
   return (
-    <section id="faq" className="py-24 bg-white border-t border-black/5">
+    <section id="faq" className="py-32 bg-white">
       <div className="container mx-auto px-6 max-w-3xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-black tracking-tight mb-4">FAQ</h2>
+        <div className="text-center mb-20">
+          <h2 className="text-4xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
+          <p className="text-gray-500">Everything you need to know about the product.</p>
         </div>
 
         <Accordion type="single" collapsible className="w-full space-y-4">
-          <AccordionItem value="item-1" className="border-2 border-black/5 px-6 rounded-2xl data-[state=open]:border-black transition-colors">
-            <AccordionTrigger className="text-lg font-bold hover:no-underline">What languages at launch?</AccordionTrigger>
-            <AccordionContent className="text-gray-500 text-lg leading-relaxed">
-              We are launching with Spanish, French, German, and English. More languages will be added soon based on user demand.
+          <AccordionItem value="item-1" className="border-b border-gray-100 px-0 pb-4">
+            <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
+                What languages are available at launch?
+            </AccordionTrigger>
+            <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
+              We are launching with <strong>Spanish, French, German, and English</strong>. Our model is language-agnostic, so we will be rolling out Italian, Portuguese, and Mandarin shortly after launch based on user voting.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2" className="border-2 border-black/5 px-6 rounded-2xl data-[state=open]:border-black transition-colors">
-            <AccordionTrigger className="text-lg font-bold hover:no-underline">Is this good for beginners?</AccordionTrigger>
-            <AccordionContent className="text-gray-500 text-lg leading-relaxed">
-              Absolutely. Sophie adapts to your level, whether you are a complete beginner or looking to polish your fluency.
+          
+          <AccordionItem value="item-2" className="border-b border-gray-100 px-0 pb-4">
+            <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
+                Is Sophie suitable for complete beginners?
+            </AccordionTrigger>
+            <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
+              Absolutely. Sophie detects your level in the first conversation. If you are a beginner, she will speak slowly, use simple vocabulary, and provide translations when you get stuck. It adapts to <em>you</em>.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3" className="border-2 border-black/5 px-6 rounded-2xl data-[state=open]:border-black transition-colors">
-            <AccordionTrigger className="text-lg font-bold hover:no-underline">How is this different from generic AI?</AccordionTrigger>
-            <AccordionContent className="text-gray-500 text-lg leading-relaxed">
-              Generic AIs forget you. Sophie remembers your mistakes, your vocabulary gaps, and your goals, building a personalized curriculum that evolves with you.
+
+          <AccordionItem value="item-3" className="border-b border-gray-100 px-0 pb-4">
+            <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
+                How is this different from ChatGPT voice mode?
+            </AccordionTrigger>
+            <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
+              Generic LLMs forget you after the chat closes. Sophie builds a persistent <strong>Long-Term Memory</strong> of your grammar mistakes, vocabulary gaps, and interests. She proactively drills you on your weak spots over weeks, not just within one session.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4" className="border-2 border-black/5 px-6 rounded-2xl data-[state=open]:border-black transition-colors">
-            <AccordionTrigger className="text-lg font-bold hover:no-underline">Is my voice data private?</AccordionTrigger>
-            <AccordionContent className="text-gray-500 text-lg leading-relaxed">
-              Yes. We take privacy seriously. Your voice data is processed securely and is never sold to third parties.
+
+          <AccordionItem value="item-4" className="border-b border-gray-100 px-0 pb-4">
+            <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
+                Is my voice data private?
+            </AccordionTrigger>
+            <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
+              Yes. We take privacy seriously. Your audio is processed for transcription and then immediately discarded unless you explicitly opt-in to data donation. We do not sell your voice data to third parties.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
