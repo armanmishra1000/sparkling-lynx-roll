@@ -2,26 +2,26 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, CheckCircle2, BarChart3, Sparkles, PlayCircle, Waveform } from "lucide-react";
+import { Mic, CheckCircle2, BarChart3, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
   { 
     id: "speak", 
-    label: "Speak Freely", 
-    desc: "Order food, ask directions.",
+    label: "Natural Speaking", 
+    desc: "Just talk. No tapping words.",
     icon: Mic 
   },
   { 
     id: "correct", 
-    label: "Fix Spanglish", 
-    desc: "Stop translating literally.",
+    label: "Instant Feedback", 
+    desc: "Corrections that stick.",
     icon: CheckCircle2 
   },
   { 
     id: "track", 
-    label: "Master Grammar", 
-    desc: "Ser vs Estar, Para vs Por.",
+    label: "Neural Progress", 
+    desc: "See your brain adapt.",
     icon: BarChart3 
   },
 ];
@@ -38,24 +38,39 @@ const content = {
             <Mic className="w-10 h-10 text-white" />
          </div>
          
-         <p className="text-2xl font-medium text-gray-900 leading-snug">"Estoy buscando para el baño."</p>
-         <p className="text-sm text-gray-500 mt-2">(I am looking for the bathroom)</p>
+         <p className="text-2xl font-medium text-gray-900 leading-snug">"I would like to order a coffee, please."</p>
          
-         {/* Audio Waveform Visualization */}
-         <div className="mt-8 flex items-center justify-center gap-1 h-12">
-            {[...Array(20)].map((_, i) => (
-                <motion.div
-                    key={i}
-                    className="w-1.5 rounded-full bg-gray-900"
-                    animate={{ height: [12, Math.random() * 48 + 12, 12] }}
-                    transition={{ 
-                        repeat: Infinity, 
-                        duration: 1.5, 
-                        delay: i * 0.05,
-                        ease: "easeInOut" 
-                    }}
-                />
-            ))}
+         {/* Audio Waveform Visualization - Rainbow Line */}
+         <div className="mt-8 h-16 w-full flex items-center justify-center">
+            <svg width="100%" height="40" viewBox="0 0 300 40" className="w-full max-w-xs overflow-visible">
+              <defs>
+                <linearGradient id="rainbowWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#FF0080" />
+                  <stop offset="50%" stopColor="#FFD700" />
+                  <stop offset="100%" stopColor="#7B61FF" />
+                </linearGradient>
+              </defs>
+              <motion.path
+                d="M0 20 Q 75 5, 150 20 T 300 20"
+                fill="none"
+                stroke="url(#rainbowWaveGradient)"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                animate={{ 
+                  d: [
+                      "M0 20 Q 75 5, 150 20 T 300 20",   // High arch
+                      "M0 20 Q 75 35, 150 20 T 300 20"   // Low arch
+                  ]
+                }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                  ease: "easeInOut"
+                }}
+              />
+            </svg>
          </div>
       </div>
     </div>
@@ -66,7 +81,7 @@ const content = {
             {/* User Bubble */}
             <div className="flex justify-end">
                 <div className="bg-gray-100 text-gray-500 px-6 py-4 rounded-2xl rounded-tr-sm">
-                    <span className="line-through decoration-red-400/50 decoration-2">Estoy buscando para el baño.</span>
+                    <span className="line-through decoration-red-400/50 decoration-2">I want order coffee.</span>
                 </div>
             </div>
             
@@ -81,10 +96,10 @@ const content = {
                         <Sparkles className="w-3 h-3 text-yellow-400" /> Suggestion
                     </div>
                     <div className="text-xl font-medium mb-2">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Busco el baño.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">I'd like to order</span> a coffee.
                     </div>
                     <div className="h-px bg-white/10 my-3"></div>
-                    <p className="text-sm text-gray-400">In Spanish, "buscar" (to look for) includes the "for". You don't need "para".</p>
+                    <p className="text-sm text-gray-400">"I'd like" is softer and more polite than "I want".</p>
                 </div>
             </motion.div>
         </div>
@@ -94,12 +109,12 @@ const content = {
     <div className="bg-white rounded-3xl shadow-2xl p-8 h-full flex flex-col justify-center relative overflow-hidden border border-gray-100">
       <div className="w-full max-w-sm mx-auto space-y-8 relative z-10">
         <div>
-            <h4 className="text-lg font-bold text-gray-900 mb-6">Spanish Mastery</h4>
+            <h4 className="text-lg font-bold text-gray-900 mb-6">Fluency Metrics</h4>
             <div className="space-y-6">
                 {[
-                    { label: "Ser vs Estar", val: 85, color: "bg-pink-500" },
-                    { label: "Gender (El/La)", val: 62, color: "bg-orange-500" },
-                    { label: "Subjunctive", val: 34, color: "bg-cyan-500" }
+                    { label: "Vocabulary", val: 85, color: "bg-pink-500" },
+                    { label: "Pronunciation", val: 62, color: "bg-orange-500" },
+                    { label: "Confidence", val: 94, color: "bg-cyan-500" }
                 ].map((item, i) => (
                     <div key={i}>
                         <div className="flex justify-between text-sm font-medium text-gray-600 mb-2">

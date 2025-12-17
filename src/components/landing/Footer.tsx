@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { MadeWithDyad } from "../made-with-dyad";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 
@@ -76,9 +75,6 @@ const Footer = () => {
                 <Link href="#" className="hover:text-black transition-colors">LinkedIn</Link>
                 <Link href="#" className="hover:text-black transition-colors">Instagram</Link>
             </div>
-        </div>
-        <div className="mt-12 flex justify-center opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-            <MadeWithDyad />
         </div>
       </div>
     </footer>
