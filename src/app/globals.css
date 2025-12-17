@@ -4,62 +4,61 @@
 
 @layer base {
   :root {
-    /* Background: Near-white lilac #FBFAFF */
-    --background: 252 33% 99%;
-    /* Text: Ink #0B0B0F */
-    --foreground: 240 17% 5%;
+    /* Background: Clean white to let the rainbow pop */
+    --background: 0 0% 100%;
+    /* Text: Deep Black */
+    --foreground: 0 0% 0%;
 
-    /* Card: White or very slight off-white */
+    /* Card: White */
     --card: 0 0% 100%;
-    --card-foreground: 240 17% 5%;
+    --card-foreground: 0 0% 0%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 240 17% 5%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Primary: Violet #8C54DD */
-    --primary: 264 64% 60%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary: Electric Violet (Anchor for the rainbow) */
+    --primary: 270 100% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Periwinkle #A8B6FF - Used for accents/soft buttons */
-    --secondary: 230 100% 83%;
-    --secondary-foreground: 264 64% 30%;
+    /* Secondary: Vibrant Cyan */
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 0 0% 0%;
 
-    /* Muted: Soft grays/lilacs */
-    --muted: 240 20% 96%;
-    --muted-foreground: 260 10% 45%;
+    /* Muted: Cool Grays */
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    /* Accent: Blush/Lilac wash */
-    --accent: 260 50% 96%;
-    --accent-foreground: 264 64% 60%;
+    /* Accent: Hot Pink */
+    --accent: 330 100% 70%;
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    /* Border: rgba(20, 16, 30, 0.08) approx */
-    --border: 260 15% 90%;
-    --input: 260 15% 90%;
-    --ring: 264 64% 60%;
+    /* Border: High contrast black/white feel */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 270 100% 60%;
 
-    --radius: 1rem;
+    --radius: 1.5rem; /* Rounder, friendlier */
   }
 
   .dark {
-    /* Dark mode mapping (approximate inversion for safety, though design is light-focused) */
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 264 64% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --primary: 270 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 0 0% 0%;
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --accent: 330 100% 50%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -75,5 +74,27 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Rainbow Animations */
+@keyframes wave-flow {
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+.rainbow-text {
+  background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0, #7B61FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
   }
 }

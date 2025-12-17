@@ -6,162 +6,155 @@ import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import SignupModal from "./SignupModal";
 import { trackEvent } from "@/lib/analytics";
+import RainbowWaveBackground from "./RainbowWaveBackground";
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-      {/* Background Gradient Orbs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-3xl -z-10" />
+    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-white pt-20">
+      
+      {/* The Brand Identity: Rainbow Wave */}
+      <RainbowWaveBackground />
+      
+      {/* Floating Particles/Grains for Texture */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
 
-      <div className="container mx-auto max-w-6xl px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto max-w-7xl px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
         
-        {/* Text Content */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center space-x-2 bg-secondary/30 px-3 py-1 rounded-full border border-secondary/50"
+        {/* Typographic "Monolith" - Absurdly Big & Bold */}
+        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", bounce: 0.5 }}
+            className="inline-block"
           >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary-foreground/90">New • The language coach that remembers you</span>
+             <span className="bg-black text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-[4px_4px_0px_rgba(0,0,0,0.2)] transform rotate-2">
+               Beta Access Live
+             </span>
           </motion.div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
-          >
-            Fluency, but <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-violet-400">
-              personalized.
-            </span>
-          </motion.h1>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-black drop-shadow-sm">
+            <motion.span 
+              className="block"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              DON'T JUST
+            </motion.span>
+            <motion.span 
+              className="block rainbow-text"
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              LEARN IT.
+            </motion.span>
+            <motion.span 
+              className="block"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              SPEAK IT.
+            </motion.span>
+          </h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground max-w-lg"
-          >
-            Talk to Sophie for 10 minutes a day. Get corrections you can use immediately—pronunciation, wording, and flow.
-          </motion.p>
+          <p className="text-xl md:text-2xl font-medium text-gray-800 max-w-xl leading-relaxed">
+            The AI language coach that rides your brainwaves. <br/>
+            <span className="bg-yellow-300 px-2 italic">Forget boring drills.</span> Start surfing conversations.
+          </p>
 
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto"
+            className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
           >
             <SignupModal triggerLocation="hero_primary">
-              <Button size="lg" className="w-full sm:w-auto rounded-full text-lg h-12 px-8 shadow-xl shadow-primary/20">
-                Get Early Access <ArrowRight className="ml-2 w-4 h-4" />
+              <Button size="lg" className="h-16 px-8 rounded-full text-xl font-bold bg-black text-white hover:bg-gray-900 shadow-[8px_8px_0px_#FF0080] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_#FF0080] transition-all border-2 border-black">
+                Start The Wave
               </Button>
             </SignupModal>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="w-full sm:w-auto rounded-full text-lg h-12 px-8 border-2"
-              onClick={() => trackEvent("cta_click_secondary", { location: "hero_demo_button" })}
+             <Button 
+                variant="outline" 
+                size="lg" 
+                className="h-16 px-8 rounded-full text-lg font-bold border-2 border-black bg-white hover:bg-gray-50 shadow-[8px_8px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_#000000] transition-all"
+                onClick={() => trackEvent("cta_click_secondary", { location: "hero_demo_button" })}
             >
-              <Play className="mr-2 w-4 h-4 fill-current" /> Watch 60-sec demo
+              <Play className="mr-2 w-5 h-5 fill-current" /> See It Flow
             </Button>
           </motion.div>
         </div>
 
-        {/* Hero Demo Module */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="relative"
-        >
-          <div className="relative bg-white border border-border rounded-3xl shadow-2xl p-6 md:p-8 max-w-md mx-auto lg:ml-auto">
-            {/* Header of Demo */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center space-x-3">
-                <div className="relative">
-                    <motion.div 
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute inset-0 bg-primary/30 rounded-full"
-                    />
-                    <div className="relative w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold z-10">S</div>
-                </div>
-                <div>
-                  <div className="font-semibold text-sm">Sophie</div>
-                  <div className="text-xs text-muted-foreground">AI Coach • Online</div>
-                </div>
-              </div>
-              <div className="flex space-x-1">
-                <div className="w-1 h-4 bg-primary/40 rounded-full animate-pulse" />
-                <div className="w-1 h-6 bg-primary/60 rounded-full animate-pulse delay-75" />
-                <div className="w-1 h-4 bg-primary/40 rounded-full animate-pulse delay-150" />
-              </div>
-            </div>
-
-            {/* Chat Area */}
-            <div className="space-y-4 mb-6">
-              <div className="flex justify-end">
-                <div className="bg-primary/10 text-primary-foreground px-4 py-2 rounded-2xl rounded-tr-sm max-w-[85%] text-sm">
-                  I try to go to the station yesterday but it was closed.
-                </div>
-              </div>
-              
-              {/* Sophie's Correction */}
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5 }}
-                className="bg-secondary/20 border border-secondary/30 p-4 rounded-2xl rounded-tl-sm text-sm space-y-2"
-              >
-                <div className="flex items-center space-x-2 text-primary font-medium text-xs uppercase tracking-wider">
-                  <Sparkles className="w-3 h-3" />
-                  <span>Correction</span>
-                </div>
-                <p className="text-gray-700">
-                  <span className="line-through text-red-400 opacity-60">I try to go</span>{" "}
-                  <span className="text-green-600 font-semibold bg-green-50 px-1 rounded">I tried to go</span>{" "}
-                  to the station yesterday...
-                </p>
-                <div className="text-xs text-muted-foreground pt-2 border-t border-secondary/20 mt-2">
-                  💡 Tip: Use past tense "tried" for yesterday.
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Controls */}
-            <div className="flex items-center justify-center space-x-4 pt-4 border-t border-border">
-              <div className="h-12 w-12 rounded-full bg-red-50 flex items-center justify-center text-red-500 hover:bg-red-100 transition-colors cursor-pointer">
-                <div className="w-3 h-3 bg-current rounded-sm" />
-              </div>
-              <div className="h-16 w-16 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/30 hover:scale-105 transition-transform cursor-pointer">
-                 <div className="w-6 h-8 border-l-4 border-r-4 border-white mx-auto" />
-              </div>
-              <div className="h-12 w-12 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:bg-gray-100 transition-colors cursor-pointer">
-                 <div className="w-4 h-4 border-2 border-current rounded-full" />
-              </div>
-            </div>
-          </div>
-
-          {/* Floating badge */}
-          <motion.div 
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-border hidden md:block"
+        {/* The "Floater" - Demo UI surfing the wave */}
+        <div className="lg:col-span-5 relative mt-12 lg:mt-0">
+          <motion.div
+            initial={{ y: 100, opacity: 0, rotate: 5 }}
+            animate={{ y: 0, opacity: 1, rotate: 0 }}
+            transition={{ type: "spring", duration: 1.5, delay: 0.5 }}
+            className="relative z-20"
           >
-            <div className="flex items-center space-x-3">
-              <div className="bg-green-100 p-2 rounded-lg text-green-600">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-              </div>
-              <div>
-                <div className="text-sm font-bold text-gray-900">Pronunciation</div>
-                <div className="text-xs text-gray-500">94% Accuracy</div>
-              </div>
+             {/* Glassmorphism Card */}
+            <div className="bg-white/80 backdrop-blur-xl border-2 border-white/50 p-6 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+               {/* Decorative Gradient Blob inside card */}
+               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full blur-[80px] opacity-40 -z-10"></div>
+               
+               <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center text-white text-2xl font-bold border-4 border-white shadow-lg">S</div>
+                    <div>
+                      <h3 className="font-bold text-lg leading-none">Sophie</h3>
+                      <span className="text-xs font-bold text-pink-600 uppercase tracking-widest">Live Coaching</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-1.5">
+                    {[1,2,3].map(i => (
+                      <motion.div 
+                        key={i} 
+                        className="w-2 bg-black rounded-full"
+                        animate={{ height: [10, 25, 10] }}
+                        transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+                      />
+                    ))}
+                  </div>
+               </div>
+
+               <div className="space-y-6">
+                 {/* User Bubble */}
+                 <div className="bg-gray-100 p-4 rounded-2xl rounded-tr-none text-right border border-gray-200">
+                    <p className="text-gray-600 text-lg">"I... uh... want buy ticket?"</p>
+                 </div>
+
+                 {/* Sophie Response - The Rainbow Correction */}
+                 <div className="relative">
+                    <div className="absolute -left-4 -top-4 bg-yellow-300 text-black text-xs font-bold px-3 py-1 rounded-full border border-black transform -rotate-12 z-10 shadow-sm">
+                      BETTER FLOW
+                    </div>
+                    <div className="bg-black p-5 rounded-3xl rounded-tl-none text-white shadow-xl">
+                      <p className="text-lg font-medium leading-relaxed">
+                        <span className="text-gray-500 line-through mr-2">want buy</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-500 font-bold">I'd like to buy</span>
+                        {" "}a ticket, please.
+                      </p>
+                      <div className="mt-4 flex items-center gap-3 text-sm text-gray-400 border-t border-gray-800 pt-3">
+                         <Sparkles className="w-4 h-4 text-yellow-300" />
+                         <span>Polite & natural phrasing</span>
+                      </div>
+                    </div>
+                 </div>
+               </div>
+
+               {/* Interaction Pill */}
+               <div className="mt-8 flex justify-center">
+                  <div className="bg-white border-2 border-gray-100 rounded-full px-6 py-3 flex items-center gap-4 shadow-lg">
+                     <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                     <span className="text-sm font-bold text-gray-800">Listening...</span>
+                  </div>
+               </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
