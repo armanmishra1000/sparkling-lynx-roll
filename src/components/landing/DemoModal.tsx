@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Play, Mic, RefreshCw, X } from "lucide-react";
+import { Play, Mic, RefreshCw, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface DemoModalProps {
@@ -99,7 +99,7 @@ const DemoModal = ({ children }: DemoModalProps) => {
                             className="flex flex-col items-center justify-center"
                         >
                             <div className="w-16 h-16 border-4 border-t-[#7B61FF] border-r-[#FF0080] border-b-[#FFD700] border-l-[#40E0D0] rounded-full animate-spin mb-4"></div>
-                            <p className="text-lg font-bold text-gray-500">Analyzing speech patterns...</p>
+                            <p className="text-lg font-bold text-gray-500">Analyzing grammar & accent...</p>
                         </motion.div>
                     )}
 
@@ -114,7 +114,7 @@ const DemoModal = ({ children }: DemoModalProps) => {
                             {/* User Input */}
                             <div className="flex justify-end">
                                 <div className="bg-gray-200 text-gray-600 px-4 py-3 rounded-2xl rounded-tr-sm max-w-[80%]">
-                                    <p className="font-medium">"I want go to the station train."</p>
+                                    <p className="font-medium">"El museo es cerrado ahora."</p>
                                 </div>
                             </div>
 
@@ -127,21 +127,22 @@ const DemoModal = ({ children }: DemoModalProps) => {
                                     </div>
                                     
                                     <div className="text-lg mb-4">
-                                        <span className="text-red-400 line-through mr-2 opacity-60">I want go</span>
-                                        <span className="text-[#40E0D0] font-bold">I would like to go</span>
-                                        {" "}to the{" "}
-                                        <span className="text-red-400 line-through mr-1 opacity-60">station train</span>
-                                        <span className="text-[#FFD700] font-bold">train station</span>.
+                                        El museo <span className="text-[#40E0D0] font-bold">está</span> cerrado ahora.
                                     </div>
 
-                                    <div className="bg-white/10 rounded-lg p-3 text-sm text-gray-300">
-                                        💡 <strong>Tip:</strong> In English, adjectives (like "train") usually come before the noun ("station"). Also, "I would like" is more polite than "I want".
+                                    <div className="bg-white/10 rounded-lg p-3 text-sm text-gray-300 border border-white/5">
+                                        <div className="flex items-start gap-2">
+                                            <Sparkles className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
+                                            <div>
+                                                <strong>Ser vs Estar:</strong> Being closed is a <em>state</em>, not a permanent characteristic. Use <strong>Estar</strong>.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="flex justify-center pt-4">
-                                <Button onClick={resetDemo} variant="outline" className="gap-2 border-2 hover:bg-gray-100">
+                                <Button onClick={resetDemo} variant="outline" className="gap-2 border-2 hover:bg-gray-100 rounded-full font-bold">
                                     <RefreshCw className="w-4 h-4" /> Try Another
                                 </Button>
                             </div>
@@ -154,7 +155,7 @@ const DemoModal = ({ children }: DemoModalProps) => {
             {stage === "idle" && (
                  <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm z-20">
                     <Button size="lg" onClick={startDemo} className="rounded-full h-16 px-8 text-lg gap-2 shadow-xl bg-black hover:bg-gray-800 text-white">
-                        <Play className="w-5 h-5 fill-current" /> Start Demo
+                        <Play className="w-5 h-5 fill-current" /> Try Live Demo
                     </Button>
                  </div>
             )}

@@ -14,43 +14,43 @@ const FAQ = () => {
       <div className="container mx-auto px-6 max-w-3xl">
         <div className="text-center mb-20">
           <h2 className="text-4xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
-          <p className="text-gray-500">Everything you need to know about the product.</p>
+          <p className="text-gray-500">Common questions from Spanish learners.</p>
         </div>
 
         <Accordion type="single" collapsible className="w-full space-y-4">
           <AccordionItem value="item-1" className="border-b border-gray-100 px-0 pb-4">
             <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
-                What languages are available at launch?
+                Does this teach Spain or Latin American Spanish?
             </AccordionTrigger>
             <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
-              We are launching with <strong>Spanish, French, German, and English</strong>. Our model is language-agnostic, so we will be rolling out Italian, Portuguese, and Mandarin shortly after launch based on user voting.
+              Both! You can toggle between <strong>Peninsular (Spain)</strong> and <strong>Latin American (Mexican)</strong> Spanish in settings. Sophie adjusts her vocabulary (e.g., 'Coche' vs 'Carro') and accent accordingly.
             </AccordionContent>
           </AccordionItem>
           
           <AccordionItem value="item-2" className="border-b border-gray-100 px-0 pb-4">
             <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
-                Is Sophie suitable for complete beginners?
+                I'm a complete beginner. Is this too hard?
             </AccordionTrigger>
             <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
-              Absolutely. Sophie detects your level in the first conversation. If you are a beginner, she will speak slowly, use simple vocabulary, and provide translations when you get stuck. It adapts to <em>you</em>.
+              Not at all. Sophie detects your level instantly. For beginners, she speaks slowly, uses simple present tense, and provides instant translations. It's like having a very patient tutor.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-3" className="border-b border-gray-100 px-0 pb-4">
             <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
-                How is this different from ChatGPT voice mode?
+                Does it help with the Subjunctive?
             </AccordionTrigger>
             <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
-              Generic LLMs forget you after the chat closes. Sophie builds a persistent <strong>Long-Term Memory</strong> of your grammar mistakes, vocabulary gaps, and interests. She proactively drills you on your weak spots over weeks, not just within one session.
+              Yes. This is our superpower. Instead of memorizing rules, Sophie creates scenarios (like giving advice or expressing doubt) that <em>force</em> you to use the subjunctive naturally, then corrects you if you slip up.
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="item-4" className="border-b border-gray-100 px-0 pb-4">
             <AccordionTrigger className="text-lg font-bold hover:no-underline text-gray-900 data-[state=open]:text-black hover:text-black transition-colors py-4">
-                Is my voice data private?
+                Can I use it for other languages?
             </AccordionTrigger>
             <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
-              Yes. We take privacy seriously. Your audio is processed for transcription and then immediately discarded unless you explicitly opt-in to data donation. We do not sell your voice data to third parties.
+              Currently we are optimized for <strong>Spanish</strong>. French, German, and English are in beta for Plus users, but our deepest scenario library is for Spanish learners.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

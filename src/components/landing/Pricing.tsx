@@ -36,10 +36,10 @@ const Pricing = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
-                Invest in your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] to-[#7B61FF]">voice.</span>
+                Invest in your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] to-[#7B61FF]">fluency.</span>
             </h2>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-                Simple, transparent pricing. No hidden fees. Cancel anytime.
+                Cheaper than one hour with a private tutor.
             </p>
           </motion.div>
         </div>
@@ -58,12 +58,12 @@ const Pricing = () => {
                     <span className="text-4xl font-bold tracking-tight">$0</span>
                     <span className="text-gray-400 font-medium">/ forever</span>
                 </div>
-                <p className="text-gray-500 text-sm mb-8">Perfect for getting a feel for the AI.</p>
+                <p className="text-gray-500 text-sm mb-8">Perfect for casual practice.</p>
                 <ul className="space-y-4 mb-8">
                     {[
                         "10 mins/day speaking",
                         "Basic grammar corrections",
-                        "Limited scenario access"
+                        "Travel scenarios only"
                     ].map((feature, i) => (
                         <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-600">
                             <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center shrink-0"><Check className="w-3 h-3 text-gray-600" /></div>
@@ -95,13 +95,13 @@ const Pricing = () => {
                         <span className="text-5xl font-bold tracking-tight">$12</span>
                         <span className="text-gray-400 font-medium">/ month</span>
                     </div>
-                    <p className="text-gray-400 text-sm mb-8">For serious learners who want fluency fast.</p>
+                    <p className="text-gray-400 text-sm mb-8">For serious learners who want to speak confidently.</p>
                     
                     <ul className="space-y-4 mb-8 flex-1">
                         {[
-                            "Unlimited speaking time",
-                            "Full detailed feedback reports",
-                            "Tutor Mode (Ask anything)",
+                            "Unlimited Spanish conversation",
+                            "Dialect toggles (Spain/LatAm)",
+                            "Deep grammar analysis",
                             "All Roleplay scenarios",
                             "Priority support"
                         ].map((feature, i) => (
@@ -124,13 +124,13 @@ const Pricing = () => {
                     <span className="text-4xl font-bold tracking-tight">$29</span>
                     <span className="text-gray-400 font-medium">/ month</span>
                 </div>
-                <p className="text-gray-500 text-sm mb-8">Advanced coaching for professionals.</p>
+                <p className="text-gray-500 text-sm mb-8">Advanced coaching for business & exams.</p>
                 <ul className="space-y-4 mb-8">
                     {[
                         "Everything in Plus",
-                        "Advanced Accent Training",
-                        "Business-specific Drills",
-                        "Interview Prep Module"
+                        "Advanced Accent Reduction",
+                        "Business Spanish Module",
+                        "DELE Exam Prep"
                     ].map((feature, i) => (
                         <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-600">
                             <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center shrink-0 text-white"><Check className="w-3 h-3" /></div>
