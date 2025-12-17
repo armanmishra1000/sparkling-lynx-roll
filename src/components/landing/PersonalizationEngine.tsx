@@ -137,17 +137,17 @@ const PersonalizationEngine = () => {
                         <motion.circle
                             r="3"
                             fill="#fff"
-                            initial={{ offsetDistance: "0%" }}
+                            initial={{ opacity: 0 }}
                             animate={{ 
                                 cx: [0, 250 - (parseInt(node.x)/100 * 500)],
                                 cy: [0, 250 - (parseInt(node.y)/100 * 500)],
                                 opacity: [0, 1, 0]
                             }}
                             transition={{ 
-                                duration: 2 + Math.random(), 
+                                duration: 2 + (i * 0.5) % 1.5, // Deterministic variation
                                 repeat: Infinity, 
                                 ease: "linear",
-                                delay: Math.random() * 2
+                                delay: i * 0.4
                             }}
                         />
                     </svg>
