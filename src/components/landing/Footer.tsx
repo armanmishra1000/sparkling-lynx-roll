@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { MadeWithDyad } from "../made-with-dyad";
 
 const Footer = () => {
   return (
@@ -42,11 +43,14 @@ const Footer = () => {
         
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} Sophie AI Inc. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
                 <Link href="#">Twitter</Link>
                 <Link href="#">LinkedIn</Link>
                 <Link href="#">Instagram</Link>
             </div>
+        </div>
+        <div className="mt-8">
+            <MadeWithDyad />
         </div>
       </div>
     </footer>

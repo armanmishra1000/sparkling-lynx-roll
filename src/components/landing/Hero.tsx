@@ -81,7 +81,14 @@ const Hero = () => {
             {/* Header of Demo */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">S</div>
+                <div className="relative">
+                    <motion.div 
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-0 bg-primary/30 rounded-full"
+                    />
+                    <div className="relative w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold z-10">S</div>
+                </div>
                 <div>
                   <div className="font-semibold text-sm">Sophie</div>
                   <div className="text-xs text-muted-foreground">AI Coach • Online</div>

@@ -11,18 +11,32 @@ const tabs = [
   { id: "track", label: "Track", icon: BarChart3 },
 ];
 
-const waveformHeights = [12, 24, 16, 28, 14, 20, 10, 22, 18, 26, 12, 15];
-
 const content = {
   speak: (
     <div className="bg-white rounded-2xl shadow-lg border border-border p-6 h-full flex flex-col justify-center items-center text-center space-y-4">
-      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center animate-pulse">
-        <Mic className="w-8 h-8 text-blue-600" />
+      <div className="relative">
+         <div className="absolute inset-0 bg-blue-500/20 rounded-full animate-ping" />
+         <div className="relative w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+            <Mic className="w-8 h-8" />
+         </div>
       </div>
       <p className="text-lg font-medium text-gray-800">"I would like to order a coffee, please."</p>
-      <div className="w-full max-w-xs h-8 bg-gray-100 rounded-full overflow-hidden flex items-center px-2 space-x-1">
-        {waveformHeights.map((h, i) => (
-          <div key={i} className="w-2 bg-blue-400 rounded-full" style={{ height: h + 'px' }} />
+      <div className="h-12 flex items-center justify-center space-x-1">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="w-2 bg-blue-400 rounded-full"
+            animate={{
+              height: [12, 24 + Math.random() * 16, 12],
+            }}
+            transition={{
+              duration: 0.8,
+              repeat: Infinity,
+              delay: i * 0.1,
+              ease: "easeInOut",
+            }}
+            style={{ height: 12 }}
+          />
         ))}
       </div>
     </div>
@@ -35,7 +49,12 @@ const content = {
         </div>
         <div className="text-sm text-gray-500 line-through">I want order coffee.</div>
       </div>
-      <div className="flex items-start space-x-3">
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="flex items-start space-x-3"
+      >
         <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center shrink-0">
             <span className="text-green-600 font-bold text-xs">AI</span>
         </div>
@@ -43,40 +62,33 @@ const content = {
             <div className="text-sm font-medium text-green-700">I'd like to order a coffee.</div>
             <div className="text-xs text-gray-400 mt-1">More polite & natural for a cafe setting.</div>
         </div>
-      </div>
+      </motion.div>
     </div>
   ),
   track: (
     <div className="bg-white rounded-2xl shadow-lg border border-border p-6 h-full">
       <h4 className="font-bold text-gray-800 mb-4">Your Progress</h4>
       <div className="space-y-4">
-        <div>
-            <div className="flex justify-between text-xs mb-1">
-                <span>Vocabulary</span>
-                <span className="font-bold">85%</span>
+        {[
+            { label: "Vocabulary", val: 85, color: "bg-primary" },
+            { label: "Pronunciation", val: 62, color: "bg-yellow-400" },
+            { label: "Confidence", val: 94, color: "bg-green-400" }
+        ].map((item, i) => (
+             <div key={i}>
+                <div className="flex justify-between text-xs mb-1">
+                    <span>{item.label}</span>
+                    <span className="font-bold">{item.val}%</span>
+                </div>
+                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: `${item.val}%` }}
+                        transition={{ duration: 1, delay: 0.2 + (i * 0.1) }}
+                        className={`h-full ${item.color}`} 
+                    />
+                </div>
             </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary w-[85%]" />
-            </div>
-        </div>
-        <div>
-            <div className="flex justify-between text-xs mb-1">
-                <span>Pronunciation</span>
-                <span className="font-bold">62%</span>
-            </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-yellow-400 w-[62%]" />
-            </div>
-        </div>
-         <div>
-            <div className="flex justify-between text-xs mb-1">
-                <span>Confidence</span>
-                <span className="font-bold">94%</span>
-            </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-green-400 w-[94%]" />
-            </div>
-        </div>
+        ))}
       </div>
     </div>
   )
