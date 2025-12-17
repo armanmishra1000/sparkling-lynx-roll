@@ -9,22 +9,17 @@ export const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if consent has already been given
-    const consent = localStorage.getItem("sophie_cookie_consent");
-    if (!consent) {
-      // Delay showing the banner slightly for better UX
+    // Check if user has already accepted cookies
+    const accepted = localStorage.getItem("sophie_cookies_accepted");
+    if (!accepted) {
+      // Delay showing it slightly for better UX
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
     }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("sophie_cookie_consent", "true");
-    setIsVisible(false);
-  };
-
-  const handleDecline = () => {
-    localStorage.setItem("sophie_cookie_consent", "false");
+    localStorage.setItem("sophie_cookies_accepted", "true");
     setIsVisible(false);
   };
 
@@ -36,40 +31,44 @@ export const CookieBanner = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:max-w-md z-50"
+          className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-[400px] z-50"
         >
-          <div className="bg-black text-white p-6 rounded-2xl shadow-2xl border-2 border-white/10 relative overflow-hidden">
-            {/* Decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FF0080] to-[#7B61FF] rounded-full blur-[50px] opacity-20 pointer-events-none"></div>
-
-            <div className="relative z-10">
-                <div className="flex items-start gap-4 mb-4">
-                    <div className="bg-white/10 p-2 rounded-xl">
-                        <Cookie className="w-6 h-6 text-[#FFD700]" />
-                    </div>
-                    <div>
-                        <h4 className="font-bold text-lg mb-1">We use cookies</h4>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                            To personalize your learning experience and analyze our traffic. Sophie learns from you, but we respect your privacy.
-                        </p>
+          <div className="bg-white/80 backdrop-blur-xl border border-white/50 p-6 rounded-[1.5rem] shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF0080] to-[#7B61FF]"></div>
+            
+            <div className="flex items-start gap-4">
+                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
+                    <Cookie className="w-5 h-5 text-gray-600" />
+                </div>
+                <div className="flex-1">
+                    <h4 className="font-bold text-gray-900 mb-1">Cookies & Privacy</h4>
+                    <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                        We use cookies to ensure Sophie remembers your progress and settings. We respect your privacy.
+                    </p>
+                    <div className="flex gap-2">
+                        <Button 
+                            onClick={handleAccept} 
+                            size="sm" 
+                            className="bg-black text-white hover:bg-gray-800 rounded-lg px-4 font-semibold shadow-md"
+                        >
+                            Accept
+                        </Button>
+                        <Button 
+                            onClick={() => setIsVisible(false)} 
+                            variant="ghost" 
+                            size="sm" 
+                            className="text-gray-500 hover:text-black hover:bg-black/5 rounded-lg px-4"
+                        >
+                            Decline
+                        </Button>
                     </div>
                 </div>
-                
-                <div className="flex gap-3">
-                    <Button 
-                        onClick={handleAccept} 
-                        className="flex-1 bg-white text-black hover:bg-gray-200 font-bold rounded-xl"
-                    >
-                        Accept
-                    </Button>
-                    <Button 
-                        onClick={handleDecline} 
-                        variant="outline" 
-                        className="flex-1 bg-transparent border-white/20 hover:bg-white/10 text-white rounded-xl"
-                    >
-                        Decline
-                    </Button>
-                </div>
+                <button 
+                    onClick={() => setIsVisible(false)}
+                    className="text-gray-400 hover:text-black transition-colors"
+                >
+                    <X className="w-4 h-4" />
+                </button>
             </div>
           </div>
         </motion.div>

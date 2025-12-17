@@ -9,7 +9,7 @@ export const BackToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 800) {
+      if (window.scrollY > 500) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -31,19 +31,14 @@ export const BackToTop = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 p-4 rounded-full bg-black text-white shadow-2xl border-2 border-white/10 group"
+          className="fixed bottom-6 right-6 md:right-10 z-40 bg-black text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
           aria-label="Back to top"
         >
-          {/* Rainbow Glow on Hover */}
-          <div className="absolute inset-[-4px] rounded-full bg-gradient-to-tr from-[#FF0080] via-[#FFD700] to-[#7B61FF] opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 -z-10"></div>
-          
-          <ArrowUp className="w-6 h-6" />
+          <ArrowUp className="w-5 h-5" />
         </motion.button>
       )}
     </AnimatePresence>
