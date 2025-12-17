@@ -8,6 +8,7 @@ import SignupModal from "./SignupModal";
 import DemoModal from "./DemoModal";
 import { trackEvent } from "@/lib/analytics";
 import RainbowWaveBackground from "./RainbowWaveBackground";
+import InteractiveRainbowWave from "./InteractiveRainbowWave";
 
 const Hero = () => {
   return (
@@ -171,16 +172,9 @@ const Hero = () => {
                      </div>
                  </div>
 
-                 {/* Visualizer Footer */}
-                 <div className="pt-4 flex items-center justify-center gap-1.5 h-12">
-                     {[...Array(16)].map((_, i) => (
-                         <motion.div 
-                            key={i}
-                            animate={{ height: [8, 24 + Math.random() * 24, 8], opacity: [0.3, 0.8, 0.3] }}
-                            transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.05, ease: "easeInOut" }}
-                            className="w-1 rounded-full bg-gradient-to-t from-gray-900 to-gray-500"
-                         />
-                     ))}
+                 {/* Interactive Rainbow Wave */}
+                 <div className="pt-2">
+                     <InteractiveRainbowWave />
                  </div>
 
                </div>
