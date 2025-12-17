@@ -4,6 +4,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Brain, TrendingUp, History, Map } from "lucide-react";
 
+const nodes = [
+  { label: "Grammar", val: "92%", x: 50, y: 0 },   // Top Center
+  { label: "Accent", val: "64%", x: 90, y: 25 },   // Right Top
+  { label: "Vocab", val: "88%", x: 80, y: 80 },    // Right Bottom
+  { label: "Fluency", val: "75%", x: 20, y: 80 },  // Left Bottom
+  { label: "Tone", val: "81%", x: 10, y: 25 },     // Left Top
+];
+
 const PersonalizationEngine = () => {
   return (
     <section className="py-32 bg-black text-white overflow-hidden relative">
@@ -83,15 +91,49 @@ const PersonalizationEngine = () => {
           </div>
 
           {/* Visual: The Synapse Map */}
-          <div className="order-1 lg:order-2 flex justify-center">
+          <div className="order-1 lg:order-2 flex justify-center py-10 lg:py-0">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="relative w-full max-w-md aspect-square"
             >
+              
+              {/* Single SVG Layer for Connections - Uses 100x100 coordinate system matching percentages */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" viewBox="0 0 100 100">
+                {nodes.map((node, i) => (
+                    <g key={i}>
+                        {/* Static Line */}
+                        <line 
+                            x1="50" y1="50" 
+                            x2={node.x} y2={node.y} 
+                            stroke="#6366f1" 
+                            strokeWidth="0.5" 
+                            strokeOpacity="0.3" 
+                        />
+                        {/* Pulse Packet */}
+                        <motion.circle
+                            r="1.5"
+                            fill="#fff"
+                            initial={{ opacity: 0 }}
+                            animate={{ 
+                                cx: [node.x, 50],
+                                cy: [node.y, 50],
+                                opacity: [0, 1, 0]
+                            }}
+                            transition={{ 
+                                duration: 2 + (i % 2),
+                                repeat: Infinity, 
+                                ease: "linear",
+                                delay: i * 0.5
+                            }}
+                        />
+                    </g>
+                ))}
+              </svg>
+
               {/* Central Brain Node */}
-              <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                 <div className="relative">
                     <div className="absolute inset-0 bg-indigo-500 blur-[60px] opacity-20 animate-pulse"></div>
                     <div className="w-24 h-24 bg-black rounded-3xl border border-indigo-500/30 flex items-center justify-center relative shadow-2xl z-10 backdrop-blur-xl">
@@ -106,52 +148,16 @@ const PersonalizationEngine = () => {
                 </div>
               </div>
 
-              {/* Data Nodes */}
-              {[
-                { label: "Grammar", val: "92%", x: "50%", y: "5%" },
-                { label: "Accent", val: "64%", x: "90%", y: "30%" },
-                { label: "Vocab", val: "88%", x: "85%", y: "80%" },
-                { label: "Fluency", val: "75%", x: "15%", y: "80%" },
-                { label: "Tone", val: "81%", x: "10%", y: "30%" },
-              ].map((node, i) => (
+              {/* Data Nodes (HTML Layer) */}
+              {nodes.map((node, i) => (
                 <motion.div
                     key={i}
-                    className="absolute"
-                    style={{ left: node.x, top: node.y }}
+                    className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
+                    style={{ left: `${node.x}%`, top: `${node.y}%` }}
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ delay: 0.2 + (i * 0.1), type: "spring" }}
                 >
-                    {/* Connection Line to Center */}
-                     <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible w-[500px] h-[500px] pointer-events-none -z-10" style={{ left: '50%', top: '50%' }}>
-                        {/* Base Line */}
-                        <line
-                            x1="0" y1="0"
-                            x2={250 - (parseInt(node.x)/100 * 500)} // Inverse math because svg center is relative
-                            y2={250 - (parseInt(node.y)/100 * 500)}
-                            stroke="#6366f1"
-                            strokeWidth="1"
-                            strokeOpacity="0.2"
-                        />
-                        {/* Animated Data Packet */}
-                        <motion.circle
-                            r="3"
-                            fill="#fff"
-                            initial={{ opacity: 0 }}
-                            animate={{ 
-                                cx: [0, 250 - (parseInt(node.x)/100 * 500)],
-                                cy: [0, 250 - (parseInt(node.y)/100 * 500)],
-                                opacity: [0, 1, 0]
-                            }}
-                            transition={{ 
-                                duration: 2 + (i * 0.5) % 1.5, // Deterministic variation
-                                repeat: Infinity, 
-                                ease: "linear",
-                                delay: i * 0.4
-                            }}
-                        />
-                    </svg>
-
                     <div className="bg-zinc-900/90 border border-white/10 px-4 py-3 rounded-2xl backdrop-blur-md shadow-xl flex flex-col items-center min-w-[90px] hover:border-indigo-500/50 hover:scale-105 transition-all cursor-default group">
                         <span className="text-gray-500 text-[10px] font-bold uppercase tracking-wider mb-1">{node.label}</span>
                         <span className="text-lg font-bold text-white font-mono group-hover:text-indigo-400 transition-colors">{node.val}</span>
