@@ -7,21 +7,27 @@ import { motion } from "framer-motion";
 const steps = [
   {
     icon: Target,
-    title: "1. Pick a Context",
-    description: "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life.",
-    color: "from-[#FF0080] to-[#FF8C00]" // Pink to Orange
+    title: "Context Injection",
+    subtitle: "Step 01",
+    description: "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
+    color: "bg-pink-100 text-pink-600",
+    gradient: "from-pink-500 to-rose-500"
   },
   {
     icon: Mic,
-    title: "2. Speak Freely",
-    description: "No multiple choice. No tapping words. Just talk. Sophie responds at your level, pushing you slightly every time.",
-    color: "from-[#FF8C00] to-[#40E0D0]" // Orange to Teal
+    title: "Active Simulation",
+    subtitle: "Step 02",
+    description: "No multiple choice. No tapping words. Just talk. Sophie responds at your level, pushing you slightly every time (i+1).",
+    color: "bg-blue-100 text-blue-600",
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
     icon: TrendingUp,
-    title: "3. Close the Gap",
-    description: "Get instant corrections on pronunciation and style. Sophie remembers your mistakes so you don't make them twice.",
-    color: "from-[#40E0D0] to-[#7B61FF]" // Teal to Violet
+    title: "Neural Rewriting",
+    subtitle: "Step 03",
+    description: "Get instant corrections on pronunciation and style. Sophie rewrites your neural pathways before bad habits set in.",
+    color: "bg-purple-100 text-purple-600",
+    gradient: "from-purple-500 to-violet-500"
   }
 ];
 
@@ -30,47 +36,46 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-32 relative overflow-hidden bg-white">
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter">
-            THE <span className="rainbow-text">LOOP</span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-900">
+            The Fluency Loop
           </h2>
-          <p className="text-xl text-gray-500 mt-4 max-w-2xl mx-auto">
-            From frozen to fluent in three simple steps.
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+            From frozen to fluent in three cognitive steps.
           </p>
         </div>
 
         <div className="relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gray-100 -translate-x-1/2 rounded-full"></div>
+          {/* Central Line */}
+          <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent md:-translate-x-1/2"></div>
           
-          <div className="space-y-20">
+          <div className="space-y-24">
             {steps.map((step, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`flex flex-col md:flex-row items-center gap-12 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16 ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                {/* Step Content */}
-                <div className={`flex-1 text-center ${index % 2 !== 0 ? 'md:text-left' : 'md:text-right'}`}>
-                  <h3 className="text-3xl font-bold mb-4">{step.title}</h3>
-                  <p className="text-lg text-gray-500 leading-relaxed">{step.description}</p>
+                {/* Icon Node */}
+                <div className="relative shrink-0 z-10 md:w-1/2 flex md:justify-end justify-start pl-2 md:pl-0">
+                   <div className={`w-14 h-14 rounded-2xl ${step.color} flex items-center justify-center shadow-lg border-4 border-white ring-1 ring-black/5 relative`}>
+                      <step.icon className="w-6 h-6" />
+                      
+                      {/* Connector Dot for Desktop Center Line */}
+                      <div className={`hidden md:block absolute top-1/2 ${index % 2 !== 0 ? '-right-[42px]' : '-left-[42px]'} w-4 h-4 rounded-full border-2 border-white shadow-sm bg-gradient-to-br ${step.gradient} -translate-y-1/2 z-20`}></div>
+                   </div>
                 </div>
 
-                {/* Center Icon Node */}
-                <div className="relative shrink-0 z-10">
-                  <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${step.color} p-1 shadow-xl`}>
-                    <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                      <step.icon className="w-10 h-10 text-black" />
-                    </div>
-                  </div>
-                  {/* Glowing halo */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${step.color} rounded-full blur-xl opacity-30 -z-10 animate-pulse`}></div>
+                {/* Content */}
+                <div className={`flex-1 md:w-1/2 ${index % 2 !== 0 ? 'md:text-right' : 'md:text-left'} pl-16 md:pl-0`}>
+                   <span className={`inline-block text-xs font-bold uppercase tracking-wider mb-2 bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}>
+                     {step.subtitle}
+                   </span>
+                   <h3 className="text-2xl font-bold mb-3 text-gray-900">{step.title}</h3>
+                   <p className="text-lg text-gray-500 leading-relaxed">{step.description}</p>
                 </div>
-
-                {/* Empty Spacer for alternating layout */}
-                <div className="flex-1 hidden md:block"></div>
               </motion.div>
             ))}
           </div>
