@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { CookieBanner } from "@/components/ui/cookie-banner";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -75,6 +76,7 @@ export default function RootLayout({
       >
         <ScrollProgress />
         {children}
+        <CookieBanner />
         <BackToTop />
         <Script
           id="json-ld"

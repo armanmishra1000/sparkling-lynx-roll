@@ -1,0 +1,167 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Play, Mic, RefreshCw, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+interface DemoModalProps {
+  children: React.ReactNode;
+}
+
+const DemoModal = ({ children }: DemoModalProps) => {
+  const [open, setOpen] = useState(false);
+  const [stage, setStage] = useState<"idle" | "listening" | "processing" | "result">("idle");
+
+  useEffect(() => {
+    if (open && stage === "idle") {
+      // Auto-start demo when opened
+      startDemo();
+    }
+    if (!open) {
+      setStage("idle");
+    }
+  }, [open]);
+
+  const startDemo = () => {
+    setStage("listening");
+    setTimeout(() => setStage("processing"), 2000);
+    setTimeout(() => setStage("result"), 3500);
+  };
+
+  const resetDemo = () => {
+    setStage("idle");
+    setTimeout(startDemo, 500);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden bg-white border-none rounded-[2rem]">
+        <div className="relative h-[600px] flex flex-col bg-gray-50">
+            
+            {/* Header */}
+            <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-10 bg-white/50 backdrop-blur-sm">
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-gray-500">Live Simulation</span>
+                </div>
+                <Button variant="ghost" size="icon" onClick={() => setOpen(false)} className="h-8 w-8 rounded-full">
+                    <X className="w-4 h-4" />
+                </Button>
+            </div>
+
+            {/* Conversation Area */}
+            <div className="flex-1 p-6 flex flex-col justify-center space-y-6">
+                <AnimatePresence mode="wait">
+                    
+                    {/* Stage: Listening */}
+                    {stage === "listening" && (
+                        <motion.div 
+                            key="listening"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="flex flex-col items-center justify-center space-y-4"
+                        >
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-red-500/20 rounded-full animate-ping"></div>
+                                <div className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center shadow-xl">
+                                    <Mic className="w-8 h-8 text-white" />
+                                </div>
+                            </div>
+                            <p className="text-xl font-bold text-gray-800">Listening...</p>
+                            <div className="h-8 flex items-center gap-1">
+                                {[...Array(5)].map((_, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="w-1 bg-gray-400 rounded-full"
+                                        animate={{ height: [10, 24, 10] }}
+                                        transition={{ repeat: Infinity, duration: 0.8, delay: i * 0.1 }}
+                                    />
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {/* Stage: Processing */}
+                    {stage === "processing" && (
+                        <motion.div 
+                            key="processing"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex flex-col items-center justify-center"
+                        >
+                            <div className="w-16 h-16 border-4 border-t-[#7B61FF] border-r-[#FF0080] border-b-[#FFD700] border-l-[#40E0D0] rounded-full animate-spin mb-4"></div>
+                            <p className="text-lg font-bold text-gray-500">Analyzing speech patterns...</p>
+                        </motion.div>
+                    )}
+
+                    {/* Stage: Result */}
+                    {stage === "result" && (
+                        <motion.div 
+                            key="result"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="space-y-6 w-full"
+                        >
+                            {/* User Input */}
+                            <div className="flex justify-end">
+                                <div className="bg-gray-200 text-gray-600 px-4 py-3 rounded-2xl rounded-tr-sm max-w-[80%]">
+                                    <p className="font-medium">"I want go to the station train."</p>
+                                </div>
+                            </div>
+
+                            {/* AI Correction */}
+                            <div className="flex justify-start">
+                                <div className="bg-gradient-to-br from-gray-900 to-black text-white p-5 rounded-2xl rounded-tl-sm shadow-xl max-w-[90%] w-full">
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#FF0080] to-[#7B61FF] flex items-center justify-center text-[10px] font-bold">AI</div>
+                                        <span className="text-xs font-bold text-gray-400 uppercase">Correction</span>
+                                    </div>
+                                    
+                                    <div className="text-lg mb-4">
+                                        <span className="text-red-400 line-through mr-2 opacity-60">I want go</span>
+                                        <span className="text-[#40E0D0] font-bold">I would like to go</span>
+                                        {" "}to the{" "}
+                                        <span className="text-red-400 line-through mr-1 opacity-60">station train</span>
+                                        <span className="text-[#FFD700] font-bold">train station</span>.
+                                    </div>
+
+                                    <div className="bg-white/10 rounded-lg p-3 text-sm text-gray-300">
+                                        💡 <strong>Tip:</strong> In English, adjectives (like "train") usually come before the noun ("station"). Also, "I would like" is more polite than "I want".
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex justify-center pt-4">
+                                <Button onClick={resetDemo} variant="outline" className="gap-2 border-2 hover:bg-gray-100">
+                                    <RefreshCw className="w-4 h-4" /> Try Another
+                                </Button>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+            
+            {/* Footer / Controls */}
+            {stage === "idle" && (
+                 <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm z-20">
+                    <Button size="lg" onClick={startDemo} className="rounded-full h-16 px-8 text-lg gap-2 shadow-xl bg-black hover:bg-gray-800 text-white">
+                        <Play className="w-5 h-5 fill-current" /> Start Demo
+                    </Button>
+                 </div>
+            )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default DemoModal;

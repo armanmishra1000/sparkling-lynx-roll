@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import SignupModal from "./SignupModal";
+import DemoModal from "./DemoModal";
 import { trackEvent } from "@/lib/analytics";
 import RainbowWaveBackground from "./RainbowWaveBackground";
 
@@ -76,14 +77,17 @@ const Hero = () => {
                 Start The Wave
               </Button>
             </SignupModal>
-             <Button 
-                variant="outline" 
-                size="lg" 
-                className="h-16 px-8 rounded-full text-lg font-bold border-2 border-black bg-white hover:bg-gray-50 shadow-[8px_8px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_#000000] transition-all"
-                onClick={() => trackEvent("cta_click_secondary", { location: "hero_demo_button" })}
-            >
-              <Play className="mr-2 w-5 h-5 fill-current" /> See It Flow
-            </Button>
+            
+            <DemoModal>
+                 <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="h-16 px-8 rounded-full text-lg font-bold border-2 border-black bg-white hover:bg-gray-50 shadow-[8px_8px_0px_#000000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_#000000] transition-all"
+                    onClick={() => trackEvent("cta_click_secondary", { location: "hero_demo_button" })}
+                >
+                  <Play className="mr-2 w-5 h-5 fill-current" /> See It Flow
+                </Button>
+            </DemoModal>
           </motion.div>
         </div>
 
