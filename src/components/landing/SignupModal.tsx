@@ -23,6 +23,8 @@ import { Loader2, CheckCircle2, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { Confetti } from "@/components/ui/confetti";
 import { motion } from "framer-motion";
+import { useDemo } from "@/context/DemoContext";
+import { demoLanguages } from "@/lib/demo-languages";
 
 interface SignupModalProps {
   children: React.ReactNode;
@@ -30,6 +32,7 @@ interface SignupModalProps {
 }
 
 const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps) => {
+  const { currentLanguage } = useDemo();
   const [step, setStep] = useState<"form" | "success">("form");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -117,15 +120,14 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>I want to learn</Label>
-                  <Select required onValueChange={(val) => setFormData({...formData, language: val})}>
+                  <Select required onValueChange={(val) => setFormData({...formData, language: val})} defaultValue={currentLanguage.id}>
                     <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
                       <SelectValue placeholder="Language" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="spanish">Spanish</SelectItem>
-                      <SelectItem value="french">French</SelectItem>
-                      <SelectItem value="german">German</SelectItem>
-                      <SelectItem value="english">English</SelectItem>
+                      {demoLanguages.map((lang) => (
+                        <SelectItem key={lang.id} value={lang.id}>{lang.name}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>

@@ -3,14 +3,18 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles, Wand2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import SignupModal from "./SignupModal";
 import DemoModal from "./DemoModal";
 import { trackEvent } from "@/lib/analytics";
 import RainbowWaveBackground from "./RainbowWaveBackground";
 import InteractiveRainbowWave from "./InteractiveRainbowWave";
+import { useDemo } from "@/context/DemoContext";
+import { cn } from "@/lib/utils";
 
 const Hero = () => {
+  const { currentLanguage } = useDemo();
+
   return (
     <section className="relative min-h-[110vh] flex flex-col justify-center overflow-hidden pt-32 pb-20">
       
@@ -27,10 +31,18 @@ const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)] text-sm font-semibold text-gray-700 ring-1 ring-black/5"
           >
              <span className="relative flex h-2.5 w-2.5">
-               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF0080] opacity-75"></span>
-               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF0080]"></span>
+               <motion.span 
+                key={currentLanguage.id}
+                animate={{ backgroundColor: currentLanguage.color }}
+                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+               ></motion.span>
+               <motion.span 
+                key={`dot-${currentLanguage.id}`}
+                animate={{ backgroundColor: currentLanguage.color }}
+                className="relative inline-flex rounded-full h-2.5 w-2.5"
+               ></motion.span>
              </span>
-             <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">New: Mexican Spanish Dialect Added</span>
+             <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">New: {currentLanguage.name} Dialects Added</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] text-gray-900">
@@ -42,26 +54,31 @@ const Hero = () => {
             >
               Don't just
             </motion.span>
+            <AnimatePresence mode="wait">
+              <motion.span 
+                key={currentLanguage.id}
+                className={cn("block text-transparent bg-clip-text bg-gradient-to-r pb-2", currentLanguage.gradient)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                learn {currentLanguage.headline}.
+              </motion.span>
+            </AnimatePresence>
             <motion.span 
-              className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] via-[#FF8C00] to-[#7B61FF] pb-2"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              learn Spanish.
-            </motion.span>
-            <motion.span 
+              key={currentLanguage.subheadline}
               className="block"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Live it.
+              {currentLanguage.subheadline}
             </motion.span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-light">
-            Stop translating in your head. Sophie helps you conquer <span className="text-gray-900 font-medium">Ser vs Estar</span>, master the Subjunctive, and speak like a local, not a textbook.
+            Stop translating in your head. Sophie helps you conquer <span className="text-gray-900 font-medium">real conversations</span>, master the grammar, and speak like a local, not a textbook.
           </p>
 
           <motion.div 
@@ -72,7 +89,7 @@ const Hero = () => {
           >
             <SignupModal triggerLocation="hero_primary">
               <Button size="lg" className="h-16 px-10 rounded-full text-lg font-semibold bg-gray-900 text-white hover:bg-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-                Start Speaking Spanish <ArrowRight className="ml-2 w-5 h-5" />
+                {currentLanguage.cta} {currentLanguage.name} <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </SignupModal>
             
@@ -101,7 +118,7 @@ const Hero = () => {
                     </div>
                 ))}
             </div>
-            <p>10,000+ students actively learning Spanish</p>
+            <p>{currentLanguage.students_count} students actively learning {currentLanguage.name}</p>
           </motion.div>
         </div>
 
@@ -134,7 +151,7 @@ const Hero = () => {
                         </div>
                         <div>
                             <div className="text-base font-bold text-gray-900">Sophie AI</div>
-                            <div className="text-xs text-gray-500 font-medium tracking-wide">Spanish Coach</div>
+                            <div className="text-xs text-gray-500 font-medium tracking-wide">{currentLanguage.name} Coach</div>
                         </div>
                     </div>
                     <div className="px-3 py-1 rounded-full bg-gray-100/50 border border-gray-200/50 text-xs font-bold text-gray-500 uppercase tracking-widest backdrop-blur-sm">
@@ -146,27 +163,47 @@ const Hero = () => {
                  <div className="space-y-6">
                      {/* User Message */}
                      <div className="flex justify-end">
-                        <div className="bg-gradient-to-br from-gray-100 to-gray-50 text-gray-700 px-6 py-4 rounded-3xl rounded-tr-sm text-base font-medium max-w-[85%] shadow-sm border border-gray-100">
-                            "Puedo tener la cuenta, por favor?"
-                        </div>
+                        <AnimatePresence mode="wait">
+                          <motion.div 
+                            key={`user-msg-${currentLanguage.id}`}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            className="bg-gradient-to-br from-gray-100 to-gray-50 text-gray-700 px-6 py-4 rounded-3xl rounded-tr-sm text-base font-medium max-w-[85%] shadow-sm border border-gray-100"
+                          >
+                              "{currentLanguage.chat_user}"
+                          </motion.div>
+                        </AnimatePresence>
                      </div>
 
                      {/* AI Correction */}
                      <div className="flex justify-start">
                         <div className="relative group w-full">
-                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#FF0080] to-[#7B61FF] rounded-3xl rounded-tl-sm opacity-20 blur-sm transition duration-200"></div>
+                            <motion.div 
+                              key={`glow-${currentLanguage.id}`}
+                              animate={{ background: currentLanguage.color }}
+                              className="absolute -inset-0.5 rounded-3xl rounded-tl-sm opacity-20 blur-sm transition duration-200"
+                            ></motion.div>
                             <div className="relative bg-white/90 border border-white/60 p-6 rounded-3xl rounded-tl-sm shadow-sm backdrop-blur-sm">
-                                <div className="flex items-center gap-2 mb-3 text-xs font-bold text-[#FF0080] uppercase tracking-wider">
-                                    <Wand2 className="w-3 h-3" /> Natural Correction
+                                <div className="flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-wider">
+                                    <Wand2 className="w-3 h-3" /> <span className={cn("bg-clip-text text-transparent bg-gradient-to-r", currentLanguage.gradient)}>Natural Correction</span>
                                 </div>
-                                <p className="text-lg text-gray-900 leading-relaxed font-medium">
-                                    <span className="text-gray-400 line-through decoration-red-300 mr-2 decoration-2 opacity-60">Puedo tener</span>
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] to-[#7B61FF] font-bold">¿Me traes</span>
-                                    {" "}la cuenta?
-                                </p>
-                                <p className="text-sm text-gray-500 mt-2 italic">
-                                    "Puedo tener" is a literal translation of "Can I have". In a restaurant, "Me traes" (Bring me) or "La cuenta, por favor" is more natural.
-                                </p>
+                                <AnimatePresence mode="wait">
+                                  <motion.div
+                                    key={`ai-msg-${currentLanguage.id}`}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                  >
+                                    <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                                        <span className={cn("text-transparent bg-clip-text bg-gradient-to-r font-bold", currentLanguage.gradient)}>{currentLanguage.chat_ai}</span>
+                                        {" "}...
+                                    </p>
+                                    <p className="text-sm text-gray-500 mt-2 italic">
+                                        {currentLanguage.chat_explanation}
+                                    </p>
+                                  </motion.div>
+                                </AnimatePresence>
                             </div>
                         </div>
                      </div>

@@ -45,6 +45,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { DemoProvider } from "@/context/DemoContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,10 +76,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ScrollProgress />
-        {children}
-        <CookieBanner />
-        <BackToTop />
+        <DemoProvider>
+          <ScrollProgress />
+          {children}
+          <CookieBanner />
+          <BackToTop />
+        </DemoProvider>
         <Script
           id="json-ld"
           type="application/ld+json"

@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useDemo } from "@/context/DemoContext";
+import { motion } from "framer-motion";
 
 interface InteractiveRainbowWaveProps {
   className?: string;
@@ -9,6 +11,7 @@ interface InteractiveRainbowWaveProps {
 }
 
 const InteractiveRainbowWave = ({ className, lineColor }: InteractiveRainbowWaveProps) => {
+  const { currentLanguage } = useDemo();
   const pathRef = useRef<SVGPathElement>(null);
   const pathRef2 = useRef<SVGPathElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,24 +117,30 @@ const InteractiveRainbowWave = ({ className, lineColor }: InteractiveRainbowWave
          preserveAspectRatio="none"
        >
          <defs>
-           <linearGradient id="rainbowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-             <stop offset="0%" stopColor="#FF0080" />
-             <stop offset="50%" stopColor="#FFD700" />
-             <stop offset="100%" stopColor="#7B61FF" />
-           </linearGradient>
+           <motion.linearGradient 
+             id={`rainbowGradient-${currentLanguage.id}`} 
+             x1="0%" y1="0%" x2="100%" y2="0%"
+           >
+             <stop offset="0%" stopColor={currentLanguage.color} />
+             <stop offset="50%" stopColor="#FFFFFF" />
+             <stop offset="100%" stopColor={currentLanguage.color} />
+           </motion.linearGradient>
            
-           <linearGradient id="ghostGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-             <stop offset="0%" stopColor="#FF0080" stopOpacity="0.2" />
-             <stop offset="50%" stopColor="#FFD700" stopOpacity="0.2" />
-             <stop offset="100%" stopColor="#7B61FF" stopOpacity="0.2" />
-           </linearGradient>
+           <motion.linearGradient 
+             id={`ghostGradient-${currentLanguage.id}`} 
+             x1="0%" y1="0%" x2="100%" y2="0%"
+           >
+             <stop offset="0%" stopColor={currentLanguage.color} stopOpacity="0.2" />
+             <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.2" />
+             <stop offset="100%" stopColor={currentLanguage.color} stopOpacity="0.2" />
+           </motion.linearGradient>
          </defs>
          
          {/* Ghost Wave (Echo) */}
          <path 
             ref={pathRef2} 
             fill="none" 
-            stroke={lineColor ? lineColor : "url(#ghostGradient)"}
+            stroke={lineColor ? lineColor : `url(#ghostGradient-${currentLanguage.id})`}
             strokeWidth="2" 
             strokeLinecap="round" 
             strokeLinejoin="round"
@@ -142,7 +151,7 @@ const InteractiveRainbowWave = ({ className, lineColor }: InteractiveRainbowWave
          <path 
             ref={pathRef} 
             fill="none" 
-            stroke={lineColor ? lineColor : "url(#rainbowGradient)"} 
+            stroke={lineColor ? lineColor : `url(#rainbowGradient-${currentLanguage.id})`} 
             strokeWidth="3" 
             strokeLinecap="round" 
             strokeLinejoin="round"

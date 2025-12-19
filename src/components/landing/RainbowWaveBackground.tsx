@@ -2,55 +2,68 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useDemo } from "@/context/DemoContext";
 
 const RainbowWaveBackground = () => {
+  const { currentLanguage } = useDemo();
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white">
-      {/* Aurora Orbs - Matching #FF0080, #FFD700, #7B61FF, #40E0D0 */}
+      {/* Aurora Orbs - Matching Current Language Color */}
       
-      {/* Pink/Magenta */}
+      {/* Primary Language Color */}
       <motion.div 
+        key={`primary-${currentLanguage.id}`}
         animate={{ 
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
+          opacity: [0.15, 0.25, 0.15],
           x: [0, 100, 0],
-          y: [0, -50, 0]
+          y: [0, -50, 0],
+          backgroundColor: currentLanguage.color
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-[#FF0080] rounded-full blur-[120px] opacity-20 mix-blend-multiply"
+        className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] rounded-full blur-[120px] mix-blend-multiply"
       />
       
-      {/* Purple/Violet */}
+      {/* Secondary Glow */}
       <motion.div 
+        key={`secondary-${currentLanguage.id}`}
         animate={{ 
           scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, -50, 0]
+          opacity: [0.1, 0.2, 0.1],
+          x: [0, -50, 0],
+          backgroundColor: currentLanguage.color
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute top-[10%] right-[-20%] w-[600px] h-[600px] bg-[#7B61FF] rounded-full blur-[120px] opacity-20 mix-blend-multiply"
+        className="absolute top-[10%] right-[-20%] w-[600px] h-[600px] rounded-full blur-[120px] mix-blend-multiply"
       />
 
-      {/* Gold/Yellow - Adds warmth */}
+      {/* Tertiary Glow */}
       <motion.div 
+        key={`tertiary-${currentLanguage.id}`}
         animate={{ 
           scale: [1, 1.3, 1],
+          opacity: [0.05, 0.15, 0.05],
           x: [0, 50, 0],
-          y: [0, 50, 0]
+          y: [0, 50, 0],
+          backgroundColor: currentLanguage.color
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 5 }}
-        className="absolute top-[40%] left-[30%] w-[500px] h-[500px] bg-[#FFD700] rounded-full blur-[100px] opacity-10 mix-blend-multiply"
+        className="absolute top-[40%] left-[30%] w-[500px] h-[500px] rounded-full blur-[100px] mix-blend-multiply"
       />
 
-      {/* Teal/Turquoise */}
+      {/* Quaternary Glow */}
       <motion.div 
+        key={`quaternary-${currentLanguage.id}`}
         animate={{ 
           scale: [1, 1.4, 1],
+          opacity: [0.1, 0.2, 0.1],
           x: [0, -30, 0],
-          y: [0, -30, 0]
+          y: [0, -30, 0],
+          backgroundColor: currentLanguage.color
         }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-[-20%] left-[20%] w-[700px] h-[700px] bg-[#40E0D0] rounded-full blur-[100px] opacity-20 mix-blend-multiply"
+        className="absolute bottom-[-20%] left-[20%] w-[700px] h-[700px] rounded-full blur-[100px] mix-blend-multiply"
       />
 
       {/* Noise Texture Overlay for Premium Feel */}

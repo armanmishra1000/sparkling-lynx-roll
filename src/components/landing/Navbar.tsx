@@ -8,8 +8,10 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, Sparkles } from "lucide-react";
 import SignupModal from "./SignupModal";
+import { useDemo } from "@/context/DemoContext";
 
 const Navbar = () => {
+  const { currentLanguage } = useDemo();
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +48,11 @@ const Navbar = () => {
       >
         <Link href="/" className="flex items-center gap-2 group">
            <div className="relative w-9 h-9 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#FF0080] via-[#FFD700] to-[#7B61FF] rounded-full opacity-80 group-hover:opacity-100 blur-[6px] transition-all duration-500"></div>
+                <motion.div 
+                  key={currentLanguage.id}
+                  animate={{ background: currentLanguage.color }}
+                  className={cn("absolute inset-0 rounded-full opacity-80 group-hover:opacity-100 blur-[6px] transition-all duration-500", "bg-gradient-to-tr", currentLanguage.gradient)}
+                ></motion.div>
                 <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center text-sm font-black border border-white/50">S</div>
            </div>
            <span className="text-xl font-bold tracking-tight text-gray-900">Sophie.ai</span>

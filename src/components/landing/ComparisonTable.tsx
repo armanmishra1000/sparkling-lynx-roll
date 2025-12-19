@@ -3,8 +3,11 @@
 import React from "react";
 import { Check, X, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useDemo } from "@/context/DemoContext";
+import { motion } from "framer-motion";
 
 const ComparisonTable = () => {
+  const { currentLanguage } = useDemo();
   const features = [
     {
       name: "Active Speaking Time",
@@ -50,7 +53,12 @@ const ComparisonTable = () => {
         <div className="text-center mb-20">
           <h2 className="text-4xl font-bold tracking-tight mb-4 text-gray-900">
             Compare your <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] to-[#7B61FF]">options.</span>
+            <motion.span 
+              key={currentLanguage.id}
+              className={cn("text-transparent bg-clip-text bg-gradient-to-r", currentLanguage.gradient)}
+            >
+              options.
+            </motion.span>
           </h2>
         </div>
 
@@ -58,11 +66,21 @@ const ComparisonTable = () => {
           <div className="min-w-[800px] bg-white rounded-[2.5rem] shadow-xl border border-gray-100 overflow-hidden relative">
             
             {/* Header Glow */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF0080] to-transparent opacity-50"></div>
+            <motion.div 
+              key={currentLanguage.id}
+              animate={{ background: currentLanguage.color }}
+              className={cn("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent to-transparent opacity-50", currentLanguage.gradient)}
+            ></motion.div>
 
             <div className="grid grid-cols-4 p-8 border-b border-gray-100 bg-gray-50/50 text-sm uppercase tracking-widest font-bold text-gray-500">
               <div className="col-span-1">Feature</div>
-              <div className="col-span-1 text-center text-[#7B61FF]">Sophie.ai</div>
+              <motion.div 
+                key={`header-${currentLanguage.id}`}
+                animate={{ color: currentLanguage.color }}
+                className="col-span-1 text-center"
+              >
+                Sophie.ai
+              </motion.div>
               <div className="col-span-1 text-center">Gamified Apps</div>
               <div className="col-span-1 text-center">Private Tutor</div>
             </div>
@@ -77,12 +95,17 @@ const ComparisonTable = () => {
                   
                   {/* Sophie Column */}
                   <div className="col-span-1 text-center flex justify-center">
-                    <div className="bg-[#7B61FF]/10 text-[#7B61FF] font-bold px-4 py-2 rounded-full text-sm inline-flex items-center gap-2 shadow-sm border border-[#7B61FF]/20">
+                    <motion.div 
+                      key={`col-${currentLanguage.id}`}
+                      animate={{ color: currentLanguage.color, borderColor: currentLanguage.color }}
+                      className={cn("font-bold px-4 py-2 rounded-full text-sm inline-flex items-center gap-2 shadow-sm border bg-white")}
+                      style={{ backgroundColor: `${currentLanguage.color}10` }}
+                    >
                         {feature.sophie === "Unlimited" || feature.sophie === "Zero" || feature.sophie.includes("Permanent") ? (
                             <Check className="w-3.5 h-3.5" />
                         ) : null}
                         {feature.sophie}
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Apps Column */}

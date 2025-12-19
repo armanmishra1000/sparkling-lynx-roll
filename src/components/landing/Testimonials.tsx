@@ -1,37 +1,48 @@
 "use client";
 
-import React from "react";
 import { Star, Quote } from "lucide-react";
+import { useDemo } from "@/context/DemoContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-const testimonials = [
+const Testimonials = () => {
+  const { currentLanguage } = useDemo();
+
+  const testimonials = [
     {
-        quote: "I took 4 years of Spanish in high school but couldn't order a taco. Sophie fixed my fear of speaking in 2 weeks.",
+        quote: `I took 4 years of ${currentLanguage.name} in high school but couldn't order a taco. Sophie fixed my fear of speaking in 2 weeks.`,
         author: "James T.",
         role: "Traveler",
         gradient: "from-pink-500/10 to-rose-500/10"
     },
     {
-        quote: "Ser vs Estar finally makes sense. Sophie explained it in context while we were roleplaying a party scene.",
+        quote: `Real-world context finally makes sense. Sophie explained it while we were roleplaying a scene in ${currentLanguage.nativeName}.`,
         author: "Sarah M.",
-        role: "Expat in Madrid",
+        role: "Expat",
         gradient: "from-blue-500/10 to-cyan-500/10"
     },
     {
-        quote: "The accent correction is brutal but effective. I finally stopped pronouncing 'H' like an English 'H'.",
+        quote: "The accent correction is brutal but effective. I finally stopped sounding like a textbook and started sounding like a local.",
         author: "David K.",
         role: "Digital Nomad",
         gradient: "from-purple-500/10 to-violet-500/10"
     }
-];
+  ];
 
-const Testimonials = () => {
   return (
     <section className="py-32 bg-gray-50">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
             Don't take our <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-800">word for it.</span>
+            <motion.span 
+              key={currentLanguage.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={cn("text-transparent bg-clip-text bg-gradient-to-r", currentLanguage.gradient)}
+            >
+              word for it.
+            </motion.span>
           </h2>
         </div>
 

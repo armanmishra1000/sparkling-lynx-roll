@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import SignupModal from "./SignupModal";
 import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useDemo } from "@/context/DemoContext";
 
 const Pricing = () => {
+  const { currentLanguage } = useDemo();
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -36,7 +38,7 @@ const Pricing = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
-                Invest in your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] to-[#7B61FF]">fluency.</span>
+                Invest in your <motion.span key={currentLanguage.id} className={cn("text-transparent bg-clip-text bg-gradient-to-r", currentLanguage.gradient)}>{currentLanguage.headline} fluency.</motion.span>
             </h2>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
                 Cheaper than one hour with a private tutor.
@@ -91,7 +93,11 @@ const Pricing = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-purple-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity"></div>
                 
                 <div className="relative bg-[#0A0A0A] rounded-[1.8rem] p-8 h-full flex flex-col">
-                    <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-[#FF0080] via-[#FFD700] to-[#7B61FF] rounded-t-[1.8rem] opacity-80"></div>
+                    <motion.div 
+                      key={currentLanguage.id}
+                      animate={{ background: currentLanguage.color }}
+                      className={cn("absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80 bg-gradient-to-r", currentLanguage.gradient)}
+                    ></motion.div>
                     
                     <div className="flex justify-between items-start mb-2">
                         <h3 className="text-xl font-bold text-white flex items-center gap-2">
@@ -108,14 +114,19 @@ const Pricing = () => {
                     
                     <ul className="space-y-4 mb-8 flex-1">
                         {[
-                            "Unlimited Spanish conversation",
-                            "Dialect toggles (Spain/LatAm)",
+                            `Unlimited ${currentLanguage.name} conversation`,
+                            "Dialect toggles",
                             "Deep grammar analysis",
                             "All Roleplay scenarios",
                             "Priority support"
                         ].map((feature, i) => (
                             <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-200">
-                                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#FF0080] to-[#7B61FF] flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50"><Check className="w-3 h-3" /></div>
+                                <motion.div 
+                                  animate={{ background: currentLanguage.color }}
+                                  className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50 bg-gradient-to-br", currentLanguage.gradient)}
+                                >
+                                  <Check className="w-3 h-3" />
+                                </motion.div>
                                 <span>{feature}</span>
                             </li>
                         ))}
@@ -143,8 +154,8 @@ const Pricing = () => {
                         {[
                             "Everything in Plus",
                             "Advanced Accent Reduction",
-                            "Business Spanish Module",
-                            "DELE Exam Prep"
+                            `Business ${currentLanguage.name} Module`,
+                            "Official Exam Prep"
                         ].map((feature, i) => (
                             <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-600">
                                 <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center shrink-0 text-white"><Check className="w-3 h-3" /></div>
