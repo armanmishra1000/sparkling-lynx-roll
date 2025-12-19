@@ -1,9 +1,25 @@
+export const escapeHtml = (text: string): string => {
+  if (!text) return "";
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+};
+
 export const sendTelegramMessage = async (message: string): Promise<void> => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
     console.error("Telegram credentials missing! Token:", token ? "Set" : "Missing", "ChatID:", chatId ? "Set" : "Missing");
+    return;
+  }
+
+  // Ensure message is not empty
+  if (!message || message.trim().length === 0) {
+    console.warn("Attempted to send empty Telegram message");
     return;
   }
 

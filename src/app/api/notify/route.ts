@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendTelegramMessage } from "@/lib/telegram";
+import { sendTelegramMessage, escapeHtml } from "@/lib/telegram";
 
 export async function POST(request: Request) {
   try {
@@ -10,7 +10,9 @@ export async function POST(request: Request) {
     for (const [key, value] of Object.entries(data)) {
       // Capitalize first letter of key for better readability
       const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
-      messageBody += `<b>${formattedKey}:</b> ${value}\n`;
+      // Sanitize the value to prevent HTML injection/breaking format
+      const safeValue = escapeHtml(String(value));
+      messageBody += `<b>${formattedKey}:</b> ${safeValue}\n`;
     }
 
     const message = `
