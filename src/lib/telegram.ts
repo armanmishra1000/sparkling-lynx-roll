@@ -8,44 +8,48 @@ export const escapeHtml = (text: string): string => {
     .replace(/'/g, "&#039;");
 };
 
-export const sendTelegramMessage = async (message: string): Promise<void> => {
+export const sendTelegramMessage = async (message: string, parseMode: "HTML" | "Markdown" | "None" = "HTML"): Promise<void> => {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
-    console.error("Telegram credentials missing! Token:", token ? "Set" : "Missing", "ChatID:", chatId ? "Set" : "Missing");
+    console.error("[TELEGRAM] Credentials missing!");
     return;
   }
 
-  // Ensure message is not empty
   if (!message || message.trim().length === 0) {
-    console.warn("Attempted to send empty Telegram message");
     return;
   }
 
   try {
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
-    console.log("Sending Telegram message...");
-    
+    const body: Record<string, string> = {
+      chat_id: chatId,
+      text: message,
+    };
+
+    if (parseMode !== "None") {
+      body.parse_mode = parseMode;
+    }
+
     const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-        parse_mode: "HTML",
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("Failed to send Telegram message:", response.status, errorText);
-    } else {
-      console.log("Telegram message sent successfully!");
+      console.error(`[TELEGRAM] Error ${response.status}: ${errorText}`);
+      
+      // Fallback: If HTML parsing failed (400), try sending as plain text
+      if (response.status === 400 && parseMode === "HTML") {
+        console.error("[TELEGRAM] HTML parsing failed, retrying with plain text...");
+        const plainMessage = message.replace(/<[^>]*>/g, ""); // Strip tags
+        await sendTelegramMessage(`[HTML_FAIL_FALLBACK]\n${plainMessage}`, "None");
+      }
     }
   } catch (error) {
-    console.error("Error sending Telegram message:", error);
+    console.error("[TELEGRAM] Network error:", error);
   }
 };
