@@ -39,7 +39,13 @@ const Testimonials = () => {
               key={currentLanguage.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={cn("text-transparent bg-clip-text bg-gradient-to-r", currentLanguage.gradient)}
+              style={{ 
+                backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+              className="font-bold"
             >
               word for it.
             </motion.span>

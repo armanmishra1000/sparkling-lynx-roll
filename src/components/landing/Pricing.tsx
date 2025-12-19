@@ -38,7 +38,16 @@ const Pricing = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
-                Invest in your <motion.span key={currentLanguage.id} className={cn("text-transparent bg-clip-text bg-gradient-to-r", currentLanguage.gradient)}>{currentLanguage.headline} fluency.</motion.span>
+                Invest in your <motion.span 
+                  key={currentLanguage.id} 
+                  style={{ 
+                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                  className="font-bold"
+                >{currentLanguage.name} fluency.</motion.span>
             </h2>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
                 Cheaper than one hour with a private tutor.
@@ -95,8 +104,10 @@ const Pricing = () => {
                 <div className="relative bg-[#0A0A0A] rounded-[1.8rem] p-8 h-full flex flex-col">
                     <motion.div 
                       key={currentLanguage.id}
-                      animate={{ background: currentLanguage.color }}
-                      className={cn("absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80 bg-gradient-to-r", currentLanguage.gradient)}
+                      style={{ 
+                        backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`
+                      }}
+                      className={cn("absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80")}
                     ></motion.div>
                     
                     <div className="flex justify-between items-start mb-2">
@@ -122,8 +133,11 @@ const Pricing = () => {
                         ].map((feature, i) => (
                             <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-200">
                                 <motion.div 
-                                  animate={{ background: currentLanguage.color }}
-                                  className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50 bg-gradient-to-br", currentLanguage.gradient)}
+                                  key={`check-${currentLanguage.id}`}
+                                  style={{ 
+                                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`
+                                  }}
+                                  className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50")}
                                 >
                                   <Check className="w-3 h-3" />
                                 </motion.div>

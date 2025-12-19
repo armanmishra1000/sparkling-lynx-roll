@@ -54,27 +54,41 @@ const Hero = () => {
             >
               Don't just
             </motion.span>
-            <AnimatePresence mode="wait">
-              <motion.span 
-                key={currentLanguage.id}
-                className={cn("block text-transparent bg-clip-text bg-gradient-to-r pb-2", currentLanguage.gradient)}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.5 }}
-              >
-                learn {currentLanguage.headline}.
-              </motion.span>
-            </AnimatePresence>
-            <motion.span 
-              key={currentLanguage.subheadline}
-              className="block"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              {currentLanguage.subheadline}
-            </motion.span>
+            <div className="min-h-[1.2em] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.span 
+                  key={currentLanguage.id}
+                  style={{ 
+                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    lineHeight: '1.2'
+                  }}
+                  className="block pb-2"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {currentLanguage.headline}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <div className="min-h-[1em]">
+              <AnimatePresence mode="wait">
+                <motion.span 
+                  key={`sub-${currentLanguage.id}`}
+                  className="block"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {currentLanguage.subheadline}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-light">
@@ -89,7 +103,7 @@ const Hero = () => {
           >
             <SignupModal triggerLocation="hero_primary">
               <Button size="lg" className="h-16 px-10 rounded-full text-lg font-semibold bg-gray-900 text-white hover:bg-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-                {currentLanguage.cta} {currentLanguage.name} <ArrowRight className="ml-2 w-5 h-5" />
+                {currentLanguage.cta} <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </SignupModal>
             
@@ -186,7 +200,15 @@ const Hero = () => {
                             ></motion.div>
                             <div className="relative bg-white/90 border border-white/60 p-6 rounded-3xl rounded-tl-sm shadow-sm backdrop-blur-sm">
                                 <div className="flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-wider">
-                                    <Wand2 className="w-3 h-3" /> <span className={cn("bg-clip-text text-transparent bg-gradient-to-r", currentLanguage.gradient)}>Natural Correction</span>
+                                    <Wand2 className="w-3 h-3" /> <span 
+                                      style={{ 
+                                        backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                                        WebkitBackgroundClip: 'text',
+                                        WebkitTextFillColor: 'transparent',
+                                        backgroundClip: 'text'
+                                      }}
+                                      className="font-bold"
+                                    >Natural Correction</span>
                                 </div>
                                 <AnimatePresence mode="wait">
                                   <motion.div
@@ -196,7 +218,15 @@ const Hero = () => {
                                     exit={{ opacity: 0, y: -10 }}
                                   >
                                     <p className="text-lg text-gray-900 leading-relaxed font-medium">
-                                        <span className={cn("text-transparent bg-clip-text bg-gradient-to-r font-bold", currentLanguage.gradient)}>{currentLanguage.chat_ai}</span>
+                                        <span 
+                                          style={{ 
+                                            backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                                            WebkitBackgroundClip: 'text',
+                                            WebkitTextFillColor: 'transparent',
+                                            backgroundClip: 'text'
+                                          }}
+                                          className="font-bold"
+                                        >{currentLanguage.chat_ai}</span>
                                         {" "}...
                                     </p>
                                     <p className="text-sm text-gray-500 mt-2 italic">

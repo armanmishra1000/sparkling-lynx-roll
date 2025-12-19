@@ -55,7 +55,13 @@ const ComparisonTable = () => {
             Compare your <br />
             <motion.span 
               key={currentLanguage.id}
-              className={cn("text-transparent bg-clip-text bg-gradient-to-r", currentLanguage.gradient)}
+              style={{ 
+                backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+              className="font-bold"
             >
               options.
             </motion.span>
@@ -68,8 +74,10 @@ const ComparisonTable = () => {
             {/* Header Glow */}
             <motion.div 
               key={currentLanguage.id}
-              animate={{ background: currentLanguage.color }}
-              className={cn("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent to-transparent opacity-50", currentLanguage.gradient)}
+              style={{ 
+                backgroundImage: `linear-gradient(to right, transparent, ${currentLanguage.color}, transparent)`
+              }}
+              className={cn("absolute top-0 left-0 right-0 h-1 opacity-50")}
             ></motion.div>
 
             <div className="grid grid-cols-4 p-8 border-b border-gray-100 bg-gray-50/50 text-sm uppercase tracking-widest font-bold text-gray-500">

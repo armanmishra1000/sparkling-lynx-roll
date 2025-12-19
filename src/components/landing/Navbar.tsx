@@ -50,8 +50,10 @@ const Navbar = () => {
            <div className="relative w-9 h-9 flex items-center justify-center">
                 <motion.div 
                   key={currentLanguage.id}
-                  animate={{ background: currentLanguage.color }}
-                  className={cn("absolute inset-0 rounded-full opacity-80 group-hover:opacity-100 blur-[6px] transition-all duration-500", "bg-gradient-to-tr", currentLanguage.gradient)}
+                  style={{ 
+                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`
+                  }}
+                  className={cn("absolute inset-0 rounded-full opacity-80 group-hover:opacity-100 blur-[6px] transition-all duration-500")}
                 ></motion.div>
                 <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center text-sm font-black border border-white/50">S</div>
            </div>
