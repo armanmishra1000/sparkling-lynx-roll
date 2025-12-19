@@ -20,6 +20,7 @@ ${messageBody}
 🕐 <b>Time:</b> ${new Date().toUTCString()}
     `;
 
+    // Explicitly await the promise for serverless function compatibility
     await sendTelegramMessage(message);
 
     return NextResponse.json({ success: true });

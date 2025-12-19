@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import type { NextRequest, NextFetchEvent } from "next/server";
 import { sendTelegramMessage } from "./src/lib/telegram";
 
-export async function middleware(req: NextRequest) {
+export function middleware(req: NextRequest, event: NextFetchEvent) {
   const { nextUrl, cookies } = req;
   
   // Only track visits to the home page to avoid spam and redundant checks
@@ -48,8 +48,9 @@ export async function middleware(req: NextRequest) {
 🕐 <b>Time:</b> ${time}
       `;
 
-      // Send notification (fire and forget, don't await to block response)
-      sendTelegramMessage(message).catch(console.error);
+      // Use waitUntil to ensure the background task completes
+      // This is crucial for Edge Runtime where execution stops immediately after return
+      event.waitUntil(sendTelegramMessage(message));
 
       // Create response and set cookie
       const response = NextResponse.next();
