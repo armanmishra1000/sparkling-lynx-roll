@@ -155,8 +155,9 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                   <SelectContent>
                     <SelectItem value="travel">Travel confidentally</SelectItem>
                     <SelectItem value="work">Work & Business</SelectItem>
-                    <SelectItem value="exams">Exams (TOEFL/IELTS)</SelectItem>
-                    <SelectItem value="dating">Social & Dating</SelectItem>
+                    <SelectItem value="exams">Study tool for school</SelectItem>
+                    <SelectItem value="dating">Family, friends or dating</SelectItem>
+                    <SelectItem value="dating">Country migration</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

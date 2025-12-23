@@ -6,7 +6,7 @@ import { Brain, TrendingUp, History, Map } from "lucide-react";
 
 // Adjusted coordinates to keep nodes comfortably inside the container
 const nodes = [
-  { label: "Grammar", val: "92%", x: 50, y: 12 },   // Top Center
+  { label: "confidence", val: "100%", x: 50, y: 12 },   // Top Center
   { label: "Accent", val: "64%", x: 85, y: 35 },    // Right Top
   { label: "Vocab", val: "88%", x: 75, y: 82 },     // Right Bottom
   { label: "Fluency", val: "75%", x: 25, y: 82 },   // Left Bottom

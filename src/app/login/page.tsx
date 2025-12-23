@@ -55,7 +55,7 @@ export default function LoginPage() {
 
                 <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                     <p className="text-lg font-medium leading-relaxed">
-                        "Sophie pushed me to speak from Day 1. It's terrifying, thrilling, and incredibly effective."
+                        "Sophie pushed me to speak from Day 1. Its Incredibly seamingless, natural & effective."
                     </p>
                     <div className="mt-4 flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-gray-700"></div>
