@@ -34,9 +34,9 @@ const ProblemSolution = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-medium tracking-tight mb-6 leading-[1.1]"
           >
-            Conjugation tables{" "}
+            Memorizing words{" "}
             <span className="text-gray-600 line-through decoration-red-500/50 decoration-2">
-              memorizing words doesn&apos;t work.
+              doesn&apos;t work.
             </span>
             . <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-white font-bold">

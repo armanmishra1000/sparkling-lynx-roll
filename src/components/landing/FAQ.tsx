@@ -47,7 +47,7 @@ const FAQ = () => {
               I'm a complete beginner. Is this too hard?
             </AccordionTrigger>
             <AccordionContent className="text-gray-500 text-lg leading-relaxed pt-2 pb-4">
-              Should be “Not at all. You can tell Sophie your level and she will
+              Not at all. You can tell Sophie your level and she will
               adapt to you. To complex? tell her. To fast? Tell her to slow
               down. To advance? Tell her ease. Didn't get it? ask her to
               translate.
