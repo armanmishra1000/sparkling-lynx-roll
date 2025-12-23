@@ -200,7 +200,7 @@ const Pricing = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
             <div className="relative z-10">
-              <h3 className="text-xl font-bold mb-2 text-gray-900">SBB</h3>
+              <h3 className="text-xl font-bold text-gray-900">SBB</h3>
               <p className="text-gray-500 text-sm mb-8">
                 Sophie Best Buddy
               </p>
