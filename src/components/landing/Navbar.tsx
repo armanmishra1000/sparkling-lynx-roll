@@ -48,6 +48,7 @@ const Navbar = () => {
       >
         <Link href="/" className="flex items-center gap-2 group">
            <div className="relative w-9 h-9 flex items-center justify-center">
+                {/* logo design */}
                 <motion.div 
                   key={currentLanguage.id}
                   style={{ 

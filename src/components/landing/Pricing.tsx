@@ -69,7 +69,7 @@ const Pricing = () => {
             >
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
                 <div className="relative z-10">
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">Starter</h3>
+                    <h3 className="text-xl font-bold mb-2 text-gray-900">FREE</h3>
                     <div className="flex items-baseline gap-1 mb-6">
                         <span className="text-4xl font-bold tracking-tight">$0</span>
                         <span className="text-gray-400 font-medium">/ forever</span>
@@ -101,7 +101,7 @@ const Pricing = () => {
                 {/* Glow behind */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-purple-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity"></div>
                 
-                <div className="relative bg-[#0A0A0A] rounded-[1.8rem] p-8 h-full flex flex-col">
+                <div className="relative bg-[#0A0A0A] rounded-[1.8rem] p-8 h-full flex flex-col overflow-hidden">
                     <motion.div 
                       key={currentLanguage.id}
                       style={{ 

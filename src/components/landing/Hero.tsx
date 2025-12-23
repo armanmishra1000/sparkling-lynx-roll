@@ -17,11 +17,9 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[110vh] flex flex-col justify-center overflow-hidden pt-32 pb-20">
-      
       <RainbowWaveBackground />
-      
+
       <div className="container mx-auto max-w-7xl px-6 relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        
         {/* Left Content */}
         <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-10">
           <motion.div
@@ -30,23 +28,25 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)] text-sm font-semibold text-gray-700 ring-1 ring-black/5"
           >
-             <span className="relative flex h-2.5 w-2.5">
-               <motion.span 
+            <span className="relative flex h-2.5 w-2.5">
+              <motion.span
                 key={currentLanguage.id}
                 animate={{ backgroundColor: currentLanguage.color }}
                 className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-               ></motion.span>
-               <motion.span 
+              ></motion.span>
+              <motion.span
                 key={`dot-${currentLanguage.id}`}
                 animate={{ backgroundColor: currentLanguage.color }}
                 className="relative inline-flex rounded-full h-2.5 w-2.5"
-               ></motion.span>
-             </span>
-             <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">New: {currentLanguage.name} Dialects Added</span>
+              ></motion.span>
+            </span>
+            <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+              New: {currentLanguage.name} Dialects Added
+            </span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight leading-[0.95] text-gray-900">
-            <motion.span 
+            <motion.span
               className="block"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,14 +56,14 @@ const Hero = () => {
             </motion.span>
             <div className="min-h-[1.2em] flex flex-col justify-center">
               <AnimatePresence mode="wait">
-                <motion.span 
+                <motion.span
                   key={currentLanguage.id}
-                  style={{ 
+                  style={{
                     backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    lineHeight: '1.2'
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    lineHeight: "1.2",
                   }}
                   className="block pb-2"
                   initial={{ opacity: 0, y: 30 }}
@@ -77,7 +77,7 @@ const Hero = () => {
             </div>
             <div className="min-h-[1em]">
               <AnimatePresence mode="wait">
-                <motion.span 
+                <motion.span
                   key={`sub-${currentLanguage.id}`}
                   className="block"
                   initial={{ opacity: 0, y: 30 }}
@@ -92,48 +92,77 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-light">
-            Stop translating in your head. Sophie helps you conquer <span className="text-gray-900 font-medium">real conversations</span>, master the grammar, and speak like a local, not a textbook.
+            Stop translating in your head, just ask Sophie. She will help you to
+            conquer real conversation to speak like a native, not like a
+            textbook student.
           </p>
 
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto pt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
             <SignupModal triggerLocation="hero_primary">
-              <Button size="lg" className="h-16 px-10 rounded-full text-lg font-semibold bg-gray-900 text-white hover:bg-black shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-                {currentLanguage.cta} <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </SignupModal>
-            
-            <DemoModal>
-                 <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="h-16 px-10 rounded-full text-lg font-semibold border-gray-200 bg-white/60 backdrop-blur-md hover:bg-white text-gray-900 hover:scale-[1.02] transition-all duration-300 shadow-sm"
-                    onClick={() => trackEvent("cta_click_secondary", { location: "hero_demo_button" })}
+              <div className="relative group">
+                <motion.div
+                  key={`glow-${currentLanguage.id}`}
+                  style={{
+                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                  }}
+                  className="absolute inset-0 rounded-full opacity-60 group-hover:opacity-80 blur-xl transition-all duration-500 scale-105"
+                ></motion.div>
+                <Button
+                  size="lg"
+                  className="relative h-16 px-10 rounded-full text-lg font-bold bg-white text-gray-900 hover:bg-white border border-gray-200/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
                 >
-                  <Play className="mr-2 w-4 h-4 fill-current" /> Hear Examples
+                  {currentLanguage.cta} <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
+              </div>
+            </SignupModal>
+
+            <DemoModal>
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-16 px-10 rounded-full text-lg font-semibold border-gray-200 bg-white/60 backdrop-blur-md hover:bg-white hover:text-gray-900 text-gray-900 hover:scale-[1.02] transition-all duration-300 shadow-sm"
+                onClick={() =>
+                  trackEvent("cta_click_secondary", {
+                    location: "hero_demo_button",
+                  })
+                }
+              >
+                <Play className="mr-2 w-4 h-4 fill-current" /> Hear Examples
+              </Button>
             </DemoModal>
           </motion.div>
-          
-          <motion.div 
+
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
             className="pt-6 flex items-center gap-4 text-sm text-gray-500 font-medium"
           >
             <div className="flex -space-x-3">
-                {[1,2,3,4].map((i) => (
-                    <div key={i} className={`w-9 h-9 rounded-full border-[3px] border-white bg-gray-200 flex items-center justify-center overflow-hidden shadow-sm`}>
-                        <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i+20}&backgroundColor=ffdfbf,c0aede,d1d4f9`} alt="User" />
-                    </div>
-                ))}
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className={`w-9 h-9 rounded-full border-[3px] border-white bg-gray-200 flex items-center justify-center overflow-hidden shadow-sm`}
+                >
+                  <img
+                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 20
+                      }&backgroundColor=ffdfbf,c0aede,d1d4f9`}
+                    alt="User"
+                  />
+                </div>
+              ))}
             </div>
-            <p>{currentLanguage.students_count} students actively learning {currentLanguage.name}</p>
-          </motion.div>
+            <p>
+              {currentLanguage.students_count} students actively learning{" "}
+              {currentLanguage.name}
+            </p>
+          </motion.div> */}
+          
         </div>
 
         {/* Right Visual - Premium Glass Card */}
@@ -144,124 +173,140 @@ const Hero = () => {
             transition={{ type: "spring", duration: 1.5, delay: 0.5 }}
             className="relative z-20 w-full max-w-[500px]"
           >
-             {/* Main Card */}
-             <div className="relative bg-white/70 backdrop-blur-3xl border border-white/50 p-8 rounded-[2.5rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.1)] overflow-hidden ring-1 ring-white/60">
-               
-               {/* Internal Sheen */}
-               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none opacity-50"></div>
-               <div className="absolute -top-32 -right-32 w-64 h-64 bg-gradient-to-br from-purple-100/50 to-pink-100/50 blur-3xl rounded-full pointer-events-none"></div>
+            {/* Main Card */}
+            <div className="relative bg-white/70 backdrop-blur-3xl border border-white/50 p-8 rounded-[2.5rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.1)] overflow-hidden ring-1 ring-white/60">
+              {/* Internal Sheen */}
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none opacity-50"></div>
+              <div className="absolute -top-32 -right-32 w-64 h-64 bg-gradient-to-br from-purple-100/50 to-pink-100/50 blur-3xl rounded-full pointer-events-none"></div>
 
-               <div className="relative z-10 space-y-8">
-                 
-                 {/* Header of Card */}
-                 <div className="flex items-center justify-between border-b border-gray-200/50 pb-6">
-                    <div className="flex items-center gap-4">
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur-[2px]"></div>
-                            <div className="relative w-12 h-12 rounded-full bg-gradient-to-tr from-gray-900 to-gray-800 flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/20">
-                                S
-                            </div>
-                            <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
-                        </div>
-                        <div>
-                            <div className="text-base font-bold text-gray-900">Sophie AI</div>
-                            <div className="text-xs text-gray-500 font-medium tracking-wide">{currentLanguage.name} Coach</div>
-                        </div>
+              <div className="relative z-10 space-y-8">
+                {/* Header of Card */}
+                <div className="flex items-center justify-between border-b border-gray-200/50 pb-6">
+                  <div className="flex items-center gap-4">
+                    {/* Avatar */}
+                    <div className="relative w-12 h-12 flex items-center justify-center">
+                      <motion.div
+                        key={`avatar-glow-${currentLanguage.id}`}
+                        style={{
+                          backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                        }}
+                        className="absolute inset-0 rounded-full opacity-80 blur-[6px] transition-all duration-500"
+                      ></motion.div>
+                      <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center text-lg font-black border border-white/50 text-gray-900 shadow-sm">
+                        S
+                      </div>
+                      <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full z-10"></div>
                     </div>
-                    <div className="px-3 py-1 rounded-full bg-gray-100/50 border border-gray-200/50 text-xs font-bold text-gray-500 uppercase tracking-widest backdrop-blur-sm">
-                        Conversation
+                    <div>
+                      <div className="text-base font-bold text-gray-900">
+                        Sophie
+                      </div>
+                      <div className="text-xs text-gray-500 font-medium tracking-wide">
+                        {currentLanguage.name}
+                      </div>
                     </div>
-                 </div>
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-gray-100/50 border border-gray-200/50 text-xs font-bold text-gray-500 uppercase tracking-widest backdrop-blur-sm">
+                    Conversation
+                  </div>
+                </div>
 
-                 {/* Chat Area */}
-                 <div className="space-y-6">
-                     {/* User Message */}
-                     <div className="flex justify-end">
-                        <AnimatePresence mode="wait">
-                          <motion.div 
-                            key={`user-msg-${currentLanguage.id}`}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            className="bg-gradient-to-br from-gray-100 to-gray-50 text-gray-700 px-6 py-4 rounded-3xl rounded-tr-sm text-base font-medium max-w-[85%] shadow-sm border border-gray-100"
+                {/* Chat Area */}
+                <div className="space-y-6">
+                  {/* User Message */}
+                  <div className="flex justify-end">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={`user-msg-${currentLanguage.id}`}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        className="bg-gradient-to-br from-gray-100 to-gray-50 text-gray-700 px-6 py-4 rounded-3xl rounded-tr-sm text-base font-medium max-w-[85%] shadow-sm border border-gray-100"
+                      >
+                        "{currentLanguage.chat_user}"
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* AI Correction */}
+                  <div className="flex justify-start">
+                    <div className="relative group w-full">
+                      <motion.div
+                        key={`glow-${currentLanguage.id}`}
+                        animate={{ background: currentLanguage.color }}
+                        className="absolute -inset-0.5 rounded-3xl rounded-tl-sm opacity-20 blur-sm transition duration-200"
+                      ></motion.div>
+                      <div className="relative bg-white/90 border border-white/60 p-6 rounded-3xl rounded-tl-sm shadow-sm backdrop-blur-sm">
+                        <div className="flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-wider">
+                          <Wand2 className="w-3 h-3" />{" "}
+                          <span
+                            style={{
+                              backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text",
+                            }}
+                            className="font-bold"
                           >
-                              "{currentLanguage.chat_user}"
+                            Natural Correction
+                          </span>
+                        </div>
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={`ai-msg-${currentLanguage.id}`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                          >
+                            <p className="text-lg text-gray-900 leading-relaxed font-medium">
+                              <span
+                                style={{
+                                  backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                                  WebkitBackgroundClip: "text",
+                                  WebkitTextFillColor: "transparent",
+                                  backgroundClip: "text",
+                                }}
+                                className="font-bold"
+                              >
+                                {currentLanguage.chat_ai}
+                              </span>{" "}
+                              ...
+                            </p>
+                            <p className="text-sm text-gray-500 mt-2 italic">
+                              {currentLanguage.chat_explanation}
+                            </p>
                           </motion.div>
                         </AnimatePresence>
-                     </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                     {/* AI Correction */}
-                     <div className="flex justify-start">
-                        <div className="relative group w-full">
-                            <motion.div 
-                              key={`glow-${currentLanguage.id}`}
-                              animate={{ background: currentLanguage.color }}
-                              className="absolute -inset-0.5 rounded-3xl rounded-tl-sm opacity-20 blur-sm transition duration-200"
-                            ></motion.div>
-                            <div className="relative bg-white/90 border border-white/60 p-6 rounded-3xl rounded-tl-sm shadow-sm backdrop-blur-sm">
-                                <div className="flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-wider">
-                                    <Wand2 className="w-3 h-3" /> <span 
-                                      style={{ 
-                                        backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent',
-                                        backgroundClip: 'text'
-                                      }}
-                                      className="font-bold"
-                                    >Natural Correction</span>
-                                </div>
-                                <AnimatePresence mode="wait">
-                                  <motion.div
-                                    key={`ai-msg-${currentLanguage.id}`}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                  >
-                                    <p className="text-lg text-gray-900 leading-relaxed font-medium">
-                                        <span 
-                                          style={{ 
-                                            backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                                            WebkitBackgroundClip: 'text',
-                                            WebkitTextFillColor: 'transparent',
-                                            backgroundClip: 'text'
-                                          }}
-                                          className="font-bold"
-                                        >{currentLanguage.chat_ai}</span>
-                                        {" "}...
-                                    </p>
-                                    <p className="text-sm text-gray-500 mt-2 italic">
-                                        {currentLanguage.chat_explanation}
-                                    </p>
-                                  </motion.div>
-                                </AnimatePresence>
-                            </div>
-                        </div>
-                     </div>
-                 </div>
+                {/* Interactive Rainbow Wave */}
+                <div className="pt-2">
+                  <InteractiveRainbowWave />
+                </div>
+              </div>
+            </div>
 
-                 {/* Interactive Rainbow Wave */}
-                 <div className="pt-2">
-                     <InteractiveRainbowWave />
-                 </div>
-
-               </div>
-             </div>
-
-             {/* Floating Elements for Depth */}
-             <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-8 -bottom-8 bg-white/90 backdrop-blur-xl p-5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-white/60 flex items-center gap-4 max-w-[200px]"
-             >
-                 <div className="w-12 h-12 rounded-2xl bg-[#E0F2FE] flex items-center justify-center text-[#0EA5E9] shadow-inner">
-                    <Sparkles className="w-6 h-6 fill-current" />
-                 </div>
-                 <div>
-                    <div className="text-2xl font-bold text-gray-900 leading-none">94%</div>
-                    <div className="text-xs font-medium text-gray-500 mt-1">Accent Accuracy</div>
-                 </div>
-             </motion.div>
-
+            {/* Floating Elements for Depth */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -right-8 -bottom-8 bg-white/90 backdrop-blur-xl p-5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-white/60 flex items-center gap-4 max-w-[200px]"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-[#E0F2FE] flex items-center justify-center text-[#0EA5E9] shadow-inner">
+                <Sparkles className="w-6 h-6 fill-current" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-900 leading-none">
+                  94%
+                </div>
+                <div className="text-xs font-medium text-gray-500 mt-1">
+                  Accent Accuracy
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

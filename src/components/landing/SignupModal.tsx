@@ -60,8 +60,8 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
-    trackEvent("signup_submit", { 
+
+    trackEvent("signup_submit", {
       language: formData.language,
       level: formData.level,
       goal: formData.goal,
@@ -97,7 +97,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
           <div className="p-8">
             <DialogHeader className="mb-6">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                 <Sparkles className="w-6 h-6 text-black" />
+                <Sparkles className="w-6 h-6 text-black" />
               </div>
               <DialogTitle className="text-2xl font-bold">Join the Early Access List</DialogTitle>
               <DialogDescription className="text-base text-gray-500">
@@ -107,20 +107,20 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
                 <Label htmlFor="email">Email address</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="hello@example.com" 
-                  required 
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="hello@example.com"
+                  required
                   className="h-11 rounded-xl bg-gray-50 border-gray-200"
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>I want to learn</Label>
-                  <Select required onValueChange={(val) => setFormData({...formData, language: val})} defaultValue={currentLanguage.id}>
+                  <Select required onValueChange={(val) => setFormData({ ...formData, language: val })} defaultValue={currentLanguage.id}>
                     <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
                       <SelectValue placeholder="Language" />
                     </SelectTrigger>
@@ -133,7 +133,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                 </div>
                 <div className="space-y-2">
                   <Label>My level is</Label>
-                  <Select required onValueChange={(val) => setFormData({...formData, level: val})}>
+                  <Select required onValueChange={(val) => setFormData({ ...formData, level: val })}>
                     <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
                       <SelectValue placeholder="Level" />
                     </SelectTrigger>
@@ -148,15 +148,16 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
 
               <div className="space-y-2">
                 <Label>Main goal</Label>
-                <Select onValueChange={(val) => setFormData({...formData, goal: val})}>
+                <Select onValueChange={(val) => setFormData({ ...formData, goal: val })}>
                   <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
                     <SelectValue placeholder="Select a goal" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="travel">Travel confidentally</SelectItem>
                     <SelectItem value="work">Work & Business</SelectItem>
-                    <SelectItem value="exams">Exams (TOEFL/IELTS)</SelectItem>
-                    <SelectItem value="dating">Social & Dating</SelectItem>
+                    <SelectItem value="exams">Study tool for school</SelectItem>
+                    <SelectItem value="dating">Family, friends or dating</SelectItem>
+                    <SelectItem value="dating">Country migration</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -175,18 +176,18 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
         ) : (
           <div className="flex flex-col items-center justify-center py-16 px-8 text-center space-y-6 relative bg-white">
             <Confetti />
-            <motion.div 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-2"
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-2"
             >
               <CheckCircle2 className="w-12 h-12 text-green-600" />
             </motion.div>
             <div>
-                <h3 className="text-3xl font-bold mb-2">You're on the list!</h3>
-                <p className="text-gray-500 text-lg max-w-xs mx-auto">
-                We've sent a confirmation email to <strong>{formData.email}</strong>.
-                </p>
+              <h3 className="text-3xl font-bold mb-2">You&apos;re on the list!</h3>
+              <p className="text-gray-500 text-lg max-w-xs mx-auto">
+                We&apos;ve sent a confirmation email to <strong>{formData.email}</strong>.
+              </p>
             </div>
             <Button variant="outline" onClick={() => setOpen(false)} className="h-12 px-8 rounded-xl border-2 border-gray-100 font-bold hover:bg-gray-50 hover:border-gray-200">
               Close

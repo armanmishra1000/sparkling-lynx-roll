@@ -21,8 +21,8 @@ const tabs = [
   },
   { 
     id: "track", 
-    label: "Neural Progress", 
-    desc: "See your brain adapt.",
+    label: "Boost your confidence", 
+    desc: "Sophie judges no one. Feel free to make mistakes",
     icon: BarChart3 
   },
 ];
@@ -34,10 +34,10 @@ const content = {
       <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-transparent pointer-events-none"></div>
       
       <div className="relative z-10 w-full max-w-sm">
-         <div className="mx-auto w-24 h-24 bg-gradient-to-tr from-blue-500 to-cyan-400 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/20 mb-8 relative">
+         {/* <div className="mx-auto w-24 h-24 bg-gradient-to-tr from-blue-500 to-cyan-400 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/20 mb-8 relative">
             <div className="absolute inset-0 bg-white opacity-20 rounded-full animate-ping"></div>
             <Mic className="w-10 h-10 text-white" />
-         </div>
+         </div> */}
          
          <p className="text-2xl font-medium text-gray-900 leading-snug">"I would like to order a coffee, please."</p>
          
@@ -119,9 +119,9 @@ const ProductTour = () => {
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-900">
-                Experience the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Flow</span>
+                Confidence <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Boost</span>
             </h2>
-            <p className="text-xl text-gray-500">See how Sophie adapts to you in real-time.</p>
+            <p className="text-xl text-gray-500">See how Sophie speaking with Sophie will boost your speaking confidence.</p>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-center">
