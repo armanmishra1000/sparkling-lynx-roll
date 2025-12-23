@@ -15,14 +15,14 @@ const Pricing = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const item: Variants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } }
+    show: { opacity: 1, y: 0, transition: { type: "spring", bounce: 0.4 } },
   };
 
   return (
@@ -38,150 +38,207 @@ const Pricing = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
-                Invest in your <motion.span 
-                  key={currentLanguage.id} 
-                  style={{ 
-                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }}
-                  className="font-bold"
-                >{currentLanguage.name} fluency.</motion.span>
+              Invest in your{" "}
+              <motion.span
+                key={currentLanguage.id}
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+                className="font-bold"
+              >
+                {currentLanguage.name} fluency.
+              </motion.span>
             </h2>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-                Cheaper than one hour with a private tutor.
+              Cheaper than one hour with a private tutor.
             </p>
           </motion.div>
         </div>
 
-        <motion.div 
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-3 gap-8 lg:gap-12 items-start"
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-3 gap-8 lg:gap-12 items-start"
         >
-            {/* Free Tier */}
-            <motion.div 
-                variants={item} 
-                className="group relative bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
-                <div className="relative z-10">
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">FREE</h3>
-                    <div className="flex items-baseline gap-1 mb-6">
-                        <span className="text-4xl font-bold tracking-tight">$0</span>
-                        <span className="text-gray-400 font-medium">/ forever</span>
+          {/* Free Tier */}
+          <motion.div
+            variants={item}
+            className="group relative bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-gray-900">M&G</h3>
+              <p className="text-gray-500 text-sm mb-4">
+                Meet and Greet Sophie
+              </p>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold tracking-tight">$0</span>
+                <span className="text-gray-400 font-medium">/ forever</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-8">
+                Perfect for casual practice.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "10 mins/day speaking",
+                  "Basic grammar corrections",
+                  "Travel scenarios only",
+                ].map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center space-x-3 text-sm font-medium text-gray-600"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                      <Check className="w-3 h-3 text-gray-600" />
                     </div>
-                    <p className="text-gray-500 text-sm mb-8">Perfect for casual practice.</p>
-                    <ul className="space-y-4 mb-8">
-                        {[
-                            "10 mins/day speaking",
-                            "Basic grammar corrections",
-                            "Travel scenarios only"
-                        ].map((feature, i) => (
-                            <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-600">
-                                <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center shrink-0"><Check className="w-3 h-3 text-gray-600" /></div>
-                                <span>{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <SignupModal triggerLocation="pricing_free">
-                        <Button variant="outline" className="w-full rounded-xl h-12 border-gray-200 font-bold hover:bg-gray-50 hover:text-black hover:border-black transition-colors">Join Waitlist</Button>
-                    </SignupModal>
-                </div>
-            </motion.div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <SignupModal triggerLocation="pricing_free">
+                <Button
+                  variant="outline"
+                  className="w-full rounded-xl h-12 border-gray-200 font-bold hover:bg-gray-50 hover:text-black hover:border-black transition-colors"
+                >
+                  Join Waitlist
+                </Button>
+              </SignupModal>
+            </div>
+          </motion.div>
 
-            {/* Plus Tier - Highlighted */}
-            <motion.div variants={item} className="relative bg-black text-white rounded-[2rem] p-1 shadow-2xl transform md:-translate-y-6 group">
-                {/* Gradient Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-black rounded-[2rem]"></div>
-                
-                {/* Glow behind */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-purple-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                
-                <div className="relative bg-[#0A0A0A] rounded-[1.8rem] p-8 h-full flex flex-col overflow-hidden">
-                    <motion.div 
-                      key={currentLanguage.id}
-                      style={{ 
-                        backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`
+          {/* Plus Tier - Highlighted */}
+          <motion.div
+            variants={item}
+            className="relative bg-black text-white rounded-[2rem] p-1 shadow-2xl transform md:-translate-y-6 group"
+          >
+            {/* Gradient Border Effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-black rounded-[2rem]"></div>
+
+            {/* Glow behind */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-purple-500/20 blur-3xl rounded-full opacity-50 group-hover:opacity-75 transition-opacity"></div>
+
+            <div className="relative bg-[#0A0A0A] rounded-[1.8rem] p-6 h-full flex flex-col overflow-hidden">
+              <motion.div
+                key={currentLanguage.id}
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
+                }}
+                className={cn(
+                  "absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80"
+                )}
+              ></motion.div>
+
+              <div className="flex flex-col justify-between items-start gap-4 md:flex-row md:items-start">
+                <div>
+                  <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                    SCF{" "}
+                    <Sparkles className="w-4 h-4 text-[#FFD700] fill-current" />
+                  </h3>
+                  <p className="text-gray-500 text-sm mb-8">
+                    Sophie Close Friend
+                  </p>
+                </div>
+                <div>
+                  <span className="bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider border border-white/10">
+                    Most Popular
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-5xl font-bold tracking-tight">$12</span>
+                <span className="text-gray-400 font-medium">/ month</span>
+              </div>
+              <p className="text-gray-400 text-sm mb-8">
+                For serious learners who want to speak confidently.
+              </p>
+
+              <ul className="space-y-4 mb-8 flex-1">
+                {[
+                  `Unlimited ${currentLanguage.name} conversation`,
+                  "Dialect toggles",
+                  "Deep grammar analysis",
+                  "All Roleplay scenarios",
+                  "Priority support",
+                ].map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center space-x-3 text-sm font-medium text-gray-200"
+                  >
+                    <motion.div
+                      key={`check-${currentLanguage.id}`}
+                      style={{
+                        backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
                       }}
-                      className={cn("absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80")}
-                    ></motion.div>
-                    
-                    <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                            Plus <Sparkles className="w-4 h-4 text-[#FFD700] fill-current" />
-                        </h3>
-                        <span className="bg-white/10 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider border border-white/10">Most Popular</span>
-                    </div>
-                    
-                    <div className="flex items-baseline gap-1 mb-6">
-                        <span className="text-5xl font-bold tracking-tight">$12</span>
-                        <span className="text-gray-400 font-medium">/ month</span>
-                    </div>
-                    <p className="text-gray-400 text-sm mb-8">For serious learners who want to speak confidently.</p>
-                    
-                    <ul className="space-y-4 mb-8 flex-1">
-                        {[
-                            `Unlimited ${currentLanguage.name} conversation`,
-                            "Dialect toggles",
-                            "Deep grammar analysis",
-                            "All Roleplay scenarios",
-                            "Priority support"
-                        ].map((feature, i) => (
-                            <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-200">
-                                <motion.div 
-                                  key={`check-${currentLanguage.id}`}
-                                  style={{ 
-                                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`
-                                  }}
-                                  className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50")}
-                                >
-                                  <Check className="w-3 h-3" />
-                                </motion.div>
-                                <span>{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <SignupModal triggerLocation="pricing_plus">
-                        <Button className="w-full rounded-xl h-14 bg-white text-black hover:bg-gray-200 font-bold text-lg shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all">Start Free Trial</Button>
-                    </SignupModal>
-                </div>
-            </motion.div>
+                      className={cn(
+                        "w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50"
+                      )}
+                    >
+                      <Check className="w-3 h-3" />
+                    </motion.div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <SignupModal triggerLocation="pricing_plus">
+                <Button className="w-full rounded-xl h-14 bg-white text-black hover:bg-gray-200 font-bold text-lg shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all">
+                  Start Free Trial
+                </Button>
+              </SignupModal>
+            </div>
+          </motion.div>
 
-            {/* Pro Tier */}
-            <motion.div 
-                variants={item} 
-                className="group relative bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
-                <div className="relative z-10">
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">Pro</h3>
-                    <div className="flex items-baseline gap-1 mb-6">
-                        <span className="text-4xl font-bold tracking-tight">$29</span>
-                        <span className="text-gray-400 font-medium">/ month</span>
+          {/* Pro Tier */}
+          <motion.div
+            variants={item}
+            className="group relative bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-gray-900">SBB</h3>
+              <p className="text-gray-500 text-sm mb-8">
+                Sophie Best Buddy
+              </p>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold tracking-tight">$29</span>
+                <span className="text-gray-400 font-medium">/ month</span>
+              </div>
+              <p className="text-gray-500 text-sm mb-8">
+                Advanced coaching for business & exams.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "Everything in Plus",
+                  "Advanced Accent Reduction",
+                  `Business ${currentLanguage.name} Module`,
+                  "Official Exam Prep",
+                ].map((feature, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center space-x-3 text-sm font-medium text-gray-600"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center shrink-0 text-white">
+                      <Check className="w-3 h-3" />
                     </div>
-                    <p className="text-gray-500 text-sm mb-8">Advanced coaching for business & exams.</p>
-                    <ul className="space-y-4 mb-8">
-                        {[
-                            "Everything in Plus",
-                            "Advanced Accent Reduction",
-                            `Business ${currentLanguage.name} Module`,
-                            "Official Exam Prep"
-                        ].map((feature, i) => (
-                            <li key={i} className="flex items-center space-x-3 text-sm font-medium text-gray-600">
-                                <div className="w-5 h-5 rounded-full bg-black flex items-center justify-center shrink-0 text-white"><Check className="w-3 h-3" /></div>
-                                <span>{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <SignupModal triggerLocation="pricing_pro">
-                        <Button variant="outline" className="w-full rounded-xl h-12 border-gray-200 font-bold hover:bg-gray-50 hover:text-black hover:border-black transition-colors">Join Waitlist</Button>
-                    </SignupModal>
-                </div>
-            </motion.div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <SignupModal triggerLocation="pricing_pro">
+                <Button
+                  variant="outline"
+                  className="w-full rounded-xl h-12 border-gray-200 font-bold hover:bg-gray-50 hover:text-black hover:border-black transition-colors"
+                >
+                  Join Waitlist
+                </Button>
+              </SignupModal>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

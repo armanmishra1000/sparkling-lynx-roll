@@ -2,13 +2,27 @@
 
 import React from "react";
 
-const brands = [
-  { name: "Linguist.io", font: "font-serif" },
-  { name: "SpeechTech", font: "font-mono" },
-  { name: "PolyglotDaily", font: "font-sans" },
-  { name: "GlobalSpeak", font: "font-serif italic" },
-  { name: "FutureLang", font: "font-bold" },
-  { name: "VoiceAI", font: "font-mono" },
+const languages = [
+  { name: "Español", font: "font-sans" },
+  { name: "Deutsch", font: "font-serif" },
+  { name: "English", font: "font-sans" },
+  { name: "中文", font: "font-sans" },
+  { name: "日本語", font: "font-sans" },
+  { name: "हिन्दी", font: "font-sans" },
+  { name: "粵語", font: "font-sans" },
+  { name: "Français", font: "font-serif" },
+  { name: "Italiano", font: "font-serif" },
+  { name: "Português", font: "font-sans" },
+  { name: "العربية", font: "font-sans" },
+  { name: "Русский", font: "font-sans" },
+  { name: "한국어", font: "font-sans" },
+  { name: "اردو", font: "font-sans" },
+  { name: "தமிழ்", font: "font-sans" },
+  { name: "বাংলা", font: "font-sans" },
+  { name: "Svenska", font: "font-serif" },
+  { name: "Tiếng Việt", font: "font-sans" },
+  { name: "Kiswahili", font: "font-sans" },
+  { name: "Bahasa Indonesia", font: "font-sans" },
 ];
 
 const SocialProof = () => {
@@ -19,32 +33,30 @@ const SocialProof = () => {
           Powering the next generation of polyglots
         </p>
       </div>
-      
-      <div className="relative flex overflow-x-hidden group max-w-5xl mx-auto mask-linear-fade">
-        {/* We use a mask in CSS or just fade divs on side */}
-        
-        <div className="flex animate-marquee whitespace-nowrap gap-20 items-center">
-          {[...brands, ...brands, ...brands].map((brand, i) => (
-            <span 
-              key={i} 
-              className={`text-2xl text-gray-300 ${brand.font} font-medium hover:text-gray-900 transition-colors duration-500 cursor-default select-none grayscale hover:grayscale-0`}
+
+      <div className="relative flex overflow-x-hidden group max-w-7xl mx-auto mask-linear-fade">
+        <div className="flex animate-marquee whitespace-nowrap gap-16 items-center">
+          {[...languages, ...languages].map((lang, i) => (
+            <span
+              key={i}
+              className={`text-2xl text-gray-300 font-medium hover:text-gray-900 transition-colors duration-500 cursor-default select-none grayscale hover:grayscale-0`}
             >
-              {brand.name}
+              {lang.name}
             </span>
           ))}
         </div>
-        
-        <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap gap-20 items-center ml-20">
-           {[...brands, ...brands, ...brands].map((brand, i) => (
-            <span 
-              key={i} 
-              className={`text-2xl text-gray-300 ${brand.font} font-medium hover:text-gray-900 transition-colors duration-500 cursor-default select-none grayscale hover:grayscale-0`}
+
+        <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap gap-16 items-center">
+          {[...languages, ...languages].map((lang, i) => (
+            <span
+              key={i}
+              className={`text-2xl text-gray-300 font-medium hover:text-gray-900 transition-colors duration-500 cursor-default select-none grayscale hover:grayscale-0`}
             >
-              {brand.name}
+              {lang.name}
             </span>
           ))}
         </div>
-        
+
         {/* Fade edges */}
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>

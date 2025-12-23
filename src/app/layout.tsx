@@ -43,6 +43,11 @@ export const metadata: Metadata = {
     description: "Stop freezing. Start speaking. The first AI tutor that actually remembers your progress.",
     images: ["https://sophie.ai/og-image.jpg"],
   },
+  icons: {
+    icon: "/main.png",
+    shortcut: "/main.png",
+    apple: "/main.png",
+  },
 };
 
 import { DemoProvider } from "@/context/DemoContext";
