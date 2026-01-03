@@ -67,6 +67,10 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+  		fontFamily: {
+  			sans: ['var(--font-oswald)'],
+  			oswald: ['var(--font-oswald)'],
+  		},
   		keyframes: {
   			'accordion-down': {
   				from: {

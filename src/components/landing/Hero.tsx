@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles, Wand2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import SignupModal from "./SignupModal";
-import DemoModal from "./DemoModal";
+import VideoModal from "./VideoModal";
 import { trackEvent } from "@/lib/analytics";
 import RainbowWaveBackground from "./RainbowWaveBackground";
 import InteractiveRainbowWave from "./InteractiveRainbowWave";
@@ -121,7 +121,7 @@ const Hero = () => {
               </div>
             </SignupModal>
 
-            <DemoModal>
+            <VideoModal>
               <Button
                 variant="outline"
                 size="lg"
@@ -132,9 +132,9 @@ const Hero = () => {
                   })
                 }
               >
-                <Play className="mr-2 w-4 h-4 fill-current" /> Hear Examples
+                <Play className="mr-2 w-4 h-4 fill-current" /> Hear Sophie
               </Button>
-            </DemoModal>
+            </VideoModal>
           </motion.div>
 
           {/* <motion.div

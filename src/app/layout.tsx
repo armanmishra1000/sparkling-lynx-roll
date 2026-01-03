@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { BackToTop } from "@/components/ui/back-to-top";
@@ -14,6 +15,19 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const oswald = localFont({
+  src: [
+    { path: '../../public/fonts/Oswald-ExtraLight.ttf', weight: '200', style: 'normal' },
+    { path: '../../public/fonts/Oswald-Light.ttf', weight: '300', style: 'normal' },
+    { path: '../../public/fonts/Oswald-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/Oswald-Medium.ttf', weight: '500', style: 'normal' },
+    { path: '../../public/fonts/Oswald-SemiBold.ttf', weight: '600', style: 'normal' },
+    { path: '../../public/fonts/Oswald-Bold.ttf', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-oswald',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -79,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} antialiased`}
       >
         <DemoProvider>
           <ScrollProgress />

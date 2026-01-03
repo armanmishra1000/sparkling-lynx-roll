@@ -5,7 +5,8 @@ type EventName =
   | "cta_click_secondary" 
   | "signup_submit" 
   | "pricing_tier_select"
-  | "faq_expand";
+  | "faq_expand"
+  | "video_modal_open";
 
 type EventProperties = Record<string, string | number | boolean>;
 
