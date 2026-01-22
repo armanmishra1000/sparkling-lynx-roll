@@ -27,7 +27,7 @@ const Footer = () => {
                 <motion.div
                   key={`footer-logo-glow-${currentLanguage.id}`}
                   style={{
-                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`
+                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
                   }}
                   className="absolute inset-0 rounded-full opacity-80 group-hover:opacity-100 blur-[6px] transition-all duration-500"
                 ></motion.div>
@@ -124,7 +124,10 @@ const Footer = () => {
               </h4>
               <ul className="space-y-5 text-gray-500 font-medium">
                 <li>
-                  <Link href="#" className="hover:text-black transition-colors">
+                  <Link
+                    href="/about"
+                    className="hover:text-black transition-colors"
+                  >
                     About
                   </Link>
                 </li>
