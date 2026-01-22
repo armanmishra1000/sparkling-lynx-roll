@@ -37,7 +37,7 @@ const EraSection = () => {
           of Language Adquisition
         </motion.h2>
 
-      {/* Part 2: Wave - Full Width (Outside Container) */}
+      {/* Part 2: Wave - Full Width */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
