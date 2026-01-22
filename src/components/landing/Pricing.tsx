@@ -78,16 +78,16 @@ const Pricing = () => {
               </p>
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold tracking-tight">$0</span>
-                <span className="text-gray-400 font-medium">/ forever</span>
+                <span className="text-gray-400 font-medium">/ 7 days</span>
               </div>
               <p className="text-gray-500 text-sm mb-8">
                 Perfect for casual practice.
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  "10 mins/day speaking",
-                  "Basic grammar corrections",
-                  "Travel scenarios only",
+                  "All languages included",
+                  "5 min/day practice",
+                  "Basic AI tutor feedback",
                 ].map((feature, i) => (
                   <li
                     key={i}
@@ -129,14 +129,14 @@ const Pricing = () => {
                   backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
                 }}
                 className={cn(
-                  "absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80"
+                  "absolute top-0 right-0 left-0 h-1 rounded-t-[1.8rem] opacity-80",
                 )}
               ></motion.div>
 
               <div className="flex flex-col justify-between items-start gap-4 md:flex-row md:items-start">
                 <div>
                   <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                    SCF{" "}
+                    Launch Pack{" "}
                     <Sparkles className="w-4 h-4 text-[#FFD700] fill-current" />
                   </h3>
                   <p className="text-gray-500 text-sm mb-8">
@@ -151,7 +151,7 @@ const Pricing = () => {
               </div>
 
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-5xl font-bold tracking-tight">$12</span>
+                <span className="text-5xl font-bold tracking-tight">$4.99</span>
                 <span className="text-gray-400 font-medium">/ month</span>
               </div>
               <p className="text-gray-400 text-sm mb-8">
@@ -160,11 +160,10 @@ const Pricing = () => {
 
               <ul className="space-y-4 mb-8 flex-1">
                 {[
-                  `Unlimited ${currentLanguage.name} conversation`,
-                  "Dialect toggles",
-                  "Deep grammar analysis",
-                  "All Roleplay scenarios",
-                  "Priority support",
+                  "1 language of choice",
+                  "15 min/day practice",
+                  "Priority AI feedback",
+                  "No ads",
                 ].map((feature, i) => (
                   <li
                     key={i}
@@ -176,7 +175,7 @@ const Pricing = () => {
                         backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
                       }}
                       className={cn(
-                        "w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50"
+                        "w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-purple-900/50",
                       )}
                     >
                       <Check className="w-3 h-3" />
@@ -201,11 +200,9 @@ const Pricing = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]"></div>
             <div className="relative z-10">
               <h3 className="text-xl font-bold text-gray-900">SBB</h3>
-              <p className="text-gray-500 text-sm mb-8">
-                Sophie Best Buddy
-              </p>
+              <p className="text-gray-500 text-sm mb-8">Sophie Best Buddy</p>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-bold tracking-tight">$29</span>
+                <span className="text-4xl font-bold tracking-tight">$19</span>
                 <span className="text-gray-400 font-medium">/ month</span>
               </div>
               <p className="text-gray-500 text-sm mb-8">
@@ -213,10 +210,10 @@ const Pricing = () => {
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  "Everything in Plus",
-                  "Advanced Accent Reduction",
-                  `Business ${currentLanguage.name} Module`,
-                  "Official Exam Prep",
+                  "Unlimited languages",
+                  "Unlimited time",
+                  "Advanced AI analytics",
+                  "Personalized learning paths",
                 ].map((feature, i) => (
                   <li
                     key={i}
