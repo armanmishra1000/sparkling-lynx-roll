@@ -5,11 +5,32 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-async function forwardToAdmin(payload: Record<string, unknown>): Promise<void> {
-  const adminApiUrl = process.env.ADMIN_API_URL;
-  const adminApiKey = process.env.ADMIN_API_KEY;
+function normalizeAdminApiUrl(value: string | undefined): string | null {
+  const raw = value?.trim();
+  if (!raw) return null;
 
-  if (!adminApiUrl || !adminApiKey) return;
+  if (raw.startsWith("https://") || raw.startsWith("http://")) return raw;
+  return `https://${raw}`;
+}
+
+function normalizeToken(value: string | undefined): string | null {
+  const token = value?.trim();
+  return token ? token : null;
+}
+
+async function forwardToAdmin(payload: Record<string, unknown>): Promise<void> {
+  const adminApiUrl = normalizeAdminApiUrl(process.env.ADMIN_API_URL);
+  // Back-compat: allow using API_SECRET_KEY on the landing project too.
+  const adminApiKey = normalizeToken(
+    process.env.ADMIN_API_KEY ?? process.env.API_SECRET_KEY
+  );
+
+  if (!adminApiUrl || !adminApiKey) {
+    console.error(
+      "[ADMIN_API] Missing ADMIN_API_URL or ADMIN_API_KEY (or API_SECRET_KEY)"
+    );
+    return;
+  }
 
   try {
     const url = new URL("/api/submissions", adminApiUrl);
