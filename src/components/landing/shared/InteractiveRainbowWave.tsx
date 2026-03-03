@@ -8,9 +8,21 @@ interface InteractiveRainbowWaveProps {
   className?: string;
   lineColor?: string;
   useRainbow?: boolean;
+  animate?: boolean;
+  initialPhase?: number;
+  lineWidth?: number;
+  sampleStep?: number;
 }
 
-const InteractiveRainbowWave = ({ className, lineColor, useRainbow }: InteractiveRainbowWaveProps) => {
+const InteractiveRainbowWave = ({
+  className,
+  lineColor,
+  useRainbow,
+  animate = true,
+  initialPhase = 0,
+  lineWidth = 4,
+  sampleStep,
+}: InteractiveRainbowWaveProps) => {
   const { currentLanguage } = useDemo();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -21,7 +33,7 @@ const InteractiveRainbowWave = ({ className, lineColor, useRainbow }: Interactiv
     if (!ctx) return;
 
     let animationFrameId: number;
-    let phase = 0;
+    let phase = initialPhase;
 
     const render = () => {
       const rect = canvas.getBoundingClientRect();
@@ -33,7 +45,7 @@ const InteractiveRainbowWave = ({ className, lineColor, useRainbow }: Interactiv
       if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
         canvas.width = width * dpr;
         canvas.height = height * dpr;
-        ctx.scale(dpr, dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       }
 
       ctx.clearRect(0, 0, width, height);
@@ -43,6 +55,7 @@ const InteractiveRainbowWave = ({ className, lineColor, useRainbow }: Interactiv
       const frequency = (Math.PI * numPeaks) / width;
       const amplitude = height * 0.24;
       const speed = 0.09;
+      const step = sampleStep ?? Math.max(0.5, width / 240);
 
       // Create Gradient from dynamic colors or use lineColor
       let strokeStyle: string | CanvasGradient = lineColor || "";
@@ -68,12 +81,12 @@ const InteractiveRainbowWave = ({ className, lineColor, useRainbow }: Interactiv
 
       ctx.beginPath();
       ctx.strokeStyle = strokeStyle;
-      ctx.lineWidth = 4;
+      ctx.lineWidth = lineWidth;
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
       // Draw the wave
-      for (let x = 0; x <= width; x += 2) {
+      for (let x = 0; x <= width; x += step) {
         const nx = x / width;
         // Envelope function
         const envelope = Math.pow(Math.sin(nx * Math.PI), 1.5);
@@ -90,16 +103,20 @@ const InteractiveRainbowWave = ({ className, lineColor, useRainbow }: Interactiv
 
       ctx.stroke();
 
-      phase += speed;
-      animationFrameId = requestAnimationFrame(render);
+      if (animate) {
+        phase += speed;
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
 
     render();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (animate && animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
-  }, [currentLanguage, lineColor, useRainbow]); // Re-init when props change
+  }, [animate, currentLanguage, initialPhase, lineColor, lineWidth, sampleStep, useRainbow]); // Re-init when props change
 
   return (
     <div className={cn("relative w-full h-40", className)}>

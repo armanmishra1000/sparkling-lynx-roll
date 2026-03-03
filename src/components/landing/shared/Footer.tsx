@@ -4,13 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { useDemo } from "@/context/DemoContext";
 import { motion } from "framer-motion";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import Logo from "@/components/landing/shared/Logo";
 
 const Footer = () => {
-  const { currentLanguage } = useDemo();
   return (
     <footer className="bg-white pt-24 pb-12 border-t border-gray-100 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -18,25 +17,10 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-16">
           <div className="max-w-xl">
             {/* Brand Logo */}
-            <Link href="/" className="flex items-center gap-2 mb-8 group w-fit">
-              <div className="relative flex items-center justify-center gap-4">
-                <div className="relative w-12 h-12 shrink-0">
-                  <div
-                    style={{
-                      background: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                    }}
-                    className="w-full h-full rounded-full p-[2px]"
-                  >
-                    <div className="w-full h-full bg-white rounded-full flex items-center justify-center text-lg font-black text-gray-900">
-                      S
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <span className="text-2xl font-bold tracking-tight text-gray-900">
-                Sophie.ai
-              </span>
-            </Link>
+            <Logo
+              className="mb-8"
+              textClassName="text-2xl font-bold tracking-tight text-gray-900"
+            />
             <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6">
               Just ask sophie
             </h3>

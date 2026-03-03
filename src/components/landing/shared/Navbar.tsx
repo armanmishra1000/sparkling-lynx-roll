@@ -7,10 +7,9 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, MessageCircle } from "lucide-react";
-import { useDemo } from "@/context/DemoContext";
+import Logo from "@/components/landing/shared/Logo";
 
 const Navbar = () => {
-  const { currentLanguage } = useDemo();
   const whatsappUrl = "https://wa.me/971505814567";
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,36 +37,22 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div 
+      <div
         className={cn(
-            "w-[95%] max-w-7xl flex items-center justify-between transition-all duration-300 rounded-full px-4 mx-auto",
-            isScrolled 
-                ? "bg-white/80 backdrop-blur-2xl border border-white/40 shadow-sm py-3 ring-1 ring-black/5" 
-                : "bg-transparent py-4 border border-transparent"
+          "w-[95%] max-w-7xl flex items-center justify-between transition-all duration-300 rounded-full px-4 mx-auto",
+          isScrolled
+            ? "bg-white/80 backdrop-blur-2xl border border-white/40 shadow-sm py-3 ring-1 ring-black/5"
+            : "bg-transparent py-4 border border-transparent"
         )}
       >
-        <Link href="/" className="flex items-center gap-2 group">
-           <div className="relative w-10 h-10 shrink-0">
-                  <div
-                    style={{
-                      background: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                    }}
-                    className="w-full h-full rounded-full p-[2px]"
-                  >
-                    <div className="w-full h-full bg-white rounded-full flex items-center justify-center text-lg font-black text-black">
-                      S
-                    </div>
-                  </div>
-                </div>
-           <span className="text-xl font-bold tracking-tight text-black">Sophie.ai</span>
-        </Link>
+        <Logo />
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1 bg-white/50 p-1.5 rounded-full border border-white/20 backdrop-blur-sm">
           {navLinks.map((link) => (
-            <Link 
+            <Link
               key={link.href}
-              href={link.href} 
+              href={link.href}
               className="px-5 py-2 font-medium text-gray-500 hover:text-black hover:bg-white/80 rounded-full transition-all duration-200"
             >
               {link.label}
@@ -96,38 +81,38 @@ const Navbar = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:w-[400px] flex flex-col border-l border-gray-100 bg-white/95 backdrop-blur-xl p-6">
-                <SheetHeader className="mb-8">
-                    <SheetTitle className="text-left text-2xl font-bold flex items-center gap-2">
-                         <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-xs">S</div>
-                         Menu
-                    </SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col gap-2">
-                    {navLinks.map((link) => (
-                        <Link 
-                            key={link.href}
-                            href={link.href} 
-                            onClick={() => setIsOpen(false)}
-                            className="text-lg font-medium text-gray-600 hover:text-black hover:bg-gray-50 px-4 py-3 rounded-xl transition-all"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                    <div className="h-px bg-gray-100 my-4" />
-                    <Link href="/login" onClick={() => setIsOpen(false)} className="text-lg font-medium text-gray-600 hover:text-black px-4 py-3 rounded-xl hover:bg-gray-50">
-                        Log in
-                    </Link>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Button className="w-full h-12 rounded-xl bg-black hover:bg-gray-900 text-white font-bold text-lg mt-4 shadow-lg">
-                        <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp
-                      </Button>
-                    </a>
-                </div>
+              <SheetHeader className="mb-8">
+                <SheetTitle className="text-left text-2xl font-bold flex items-center gap-2">
+                  <Logo withLink={false} showText={false} />
+                  Menu
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium text-gray-600 hover:text-black hover:bg-gray-50 px-4 py-3 rounded-xl transition-all"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <div className="h-px bg-gray-100 my-4" />
+                <Link href="/login" onClick={() => setIsOpen(false)} className="text-lg font-medium text-gray-600 hover:text-black px-4 py-3 rounded-xl hover:bg-gray-50">
+                  Log in
+                </Link>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Button className="w-full h-12 rounded-xl bg-black hover:bg-gray-900 text-white font-bold text-lg mt-4 shadow-lg">
+                    <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp
+                  </Button>
+                </a>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

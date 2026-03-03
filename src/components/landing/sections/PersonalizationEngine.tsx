@@ -72,9 +72,12 @@ const PersonalizationEngine = () => {
                 <p className="text-sm font-semibold text-gray-900">Live Learning Graph</p>
                 <p className="text-sm text-gray-500">Updated after every conversation</p>
               </div>
-              <RainbowGradient className="rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.12em] uppercase text-white">
-                Realtime
-              </RainbowGradient>
+              <div className="relative overflow-hidden rounded-full px-3 py-1">
+                <RainbowGradient className="absolute inset-0 opacity-30" />
+                <span className="relative text-xs font-semibold tracking-widest uppercase text-black">
+                  Realtime
+                </span>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

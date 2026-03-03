@@ -10,7 +10,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Colors } from "@/lib/constants";
-import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import { RainbowIcon } from "@/components/ui/RainbowIcon";
 
 const ComparisonTable = () => {
   const features = [
@@ -127,9 +127,9 @@ const ComparisonTable = () => {
                             <div className="flex items-center justify-center text-gray-700 font-normal">
                               <span className="inline-flex items-center gap-2 text-sm md:text-2xl md:leading-[1.2]">
                                 {isStrongValue ? (
-                                  <RainbowGradient className="inline-flex h-5 w-5 items-center justify-center rounded-full text-white">
-                                    <Check size={12} strokeWidth={3.5} />
-                                  </RainbowGradient>
+                                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white border border-gray-200">
+                                    <RainbowIcon icon={Check} size={14} strokeWidth={3.5} />
+                                  </span>
                                 ) : null}
                                 {feature.sophie}
                               </span>
