@@ -4,65 +4,44 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { useDemo } from "@/context/DemoContext";
 import { motion } from "framer-motion";
+import { RainbowBorder } from "@/components/ui/RainbowBorder";
+import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import Logo from "@/components/landing/shared/Logo";
 
 const Footer = () => {
-  const { currentLanguage } = useDemo();
   return (
-    <footer className="bg-white pt-32 pb-12 border-t border-gray-100 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-gray-50 to-transparent -z-10"></div>
-      <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute -bottom-20 -right-20 w-[600px] h-[600px] bg-purple-100/30 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+    <footer className="bg-white pt-24 pb-12 border-t border-gray-100 relative overflow-hidden">
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Top Section: CTA and Brand */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-24 gap-16">
           <div className="max-w-xl">
             {/* Brand Logo */}
-            <Link href="/" className="flex items-center gap-2 mb-8 group w-fit">
-              <div className="relative w-9 h-9 flex items-center justify-center">
-                {/* logo design with dynamic gradient glow */}
-                <motion.div
-                  key={`footer-logo-glow-${currentLanguage.id}`}
-                  style={{
-                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                  }}
-                  className="absolute inset-0 rounded-full opacity-80 group-hover:opacity-100 blur-[6px] transition-all duration-500"
-                ></motion.div>
-                <div className="relative w-full h-full bg-white rounded-full flex items-center justify-center text-sm font-black border border-white/50 text-gray-900 shadow-sm">
-                  S
-                </div>
-              </div>
-              <span className="text-2xl font-bold tracking-tight text-gray-900">
-                Sophie.ai
-              </span>
-            </Link>
-            <h3 className="text-5xl md:text-6xl font-bold tracking-tighter mb-8 leading-[1.1]">
-              Ready to find your <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] to-[#7B61FF]">
-                authentic voice?
-              </span>
+            <Logo
+              className="mb-8"
+              textClassName="text-2xl font-bold tracking-tight text-gray-900"
+            />
+            <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6">
+              Just ask sophie
             </h3>
-            <p className="text-xl text-gray-500 mb-10 max-w-md font-light">
+            <p className="text-xl text-gray-500 max-w-md mx-auto leading-relaxed">
               Join thousands of learners who have stopped memorizing and started
               speaking.
             </p>
 
             {/* Meet and greet Sophie */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mt-8">
               <div className="relative group">
-                <motion.div
-                  key={`footer-glow-${currentLanguage.id}`}
-                  style={{
-                    backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
-                  }}
-                  className="absolute inset-0 rounded-full opacity-60 group-hover:opacity-80 blur-xl transition-all duration-500 scale-105"
-                ></motion.div>
-                <Button className="relative h-16 px-10 rounded-full text-lg font-bold bg-white text-gray-900 hover:bg-white border border-gray-200/50 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-                  Meet and greet Sophie
-                </Button>
+                <RainbowBorder
+                  borderRadius={9999}
+                  borderWidth={2}
+                  innerClassName="relative bg-white w-full h-14 px-12 py-3 flex items-center justify-center overflow-hidden"
+                >
+                  <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                  <span className="relative z-10 font-medium text-black">
+                    Meet and greet Sophie
+                  </span>
+                </RainbowBorder>
               </div>
               {/* <Button
                 variant="outline"
@@ -75,7 +54,7 @@ const Footer = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 w-full lg:w-auto">
             <div>
-              <h4 className="font-bold mb-8 text-black text-sm uppercase tracking-widest">
+              <h4 className="font-semibold mb-8 text-black text-lg">
                 Product
               </h4>
               <ul className="space-y-5 text-gray-500 font-medium">
@@ -119,7 +98,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="font-bold mb-8 text-black text-sm uppercase tracking-widest">
+              <h4 className="font-semibold mb-8 text-black text-lg">
                 Company
               </h4>
               <ul className="space-y-5 text-gray-500 font-medium">
@@ -138,10 +117,10 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="font-bold mb-8 text-black text-sm uppercase tracking-widest">
+              <h4 className="font-semibold mb-8 text-black text-lg">
                 Legal
               </h4>
-              <ul className="space-y-5 text-gray-500 font-medium">
+              <ul className="space-y-5 text-gray-500">
                 <li>
                   <Link
                     href="/privacy"
@@ -172,10 +151,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-200/60 pt-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p className="font-medium">
-            &copy; {new Date().getFullYear()} Sophie AI Inc. All rights
-            reserved.
+        <div className="border-t border-gray-200 pt-10 flex flex-col md:flex-row justify-between items-center">
+          <p className="font-medium text-gray-500">
+            &copy; 2026 Olguin Technologies FZCO. All rights reserved.
           </p>
 
           {/* <div className="flex items-center space-x-8 mt-6 md:mt-0 font-bold text-gray-500">

@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "@/components/landing/Navbar";
-import Footer from "@/components/landing/Footer";
-import RainbowWaveBackground from "@/components/landing/RainbowWaveBackground";
+import Navbar from "@/components/landing/shared/Navbar";
+import Footer from "@/components/landing/shared/Footer";
+import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
 import { FileText, CheckCircle, AlertCircle } from "lucide-react";
 
 export default function TermsPage() {
@@ -50,7 +50,7 @@ export default function TermsPage() {
            <section>
             <h2 className="text-2xl font-bold mb-4 text-gray-900">3. Subscriptions & Billing</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Sophie.ai offers Free and Paid tiers. Paid subscriptions are billed monthly or annually. You may cancel at any time, and access will continue until the end of your billing period.
+              Sophie.ai offers Free and Paid tiers. Paid subscriptions are billed monthly, quarterly, semi-annually, or annually. You may cancel at any time, and access will continue until the end of your billing period.
             </p>
             <div className="bg-gray-50 p-4 rounded-xl text-sm text-gray-500 border border-gray-100">
                 <strong>Refund Policy:</strong> We offer a 14-day money-back guarantee for first-time subscribers who are unsatisfied with the service.

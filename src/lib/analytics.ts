@@ -1,9 +1,9 @@
-"use client";
+import { sendGAEvent } from '@next/third-parties/google';
 
-type EventName = 
-  | "cta_click_primary" 
-  | "cta_click_secondary" 
-  | "signup_submit" 
+type EventName =
+  | "cta_click_primary"
+  | "cta_click_secondary"
+  | "signup_submit"
   | "pricing_tier_select"
   | "faq_expand"
   | "video_modal_open";
@@ -23,11 +23,11 @@ declare global {
 }
 
 export const trackEvent = (name: EventName, properties?: EventProperties) => {
-  if (process.env.NODE_ENV === "development") {
+  // Log to console in development environment for verification
+  if (process.env.NODE_ENV === 'development') {
     console.log(`[Analytics] ${name}`, properties);
   }
-  
-  if (typeof window !== "undefined" && window.gtag) {
-    window.gtag("event", name, properties);
-  }
+
+  // Send data to Google Analytics using the official helper
+  sendGAEvent("event", name, properties || {});
 };

@@ -10,11 +10,11 @@ const RainbowWaveBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white">
       {/* Aurora Orbs - Matching Current Language Color */}
-      
+
       {/* Primary Language Color */}
-      <motion.div 
+      <motion.div
         key={`primary-${currentLanguage.id}`}
-        animate={{ 
+        animate={{
           scale: [1, 1.2, 1],
           opacity: [0.15, 0.25, 0.15],
           x: [0, 100, 0],
@@ -24,11 +24,11 @@ const RainbowWaveBackground = () => {
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] rounded-full blur-[120px] mix-blend-multiply"
       />
-      
+
       {/* Secondary Glow */}
-      <motion.div 
+      <motion.div
         key={`secondary-${currentLanguage.id}`}
-        animate={{ 
+        animate={{
           scale: [1, 1.1, 1],
           opacity: [0.1, 0.2, 0.1],
           x: [0, -50, 0],
@@ -39,9 +39,9 @@ const RainbowWaveBackground = () => {
       />
 
       {/* Tertiary Glow */}
-      <motion.div 
+      <motion.div
         key={`tertiary-${currentLanguage.id}`}
-        animate={{ 
+        animate={{
           scale: [1, 1.3, 1],
           opacity: [0.05, 0.15, 0.05],
           x: [0, 50, 0],
@@ -53,9 +53,9 @@ const RainbowWaveBackground = () => {
       />
 
       {/* Quaternary Glow */}
-      <motion.div 
+      <motion.div
         key={`quaternary-${currentLanguage.id}`}
-        animate={{ 
+        animate={{
           scale: [1, 1.4, 1],
           opacity: [0.1, 0.2, 0.1],
           x: [0, -30, 0],

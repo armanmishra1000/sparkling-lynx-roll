@@ -68,8 +68,8 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		fontFamily: {
-  			sans: ['var(--font-oswald)'],
-  			oswald: ['var(--font-oswald)'],
+  			sans: ['var(--font-google-sans)'],
+  			googleSans: ['var(--font-google-sans)'],
   		},
   		keyframes: {
   			'accordion-down': {

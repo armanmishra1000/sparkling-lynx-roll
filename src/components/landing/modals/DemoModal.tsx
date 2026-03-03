@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Play, Mic, RefreshCw, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import InteractiveRainbowWave from "./InteractiveRainbowWave";
+import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
 
 interface DemoModalProps {
     children: React.ReactNode;

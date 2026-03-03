@@ -139,6 +139,32 @@
   animation: marquee2 30s linear infinite;
 }
 
+@keyframes languages-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(var(--marquee-distance));
+  }
+}
+
+.animate-languages-marquee {
+  animation-name: languages-marquee;
+  animation-duration: var(--marquee-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-languages-marquee {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
 /* Gradient Masks */
 .mask-linear-fade {
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -167,4 +193,19 @@
     radial-gradient(at 50% 0%, hsla(272, 100%, 95%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 0%, hsla(180, 100%, 95%, 1) 0px, transparent 50%),
     radial-gradient(at 50% 50%, hsla(270, 100%, 98%, 1) 0px, transparent 50%);
+}
+
+/* Custom Scrollbar Utility */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  background-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
 }

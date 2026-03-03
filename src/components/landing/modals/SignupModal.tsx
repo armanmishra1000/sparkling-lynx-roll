@@ -9,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,12 +20,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2, CheckCircle2, Sparkles } from "lucide-react";
+import { Loader2, CheckCircle2, Sparkles, X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { Confetti } from "@/components/ui/confetti";
 import { motion } from "framer-motion";
 import { useDemo } from "@/context/DemoContext";
 import { demoLanguages } from "@/lib/demo-languages";
+import { RainbowBorder } from "@/components/ui/RainbowBorder";
+import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import { RainbowIcon } from "@/components/ui/RainbowIcon";
 
 interface SignupModalProps {
   children: React.ReactNode;
@@ -92,13 +96,26 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[450px] overflow-hidden bg-white border-none rounded-[2rem] p-0">
+      <DialogContent hideClose={true} className="sm:max-w-[450px] overflow-hidden bg-white border-none rounded-[2rem] p-0 font-sans">
+        <button
+          onClick={() => setOpen(false)}
+          className="absolute right-3 top-3 z-50 group focus:outline-none"
+        >
+          <RainbowBorder
+            borderRadius={9999}
+            borderWidth={1.5}
+            innerClassName="w-8 h-8 bg-white flex items-center justify-center rounded-full relative overflow-hidden"
+          >
+            <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+            <X className="w-5 h-5 text-black transition-colors relative z-10" />
+          </RainbowBorder>
+        </button>
         {step === "form" ? (
           <div className="p-8">
             <DialogHeader className="mb-6">
-              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+              {/* <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
                 <Sparkles className="w-6 h-6 text-black" />
-              </div>
+              </div> */}
               <DialogTitle className="text-2xl font-bold">Join the Early Access List</DialogTitle>
               <DialogDescription className="text-base text-gray-500">
                 Sophie is currently in private beta. Reserve your spot today.
@@ -112,7 +129,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                   type="email"
                   placeholder="hello@example.com"
                   required
-                  className="h-11 rounded-xl bg-gray-50 border-gray-200"
+                  className="h-12 rounded-xl bg-gray-50 border-gray-300 focus:outline-none focus-visible:ring-0 shadow-none "
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
@@ -121,7 +138,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                 <div className="space-y-2">
                   <Label>I want to learn</Label>
                   <Select required onValueChange={(val) => setFormData({ ...formData, language: val })} defaultValue={currentLanguage.id}>
-                    <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
+                    <SelectTrigger className="h-12 rounded-xl bg-gray-50 border-gray-300 ring-0 focus:ring-0 focus:ring-offset-0 shadow-none focus-visible:ring-0">
                       <SelectValue placeholder="Language" />
                     </SelectTrigger>
                     <SelectContent>
@@ -134,7 +151,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                 <div className="space-y-2">
                   <Label>My level is</Label>
                   <Select required onValueChange={(val) => setFormData({ ...formData, level: val })}>
-                    <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
+                    <SelectTrigger className="h-12 rounded-xl bg-gray-50 border-gray-300 ring-0 focus:ring-0 focus:ring-offset-0 shadow-none focus-visible:ring-0">
                       <SelectValue placeholder="Level" />
                     </SelectTrigger>
                     <SelectContent>
@@ -149,7 +166,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
               <div className="space-y-2">
                 <Label>Main goal</Label>
                 <Select onValueChange={(val) => setFormData({ ...formData, goal: val })}>
-                  <SelectTrigger className="h-11 rounded-xl bg-gray-50 border-gray-200">
+                  <SelectTrigger className="h-12 rounded-xl bg-gray-50 border-gray-300 ring-0 focus:ring-0 focus:ring-offset-0 shadow-none focus-visible:ring-0">
                     <SelectValue placeholder="Select a goal" />
                   </SelectTrigger>
                   <SelectContent>
@@ -162,36 +179,63 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                 </Select>
               </div>
 
-              <Button type="submit" className="w-full h-12 rounded-xl bg-black hover:bg-gray-800 text-white font-bold text-lg mt-2 shadow-lg hover:shadow-xl transition-all" disabled={loading}>
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Joining...
-                  </>
-                ) : (
-                  "Join Waitlist"
-                )}
-              </Button>
+              <div className="mt-2">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group inline-block transition-transform active:scale-9 w-full"
+                >
+                  <RainbowBorder
+                    className="w-full"
+                    borderWidth={2}
+                    borderRadius={9999}
+                    innerClassName="relative bg-white w-full h-12 px-12 py-3 flex items-center justify-center overflow-hidden"
+                  >
+                    <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                    <span className="relative z-10 font-medium text-black inline-flex items-center">
+                      {loading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Joining...
+                        </>
+                      ) : (
+                        "Join Waitlist"
+                      )}
+                    </span>
+                  </RainbowBorder>
+                </button>
+              </div>
             </form>
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-16 px-8 text-center space-y-6 relative bg-white">
             <Confetti />
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-2"
-            >
-              <CheckCircle2 className="w-12 h-12 text-green-600" />
-            </motion.div>
+            <div className="flex items-center justify-center mb-2">
+              <RainbowIcon icon={CheckCircle2} size={48} />
+            </div>
             <div>
-              <h3 className="text-3xl font-bold mb-2">You&apos;re on the list!</h3>
-              <p className="text-gray-500 text-lg max-w-xs mx-auto">
-                We&apos;ve sent a confirmation email to <strong>{formData.email}</strong>.
+              <h3 className="text-3xl mb-2">You&apos;re on the list!</h3>
+              <p className="text-gray-500 text-lg leading-relaxed max-w-xs mx-auto">
+                We&apos;ve sent a confirmation email to <span className="font-semibold">{formData.email}</span>.
               </p>
             </div>
-            <Button variant="outline" onClick={() => setOpen(false)} className="h-12 px-8 rounded-xl border-2 border-gray-100 font-bold hover:bg-gray-50 hover:border-gray-200">
-              Close
-            </Button>
+            <div className="w-full max-w-[200px] group">
+              <button
+                onClick={() => setOpen(false)}
+                className="w-full transition-transform active:scale-95"
+              >
+                <RainbowBorder
+                  className="w-full"
+                  borderWidth={2}
+                  borderRadius={9999}
+                  innerClassName="relative bg-white w-full h-12 px-8 flex items-center justify-center overflow-hidden"
+                >
+                  <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                  <span className="relative z-10 font-medium text-black">
+                    Close
+                  </span>
+                </RainbowBorder>
+              </button>
+            </div>
           </div>
         )}
       </DialogContent>

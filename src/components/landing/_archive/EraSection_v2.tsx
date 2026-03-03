@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import InteractiveRainbowWave from "./InteractiveRainbowWave";
+import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
 
 const EraSection = () => {
   return (

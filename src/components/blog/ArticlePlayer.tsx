@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause } from "lucide-react";
-import InteractiveRainbowWave from "@/components/landing/InteractiveRainbowWave";
+import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ArticlePlayer = () => {
