@@ -1,15 +1,13 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-  DialogClose,
+  DialogTrigger
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,17 +16,17 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
-import { Loader2, CheckCircle2, Sparkles, X } from "lucide-react";
+import { Loader2, CheckCircle2, X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { Confetti } from "@/components/ui/confetti";
-import { motion } from "framer-motion";
 import { useDemo } from "@/context/DemoContext";
 import { demoLanguages } from "@/lib/demo-languages";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { RainbowIcon } from "@/components/ui/RainbowIcon";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface SignupModalProps {
   children: React.ReactNode;
@@ -37,11 +35,11 @@ interface SignupModalProps {
 
 const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps) => {
   const { currentLanguage } = useDemo();
+  const { messages } = useLanguage();
   const [step, setStep] = useState<"form" | "success">("form");
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Form state
   const [formData, setFormData] = useState({
     email: "",
     language: "",
@@ -51,10 +49,8 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
 
   const handleOpenChange = (newOpen: boolean) => {
     setOpen(newOpen);
-    if (!newOpen) {
-      if (step === "success") {
-        setTimeout(() => setStep("form"), 500);
-      }
+    if (!newOpen && step === "success") {
+      setTimeout(() => setStep("form"), 500);
     }
     if (newOpen) {
       trackEvent("cta_click_primary", { location: triggerLocation });
@@ -72,7 +68,6 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
       location: triggerLocation
     });
 
-    // Send notification to Telegram (fire and forget)
     fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -82,8 +77,8 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
         language: formData.language,
         level: formData.level,
         goal: formData.goal,
-        location: triggerLocation,
-      }),
+        location: triggerLocation
+      })
     }).catch(console.error);
 
     await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -93,14 +88,9 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
-      <DialogContent hideClose={true} className="sm:max-w-[450px] overflow-hidden bg-white border-none rounded-[2rem] p-0 font-sans">
-        <button
-          onClick={() => setOpen(false)}
-          className="absolute right-3 top-3 z-50 group focus:outline-none"
-        >
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent hideClose className="sm:max-w-[450px] overflow-hidden bg-white border-none rounded-[2rem] p-0 font-sans">
+        <button onClick={() => setOpen(false)} className="absolute right-3 top-3 z-50 group focus:outline-none">
           <RainbowBorder
             borderRadius={9999}
             borderWidth={1.5}
@@ -110,81 +100,77 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
             <X className="w-5 h-5 text-black transition-colors relative z-10" />
           </RainbowBorder>
         </button>
+
         {step === "form" ? (
           <div className="p-8">
             <DialogHeader className="mb-6">
-              {/* <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                <Sparkles className="w-6 h-6 text-black" />
-              </div> */}
-              <DialogTitle className="text-2xl font-bold">Join the Early Access List</DialogTitle>
-              <DialogDescription className="text-base text-gray-500">
-                Sophie is currently in private beta. Reserve your spot today.
-              </DialogDescription>
+              <DialogTitle className="text-2xl font-bold">{messages.signupModal.title}</DialogTitle>
+              <DialogDescription className="text-base text-gray-500">{messages.signupModal.description}</DialogDescription>
             </DialogHeader>
+
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="email">Email address</Label>
+                <Label htmlFor="email">{messages.signupModal.emailLabel}</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="hello@example.com"
+                  placeholder={messages.signupModal.emailPlaceholder}
                   required
-                  className="h-12 rounded-xl bg-gray-50 border-gray-300 focus:outline-none focus-visible:ring-0 shadow-none "
+                  className="h-12 rounded-xl bg-gray-50 border-gray-300 focus:outline-none focus-visible:ring-0 shadow-none"
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>I want to learn</Label>
+                  <Label>{messages.signupModal.learnLabel}</Label>
                   <Select required onValueChange={(val) => setFormData({ ...formData, language: val })} defaultValue={currentLanguage.id}>
                     <SelectTrigger className="h-12 rounded-xl bg-gray-50 border-gray-300 ring-0 focus:ring-0 focus:ring-offset-0 shadow-none focus-visible:ring-0">
-                      <SelectValue placeholder="Language" />
+                      <SelectValue placeholder={messages.signupModal.languagePlaceholder} />
                     </SelectTrigger>
                     <SelectContent>
                       {demoLanguages.map((lang) => (
-                        <SelectItem key={lang.id} value={lang.id}>{lang.name}</SelectItem>
+                        <SelectItem key={lang.id} value={lang.id}>
+                          {lang.name}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div className="space-y-2">
-                  <Label>My level is</Label>
+                  <Label>{messages.signupModal.levelLabel}</Label>
                   <Select required onValueChange={(val) => setFormData({ ...formData, level: val })}>
                     <SelectTrigger className="h-12 rounded-xl bg-gray-50 border-gray-300 ring-0 focus:ring-0 focus:ring-offset-0 shadow-none focus-visible:ring-0">
-                      <SelectValue placeholder="Level" />
+                      <SelectValue placeholder={messages.signupModal.levelPlaceholder} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
+                      <SelectItem value="beginner">{messages.signupModal.levelBeginner}</SelectItem>
+                      <SelectItem value="intermediate">{messages.signupModal.levelIntermediate}</SelectItem>
+                      <SelectItem value="advanced">{messages.signupModal.levelAdvanced}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label>Main goal</Label>
+                <Label>{messages.signupModal.goalLabel}</Label>
                 <Select onValueChange={(val) => setFormData({ ...formData, goal: val })}>
                   <SelectTrigger className="h-12 rounded-xl bg-gray-50 border-gray-300 ring-0 focus:ring-0 focus:ring-offset-0 shadow-none focus-visible:ring-0">
-                    <SelectValue placeholder="Select a goal" />
+                    <SelectValue placeholder={messages.signupModal.goalPlaceholder} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="travel">Travel confidentally</SelectItem>
-                    <SelectItem value="work">Work & Business</SelectItem>
-                    <SelectItem value="exams">Study tool for school</SelectItem>
-                    <SelectItem value="dating">Family, friends or dating</SelectItem>
-                    <SelectItem value="dating">Country migration</SelectItem>
+                    <SelectItem value="travel">{messages.signupModal.goalTravel}</SelectItem>
+                    <SelectItem value="work">{messages.signupModal.goalWork}</SelectItem>
+                    <SelectItem value="exams">{messages.signupModal.goalExams}</SelectItem>
+                    <SelectItem value="dating">{messages.signupModal.goalFamilyDating}</SelectItem>
+                    <SelectItem value="migration">{messages.signupModal.goalMigration}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="mt-2">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="group inline-block transition-transform active:scale-9 w-full"
-                >
+                <button type="submit" disabled={loading} className="group inline-block transition-transform active:scale-9 w-full">
                   <RainbowBorder
                     className="w-full"
                     borderWidth={2}
@@ -195,10 +181,10 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                     <span className="relative z-10 font-medium text-black inline-flex items-center">
                       {loading ? (
                         <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Joining...
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {messages.signupModal.joining}
                         </>
                       ) : (
-                        "Join Waitlist"
+                        messages.signupModal.joinWaitlist
                       )}
                     </span>
                   </RainbowBorder>
@@ -213,16 +199,13 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
               <RainbowIcon icon={CheckCircle2} size={48} />
             </div>
             <div>
-              <h3 className="text-3xl mb-2">You&apos;re on the list!</h3>
+              <h3 className="text-3xl mb-2">{messages.signupModal.successTitle}</h3>
               <p className="text-gray-500 text-lg leading-relaxed max-w-xs mx-auto">
-                We&apos;ve sent a confirmation email to <span className="font-semibold">{formData.email}</span>.
+                {messages.signupModal.successDescription} <span className="font-semibold">{formData.email}</span>.
               </p>
             </div>
             <div className="w-full max-w-[200px] group">
-              <button
-                onClick={() => setOpen(false)}
-                className="w-full transition-transform active:scale-95"
-              >
+              <button onClick={() => setOpen(false)} className="w-full transition-transform active:scale-95">
                 <RainbowBorder
                   className="w-full"
                   borderWidth={2}
@@ -230,9 +213,7 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
                   innerClassName="relative bg-white w-full h-12 px-8 flex items-center justify-center overflow-hidden"
                 >
                   <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-                  <span className="relative z-10 font-medium text-black">
-                    Close
-                  </span>
+                  <span className="relative z-10 font-medium text-black">{messages.signupModal.close}</span>
                 </RainbowBorder>
               </button>
             </div>
@@ -244,3 +225,4 @@ const SignupModal = ({ children, triggerLocation = "unknown" }: SignupModalProps
 };
 
 export default SignupModal;
+

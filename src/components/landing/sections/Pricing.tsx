@@ -1,90 +1,69 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, Sparkles } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import SignupModal from "@/components/landing/modals/SignupModal";
-import { motion, Variants } from "framer-motion";
 import { useDemo } from "@/context/DemoContext";
-import { Colors } from "@/lib/constants";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { RainbowIcon } from "@/components/ui/RainbowIcon";
 import { RainbowText } from "@/components/ui/RainbowText";
+import { useLanguage } from "@/context/LanguageContext";
 
 type SbbPlanId = "6mo" | "12mo" | "18mo" | "24mo";
 
 type SbbPlan = {
   id: SbbPlanId;
-  label: string;
   monthlyPrice: number;
   billedTotal: number;
-  billedCycleLabel: string;
   savePercent: number;
 };
 
 const sbbPlans: readonly SbbPlan[] = [
   {
     id: "6mo",
-    label: "6mo",
     monthlyPrice: 10,
     billedTotal: 60,
-    billedCycleLabel: "6 months",
     savePercent: 50,
   },
   {
     id: "12mo",
-    label: "12mo",
     monthlyPrice: 9,
     billedTotal: 108,
-    billedCycleLabel: "12 months",
     savePercent: 55,
   },
   {
     id: "18mo",
-    label: "18mo",
     monthlyPrice: 8,
     billedTotal: 144,
-    billedCycleLabel: "18 months",
     savePercent: 60,
   },
   {
     id: "24mo",
-    label: "24mo",
     monthlyPrice: 7,
     billedTotal: 168,
-    billedCycleLabel: "24 months",
     savePercent: 65,
   },
 ];
 
 const Pricing = () => {
   const { currentLanguage } = useDemo();
+  const { messages } = useLanguage();
   const [activeSbbPlanId, setActiveSbbPlanId] = useState<SbbPlanId>("6mo");
   const activeSbbPlan =
     sbbPlans.find((plan) => plan.id === activeSbbPlanId) ?? sbbPlans[0];
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+  const sbbTabLabels: Record<SbbPlanId, string> = {
+    "6mo": messages.pricing.proTab6,
+    "12mo": messages.pricing.proTab12,
+    "18mo": messages.pricing.proTab18,
+    "24mo": messages.pricing.proTab24,
   };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        bounce: 0.4,
-        duration: 0.6,
-      }
-    },
+  const sbbCycleLabels: Record<SbbPlanId, string> = {
+    "6mo": messages.pricing.proCycle6,
+    "12mo": messages.pricing.proCycle12,
+    "18mo": messages.pricing.proCycle18,
+    "24mo": messages.pricing.proCycle24,
   };
 
   return (
@@ -94,7 +73,7 @@ const Pricing = () => {
         <div className="text-center mb-20">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6">
-              Invest in your{" "}
+              {messages.pricing.titlePrefix}{" "}
               <span
                 style={{
                   backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
@@ -104,11 +83,11 @@ const Pricing = () => {
                 }}
                 className="font-bold"
               >
-                {currentLanguage.name} fluency.
+                {currentLanguage.name} {messages.pricing.titleSuffix}
               </span>
             </h2>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-              Cheaper than one hour with a private tutor.
+              {messages.pricing.cheaperThanTutor}
             </p>
           </div>
         </div>
@@ -122,27 +101,21 @@ const Pricing = () => {
             className="relative bg-white rounded-3xl border border-gray-100 shadow-sm lg:p-8 p-6 h-full flex flex-col"
           >
             <div className="mb-8 space-y-2">
-              <h3 className="text-2xl font-bold text-black">M&G</h3>
+              <h3 className="text-2xl font-bold text-black">{messages.pricing.freeTierName}</h3>
               <p className="text-gray-500 text-sm">
-                Meet and Greet Sophie
+                {messages.pricing.freeTierSubtitle}
               </p>
             </div>
 
             <div className="flex items-baseline gap-2 mb-6">
               <div className="text-5xl font-bold text-black">
                 <span>$0/</span>{" "}
-                <span className="text-xl font-medium">7 days</span>
+                <span className="text-xl font-medium">{messages.pricing.freePriceSuffix}</span>
               </div>
             </div>
 
             <ul className="space-y-4 mb-10">
-              {[
-                "App in 15 languages",
-                "Natural conversations with Sophie in 50+ languages",
-                "Sophie's translation from any to any available language",
-                "Unlimited vocabulary saver in all available languages.",
-                "100+ conversational scenarios",
-              ].map((feature, i) => (
+              {messages.pricing.freeFeatures.map((feature, i) => (
                 <li
                   key={i}
                   className="flex items-center space-x-3 text-sm font-medium text-gray-600"
@@ -164,7 +137,7 @@ const Pricing = () => {
                   innerClassName="relative bg-white w-full h-12 px-12 py-3 flex items-center justify-center overflow-hidden"
                 >
                   <RainbowGradient className="absolute inset-0 opacity-0 hover:opacity-30 transition-opacity duration-300" />
-                  <span className="relative z-10 font-medium text-black">Join Waitlist</span>
+                  <span className="relative z-10 font-medium text-black">{messages.pricing.joinWaitlist}</span>
                 </RainbowBorder>
               </SignupModal>
             </div>
@@ -182,7 +155,7 @@ const Pricing = () => {
                 <div className="space-y-2">
                   <div className="flex items-start justify-between">
                     <h3 className="text-2xl font-bold text-black flex items-center gap-2">
-                      SCF
+                      {messages.pricing.premiumTierName}
                       {/* <Sparkles className="w-5 h-5 text-[#FFD700] fill-current" /> */}
                     </h3>
                     <span
@@ -192,11 +165,11 @@ const Pricing = () => {
                       }}
                       className="bg-clip-text text-transparent text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider border-2"
                     >
-                      Popular
+                      {messages.pricing.premiumBadge}
                     </span>
                   </div>
                   <p className="text-gray-500 text-sm">
-                    Sophie Close Friend
+                    {messages.pricing.premiumTierSubtitle}
                   </p>
                 </div>
               </div>
@@ -204,18 +177,13 @@ const Pricing = () => {
               <div className="mb-6 space-y-2">
                 <div className="text-5xl font-bold tracking-tight text-black">
                   <span>$20/</span>{" "}
-                  <span className="text-xl font-medium">Month regular price</span>
+                  <span className="text-xl font-medium">{messages.pricing.premiumRegularPriceSuffix}</span>
                 </div>
-                <div className="text-gray-500 font-medium text-lg">$14/Month launch price</div>
+                <div className="text-gray-500 font-medium text-lg">{messages.pricing.premiumLaunchPrice}</div>
               </div>
 
               <ul className="space-y-4 mb-10">
-                {[
-                  "Everything is included in the free trial.",
-                  "24/7 Customer support. Guaranteed.",
-                  "Unrestricted app usage",
-                  "Strategic ambassador option.",
-                ].map((feature, i) => (
+                {messages.pricing.premiumFeatures.map((feature, i) => (
                   <li
                     key={i}
                     className="flex items-center space-x-3 text-sm font-medium text-gray-600"
@@ -243,7 +211,7 @@ const Pricing = () => {
                     }}
                   >
                     <div className="h-full px-12 rounded-full bg-white flex items-center justify-center font-medium text-black hover:bg-white/90 transition-colors">
-                      Start Free Trial
+                      {messages.pricing.startFreeTrial}
                     </div>
                   </button>
                 </SignupModal>
@@ -258,7 +226,7 @@ const Pricing = () => {
                 <div className="space-y-2">
                   <div className="flex items-start justify-between">
                     <h3 className="text-2xl font-bold text-black flex items-center gap-2">
-                      SBB
+                      {messages.pricing.proTierName}
                       {/* <RainbowIcon icon={Sparkles} size={18} strokeWidth={2.3} /> */}
                     </h3>
                     <RainbowBorder
@@ -267,11 +235,11 @@ const Pricing = () => {
                       className="inline-flex"
                       innerClassName="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider bg-white"
                     >
-                      <RainbowText text="Best Value" />
+                      <RainbowText text={messages.pricing.bestValue} />
                     </RainbowBorder>
                   </div>
                   <p className="text-gray-500 text-sm">
-                    Sophie Best Buddy
+                    {messages.pricing.proTierSubtitle}
                   </p>
                 </div>
               </div>
@@ -279,10 +247,12 @@ const Pricing = () => {
               <div className="mb-7 space-y-3">
                 <div className="text-5xl font-bold tracking-tight text-black">
                   <span>${activeSbbPlan.monthlyPrice}/</span>{" "}
-                  <span className="text-xl font-medium">month</span>
+                  <span className="text-xl font-medium">{messages.pricing.proMonth}</span>
                 </div>
                 <div className="text-gray-500 font-medium text-lg">
-                  billed ${activeSbbPlan.billedTotal} every {activeSbbPlan.billedCycleLabel}
+                  {messages.pricing.proBilledEvery
+                    .replace("{total}", String(activeSbbPlan.billedTotal))
+                    .replace("{cycle}", sbbCycleLabels[activeSbbPlan.id])}
                 </div>
                 <RainbowBorder
                   borderWidth={1}
@@ -291,7 +261,7 @@ const Pricing = () => {
                   innerClassName="px-5 py-2 text-sm font-semibold bg-white text-black"
                 >
                   <span className="mr-2" aria-hidden>$</span>
-                  Save {activeSbbPlan.savePercent}% vs monthly
+                  {messages.pricing.saveVsMonthly.replace("{percent}", String(activeSbbPlan.savePercent))}
                 </RainbowBorder>
               </div>
 
@@ -319,7 +289,7 @@ const Pricing = () => {
                         {isActive ? (
                           <RainbowGradient className="absolute inset-0 opacity-30" />
                         ) : null}
-                        <span className="relative text-black">{plan.label}</span>
+                        <span className="relative text-black">{sbbTabLabels[plan.id]}</span>
                       </button>
                     </RainbowBorder>
                   );
@@ -327,13 +297,7 @@ const Pricing = () => {
               </div>
 
               <ul className="space-y-4 mb-10">
-                {[
-                  "Everything in Sophie Close Friend",
-                  "Priority 24/7 support",
-                  "Exclusive content & early access",
-                  "Custom learning path",
-                  "Dedicated account manager",
-                ].map((feature, i) => (
+                {messages.pricing.proFeatures.map((feature, i) => (
                   <li
                     key={i}
                     className="flex items-center space-x-3 text-sm font-medium text-gray-700"
@@ -355,7 +319,7 @@ const Pricing = () => {
                     innerClassName="relative bg-white w-full h-12 px-12 py-3 flex items-center justify-center overflow-hidden"
                   >
                     <RainbowGradient className="absolute inset-0 opacity-0 hover:opacity-30 transition-opacity duration-300" />
-                    <span className="relative z-10 font-medium text-black">Join Waitlist</span>
+                    <span className="relative z-10 font-medium text-black">{messages.pricing.joinWaitlist}</span>
                   </RainbowBorder>
                 </SignupModal>
               </div>

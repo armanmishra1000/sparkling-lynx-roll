@@ -6,8 +6,11 @@ import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainb
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import LanguagesMarqueeSection from "@/components/landing/sections/LanguagesMarqueeSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 const EraSection = () => {
+  const { messages } = useLanguage();
+
   return (
     <section className="relative pb-24 pt-24 md:pt-32 overflow-hidden bg-white min-h-[600px] flex flex-col items-center justify-center">
       <div className="container mx-auto max-w-7xl px-4 relative z-10 flex flex-col items-center text-center">
@@ -33,7 +36,7 @@ const EraSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-2xl md:text-4xl font-semibold text-black"
         >
-          Your language personal assistant.
+          {messages.era.subtitle}
         </motion.h2>
 
         {/* Part 2: Wave - Full Width */}
@@ -56,10 +59,10 @@ const EraSection = () => {
           className="mb-8 text-center space-y-4"
         >
           <p className="text-3xl md:text-5xl font-semibold text-black">
-            Any Language. Anytime. Anywhere
+            {messages.era.line1}
           </p>
           <p className="text-xl md:text-3xl text-gray-500">
-            Speak with Sophie for Fast & Efficient Fluency
+            {messages.era.line2}
           </p>
         </motion.div>
 
@@ -92,7 +95,7 @@ const EraSection = () => {
               >
                 <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                 <span className="relative z-10 font-medium text-black">
-                  Meet Sophie
+                  {messages.era.meetButton}
                 </span>
               </RainbowBorder>
             </a>

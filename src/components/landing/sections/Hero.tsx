@@ -12,9 +12,11 @@ import Logo from "@/components/landing/shared/Logo";
 import { useDemo } from "@/context/DemoContext";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
   const { currentLanguage } = useDemo();
+  const { messages } = useLanguage();
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pb-24">
@@ -41,7 +43,7 @@ const Hero = () => {
                 ></motion.span>
               </span>
               <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                New: {currentLanguage.name} Dialects Added
+                {messages.hero.newDialectsAdded.replace("{language}", currentLanguage.name)}
               </span>
             </div>
 
@@ -52,7 +54,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.8 }}
               >
-                Don't just
+                {messages.hero.dontJust}
               </motion.span>
               <div className="min-h-[1.2em] flex flex-col justify-center">
                 <AnimatePresence mode="wait">
@@ -92,9 +94,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-500 max-w-xl leading-relaxed font-light">
-              Stop translating in your head, just ask Sophie. She will help you to
-              conquer real conversation to speak like a native, not like a
-              textbook student.
+              {messages.hero.intro}
             </p>
 
             <div
@@ -130,7 +130,7 @@ const Hero = () => {
                   >
                     <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                     <span className="relative z-10 flex items-center font-medium text-black">
-                      <Play className="mr-2 w-3 h-3 fill-current" /> Hear Sophie
+                      <Play className="mr-2 w-3 h-3 fill-current" /> {messages.hero.hearSophie}
                     </span>
                   </RainbowBorder>
                 </button>
@@ -192,7 +192,7 @@ const Hero = () => {
                       </div>
                     </div>
                     <div className="px-3 py-1 rounded-full bg-gray-100/50 border border-gray-200/50 text-xs font-bold text-gray-500 uppercase tracking-widest backdrop-blur-sm">
-                      Conversation
+                      {messages.hero.conversation}
                     </div>
                   </div>
 
@@ -233,7 +233,7 @@ const Hero = () => {
                               }}
                               className="font-bold"
                             >
-                              Natural Correction
+                              {messages.hero.naturalCorrection}
                             </span>
                           </div>
                           <AnimatePresence mode="wait">
@@ -288,7 +288,7 @@ const Hero = () => {
                     94%
                   </div>
                   <div className="text-xs font-medium text-gray-500 mt-1">
-                    Accent Accuracy
+                    {messages.hero.accentAccuracy}
                   </div>
                 </div>
               </motion.div>

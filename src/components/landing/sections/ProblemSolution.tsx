@@ -7,9 +7,11 @@ import { useDemo } from "@/context/DemoContext";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowText } from "@/components/ui/RainbowText";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ProblemSolution = () => {
   const { currentLanguage } = useDemo();
+  const { messages } = useLanguage();
   return (
     <section className="py-16 bg-white relative overflow-hidden">
       <div className="container mx-auto max-w-6xl px-6 relative z-10">
@@ -22,13 +24,13 @@ const ProblemSolution = () => {
           </div> */}
 
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 leading-[1.1] text-black">
-            Memorizing words{" "}
+            {messages.problemSolution.titlePrefix}{" "}
             <span className="text-zinc-400 relative inline-block mx-1">
-              doesn&apos;t work
+              {messages.problemSolution.titleStrike}
               <span className="absolute left-0 top-1/2 w-full h-[2px] bg-red-500/30 -rotate-1"></span>
             </span>. <br />
             <span className="text-black">
-              Real conversation does.
+              {messages.problemSolution.titleSuffix}
             </span>
           </h2>
         </div>
@@ -37,18 +39,14 @@ const ProblemSolution = () => {
           {/* Problem Card - Simple & Clean */}
           <div className="group relative flex flex-col h-full bg-white p-10 rounded-[2.5rem] border border-zinc-100 shadow-sm">
             <div className="mb-8">
-              <h3 className="text-2xl font-semibold text-black mb-2">The traditional method</h3>
+              <h3 className="text-2xl font-semibold text-black mb-2">{messages.problemSolution.traditionalMethod}</h3>
               <p className="text-gray-500 text-sm">
-                Memorizing vocabulary & verbs tables
+                {messages.problemSolution.traditionalSubtitle}
               </p>
             </div>
 
             <ul className="space-y-6 flex-grow">
-              {[
-                "Memorizing basic words, phrases and grammar",
-                "Most times useless vocabulary & complex conjugations and tenses",
-                "You forget everything",
-              ].map((text, i) => (
+              {messages.problemSolution.traditionalBullets.map((text, i) => (
                 <li
                   key={i}
                   className="flex items-start space-x-4 text-gray-600"
@@ -74,9 +72,9 @@ const ProblemSolution = () => {
             >
               <div className="mb-8 flex items-center justify-between">
                 <div>
-                  <h3 className="text-2xl font-semibold text-black mb-2">Speaking with Sophie</h3>
+                  <h3 className="text-2xl font-semibold text-black mb-2">{messages.problemSolution.speakingWithSophie}</h3>
                   <RainbowText
-                    text="Immersion & Instant Correction"
+                    text={messages.problemSolution.immersionInstantCorrection}
                     className="text-sm font-semibold"
                   />
                 </div>
@@ -95,11 +93,7 @@ const ProblemSolution = () => {
               <ul
                 className="space-y-6 flex-grow"
               >
-                {[
-                  "Get instant feedback",
-                  "Speaking skills developed right away",
-                  "No more need to have a human native speaker to practice, you have Sophie.",
-                ].map((text, i) => (
+                {messages.problemSolution.solutionBullets.map((text, i) => (
                   <li key={i} className="flex items-start space-x-4">
                     <div className="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center shrink-0 mt-1 border border-green-100">
                       <Check className="w-3.5 h-3.5 text-green-600" />
@@ -112,7 +106,7 @@ const ProblemSolution = () => {
               </ul>
 
               <div className="mt-8 pt-8 border-t border-zinc-100 flex items-center text-sm font-medium text-gray-500 gap-2">
-                <span className="text-black">Result:</span> Fluent confidence in 30 days
+                <span className="text-black">{messages.problemSolution.resultLabel}</span> {messages.problemSolution.resultValue}
                 {/* <ArrowRight className="w-4 h-4 ml-1 text-purple-600" /> */}
               </div>
             </RainbowBorder>

@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const CookieBanner = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { messages } = useLanguage();
 
   useEffect(() => {
     // Check if user has already accepted cookies
@@ -41,9 +43,9 @@ export const CookieBanner = () => {
                     <Cookie className="w-5 h-5 text-gray-600" />
                 </div>
                 <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 mb-1">Cookies & Privacy</h4>
+                    <h4 className="font-bold text-gray-900 mb-1">{messages.cookieBanner.title}</h4>
                     <p className="text-sm text-gray-500 leading-relaxed mb-4">
-                        We use cookies to ensure Sophie remembers your progress and settings. We respect your privacy.
+                        {messages.cookieBanner.description}
                     </p>
                     <div className="flex gap-2">
                         <Button 
@@ -51,7 +53,7 @@ export const CookieBanner = () => {
                             size="sm" 
                             className="bg-black text-white hover:bg-gray-800 rounded-lg px-4 font-semibold shadow-md"
                         >
-                            Accept
+                            {messages.cookieBanner.accept}
                         </Button>
                         <Button 
                             onClick={() => setIsVisible(false)} 
@@ -59,7 +61,7 @@ export const CookieBanner = () => {
                             size="sm" 
                             className="text-gray-500 hover:text-black hover:bg-black/5 rounded-lg px-4"
                         >
-                            Decline
+                            {messages.cookieBanner.decline}
                         </Button>
                     </div>
                 </div>

@@ -5,9 +5,11 @@ import { marqueeLanguages } from "@/lib/marquee-languages";
 import CircleFlag from "@/components/landing/shared/CircleFlag";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import { useLanguage } from "@/context/LanguageContext";
 
 const LanguagesMarqueeSection = () => {
   const languageItems = useMemo(() => marqueeLanguages, []);
+  const { messages } = useLanguage();
   const [showAllLanguages, setShowAllLanguages] = useState(false);
   const visibleLanguages = showAllLanguages ? languageItems : languageItems.slice(0, 18);
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -32,7 +34,7 @@ const LanguagesMarqueeSection = () => {
           <div className="text-center">
 
             <p className="text-2xl md:text-3xl font-semibold italic text-black">
-              Sophie can assist you in 50+ languages
+              {messages.era.languageTitle}
             </p>
           </div>
 
@@ -80,7 +82,7 @@ const LanguagesMarqueeSection = () => {
                   onClick={handleToggleLanguages}
                   className="relative z-10 font-medium text-black"
                 >
-                  {showAllLanguages ? "See less" : "See more"}
+                  {showAllLanguages ? messages.era.seeLess : messages.era.seeMore}
                 </button>
                 <RainbowGradient className="absolute inset-0 opacity-0 hover:opacity-30 transition-opacity duration-300" />
               </RainbowBorder>
@@ -88,7 +90,7 @@ const LanguagesMarqueeSection = () => {
           ) : null}
 
           <h3 className="text-2xl md:text-4xl font-semibold text-black">
-            Learn any language in any language, no English required!
+            {messages.era.learnAnyLanguage}
           </h3>
         </div>
       </div>

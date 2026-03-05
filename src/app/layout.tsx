@@ -6,6 +6,10 @@ import { BackToTop } from "@/components/ui/back-to-top";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 import Script from "next/script";
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { cookies } from "next/headers";
+import { DemoProvider } from "@/context/DemoContext";
+import { LanguageProvider } from "@/context/LanguageContext";
+import { DEFAULT_LOCALE, getLocaleMeta, isAppLocale, type AppLocale } from "@/lib/i18n/locales";
 
 const googleSans = localFont({
   src: [
@@ -56,13 +60,17 @@ export const metadata: Metadata = {
   },
 };
 
-import { DemoProvider } from "@/context/DemoContext";
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const cookieLocaleValue = cookieStore.get("locale")?.value;
+  const initialLocale: AppLocale =
+    cookieLocaleValue && isAppLocale(cookieLocaleValue) ? cookieLocaleValue : DEFAULT_LOCALE;
+  const localeMeta = getLocaleMeta(initialLocale);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -83,16 +91,18 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${googleSans.variable} scroll-smooth`}>
+    <html lang={localeMeta.langTag} dir={localeMeta.dir} className={`${googleSans.variable} scroll-smooth`}>
       <body
         className="font-sans antialiased"
       >
-        <DemoProvider>
-          <ScrollProgress />
-          {children}
-          <CookieBanner />
-          <BackToTop />
-        </DemoProvider>
+        <LanguageProvider initialLocale={initialLocale}>
+          <DemoProvider>
+            <ScrollProgress />
+            {children}
+            <CookieBanner />
+            <BackToTop />
+          </DemoProvider>
+        </LanguageProvider>
         <Script
           id="json-ld"
           type="application/ld+json"

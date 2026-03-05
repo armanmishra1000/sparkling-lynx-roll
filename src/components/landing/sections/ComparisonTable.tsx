@@ -11,55 +11,13 @@ import {
 } from "lucide-react";
 import { Colors } from "@/lib/constants";
 import { RainbowIcon } from "@/components/ui/RainbowIcon";
+import { useLanguage } from "@/context/LanguageContext";
 
 const ComparisonTable = () => {
-  const features = [
-    {
-      name: "Active Speaking Time",
-      sophie: "Unlimited",
-      apps: "0 mins (Tapping)",
-      tutor: "45 mins / session",
-    },
-    {
-      name: "Cost per Month",
-      sophie: "$12",
-      apps: "$0 - $15",
-      tutor: "$200+",
-    },
-    {
-      name: "Feedback Speed",
-      sophie: "Instant (<1s)",
-      apps: "Instant (Binary)",
-      tutor: "Delayed (Polite)",
-    },
-    {
-      name: "Contextual Memory",
-      sophie: "Permanent",
-      apps: "None",
-      tutor: "Human Memory",
-    },
-    {
-      name: "Availability",
-      sophie: "24/7",
-      apps: "24/7",
-      tutor: "Scheduled",
-    },
-    {
-      name: "Anxiety Factor",
-      sophie: "Zero",
-      apps: "Low",
-      tutor: "High",
-    },
-  ];
+  const { messages } = useLanguage();
+  const features = messages.comparisonTable.rows;
 
-  const featureIcons = [
-    Tag,
-    CalendarDays,
-    Zap,
-    MessageCircleMore,
-    Gauge,
-    Check,
-  ];
+  const featureIcons = [Tag, CalendarDays, Zap, MessageCircleMore, Gauge, Check];
   const rainbowBorder = `linear-gradient(180deg, ${Colors.rainbow.join(", ")})`;
 
   return (
@@ -67,11 +25,10 @@ const ComparisonTable = () => {
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6">
-            Compare your options.
+            {messages.comparisonTable.title}
           </h2>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            See how Sophie stacks up against traditional learning methods and other apps.
-            The difference isn't just in the priceâ€”it's in the results.
+            {messages.comparisonTable.subtitle}
           </p>
         </div>
 
@@ -89,16 +46,16 @@ const ComparisonTable = () => {
                   <thead>
                     <tr>
                       <th scope="col" className="px-6 py-5 text-left text-xl md:text-2xl font-bold border-r border-b border-gray-300">
-                        Feature
+                        {messages.comparisonTable.columns.feature}
                       </th>
                       <th scope="col" className="px-6 py-5 text-center text-xl md:text-2xl font-bold border-r border-b border-gray-300">
-                        Sophie.ai
+                        {messages.comparisonTable.columns.sophie}
                       </th>
                       <th scope="col" className="px-6 py-5 text-center text-xl md:text-2xl font-bold border-r border-b border-gray-300">
-                        Gamified Apps
+                        {messages.comparisonTable.columns.apps}
                       </th>
                       <th scope="col" className="px-6 py-5 text-center text-xl md:text-2xl font-bold border-b border-gray-300">
-                        Private Tutor
+                        {messages.comparisonTable.columns.tutor}
                       </th>
                     </tr>
                   </thead>
@@ -111,15 +68,13 @@ const ComparisonTable = () => {
                         feature.sophie === "Zero";
 
                       return (
-                      <tr key={i} className="[&:not(:last-child)>td]:border-b [&>td]:border-gray-300">
+                        <tr key={i} className="[&:not(:last-child)>td]:border-b [&>td]:border-gray-300">
                           <td className="px-6 py-5 align-middle text-gray-700 border-r">
                             <div className="flex items-center gap-3 md:gap-4">
                               <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-400 text-gray-700">
                                 <Icon size={17} strokeWidth={2.2} />
                               </span>
-                              <span className="text-sm md:text-xl md:leading-[1.2]">
-                                {feature.name}
-                              </span>
+                              <span className="text-sm md:text-xl md:leading-[1.2]">{feature.name}</span>
                             </div>
                           </td>
 
@@ -162,7 +117,7 @@ const ComparisonTable = () => {
           </div>
 
           <div className="p-6 text-center text-sm text-gray-700 border-t border-gray-300 flex items-center justify-center gap-2">
-            <span>Based on average market rates for professional language tutors in the US/EU.</span>
+            <span>{messages.comparisonTable.footer}</span>
           </div>
         </div>
       </div>

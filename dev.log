@@ -1,0 +1,162 @@
+npm warn Unknown project config "public-hoist-pattern". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+
+> next-template@0.1.0 dev
+> next dev --port 3000 --hostname 0.0.0.0
+
+   ▲ Next.js 15.3.6
+   - Local:        http://localhost:3000
+   - Network:      http://0.0.0.0:3000
+
+ ✓ Starting...
+ ✓ Ready in 6.5s
+ ○ Compiling / ...
+ ✓ Compiled / in 14.9s (2001 modules)
+ GET / 200 in 19270ms
+ ✓ Compiled in 4.7s (938 modules)
+ ⚠ Cross origin request detected from 192.168.1.20 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 78ms
+ ○ Compiling /support ...
+ ✓ Compiled /support in 2.9s (1999 modules)
+ GET /support 200 in 4687ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 1391ms (2008 modules)
+ GET /about 200 in 2345ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ○ Compiling /methodology ...
+ ✓ Compiled /methodology in 3.1s (2016 modules)
+ GET /methodology 200 in 4098ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: EPERM: operation not permitted, rename 'E:\Next.js\sparkling-lynx-roll\.next\cache\webpack\server-development\6.pack.gz_' -> 'E:\Next.js\sparkling-lynx-roll\.next\cache\webpack\server-development\6.pack.gz'
+ ✓ Compiled in 5.2s (2030 modules)
+ GET /methodology 200 in 343ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /methodology 200 in 871ms
+ ✓ Compiled in 1941ms (2030 modules)
+ ✓ Compiled in 3.3s (2030 modules)
+ ✓ Compiled in 2.5s (2030 modules)
+ ✓ Compiled in 2.7s (2030 modules)
+ ✓ Compiled in 3.1s (2030 modules)
+ ✓ Compiled in 3s (2030 modules)
+ GET /about 200 in 4082ms
+ GET / 200 in 66ms
+ ✓ Compiled in 2.3s (2030 modules)
+ GET / 200 in 181ms
+ GET / 200 in 41ms
+ GET / 200 in 28ms
+ ✓ Compiled in 1313ms (939 modules)
+ GET / 200 in 1019ms
+ ✓ Compiled in 1138ms (939 modules)
+ GET / 200 in 28ms
+ ✓ Compiled in 1183ms (939 modules)
+ GET / 200 in 38ms
+ GET / 200 in 2468ms
+ GET / 200 in 23ms
+ GET / 200 in 44ms
+ GET / 200 in 1279ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 14.8s (2034 modules)
+ GET /_next/static/css/app/layout.css?v=1772712207939 404 in 16344ms
+ GET /_next/static/chunks/webpack.js?v=1772712207939 404 in 17658ms
+ GET /_next/static/css/app/layout.css?v=1772712224354 404 in 2154ms
+ ✓ Compiled in 4.4s (940 modules)
+ GET /_next/static/chunks/main-app.js?v=1772712207939 404 in 3048ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 3059ms
+ GET /_next/static/chunks/app/page.js 404 in 3058ms
+ GET /_next/static/css/app/layout.css?v=1772712224355 404 in 897ms
+ GET /_next/static/css/app/layout.css?v=1772712226855 404 in 863ms
+ GET /_next/static/chunks/app/not-found.js 404 in 1775ms
+ GET /_next/static/css/app/layout.css?v=1772712228538 404 in 886ms
+ GET /_next/static/css/app/layout.css?v=1772712226856 404 in 880ms
+ GET /_next/static/css/app/layout.css?v=1772712229281 404 in 911ms
+ GET /_next/static/css/app/layout.css?v=1772712229568 404 in 901ms
+ GET /_next/static/css/app/layout.css?v=1772712229567 404 in 906ms
+ GET /_next/static/css/app/layout.css?v=1772712230175 404 in 218ms
+ GET /_next/static/css/app/layout.css?v=1772712231074 404 in 225ms
+ GET /_next/static/css/app/layout.css?v=1772712231299 404 in 227ms
+ GET /_next/static/css/app/layout.css?v=1772712231526 404 in 223ms
+ GET /_next/static/css/app/layout.css?v=1772712231758 404 in 242ms
+ GET /_next/static/css/app/layout.css?v=1772712231985 404 in 287ms
+ GET /_next/static/css/app/layout.css?v=1772712232254 404 in 253ms
+ GET /_next/static/css/app/layout.css?v=1772712232554 404 in 243ms
+ GET /_next/static/css/app/layout.css?v=1772712232816 404 in 249ms
+ GET /_next/static/css/app/layout.css?v=1772712233060 404 in 511ms
+ GET /_next/static/css/app/layout.css?v=1772712233328 404 in 259ms
+ GET /_next/static/css/app/layout.css?v=1772712233852 404 in 237ms
+ GET /_next/static/css/app/layout.css?v=1772712234106 404 in 230ms
+ GET /_next/static/css/app/layout.css?v=1772712234347 404 in 227ms
+ GET /_next/static/css/app/layout.css?v=1772712234582 404 in 302ms
+ GET /_next/static/css/app/layout.css?v=1772712234810 404 in 287ms
+ GET /_next/static/css/app/layout.css?v=1772712235116 404 in 230ms
+ GET /_next/static/css/app/layout.css?v=1772712235409 404 in 233ms
+ GET /_next/static/css/app/layout.css?v=1772712235645 404 in 222ms
+ GET /_next/static/css/app/layout.css?v=1772712235879 404 in 244ms
+ GET /_next/static/css/app/layout.css?v=1772712236106 404 in 274ms
+ GET /_next/static/css/app/layout.css?v=1772712236357 404 in 235ms
+ GET /_next/static/css/app/layout.css?v=1772712236634 404 in 238ms
+ GET /_next/static/css/app/layout.css?v=1772712236881 404 in 336ms
+ GET /_next/static/css/app/layout.css?v=1772712237134 404 in 254ms
+ GET /_next/static/css/app/layout.css?v=1772712237478 404 in 259ms
+ GET /_next/static/css/app/layout.css?v=1772712237742 404 in 219ms
+ GET /_next/static/css/app/layout.css?v=1772712238000 404 in 216ms
+ GET /_next/static/css/app/layout.css?v=1772712238222 404 in 213ms
+ GET /_next/static/css/app/layout.css?v=1772712238444 404 in 222ms
+ GET /_next/static/css/app/layout.css?v=1772712238696 404 in 219ms
+ GET /_next/static/css/app/layout.css?v=1772712238925 404 in 227ms
+ GET /_next/static/css/app/layout.css?v=1772712239149 404 in 240ms
+ GET /_next/static/css/app/layout.css?v=1772712239402 404 in 239ms
+ GET /_next/static/css/app/layout.css?v=1772712239673 404 in 289ms
+ GET /_next/static/css/app/layout.css?v=1772712239919 404 in 274ms
+ GET /_next/static/css/app/layout.css?v=1772712240214 404 in 517ms
+ GET /_next/static/css/app/layout.css?v=1772712240501 404 in 304ms
+ GET /_next/static/css/app/layout.css?v=1772712241015 404 in 247ms
+ GET /_next/static/css/app/layout.css?v=1772712241318 404 in 236ms
+ GET /_next/static/css/app/layout.css?v=1772712241585 404 in 236ms
+ GET /_next/static/css/app/layout.css?v=1772712241815 404 in 371ms
+ GET /_next/static/css/app/layout.css?v=1772712242058 404 in 294ms
+ GET /_next/static/css/app/layout.css?v=1772712242434 404 in 233ms
+ GET /_next/static/css/app/layout.css?v=1772712242734 404 in 256ms
+ GET /_next/static/css/app/layout.css?v=1772712242970 404 in 350ms
+ GET /_next/static/css/app/layout.css?v=1772712243233 404 in 568ms
+ GET /_next/static/css/app/layout.css?v=1772712243590 404 in 434ms
+ GET /_next/static/css/app/layout.css?v=1772712244165 404 in 244ms
+ GET /_next/static/css/app/layout.css?v=1772712244601 404 in 273ms
+ GET /_next/static/css/app/layout.css?v=1772712244856 404 in 240ms
+ GET /_next/static/css/app/layout.css?v=1772712245132 404 in 214ms
+ GET /_next/static/css/app/layout.css?v=1772712245377 404 in 313ms
+ ⨯ Error: Cannot find module './83.js'
+Require stack:
+- E:\Next.js\sparkling-lynx-roll\.next\server\webpack-runtime.js
+- E:\Next.js\sparkling-lynx-roll\.next\server\app\_not-found\page.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\server\require.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\server\load-components.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\build\utils.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\build\swc\options.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\build\swc\index.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\build\next-config-ts\transpile-config.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\server\config.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\server\next.js
+- E:\Next.js\sparkling-lynx-roll\node_modules\.pnpm\next@15.3.6_react-dom@19.2.1_react@19.2.1__react@19.2.1\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (E:\Next.js\sparkling-lynx-roll\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (E:\Next.js\sparkling-lynx-roll\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (E:\Next.js\sparkling-lynx-roll\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (E:\Next.js\sparkling-lynx-roll\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (E:\Next.js\sparkling-lynx-roll\.next\server\app\page.js:1:118926)
+    at Object.<anonymous> (E:\Next.js\sparkling-lynx-roll\.next\server\app\page.js:1:118973) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ GET /_next/static/css/app/layout.css?v=1772712245593 404 in 1006ms
+ ○ Compiling /_error ...
+ GET /_next/static/css/app/layout.css?v=1772712246470 404 in 812ms
+ GET /_next/static/css/app/layout.css?v=1772712247386 404 in 1225ms
+ GET /_next/static/css/app/layout.css?v=1772712248589 404 in 434ms
+ GET /_next/static/css/app/layout.css?v=1772712249380 404 in 343ms
+ GET /_next/static/css/app/layout.css?v=1772712249805 404 in 700ms
+ ✓ Compiled /_error in 16.5s (2354 modules)
+ GET / 500 in 22428ms
+ GET /_next/static/css/app/layout.css?v=1772712250570 404 in 17953ms

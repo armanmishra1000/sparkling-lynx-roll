@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "export:favicon-preview": "node --experimental-strip-types scripts/export-favicon-preview.mjs"
+    "export:favicon-preview": "node --experimental-strip-types scripts/export-favicon-preview.mjs",
+    "i18n:audit": "node --experimental-strip-types scripts/i18n-audit.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

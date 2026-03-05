@@ -8,9 +8,11 @@ import { Label } from "@/components/ui/label";
 import { Loader2, ArrowRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { useDemo } from "@/context/DemoContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 const LoginForm = () => {
   const { currentLanguage } = useDemo();
+  const { messages } = useLanguage();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -54,22 +56,22 @@ const LoginForm = () => {
           </div>
         </div>
         <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-          Ready to meet Sophie?
+          {messages.loginForm.readyTitle}
         </h2>
         <p className="text-gray-500 mt-2 text-lg">
-          Speak now, enter your details below.
+          {messages.loginForm.readySubtitle}
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
           <Label htmlFor="email" className="text-gray-700 font-medium">
-            Email
+            {messages.loginForm.email}
           </Label>
           <Input
             id="email"
             type="email"
-            placeholder="sophie@example.com"
+            placeholder={messages.loginForm.emailPlaceholder}
             className="h-12 rounded-xl border-gray-200 bg-gray-50 focus:bg-white focus:border-[#7B61FF] focus:ring-[#7B61FF]/20 transition-all duration-300"
             required
           />
@@ -77,14 +79,14 @@ const LoginForm = () => {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label htmlFor="password" className="text-gray-700 font-medium">
-              Password
-            </Label>
+              <Label htmlFor="password" className="text-gray-700 font-medium">
+              {messages.loginForm.password}
+              </Label>
             <Link
               href="#"
               className="text-xs font-bold text-[#7B61FF] hover:text-[#FF0080] transition-colors"
             >
-              Forgot password?
+              {messages.loginForm.forgotPassword}
             </Link>
           </div>
           <Input
@@ -100,7 +102,7 @@ const LoginForm = () => {
           className="w-full h-12 rounded-xl bg-black hover:bg-gray-800 text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           disabled={loading}
         >
-          {loading ? <Loader2 className="animate-spin" /> : "Sign In"}
+          {loading ? <Loader2 className="animate-spin" /> : messages.loginForm.signIn}
         </Button>
       </form>
 
@@ -110,7 +112,7 @@ const LoginForm = () => {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-white px-2 text-gray-400 font-bold tracking-wider">
-            Or continue with
+            {messages.loginForm.orContinueWith}
           </span>
         </div>
       </div>
@@ -131,12 +133,12 @@ const LoginForm = () => {
       </div>
 
       <p className="text-center text-sm text-gray-500">
-        Don't have an account?{" "}
+        {messages.loginForm.noAccount}{" "}
         <Link
           href="/"
           className="font-bold text-black hover:text-[#7B61FF] transition-colors"
         >
-          Sign up for Beta
+          {messages.loginForm.signUpForBeta}
         </Link>
       </p>
     </div>

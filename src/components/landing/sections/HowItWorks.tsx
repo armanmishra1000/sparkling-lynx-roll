@@ -7,24 +7,7 @@ import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowText } from "@/components/ui/RainbowText";
 import { ArrowRight } from "lucide-react";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
-
-const steps = [
-  {
-    step: "Step 01",
-    title: "Context Injection",
-    description: "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
-  },
-  {
-    step: "Step 02",
-    title: "Active Simulation",
-    description: "No multiple choice. No tapping words. Just talk. Sophie responds at your level, pushing you slightly every time (i+1).",
-  },
-  {
-    step: "Step 03",
-    title: "Neural Rewriting",
-    description: "Get instant corrections on pronunciation and style. Sophie rewrites your neural pathways before bad habits set in.",
-  }
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 const listVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -52,6 +35,9 @@ const itemVariants: Variants = {
 };
 
 const HowItWorks = () => {
+  const { messages } = useLanguage();
+  const steps = messages.howItWorks.steps;
+
   return (
     <section id="how-it-works" className="relative overflow-hidden pb-16">
       <div className="container relative z-10 mx-auto max-w-7xl px-4">
@@ -63,10 +49,10 @@ const HowItWorks = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="mb-6 text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">
-            The Fluency Loop
+            {messages.howItWorks.title}
           </h2>
           <p className="mx-auto max-w-2xl text-xl leading-relaxed text-slate-600">
-            From frozen to fluent in three cognitive steps.
+            {messages.howItWorks.subtitle}
           </p>
         </motion.div>
 
@@ -137,7 +123,7 @@ const HowItWorks = () => {
                 >
                   <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                   <span className="relative z-10 flex items-center font-medium text-black">
-                    Start Talking
+                    {messages.howItWorks.startTalking}
                     <ArrowRight className="ml-2 w-5 h-5 mt-0.5" />
                   </span>
                 </RainbowBorder>

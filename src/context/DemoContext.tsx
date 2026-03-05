@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import React, { createContext, useCallback, useContext, useState, ReactNode } from "react";
 import { demoLanguages, LanguageConfig } from "@/lib/demo-languages";
 
 interface DemoContextType {
@@ -13,26 +13,17 @@ interface DemoContextType {
 const DemoContext = createContext<DemoContextType | undefined>(undefined);
 
 export const DemoProvider = ({ children }: { children: ReactNode }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const englishIndex = demoLanguages.findIndex((lang) => lang.id === "en");
+  const [currentIndex, setCurrentIndex] = useState(englishIndex >= 0 ? englishIndex : 0);
+  const [isPaused, setIsPaused] = useState(true);
 
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % demoLanguages.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const setLanguageById = (id: LanguageConfig["id"]) => {
+  const setLanguageById = useCallback((id: LanguageConfig["id"]) => {
     const index = demoLanguages.findIndex((lang) => lang.id === id);
-    if (index >= 0) {
-      setCurrentIndex(index);
-      setIsPaused(false);
-    }
-  };
+    if (index < 0) return;
+
+    setCurrentIndex((previousIndex) => (previousIndex === index ? previousIndex : index));
+    setIsPaused((previousPaused) => (previousPaused ? previousPaused : true));
+  }, []);
 
   const currentLanguage = demoLanguages[currentIndex];
 

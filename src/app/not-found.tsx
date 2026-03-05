@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
+import { getRequestMessages } from "@/lib/i18n/server";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const pageCopy = (await getRequestMessages()).notFoundPage;
+
   return (
     <main className="min-h-screen bg-white flex flex-col relative overflow-hidden">
       <Navbar />
@@ -20,14 +23,14 @@ export default function NotFound() {
             </h1>
         </div>
         
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">Sophie is speechless.</h2>
+        <h2 className="text-3xl font-bold mb-4 text-gray-900">{pageCopy.title}</h2>
         <p className="text-xl text-gray-500 max-w-md mb-10 leading-relaxed">
-          The page you are looking for doesn't exist, or maybe it just hasn't learned to speak yet.
+          {pageCopy.description}
         </p>
         
         <Link href="/">
           <Button size="lg" className="rounded-full px-10 h-14 text-lg bg-black hover:bg-gray-800 text-white font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
-            Back to Home
+            {pageCopy.backToHome}
           </Button>
         </Link>
       </div>

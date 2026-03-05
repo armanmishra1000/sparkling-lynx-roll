@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -10,47 +11,47 @@ import { cn } from "@/lib/utils";
 import { Menu, MessageCircle, X } from "lucide-react";
 import Logo from "@/components/landing/shared/Logo";
 import { useDemo } from "@/context/DemoContext";
-
-const headerLanguageOptions = [
-  { id: "en", label: "English" },
-  { id: "zh", label: "Mandarin Chinese" },
-  { id: "hi", label: "Hindi" },
-  { id: "es", label: "Spanish" },
-  { id: "ar", label: "Modern Standard Arabic" },
-] as const;
+import { useLanguage } from "@/context/LanguageContext";
+import { APP_LOCALES, isAppLocale, type AppLocale } from "@/lib/i18n/locales";
 
 const Navbar = () => {
   const whatsappUrl = "https://wa.me/971505814567";
+  const router = useRouter();
   const { currentLanguage, setLanguageById } = useDemo();
-  const initialHeaderLanguageId = useMemo(() => {
-    const hasCurrentLanguage = headerLanguageOptions.some(
-      (item) => item.id === currentLanguage.id
-    );
-    return hasCurrentLanguage ? currentLanguage.id : "en";
-  }, [currentLanguage.id]);
+  const { locale, setLocale, messages } = useLanguage();
+  const headerLanguageOptions = APP_LOCALES.map((item) => ({
+    id: item.id,
+    label: item.label
+  }));
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedHeaderLanguageId, setSelectedHeaderLanguageId] =
-    useState(initialHeaderLanguageId);
 
   const handleLanguageChange = (value: string) => {
-    const option = headerLanguageOptions.find((item) => item.id === value);
-    if (!option) return;
-    setSelectedHeaderLanguageId(option.id);
-    setLanguageById(option.id);
+    if (!isAppLocale(value)) return;
+    const nextLocale: AppLocale = value;
+    if (nextLocale === locale) return;
+    document.cookie = `locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
+    setLocale(nextLocale);
+    router.refresh();
   };
+
+  useEffect(() => {
+    if (currentLanguage.id !== locale) {
+      setLanguageById(locale);
+    }
+  }, [currentLanguage.id, locale, setLanguageById]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
   });
 
   const navLinks = [
-    { href: "/methodology", label: "Science" },
-    { href: "/#how-it-works", label: "How it works" },
-    { href: "/#features", label: "Features" },
-    { href: "/#pricing", label: "Pricing" },
-    { href: "/#faq", label: "FAQ" },
+    { href: "/methodology", label: messages.navbar.science },
+    { href: "/#how-it-works", label: messages.navbar.howItWorks },
+    { href: "/#features", label: messages.navbar.features },
+    { href: "/#pricing", label: messages.navbar.pricing },
+    { href: "/#faq", label: messages.navbar.faq }
   ];
 
   return (
@@ -101,14 +102,14 @@ const Navbar = () => {
 
         <div className="hidden xl:flex items-center gap-3">
           <Select
-            value={selectedHeaderLanguageId}
+            value={locale}
             onValueChange={handleLanguageChange}
           >
             <SelectTrigger
-              aria-label="Select language"
+              aria-label={messages.navbar.selectLanguage}
               className="h-10 w-[220px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm"
             >
-              <SelectValue placeholder="Language" />
+              <SelectValue placeholder={messages.navbar.selectLanguage} />
             </SelectTrigger>
             <SelectContent>
               {headerLanguageOptions.map((option) => (
@@ -119,24 +120,24 @@ const Navbar = () => {
             </SelectContent>
           </Select>
           <Link href="/login" className="font-semibold text-black transition-colors">
-            Log in
+            {messages.navbar.login}
           </Link>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-full px-6 h-10 bg-black hover:bg-gray-900 text-white font-medium shadow-sm transition-all duration-300 text-sm border border-transparent">
-              <MessageCircle className="w-4 h-4 mr-2" /> WhatsApp
+              <MessageCircle className="w-4 h-4 mr-2" /> {messages.navbar.whatsapp}
             </Button>
           </a>
         </div>
         <div className="hidden lg:flex xl:hidden items-center gap-2">
           <Select
-            value={selectedHeaderLanguageId}
+            value={locale}
             onValueChange={handleLanguageChange}
           >
             <SelectTrigger
-              aria-label="Select language"
+              aria-label={messages.navbar.selectLanguage}
               className="h-9 w-[170px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm text-sm"
             >
-              <SelectValue placeholder="Language" />
+              <SelectValue placeholder={messages.navbar.selectLanguage} />
             </SelectTrigger>
             <SelectContent>
               {headerLanguageOptions.map((option) => (
@@ -147,7 +148,7 @@ const Navbar = () => {
             </SelectContent>
           </Select>
           <Link href="/login" className="text-sm font-semibold text-black transition-colors whitespace-nowrap">
-            Log in
+            {messages.navbar.login}
           </Link>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             <Button
@@ -170,7 +171,7 @@ const Navbar = () => {
                 className="lg:hidden h-10 w-10 text-black hover:bg-black/5 rounded-full border border-black/10 bg-white/90 shadow-sm"
               >
                 <Menu className="w-5 h-5" />
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">{messages.navbar.menu}</span>
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -183,7 +184,7 @@ const Navbar = () => {
                     <Logo withLink={false} showText={false} markSize={40} />
                     <div className="min-w-0">
                       <SheetTitle className="text-left text-xl font-bold leading-tight text-black">
-                        Menu
+                        {messages.navbar.menu}
                       </SheetTitle>
                     </div>
                   </div>
@@ -194,7 +195,7 @@ const Navbar = () => {
                       className="h-10 w-10 rounded-full border border-black/10 bg-white text-black shadow-sm hover:bg-gray-50"
                     >
                       <X className="h-5 w-5" />
-                      <span className="sr-only">Close menu</span>
+                      <span className="sr-only">{messages.navbar.closeMenu}</span>
                     </Button>
                   </SheetClose>
                 </div>
@@ -215,14 +216,14 @@ const Navbar = () => {
                     ))}
                     <div>
                       <Select
-                        value={selectedHeaderLanguageId}
+                        value={locale}
                         onValueChange={handleLanguageChange}
                       >
                         <SelectTrigger
-                          aria-label="Select language"
+                          aria-label={messages.navbar.selectLanguage}
                           className="h-12 w-full rounded-full border-gray-200 bg-white text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm"
                         >
-                          <SelectValue placeholder="Language" />
+                          <SelectValue placeholder={messages.navbar.selectLanguage} />
                         </SelectTrigger>
                         <SelectContent>
                           {headerLanguageOptions.map((option) => (
@@ -243,7 +244,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="block w-full rounded-full border border-gray-200 bg-white px-4 py-3 text-center text-base font-semibold text-gray-700 transition-all hover:border-gray-300 hover:bg-gray-50 hover:text-black"
                 >
-                  Log in
+                  {messages.navbar.login}
                 </Link>
                 <Link
                   href={whatsappUrl}
@@ -252,7 +253,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                 >
                   <Button className="w-full h-12 rounded-full bg-black hover:bg-gray-900 text-white font-bold text-base shadow-lg">
-                    <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp
+                    <MessageCircle className="w-5 h-5 mr-2" /> {messages.navbar.whatsapp}
                   </Button>
                 </Link>
               </div>

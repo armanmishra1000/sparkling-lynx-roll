@@ -1,15 +1,19 @@
+"use client";
 import React from "react";
 import LoginForm from "@/components/auth/LoginForm";
 import Link from "next/link";
 import { ArrowLeft, Sparkles } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function LoginPage() {
+  const { messages } = useLanguage();
+
   return (
     <main className="min-h-screen grid lg:grid-cols-2">
       {/* Left: Form */}
       <div className="flex flex-col p-8 lg:p-12 justify-between bg-white relative z-10">
         <Link href="/" className="inline-flex items-center text-sm font-bold text-gray-400 hover:text-black transition-colors mb-8 w-fit group">
-            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Home
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> {messages.loginPage.backToHome}
         </Link>
         
         <div className="flex-1 flex flex-col justify-center items-center w-full max-w-md mx-auto">
@@ -17,7 +21,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-8 text-center lg:text-left text-xs text-gray-400 font-medium">
-            &copy; {new Date().getFullYear()} Sophie AI Inc.
+            &copy; {new Date().getFullYear()} {messages.loginPage.copyrightSuffix}
         </div>
       </div>
 
@@ -38,8 +42,8 @@ export default function LoginPage() {
                         <Sparkles className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                        <div className="font-bold text-lg">Daily Progress</div>
-                        <div className="text-xs text-gray-400 uppercase tracking-wider">Spanish • Advanced</div>
+                        <div className="font-bold text-lg">{messages.loginPage.dailyProgress}</div>
+                        <div className="text-xs text-gray-400 uppercase tracking-wider">{messages.loginPage.progressLanguageLevel}</div>
                     </div>
                 </div>
                 
@@ -48,18 +52,18 @@ export default function LoginPage() {
                         <div className="h-full w-[75%] bg-white rounded-full"></div>
                     </div>
                     <div className="flex justify-between text-sm text-gray-400">
-                        <span>Today's Goal</span>
-                        <span className="text-white font-bold">15 / 20 mins</span>
+                        <span>{messages.loginPage.todayGoal}</span>
+                        <span className="text-white font-bold">{messages.loginPage.progressMinutes}</span>
                     </div>
                 </div>
 
                 <div className="bg-white/5 rounded-xl p-4 border border-white/5">
                     <p className="text-lg font-medium leading-relaxed">
-                        "Sophie pushed me to speak from Day 1. Its Incredibly seamingless, natural & effective."
+                        &quot;{messages.loginPage.testimonial}&quot;
                     </p>
                     <div className="mt-4 flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-gray-700"></div>
-                        <div className="text-sm font-bold text-gray-300">Alex Chen</div>
+                        <div className="text-sm font-bold text-gray-300">{messages.loginPage.testimonialAuthor}</div>
                     </div>
                 </div>
             </div>
@@ -68,3 +72,4 @@ export default function LoginPage() {
     </main>
   );
 }
+

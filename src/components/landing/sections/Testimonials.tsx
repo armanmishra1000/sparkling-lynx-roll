@@ -2,34 +2,25 @@
 
 import { Star, Quote } from "lucide-react";
 import { useDemo } from "@/context/DemoContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Testimonials = () => {
   const { currentLanguage } = useDemo();
+  const { messages } = useLanguage();
 
-  const testimonials = [
-    {
-      quote: `I took 4 years of ${currentLanguage.name} in high school but couldn't order a taco. Sophie fixed my fear of speaking in 2 weeks.`,
-      author: "James T.",
-      role: "Traveler",
-    },
-    {
-      quote: `Real-world context finally makes sense. Sophie explained it while we were roleplaying a scene in ${currentLanguage.nativeName}.`,
-      author: "Sarah M.",
-      role: "Expat",
-    },
-    {
-      quote: "The accent correction is brutal but effective. I finally stopped sounding like a textbook and started sounding like a local.",
-      author: "David K.",
-      role: "Digital Nomad",
-    }
-  ];
+  const testimonials = messages.testimonials.items.map((item) => ({
+    ...item,
+    quote: item.quote
+      .replaceAll("{language}", currentLanguage.name)
+      .replaceAll("{nativeLanguage}", currentLanguage.nativeName)
+  }));
 
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6">
-            Don&apos;t take our word for it.
+            {messages.testimonials.title}
           </h2>
         </div>
 
