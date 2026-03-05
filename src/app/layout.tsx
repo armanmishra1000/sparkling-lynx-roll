@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     images: ["https://sophie.ai/og-image.jpg"],
   },
   icons: {
-    icon: "/main.png",
-    shortcut: "/main.png",
-    apple: "/main.png",
+    icon: "/favicon-preview/wave-favicon-preview-512.png",
+    shortcut: "/favicon-preview/wave-favicon-preview-512.png",
+    apple: "/favicon-preview/wave-favicon-preview-512.png",
   },
 };
 

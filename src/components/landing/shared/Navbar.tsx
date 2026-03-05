@@ -4,16 +4,33 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, MessageCircle, X } from "lucide-react";
 import Logo from "@/components/landing/shared/Logo";
+import { useDemo } from "@/context/DemoContext";
+
+const headerLanguageOptions = [
+  { id: "en", label: "English" },
+  { id: "zh", label: "Mandarin Chinese" },
+  { id: "hi", label: "Hindi" },
+  { id: "es", label: "Spanish" },
+  { id: "ar", label: "Modern Standard Arabic" },
+] as const;
 
 const Navbar = () => {
   const whatsappUrl = "https://wa.me/971505814567";
+  const { currentLanguage, setLanguageById } = useDemo();
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLanguageChange = (value: string) => {
+    const option = headerLanguageOptions.find((item) => item.id === value);
+    if (!option) return;
+    setLanguageById(option.id);
+  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
@@ -60,7 +77,25 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
+          <Select
+            value={currentLanguage.id}
+            onValueChange={handleLanguageChange}
+          >
+            <SelectTrigger
+              aria-label="Select language"
+              className="h-10 w-[220px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm"
+            >
+              <SelectValue placeholder="Language" />
+            </SelectTrigger>
+            <SelectContent>
+              {headerLanguageOptions.map((option) => (
+                <SelectItem key={option.id} value={option.id}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <Link href="/login" className="font-semibold text-black transition-colors">
             Log in
           </Link>
@@ -114,6 +149,26 @@ const Navbar = () => {
               <div className="flex-1 min-h-0 px-6 py-6">
                 <div className="h-full overflow-y-auto custom-scrollbar">
                   <div className="flex min-h-full flex-col justify-start gap-3">
+                    <div className="mb-2">
+                      <Select
+                        value={currentLanguage.id}
+                        onValueChange={handleLanguageChange}
+                      >
+                        <SelectTrigger
+                          aria-label="Select language"
+                          className="h-12 w-full rounded-xl border-gray-200 bg-white text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm"
+                        >
+                          <SelectValue placeholder="Language" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {headerLanguageOptions.map((option) => (
+                            <SelectItem key={option.id} value={option.id}>
+                              {option.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
                     {navLinks.map((link) => (
                       <Link
                         key={link.href}

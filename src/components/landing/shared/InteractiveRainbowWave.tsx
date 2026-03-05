@@ -3,6 +3,11 @@
 import React, { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useDemo } from "@/context/DemoContext";
+import {
+  getWavePoints,
+  getWaveSampleStep,
+  RAINBOW_COLOR_STOPS,
+} from "@/lib/branding/wave-shape";
 
 interface InteractiveRainbowWaveProps {
   className?: string;
@@ -51,11 +56,8 @@ const InteractiveRainbowWave = ({
       ctx.clearRect(0, 0, width, height);
 
       // Wave configuration
-      const numPeaks = 8;
-      const frequency = (Math.PI * numPeaks) / width;
-      const amplitude = height * 0.24;
       const speed = 0.09;
-      const step = sampleStep ?? Math.max(0.5, width / 240);
+      const step = sampleStep ?? getWaveSampleStep(width);
 
       // Create Gradient from dynamic colors or use lineColor
       let strokeStyle: string | CanvasGradient = lineColor || "";
@@ -63,14 +65,9 @@ const InteractiveRainbowWave = ({
       if (!strokeStyle) {
         const gradient = ctx.createLinearGradient(0, 0, width, 0);
         if (useRainbow) {
-          // Full ROYGBIV Rainbow Gradient (Updated Palette)
-          gradient.addColorStop(0.0, "#E81416");   // Red
-          gradient.addColorStop(0.17, "#FFA500");  // Orange
-          gradient.addColorStop(0.33, "#FAEB36");  // Yellow
-          gradient.addColorStop(0.5, "#79C314");   // Green
-          gradient.addColorStop(0.67, "#487DE7");  // Blue
-          gradient.addColorStop(0.83, "#4B369D");  // Indigo
-          gradient.addColorStop(1.0, "#70369D");   // Violet
+          for (const stop of RAINBOW_COLOR_STOPS) {
+            gradient.addColorStop(stop.offset, stop.color);
+          }
         } else {
           gradient.addColorStop(0.0, currentLanguage.from);
           gradient.addColorStop(0.5, currentLanguage.via);
@@ -85,19 +82,19 @@ const InteractiveRainbowWave = ({
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
-      // Draw the wave
-      for (let x = 0; x <= width; x += step) {
-        const nx = x / width;
-        // Envelope function
-        const envelope = Math.pow(Math.sin(nx * Math.PI), 1.5);
+      const points = getWavePoints({
+        width,
+        height,
+        phase,
+        step,
+      });
 
-        // Wave equation
-        const y = (height / 2) + (envelope * amplitude * Math.sin(frequency * x - phase));
-
-        if (x === 0) {
-          ctx.moveTo(x, y);
+      for (let i = 0; i < points.length; i += 1) {
+        const point = points[i];
+        if (i === 0) {
+          ctx.moveTo(point.x, point.y);
         } else {
-          ctx.lineTo(x, y);
+          ctx.lineTo(point.x, point.y);
         }
       }
 

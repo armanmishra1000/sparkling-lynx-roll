@@ -47,17 +47,6 @@ const EraSection = () => {
           <InteractiveRainbowWave className="h-full" useRainbow={true} />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="w-full"
-        >
-          <LanguagesMarqueeSection />
-        </motion.div>
-
-
         {/* Additional Text Before Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,31 +63,42 @@ const EraSection = () => {
           </p>
         </motion.div>
 
-        {/* Meet Sophie Button with Rainbow Border */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="w-full"
         >
-          <a
-            href="https://sophie-rose.vercel.app/demo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-block transition-transform active:scale-95"
+          <LanguagesMarqueeSection />
+
+          {/* Meet Sophie Button with Rainbow Border */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <RainbowBorder
-              borderRadius={9999}
-              borderWidth={2}
-              innerClassName="relative bg-white w-full h-14 px-12 py-3 flex items-center justify-center overflow-hidden"
+            <a
+              href="https://sophie-rose.vercel.app/demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-block transition-transform active:scale-95"
             >
-              <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-              <span className="relative z-10 font-medium text-black">
-                Meet Sophie
-              </span>
-            </RainbowBorder>
-          </a>
+              <RainbowBorder
+                borderRadius={9999}
+                borderWidth={2}
+                innerClassName="relative bg-white w-full h-14 px-12 py-3 flex items-center justify-center overflow-hidden"
+              >
+                <RainbowGradient className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                <span className="relative z-10 font-medium text-black">
+                  Meet Sophie
+                </span>
+              </RainbowBorder>
+            </a>
+          </motion.div>
         </motion.div>
+
       </div>
     </section>
   );

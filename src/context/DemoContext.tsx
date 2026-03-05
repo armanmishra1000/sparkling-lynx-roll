@@ -7,13 +7,14 @@ interface DemoContextType {
   currentLanguage: LanguageConfig;
   isPaused: boolean;
   setPaused: (paused: boolean) => void;
+  setLanguageById: (id: LanguageConfig["id"]) => void;
 }
 
 const DemoContext = createContext<DemoContextType | undefined>(undefined);
 
 export const DemoProvider = ({ children }: { children: ReactNode }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
 
   useEffect(() => {
     if (isPaused) return;
@@ -25,10 +26,18 @@ export const DemoProvider = ({ children }: { children: ReactNode }) => {
     return () => clearInterval(interval);
   }, [isPaused]);
 
+  const setLanguageById = (id: LanguageConfig["id"]) => {
+    const index = demoLanguages.findIndex((lang) => lang.id === id);
+    if (index >= 0) {
+      setCurrentIndex(index);
+      setIsPaused(true);
+    }
+  };
+
   const currentLanguage = demoLanguages[currentIndex];
 
   return (
-    <DemoContext.Provider value={{ currentLanguage, isPaused, setPaused: setIsPaused }}>
+    <DemoContext.Provider value={{ currentLanguage, isPaused, setPaused: setIsPaused, setLanguageById }}>
       {children}
     </DemoContext.Provider>
   );
