@@ -4,24 +4,29 @@ import { Heart, MessageCircle, Target, Users } from "lucide-react";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
-import { getRequestMessages } from "@/lib/i18n/server";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
 
 export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
   const pageCopy = (await getRequestMessages()).aboutPage;
   return {
-    title: `${pageCopy.titlePrefix} | Sophie.ai`,
+    title: `${pageCopy.titlePrefix} | ${brand.dotAi}`,
     description: pageCopy.subtitle,
     openGraph: {
-      title: `${pageCopy.titlePrefix} Sophie.ai`,
+      title: `${pageCopy.titlePrefix} ${brand.dotAi}`,
       description: pageCopy.subtitle,
       url: "https://sophie.ai/about",
-      siteName: "Sophie.ai",
+      siteName: brand.dotAi,
       type: "website"
     }
   };
 };
 
 export default async function AboutPage() {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
   const pageCopy = (await getRequestMessages()).aboutPage;
 
   return (
@@ -37,7 +42,7 @@ export default async function AboutPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             {pageCopy.titlePrefix}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] via-[#FFD700] to-[#7B61FF]">
-              Sophie.ai
+              {brand.dotAi}
             </span>
           </h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">{pageCopy.subtitle}</p>

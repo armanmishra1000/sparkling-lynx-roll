@@ -6,6 +6,7 @@ import { MicIcon, CheckCircle2, ChevronsUp } from "lucide-react";
 import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
 import { RainbowIcon } from "@/components/ui/RainbowIcon";
 import { useLanguage } from "@/context/LanguageContext";
+import { useLandingDemoLanguage } from "@/components/landing/sections/HeroDemoLanguage";
 
 type TourTabId = "speak" | "correct" | "track";
 
@@ -24,6 +25,7 @@ const tabIcons: Record<TourTabId, typeof MicIcon> = {
 
 const ProductTour = () => {
   const { messages } = useLanguage();
+  const currentLanguage = useLandingDemoLanguage();
   const [activeTab, setActiveTab] = useState<TourTabId>("speak");
 
   const tabs: TourTab[] = useMemo(
@@ -39,7 +41,7 @@ const ProductTour = () => {
         <div className="relative z-10 w-full max-w-sm">
           <p className="text-2xl font-medium text-black leading-snug">{messages.productTour.speakQuote}</p>
           <div className="mt-8 w-full">
-            <InteractiveRainbowWave />
+            <InteractiveRainbowWave languageOverride={currentLanguage} />
           </div>
         </div>
       </div>

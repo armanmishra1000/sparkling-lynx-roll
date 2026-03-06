@@ -7,6 +7,7 @@ import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import LanguagesMarqueeSection from "@/components/landing/sections/LanguagesMarqueeSection";
 import { useLanguage } from "@/context/LanguageContext";
+import { ERA_FIXED_TITLE } from "@/lib/i18n/brand";
 
 const EraSection = () => {
   const { messages } = useLanguage();
@@ -14,7 +15,7 @@ const EraSection = () => {
   return (
     <section className="relative pb-24 pt-24 md:pt-32 overflow-hidden bg-white min-h-[600px] flex flex-col items-center justify-center">
       <div className="container mx-auto max-w-7xl px-4 relative z-10 flex flex-col items-center text-center">
-        {/* Main Title: Sophie AI */}
+        {/* Main Title is fixed across all locales */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,9 +23,17 @@ const EraSection = () => {
           transition={{ duration: 0.6 }}
           className="flex items-center justify-center my-4"
         >
-          <h1 className="text-6xl md:text-8xl font-bold text-black flex items-center uppercase">
+          <h1
+            lang="en"
+            dir="ltr"
+            translate="no"
+            style={{ unicodeBidi: "isolate" }}
+            className="text-6xl md:text-8xl font-bold text-black flex items-center uppercase"
+          >
             <span className="text-transparent bg-clip-text bg-[linear-gradient(to_bottom,#E81416,#FFA500,#FAEB36,#79C314,#487DE7,#4B369D,#70369D)] mr-1">
-              S</span>ophie AI
+              {ERA_FIXED_TITLE[0]}
+            </span>
+            {ERA_FIXED_TITLE.slice(1)}
           </h1>
         </motion.div>
 
@@ -83,7 +92,7 @@ const EraSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <a
-              href="https://sophie-rose.vercel.app/demo"
+              href="https://https://www.speakwithsophie.ai//demo"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-block transition-transform active:scale-95"

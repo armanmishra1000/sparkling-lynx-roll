@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/landing/shared/Navbar";
 import EraSection from "@/components/landing/sections/EraSection";
 import Hero from "@/components/landing/sections/Hero";
@@ -12,6 +13,34 @@ import Testimonials from "@/components/landing/sections/Testimonials";
 import Pricing from "@/components/landing/sections/Pricing";
 import FAQ from "@/components/landing/sections/FAQ";
 import Footer from "@/components/landing/shared/Footer";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
+  const pageCopy = await getRequestMessages();
+
+  const title = `${brand.dotAi} | ${pageCopy.era.subtitle}`;
+  const description = pageCopy.hero.intro;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: brand.dotAi,
+      type: "website",
+      url: "https://sophie.ai"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description
+    }
+  };
+};
 
 export default function Home() {
   return (

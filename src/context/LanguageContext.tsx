@@ -3,6 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { MESSAGES, type Messages } from "@/lib/i18n/messages";
 import { DEFAULT_LOCALE, getLocaleMeta, isAppLocale, type AppLocale } from "@/lib/i18n/locales";
+import { localizeBrandInMessages } from "@/lib/i18n/brand";
 
 interface LanguageContextValue {
   locale: AppLocale;
@@ -59,7 +60,7 @@ export const LanguageProvider = ({ children, initialLocale = DEFAULT_LOCALE }: L
   const value = useMemo<LanguageContextValue>(
     () => ({
       locale,
-      messages: MESSAGES[locale],
+      messages: localizeBrandInMessages(MESSAGES[locale], locale),
       setLocale
     }),
     [locale, setLocale]

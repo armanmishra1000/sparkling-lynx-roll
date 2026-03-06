@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
+import { useLanguage } from "@/context/LanguageContext";
+import { getBrandTerms } from "@/lib/i18n/brand";
 
 type LogoProps = {
   className?: string;
@@ -22,6 +24,9 @@ const Logo = ({
   href = "/",
   withLink = true,
 }: LogoProps) => {
+  const { locale } = useLanguage();
+  const brand = getBrandTerms(locale);
+
   const content = (
     <span className={cn("flex items-center gap-2", className)}>
       <span
@@ -40,7 +45,7 @@ const Logo = ({
           />
         </span>
       </span>
-      {showText ? <span className={textClassName}>Sophie.ai</span> : null}
+      {showText ? <span className={textClassName}>{brand.dotAi}</span> : null}
     </span>
   );
 

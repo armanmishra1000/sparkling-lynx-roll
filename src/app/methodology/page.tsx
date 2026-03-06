@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import {
   Brain,
   MessageCircle,
@@ -10,7 +11,34 @@ import {
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
-import { getRequestMessages } from "@/lib/i18n/server";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
+  const pageCopy = (await getRequestMessages()).methodologyPage;
+
+  const title = `${pageCopy.titlePrefix} ${pageCopy.titleGradient} | ${brand.dotAi}`;
+  const description = pageCopy.subtitle;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: brand.dotAi,
+      type: "website",
+      url: "https://sophie.ai/methodology"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description
+    }
+  };
+};
 
 export default async function MethodologyPage() {
   const pageCopy = (await getRequestMessages()).methodologyPage;

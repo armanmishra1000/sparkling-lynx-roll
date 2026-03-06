@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
-import { marqueeLanguages } from "@/lib/marquee-languages";
+import { getLocalizedMarqueeLanguages } from "@/lib/marquee-languages";
 import CircleFlag from "@/components/landing/shared/CircleFlag";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { useLanguage } from "@/context/LanguageContext";
 
 const LanguagesMarqueeSection = () => {
-  const languageItems = useMemo(() => marqueeLanguages, []);
-  const { messages } = useLanguage();
+  const { locale, messages } = useLanguage();
+  const languageItems = useMemo(() => getLocalizedMarqueeLanguages(locale), [locale]);
   const [showAllLanguages, setShowAllLanguages] = useState(false);
   const visibleLanguages = showAllLanguages ? languageItems : languageItems.slice(0, 18);
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -45,10 +45,10 @@ const LanguagesMarqueeSection = () => {
                 className="relative flex h-12 items-center rounded-full border border-gray-200 bg-white pl-14 "
               >
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 shrink-0 rounded-full">
-                  <CircleFlag countryCode={language.countryCode} size={48} alt={`${language.name} flag`} />
+                  <CircleFlag countryCode={language.countryCode} size={48} alt={language.label} />
                 </div>
                 <span className="truncate text-base sm:text-lg font-semibold text-black leading-tight">
-                  {language.name}
+                  {language.label}
                 </span>
               </div>
             ))}
@@ -61,10 +61,10 @@ const LanguagesMarqueeSection = () => {
                 className="relative flex h-12 items-center rounded-full border border-gray-200 bg-white pl-14 "
               >
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 shrink-0 rounded-full">
-                  <CircleFlag countryCode={language.countryCode} size={48} alt={`${language.name} flag`} />
+                  <CircleFlag countryCode={language.countryCode} size={48} alt={language.label} />
                 </div>
                 <span className="truncate text-base sm:text-lg font-semibold text-black leading-tight">
-                  {language.name}
+                  {language.label}
                 </span>
               </div>
             ))}

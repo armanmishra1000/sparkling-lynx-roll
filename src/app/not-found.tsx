@@ -1,9 +1,36 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
-import { getRequestMessages } from "@/lib/i18n/server";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
+  const pageCopy = (await getRequestMessages()).notFoundPage;
+  const title = `${pageCopy.title} | ${brand.dotAi}`;
+  const description = pageCopy.description;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: brand.dotAi,
+      type: "website",
+      url: "https://sophie.ai/404"
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description
+    }
+  };
+};
 
 export default async function NotFound() {
   const pageCopy = (await getRequestMessages()).notFoundPage;

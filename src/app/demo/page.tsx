@@ -1,8 +1,30 @@
 import { Metadata } from 'next';
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
 
-export const metadata: Metadata = {
-  title: 'Project Demo | Sophie.ai',
-  description: 'Experience RealTalk.ai - the future of language learning integration.',
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
+  const pageCopy = await getRequestMessages();
+  const title = `${pageCopy.demoModal.dialogTitle} | ${brand.dotAi}`;
+  const description = `${pageCopy.demoModal.liveSimulation}: ${pageCopy.demoModal.correctionBody}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: brand.dotAi,
+      type: "website",
+      url: "https://sophie.ai/demo"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description
+    }
+  };
 };
 
 /**

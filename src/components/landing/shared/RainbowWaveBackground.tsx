@@ -3,9 +3,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useDemo } from "@/context/DemoContext";
+import type { LanguageConfig } from "@/lib/demo-languages";
 
-const RainbowWaveBackground = () => {
-  const { currentLanguage } = useDemo();
+interface RainbowWaveBackgroundProps {
+  languageOverride?: LanguageConfig;
+}
+
+const RainbowWaveBackground = ({ languageOverride }: RainbowWaveBackgroundProps) => {
+  const { currentLanguage: demoLanguage } = useDemo();
+  const currentLanguage = languageOverride ?? demoLanguage;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-white">

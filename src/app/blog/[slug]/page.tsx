@@ -1,12 +1,39 @@
-﻿import React from "react";
+import React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, Share2, Calendar, Clock } from "lucide-react";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
 import ArticlePlayer from "@/components/blog/ArticlePlayer";
-import Link from "next/link";
-import { ArrowLeft, Share2, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getRequestMessages } from "@/lib/i18n/server";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
+  const pageCopy = (await getRequestMessages()).blogPostPage;
+  const title = `${pageCopy.titleLine1} ${pageCopy.titleLine2} | ${brand.dotAi}`;
+  const description = pageCopy.lead;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: brand.dotAi,
+      type: "article",
+      url: "https://sophie.ai/blog/why-you-are-still-translating"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description
+    }
+  };
+};
 
 export default async function BlogPostPage() {
   const pageCopy = (await getRequestMessages()).blogPostPage;
@@ -104,4 +131,3 @@ export default async function BlogPostPage() {
     </main>
   );
 }
-

@@ -1,17 +1,44 @@
-﻿import React from "react";
+import React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
-import Link from "next/link";
-import { ArrowRight, Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getRequestMessages } from "@/lib/i18n/server";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
 
 const POST_IMAGES: Record<string, string> = {
   "why-you-are-still-translating": "bg-gradient-to-br from-pink-100 to-rose-100",
   "myth-of-language-gene": "bg-gradient-to-br from-blue-100 to-cyan-100",
   "mexican-vs-spanish-slang": "bg-gradient-to-br from-purple-100 to-violet-100",
   "how-sophie-uses-llms": "bg-gradient-to-br from-gray-100 to-gray-200"
+};
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
+  const pageCopy = (await getRequestMessages()).blogPage;
+  const title = `${pageCopy.titleLine1} ${pageCopy.titleLine2} | ${brand.dotAi}`;
+  const description = pageCopy.subtitle;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      siteName: brand.dotAi,
+      type: "website",
+      url: "https://sophie.ai/blog"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description
+    }
+  };
 };
 
 export default async function BlogPage() {
@@ -49,11 +76,11 @@ export default async function BlogPage() {
                   <div className="p-10 flex-1 flex flex-col">
                     <div className="flex items-center gap-4 mb-6 text-xs font-bold uppercase tracking-widest text-gray-400">
                       <span className="text-[#FF0080]">{post.category}</span>
-                      <span>•</span>
+                      <span>|</span>
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" /> {post.date}
                       </span>
-                      <span>•</span>
+                      <span>|</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3 h-3" /> {post.readTime}
                       </span>
@@ -85,4 +112,3 @@ export default async function BlogPage() {
     </main>
   );
 }
-

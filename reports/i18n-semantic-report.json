@@ -1,0 +1,886 @@
+{
+  "generatedAt": "2026-03-06T11:11:49.171Z",
+  "warningCount": 97,
+  "warningCountByLocale": {
+    "zh": 13,
+    "hi": 44,
+    "es": 11,
+    "ar": 29
+  },
+  "warnings": [
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.howItWorks.steps[0].description",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
+      "target": "旅行、工作、约会或与房东争吵。苏菲使模拟适应您的实际生活，而不是教科书。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.features.cards[0].description",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Practice real life: Asking for directions in Madrid, ordering tapas, or negotiating a taxi in Bogotá.",
+      "target": "练习现实生活：在马德里问路、点小吃或在波哥大协商出租车。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.faq.items[3].answer",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Sophie is currently available as a web application and a mobile app for both iOS and Android. Your progress, custom vocabulary lists, and conversation history are synced across all your devices.",
+      "target": "Sophie 目前可作为 iOS 和 Android 的 Web 应用程序和移动应用程序使用。您的进度、自定义词汇列表和对话历史记录会在您的所有设备上同步。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.aboutPage.approachP1",
+      "sourceClauses": 7,
+      "targetClauses": 3,
+      "source": "Our approach is built around immersive dialogue, instant correction, and personalized learning paths. Instead of repeating lists of vocabulary, you talk, respond, and grow your skills through meaningful interaction.",
+      "target": "我们的方法围绕沉浸式对话、即时纠正和个性化学习路径展开。你不再只是重复词汇清单，而是在有意义的互动中开口、回应并持续提升。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.aboutPage.foundersP1",
+      "sourceClauses": 11,
+      "targetClauses": 9,
+      "source": "We, Luis Alberto Olguin Reyes and Ernesto Olguin Roman, built this platform on one belief: anyone should be able to speak a new language with confidence, without fear, without judgment, and without boring drills. We created Sophie.ai to help learners everywhere speak boldly, frequently, and naturally.",
+      "target": "我们，Luis Alberto Olguin Reyes 和 Ernesto Olguin Roman，基于一个信念打造了这个平台：任何人都应当能自信地说一门新语言，不必害怕、不被评判，也不必做枯燥练习。我们创建 Sophie.ai，是为了帮助世界各地的学习者大胆、频繁且自然地开口。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.aboutPage.forYouP1",
+      "sourceClauses": 7,
+      "targetClauses": 3,
+      "source": "Whether you're preparing for travel, work, study, or just want real conversational fluency, Sophie.ai is here to practice with you — anytime, anywhere.",
+      "target": "无论你是为旅行、工作或留学做准备，Sophie.ai 都能随时陪你练习。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[1].a",
+      "sourceClauses": 7,
+      "targetClauses": 2,
+      "source": "Sophie currently supports English, Spanish, French, German, Japanese, Chinese (Mandarin), and Hindi — with more languages coming soon.",
+      "target": "当前支持英语、西班牙语、法语、德语、日语、中文和印地语，且持续增加。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.privacyPage.useDataIntro",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Your data is used to personalize your learning experience, track your progress, and improve our AI's accuracy. We do not sell your personal data to third parties.",
+      "target": "您的数据用于个性化您的学习体验、跟踪您的进度并提高我们人工智能的准确性。我们不会将您的个人数据出售给第三方。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.privacyPage.dataSecurityBody",
+      "sourceClauses": 7,
+      "targetClauses": 5,
+      "source": "We implement industry-standard security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. All data in transit is encrypted via TLS, and data at rest is encrypted using AES-256. Your conversation transcripts are stored in isolated containers and are only accessible by you.",
+      "target": "我们实施行业标准的安全措施来保护您的信息免遭未经授权的访问、更改、披露或破坏。所有传输中的数据均通过 TLS 加密，静态数据使用 AES-256 加密。您的对话记录存储在独立的容器中，只有您自己才能访问。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.termsPage.permittedBody",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Personal language learning, educational purposes, and normal conversational practice.",
+      "target": "个人语言学习、教育目的和正常会话练习。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.termsPage.subscriptionsBody",
+      "sourceClauses": 8,
+      "targetClauses": 5,
+      "source": "Sophie.ai offers Free and Paid tiers. Paid subscriptions are billed monthly, quarterly, semi-annually, or annually. You may cancel at any time, and access will continue until the end of your billing period.",
+      "target": "Sophie.ai 提供免费和付费级别。付费订阅按月、季、半年或年计费。您可以随时取消，并且访问将继续到您的计费周期结束。"
+    },
+    {
+      "locale": "zh",
+      "type": "clause_density",
+      "path": "messages.termsPage.ipBody",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "The Service and its original content (excluding user-generated voice data), features, and functionality are the exclusive property of Sophie.ai.",
+      "target": "本服务及其原始内容（不包括用户生成的语音数据）、特性和功能是 Sophie.ai 的专有财产。"
+    },
+    {
+      "locale": "zh",
+      "type": "length_ratio",
+      "path": "messages.socialProof.title",
+      "ratio": 0.195,
+      "sourceLength": 41,
+      "targetLength": 8,
+      "source": "Powering the next generation of polyglots",
+      "target": "助力新一代多语者"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.howItWorks.steps[0].description",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
+      "target": "यात्रा, काम, डेटिंग, या अपने मकान मालिक के साथ बहस करना। सोफी अनुकरण को पाठ्यपुस्तक के बजाय आपके वास्तविक जीवन के अनुरूप ढालती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.faq.items[0].answer",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "Yes! You can toggle between different regional accents and dialects of {language} in your settings. Sophie adapts her vocabulary, common expressions, and pronunciation to match the specific region you're focusing on.",
+      "target": "हाँ! आप अपनी सेटिंग में {language} के विभिन्न क्षेत्रीय लहजों और बोलियों के बीच टॉगल कर सकते हैं। जिस विशिष्ट क्षेत्र पर आप ध्यान केंद्रित कर रहे हैं, उससे मेल खाने के लिए सोफी अपनी शब्दावली, सामान्य अभिव्यक्ति और उच्चारण को अनुकूलित करती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.faq.items[1].answer",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Not at all. Sophie is designed to adapt to your specific level. If a conversation is too complex, you can simply ask her to slow down, use simpler words, or even provide instant translations to help you follow along.",
+      "target": "बिल्कुल नहीं। सोफी को आपके विशिष्ट स्तर के अनुकूल बनाने के लिए डिज़ाइन किया गया है। यदि बातचीत बहुत जटिल है, तो आप उसे धीरे-धीरे बोलने, सरल शब्दों का उपयोग करने, या यहां तक ​​कि आपको आगे बढ़ने में मदद करने के लिए त्वरित अनुवाद प्रदान करने के लिए कह सकते हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.faq.items[2].answer",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Sophie uses a \"context-first\" approach. Instead of drills, she places you in real-world scenarios that naturally require complex {language} grammar. If you make a mistake, she provides gentle, constructive feedback in real-time.",
+      "target": "सोफी \"संदर्भ-प्रथम\" दृष्टिकोण का उपयोग करती है। अभ्यास के बजाय, वह आपको वास्तविक दुनिया के परिदृश्यों में रखती है जिसके लिए स्वाभाविक रूप से जटिल {language} व्याकरण की आवश्यकता होती है। यदि आप कोई गलती करते हैं, तो वह वास्तविक समय में सौम्य, रचनात्मक प्रतिक्रिया प्रदान करती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.faq.items[3].answer",
+      "sourceClauses": 4,
+      "targetClauses": 1,
+      "source": "Sophie is currently available as a web application and a mobile app for both iOS and Android. Your progress, custom vocabulary lists, and conversation history are synced across all your devices.",
+      "target": "सोफी वर्तमान में आईओएस और एंड्रॉइड दोनों के लिए एक वेब एप्लिकेशन और एक मोबाइल ऐप के रूप में उपलब्ध है। आपकी प्रगति, कस्टम शब्दावली सूचियाँ और वार्तालाप इतिहास आपके सभी उपकरणों पर समन्वयित हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.faq.items[4].answer",
+      "sourceClauses": 5,
+      "targetClauses": 2,
+      "source": "Definitely. You can choose from dozens of preset scenarios—like ordering at a cafe, a business meeting, or a first date—or create your own custom topics. Sophie can handle almost any conversation you want to have.",
+      "target": "निश्चित रूप से। आप दर्जनों पूर्व निर्धारित परिदृश्यों में से चुन सकते हैं—जैसे किसी कैफे में ऑर्डर करना, कोई व्यावसायिक मीटिंग, या पहली डेट—या अपने स्वयं के कस्टम विषय बना सकते हैं। सोफी आपकी इच्छित लगभग किसी भी बातचीत को संभाल सकती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.faq.items[5].answer",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Sophie currently supports 20 major world languages, and we're adding more every month. Each language is backed by native-level AI models to ensure the most accurate and natural learning experience possible.",
+      "target": "सोफी वर्तमान में विश्व की 20 प्रमुख भाषाओं का समर्थन करती है, और हम हर महीने और भाषाएँ जोड़ रहे हैं। सबसे सटीक और प्राकृतिक सीखने का अनुभव सुनिश्चित करने के लिए प्रत्येक भाषा को मूल-स्तरीय एआई मॉडल द्वारा समर्थित किया जाता है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.loginPage.testimonial",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Sophie pushed me to speak from Day 1. Its Incredibly seamingless, natural & effective.",
+      "target": "सोफी ने मुझे पहले दिन से ही बोलने के लिए प्रेरित किया। यह अविश्वसनीय रूप से सहज, प्राकृतिक और प्रभावी है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.aboutPage.beginningP1",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "SpeakWithSophie.ai was born from one simple idea: real fluency comes from real conversation, not memorization. Traditional language learning tools often trap learners in lists of words and isolated grammar drills — but we knew there had to be a better way.",
+      "target": "SpeakWithSophie.ai का जन्म एक सरल विचार से हुआ था: वास्तविक प्रवाह वास्तविक बातचीत से आता है, याद रखने से नहीं। पारंपरिक भाषा सीखने के उपकरण अक्सर शिक्षार्थियों को शब्दों की सूची और अलग-अलग व्याकरण अभ्यासों में फंसा देते हैं - लेकिन हम जानते थे कि एक बेहतर तरीका होना चाहिए।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.aboutPage.beginningP2",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "At Sophie.ai, we believe the fastest path to confidence in another language is daily speaking practice with intelligent feedback that feels natural and human-like. Sophie isn't just an AI — she's a speaking partner that listens, adapts, and helps you practice real-world conversations from day one.",
+      "target": "Sophie.ai में, हमारा मानना ​​है कि किसी अन्य भाषा में आत्मविश्वास का सबसे तेज़ रास्ता बुद्धिमान प्रतिक्रिया के साथ दैनिक बोलने का अभ्यास है जो प्राकृतिक और मानव जैसा लगता है। सोफी सिर्फ एक एआई नहीं है - वह एक बोलने वाली भागीदार है जो पहले दिन से ही वास्तविक दुनिया की बातचीत को सुनती है, अपनाती है और आपको वास्तविक दुनिया की बातचीत का अभ्यास करने में मदद करती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.aboutPage.approachP1",
+      "sourceClauses": 7,
+      "targetClauses": 3,
+      "source": "Our approach is built around immersive dialogue, instant correction, and personalized learning paths. Instead of repeating lists of vocabulary, you talk, respond, and grow your skills through meaningful interaction.",
+      "target": "हमारा दृष्टिकोण गहन संवाद, त्वरित सुधार और वैयक्तिकृत शिक्षण पथों के आसपास बनाया गया है। शब्दावली की सूचियों को दोहराने के बजाय, आप सार्थक बातचीत के माध्यम से बात करते हैं, प्रतिक्रिया देते हैं और अपने कौशल को बढ़ाते हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.aboutPage.foundersP1",
+      "sourceClauses": 11,
+      "targetClauses": 4,
+      "source": "We, Luis Alberto Olguin Reyes and Ernesto Olguin Roman, built this platform on one belief: anyone should be able to speak a new language with confidence, without fear, without judgment, and without boring drills. We created Sophie.ai to help learners everywhere speak boldly, frequently, and naturally.",
+      "target": "हम लुइस अल्बर्टो ओल्गुइन रेयेस और अर्नेस्टो ओल्गुइन रोमन इस विश्वास के साथ इस मंच को आकार देते हैं कि किसी को भी नई भाषा में आत्मविश्वास से बोलने में सक्षम होना चाहिए - बिना किसी डर के, बिना निर्णय के, और बिना उबाऊ अभ्यास के। हमने हर जगह शिक्षार्थियों को साहसपूर्वक बोलने, अक्सर बोलने और स्वाभाविक रूप से बोलने के लिए सशक्त बनाने के लिए Sophie.ai का निर्माण किया।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.quote",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "\"Language is not a genetic gift, it is a social organism. It lives only when spoken.\"",
+      "target": "\"भाषा कोई आनुवंशिक उपहार नहीं है, यह एक सामाजिक जीव है। यह केवल बोलने पर ही जीवित रहती है।\""
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[0].description",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Passive listening doesn't build fluency. Our engine forces you to construct sentences slightly above your current level, triggering rapid adaptation in the brain's language centers.",
+      "target": "निष्क्रिय श्रवण से प्रवाह का निर्माण नहीं होता है। हमारा इंजन आपको अपने वर्तमान स्तर से थोड़ा ऊपर वाक्य बनाने के लिए मजबूर करता है, जिससे मस्तिष्क के भाषा केंद्रों में तेजी से अनुकूलन शुरू हो जाता है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[1].description",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "We don't just repeat words. We repeat *patterns* within new contexts. If you struggle with the Spanish subjunctive, Sophie will weave it into a debate about politics, then a date scenario.",
+      "target": "हम सिर्फ शब्द नहीं दोहराते. हम नए संदर्भों में *पैटर्न* दोहराते हैं। यदि आप स्पैनिश सब्जेक्टिव के साथ संघर्ष करते हैं, तो सोफी इसे राजनीति के बारे में एक बहस में बुन देगी, फिर एक तारीख परिदृश्य में।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[2].description",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "Fear blocks learning. By simulating a safe, judgment-free environment with AI, we lower your cortisol levels, allowing your brain to take risks and retain information 3x faster.",
+      "target": "डर सीखने में बाधा डालता है। एआई के साथ एक सुरक्षित, निर्णय-मुक्त वातावरण का अनुकरण करके, हम आपके कोर्टिसोल के स्तर को कम करते हैं, जिससे आपके मस्तिष्क को जोखिम लेने और जानकारी को 3 गुना तेजी से बनाए रखने की अनुमति मिलती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[3].description",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Neuroplasticity requires instant error correction. Sophie intervenes the moment a mistake happens, rewriting the neural pathway before the bad habit (fossilization) sets in.",
+      "target": "न्यूरोप्लास्टिकिटी के लिए तत्काल त्रुटि सुधार की आवश्यकता होती है। गलती होते ही सोफी हस्तक्षेप करती है, बुरी आदत (जीवाश्मीकरण) शुरू होने से पहले तंत्रिका मार्ग को फिर से लिखती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.supportPage.responseTime",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "We typically respond within 24 hours. For urgent issues, please include \"URGENT\" in your email subject line.",
+      "target": "हम आम तौर पर 24 घंटों के भीतर जवाब देते हैं। अत्यावश्यक मुद्दों के लिए, कृपया अपनी ईमेल विषय पंक्ति में \"तत्काल\" शामिल करें।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[0].a",
+      "sourceClauses": 5,
+      "targetClauses": 2,
+      "source": "Open the app, go to the Talk tab, select the language you want to learn, and hold the microphone button to start speaking. Sophie will respond in real-time.",
+      "target": "ऐप खोलें, टॉक टैब पर जाएं, वह भाषा चुनें जिसे आप सीखना चाहते हैं और बोलना शुरू करने के लिए माइक्रोफ़ोन बटन दबाए रखें। सोफी वास्तविक समय में जवाब देगी।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[1].a",
+      "sourceClauses": 7,
+      "targetClauses": 5,
+      "source": "Sophie currently supports English, Spanish, French, German, Japanese, Chinese (Mandarin), and Hindi — with more languages coming soon.",
+      "target": "सोफी वर्तमान में अंग्रेजी, स्पेनिश, फ्रेंच, जर्मन, जापानी, चीनी (मंदारिन) और हिंदी का समर्थन करती है - जल्द ही और भी भाषाएँ आने वाली हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[3].a",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "You can request account deletion by emailing support@speakwithsophie.ai. All your data will be permanently removed within 30 days.",
+      "target": "आप support@speakwithsophie.ai पर ईमेल करके खाता हटाने का अनुरोध कर सकते हैं। आपका सारा डेटा 30 दिनों के भीतर स्थायी रूप से हटा दिया जाएगा।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.privacyPage.useDataIntro",
+      "sourceClauses": 4,
+      "targetClauses": 1,
+      "source": "Your data is used to personalize your learning experience, track your progress, and improve our AI's accuracy. We do not sell your personal data to third parties.",
+      "target": "आपके डेटा का उपयोग आपके सीखने के अनुभव को निजीकृत करने, आपकी प्रगति को ट्रैक करने और हमारी एआई की सटीकता में सुधार करने के लिए किया जाता है। हम आपका व्यक्तिगत डेटा तीसरे पक्ष को नहीं बेचते हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.privacyPage.dataSecurityBody",
+      "sourceClauses": 7,
+      "targetClauses": 3,
+      "source": "We implement industry-standard security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. All data in transit is encrypted via TLS, and data at rest is encrypted using AES-256. Your conversation transcripts are stored in isolated containers and are only accessible by you.",
+      "target": "हम आपकी जानकारी को अनधिकृत पहुंच, परिवर्तन, प्रकटीकरण या विनाश से बचाने के लिए उद्योग-मानक सुरक्षा उपाय लागू करते हैं। पारगमन में सभी डेटा को टीएलएस के माध्यम से एन्क्रिप्ट किया गया है, और बाकी डेटा को एईएस-256 का उपयोग करके एन्क्रिप्ट किया गया है। आपकी बातचीत की प्रतिलेख अलग-अलग कंटेनरों में संग्रहीत हैं और केवल आपके द्वारा ही पहुंच योग्य हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.privacyPage.retentionBody",
+      "sourceClauses": 4,
+      "targetClauses": 1,
+      "source": "We retain your personal data only for as long as necessary to provide our services. You may request deletion of your account and all associated data at any time by contacting us. Upon account deletion, your data will be permanently removed within 30 days.",
+      "target": "हम आपका व्यक्तिगत डेटा केवल तब तक ही रखते हैं जब तक हमारी सेवाएँ प्रदान करने के लिए आवश्यक हो। आप किसी भी समय हमसे संपर्क करके अपना खाता और सभी संबद्ध डेटा हटाने का अनुरोध कर सकते हैं। खाता हटाए जाने पर, आपका डेटा 30 दिनों के भीतर स्थायी रूप से हटा दिया जाएगा।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.privacyPage.thirdPartyBody",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "We use third-party services including Supabase (authentication and database), Google Gemini (AI language processing), and analytics tools to operate the app. These services process data in accordance with their own privacy policies and are bound by data processing agreements.",
+      "target": "हम ऐप को संचालित करने के लिए सुपाबेस (प्रमाणीकरण और डेटाबेस), Google जेमिनी (एआई भाषा प्रसंस्करण), और एनालिटिक्स टूल सहित तृतीय-पक्ष सेवाओं का उपयोग करते हैं। ये सेवाएँ अपनी गोपनीयता नीतियों के अनुसार डेटा संसाधित करती हैं और डेटा प्रोसेसिंग समझौतों से बंधी होती हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.privacyPage.childrenBody",
+      "sourceClauses": 4,
+      "targetClauses": 1,
+      "source": "Speak With Sophie is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal data, please contact us so we can take appropriate action.",
+      "target": "स्पीक विद सोफी 13 वर्ष से कम उम्र के बच्चों के लिए निर्देशित नहीं है। हम जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते हैं। यदि आप माता-पिता या अभिभावक हैं और मानते हैं कि आपके बच्चे ने हमें व्यक्तिगत डेटा प्रदान किया है, तो कृपया हमसे संपर्क करें ताकि हम उचित कार्रवाई कर सकें।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.privacyPage.changesBody",
+      "sourceClauses": 3,
+      "targetClauses": 0,
+      "source": "We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the \"Last updated\" date. Your continued use of the app after changes constitutes acceptance of the updated policy.",
+      "target": "हम इस गोपनीयता नीति को समय-समय पर अद्यतन कर सकते हैं। हम इस पृष्ठ पर नई नीति पोस्ट करके और \"अंतिम अद्यतन\" तिथि को अपडेट करके किसी भी महत्वपूर्ण परिवर्तन के बारे में आपको सूचित करेंगे। परिवर्तनों के बाद ऐप का आपका निरंतर उपयोग अद्यतन नीति की स्वीकृति माना जाता है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.termsPage.acceptanceBody",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "By accessing and using Sophie.ai (\"Service\"), you agree to be bound by these terms. If you disagree with any part of the terms, you may not access the Service.",
+      "target": "Sophie.ai (\"सेवा\") तक पहुंच और उपयोग करके, आप इन शर्तों से बंधे होने के लिए सहमत हैं। यदि आप शर्तों के किसी भी भाग से असहमत हैं, तो आप सेवा तक नहीं पहुँच सकते।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.termsPage.permittedBody",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Personal language learning, educational purposes, and normal conversational practice.",
+      "target": "व्यक्तिगत भाषा सीखना, शैक्षिक उद्देश्य और सामान्य बातचीत का अभ्यास।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.termsPage.subscriptionsBody",
+      "sourceClauses": 8,
+      "targetClauses": 4,
+      "source": "Sophie.ai offers Free and Paid tiers. Paid subscriptions are billed monthly, quarterly, semi-annually, or annually. You may cancel at any time, and access will continue until the end of your billing period.",
+      "target": "Sophie.ai मुफ़्त और सशुल्क स्तर प्रदान करता है। सशुल्क सदस्यता का बिल मासिक, त्रैमासिक, अर्ध-वार्षिक या वार्षिक रूप से लिया जाता है। आप किसी भी समय रद्द कर सकते हैं, और आपकी बिलिंग अवधि के अंत तक पहुंच जारी रहेगी।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.termsPage.ipBody",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "The Service and its original content (excluding user-generated voice data), features, and functionality are the exclusive property of Sophie.ai.",
+      "target": "सेवा और इसकी मूल सामग्री (उपयोगकर्ता द्वारा उत्पन्न वॉयस डेटा को छोड़कर), सुविधाएँ और कार्यक्षमता Sophie.ai की विशिष्ट संपत्ति हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.termsPage.terminationBody",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "We reserve the right to terminate or suspend access to our Service immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users of the Service.",
+      "target": "हम बिना किसी पूर्व सूचना के तुरंत अपनी सेवा तक पहुंच समाप्त करने या निलंबित करने का अधिकार सुरक्षित रखते हैं, ऐसे आचरण के लिए जो हमें लगता है कि इन शर्तों का उल्लंघन करता है या सेवा के अन्य उपयोगकर्ताओं के लिए हानिकारक है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.hero.intro",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Stop translating in your head, just ask Sophie. She will help you to conquer real conversation to speak like a native, not like a textbook student.",
+      "target": "दिमाग में अनुवाद करना छोड़िए, सीधे Sophie से पूछिए। वह आपको असली बातचीत में निपुण बनने में मदद करेगी, ताकि आप किताबी छात्र की तरह नहीं बल्कि एक मूल वक्ता की तरह बोलें।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.personalizationEngine.subtitle",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Most apps reset every session. Sophie builds a persistent, evolving model of your language patterns.",
+      "target": "अधिकांश ऐप्स हर सत्र में रीसेट हो जाते हैं। सोफी आपके भाषा पैटर्न का एक सतत, विकसित मॉडल बनाती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPage.posts[1].excerpt",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "New research suggests adaptability is a skill, not a talent. Here's how to train your neuroplasticity.",
+      "target": "नए शोध से पता चलता है कि अनुकूलनशीलता एक कौशल है, प्रतिभा नहीं। यहां बताया गया है कि अपनी न्यूरोप्लास्टिकिटी को कैसे प्रशिक्षित करें।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPage.posts[2].excerpt",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Don't say 'Coger' in Mexico. Seriously. A breakdown of regional variances.",
+      "target": "मेक्सिको में 'कोगर' मत कहें। गंभीरता से। क्षेत्रीय भिन्नताओं का विश्लेषण."
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.lead",
+      "sourceClauses": 9,
+      "targetClauses": 6,
+      "source": "You know the feeling. Someone asks you a simple question in Spanish, and your brain freezes. You hear the words, translate them to English, formulate a response in English, translate it back to Spanish, check grammar tables in your mind, and finally speak too late.",
+      "target": "आप भावना को जानते हैं. कोई आपसे स्पैनिश में एक सरल प्रश्न पूछता है, और आपका मस्तिष्क ठिठक जाता है। आप शब्दों को सुनते हैं, उनका अंग्रेजी में अनुवाद करते हैं, अंग्रेजी में उत्तर तैयार करते हैं, उसका स्पेनिश में अनुवाद करते हैं, अपने दिमाग में व्याकरण तालिकाओं की जांच करते हैं और अंत में बहुत देर से बोलते हैं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionCognitiveP1",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "This process is called translation dependence, and it's one of the biggest killers of fluency. Traditional language education often trains this habit by focusing on vocabulary lists and grammar rules instead of context.",
+      "target": "इस प्रक्रिया को अनुवाद निर्भरता कहा जाता है, और यह प्रवाह के सबसे बड़े हत्यारों में से एक है। पारंपरिक भाषा शिक्षा अक्सर संदर्भ के बजाय शब्दावली सूचियों और व्याकरण नियमों पर ध्यान केंद्रित करके इस आदत को प्रशिक्षित करती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionCognitiveP2",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "When you learn that \"Gato\" means \"Cat\", you create a neural dependency. You cannot access the concept directly without passing through your native language first.",
+      "target": "जब आप सीखते हैं कि \"गाटो\" का अर्थ \"बिल्ली\" है, तो आप एक तंत्रिका निर्भरता पैदा करते हैं। आप पहले अपनी मूल भाषा से गुजरे बिना अवधारणा तक सीधे नहीं पहुंच सकते।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.approachBody",
+      "sourceClauses": 3,
+      "targetClauses": 0,
+      "source": "We use the Direct Method. We show you an image or place you in a real scenario and force direct interaction in the target language. No English bridge and no translation buffer.",
+      "target": "हम प्रत्यक्ष विधि का उपयोग करते हैं। हम आपको एक छवि दिखाते हैं या आपको वास्तविक परिदृश्य में रखते हैं और लक्ष्य भाषा में सीधे बातचीत के लिए बाध्य करते हैं। कोई अंग्रेजी पुल नहीं और कोई अनुवाद बफ़र नहीं।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionNeuroP1",
+      "sourceClauses": 6,
+      "targetClauses": 2,
+      "source": "Fear matters too. The amygdala, the brain's fear center, activates when social pressure rises. In classrooms or real-world settings, fear of looking wrong can shut down language production.",
+      "target": "डर भी मायने रखता है. सामाजिक दबाव बढ़ने पर मस्तिष्क का भय केंद्र अमिगडाला सक्रिय हो जाता है। कक्षाओं या वास्तविक दुनिया की सेटिंग में, गलत दिखने का डर भाषा उत्पादन को बंद कर सकता है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionNeuroP2",
+      "sourceClauses": 4,
+      "targetClauses": 1,
+      "source": "That is why AI can be a strong practice partner. Sophie does not judge and does not rush you. She corrects and moves on, which lowers the affective filter and helps your brain take risks.",
+      "target": "इसीलिए AI एक मजबूत अभ्यास भागीदार हो सकता है। सोफी आपको जज नहीं करती और न ही आपको परेशान करती है। वह सुधार करती है और आगे बढ़ती है, जो भावात्मक फ़िल्टर को कम करती है और आपके मस्तिष्क को जोखिम लेने में मदद करती है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.quote",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Fluency isn't about knowing every word. It's about retrieval speed, and translation is the slowest retrieval method.",
+      "target": "प्रवाह का मतलब हर शब्द को जानना नहीं है। यह पुनर्प्राप्ति गति के बारे में है, और अनुवाद सबसे धीमी पुनर्प्राप्ति विधि है।"
+    },
+    {
+      "locale": "hi",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionBreakingP1",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "To break translation dependence, practice production, not only reception. You need to speak a lot.",
+      "target": "अनुवाद निर्भरता को तोड़ने के लिए, केवल स्वागत नहीं बल्कि उत्पादन का अभ्यास करें। आपको बहुत कुछ बोलना है."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.aboutPage.approachP1",
+      "sourceClauses": 7,
+      "targetClauses": 2,
+      "source": "Our approach is built around immersive dialogue, instant correction, and personalized learning paths. Instead of repeating lists of vocabulary, you talk, respond, and grow your skills through meaningful interaction.",
+      "target": "Nuestro método se basa en diálogo inmersivo, corrección inmediata y rutas de aprendizaje personalizadas."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.aboutPage.approachP2",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "Over time, Sophie.ai remembers your progress, understands your unique patterns, and tailors practice sessions to help you improve faster.",
+      "target": "Con el tiempo, Sophie.ai recuerda tu progreso y adapta la práctica para que mejores más rápido."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.aboutPage.foundersP1",
+      "sourceClauses": 11,
+      "targetClauses": 9,
+      "source": "We, Luis Alberto Olguin Reyes and Ernesto Olguin Roman, built this platform on one belief: anyone should be able to speak a new language with confidence, without fear, without judgment, and without boring drills. We created Sophie.ai to help learners everywhere speak boldly, frequently, and naturally.",
+      "target": "Nosotros, Luis Alberto Olguin Reyes y Ernesto Olguin Roman, construimos esta plataforma con una convicción: cualquiera debería poder hablar un idioma nuevo con confianza, sin miedo, sin juicios y sin ejercicios aburridos. Creamos Sophie.ai para que estudiantes de todo el mundo hablen con valentía, frecuencia y naturalidad."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.aboutPage.forYouP1",
+      "sourceClauses": 7,
+      "targetClauses": 5,
+      "source": "Whether you're preparing for travel, work, study, or just want real conversational fluency, Sophie.ai is here to practice with you — anytime, anywhere.",
+      "target": "Ya sea para viajar, trabajar, estudiar o simplemente conversar con fluidez real, Sophie.ai está contigo en cualquier momento."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[1].description",
+      "sourceClauses": 5,
+      "targetClauses": 2,
+      "source": "We don't just repeat words. We repeat *patterns* within new contexts. If you struggle with the Spanish subjunctive, Sophie will weave it into a debate about politics, then a date scenario.",
+      "target": "No repetimos solo palabras. Repetimos patrones en nuevos contextos para consolidar gramática y expresiones."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[2].description",
+      "sourceClauses": 5,
+      "targetClauses": 2,
+      "source": "Fear blocks learning. By simulating a safe, judgment-free environment with AI, we lower your cortisol levels, allowing your brain to take risks and retain information 3x faster.",
+      "target": "El miedo bloquea el aprendizaje. Un entorno seguro y sin juicio reduce el estrés y mejora la retención."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[3].description",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Neuroplasticity requires instant error correction. Sophie intervenes the moment a mistake happens, rewriting the neural pathway before the bad habit (fossilization) sets in.",
+      "target": "La neuroplasticidad requiere corrección instantánea para evitar fosilizar errores."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[0].a",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "Open the app, go to the Talk tab, select the language you want to learn, and hold the microphone button to start speaking. Sophie will respond in real-time.",
+      "target": "Abre la app, ve a la pestaña Hablar, elige el idioma y mantén presionado el micrófono para hablar."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.privacyPage.dataSecurityBody",
+      "sourceClauses": 7,
+      "targetClauses": 5,
+      "source": "We implement industry-standard security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. All data in transit is encrypted via TLS, and data at rest is encrypted using AES-256. Your conversation transcripts are stored in isolated containers and are only accessible by you.",
+      "target": "Implementamos medidas de seguridad estándar de la industria para proteger su información contra acceso no autorizado, alteración, divulgación o destrucción. Todos los datos en tránsito se cifran mediante TLS y los datos en reposo se cifran mediante AES-256. Las transcripciones de sus conversaciones se almacenan en contenedores aislados y solo usted puede acceder a ellas."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.termsPage.subscriptionsBody",
+      "sourceClauses": 8,
+      "targetClauses": 6,
+      "source": "Sophie.ai offers Free and Paid tiers. Paid subscriptions are billed monthly, quarterly, semi-annually, or annually. You may cancel at any time, and access will continue until the end of your billing period.",
+      "target": "Sophie.ai ofrece niveles gratuitos y de pago. Las suscripciones pagas se facturan mensual, trimestral, semestral o anualmente. Puede cancelar en cualquier momento y el acceso continuará hasta el final de su período de facturación."
+    },
+    {
+      "locale": "es",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.lead",
+      "sourceClauses": 9,
+      "targetClauses": 7,
+      "source": "You know the feeling. Someone asks you a simple question in Spanish, and your brain freezes. You hear the words, translate them to English, formulate a response in English, translate it back to Spanish, check grammar tables in your mind, and finally speak too late.",
+      "target": "Ya conoces el sentimiento. Alguien te hace una pregunta sencilla en español y tu cerebro se congela. Escuchas las palabras, las traduces al inglés, formulas una respuesta en inglés, la traduces nuevamente al español, revisas mentalmente las tablas gramaticales y finalmente hablas demasiado tarde."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.howItWorks.steps[0].description",
+      "sourceClauses": 6,
+      "targetClauses": 2,
+      "source": "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
+      "target": "السفر أو العمل أو المواعدة أو الجدال مع مالك العقار. تقوم صوفي بتكييف المحاكاة مع حياتك الفعلية، وليس مع كتاب مدرسي."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.features.cards[0].description",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Practice real life: Asking for directions in Madrid, ordering tapas, or negotiating a taxi in Bogotá.",
+      "target": "مارس الحياة الواقعية: اسأل عن الاتجاهات في مدريد، أو طلب المقبلات، أو التفاوض بشأن سيارة أجرة في بوغوتا."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.faq.items[0].answer",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "Yes! You can toggle between different regional accents and dialects of {language} in your settings. Sophie adapts her vocabulary, common expressions, and pronunciation to match the specific region you're focusing on.",
+      "target": "نعم! يمكنك التبديل بين اللهجات الإقليمية المختلفة ولهجات {language} في إعداداتك. تقوم صوفي بتكييف مفرداتها وتعبيراتها الشائعة ونطقها لتتناسب مع المنطقة المحددة التي تركز عليها."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.faq.items[1].answer",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Not at all. Sophie is designed to adapt to your specific level. If a conversation is too complex, you can simply ask her to slow down, use simpler words, or even provide instant translations to help you follow along.",
+      "target": "مُطْلَقاً. تم تصميم صوفي للتكيف مع مستواك المحدد. إذا كانت المحادثة معقدة للغاية، يمكنك ببساطة أن تطلب منها التباطؤ، أو استخدام كلمات أبسط، أو حتى توفير ترجمة فورية لمساعدتك على المتابعة."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.faq.items[2].answer",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Sophie uses a \"context-first\" approach. Instead of drills, she places you in real-world scenarios that naturally require complex {language} grammar. If you make a mistake, she provides gentle, constructive feedback in real-time.",
+      "target": "تستخدم صوفي نهج \"السياق أولاً\". بدلاً من التدريبات، تضعك في سيناريوهات من العالم الحقيقي تتطلب بطبيعة الحال قواعد نحوية معقدة. إذا ارتكبت خطأً ما، فإنها تقدم تعليقات لطيفة وبناءة في الوقت الفعلي. ({language})"
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.faq.items[3].answer",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Sophie is currently available as a web application and a mobile app for both iOS and Android. Your progress, custom vocabulary lists, and conversation history are synced across all your devices.",
+      "target": "صوفي متاحة حاليًا كتطبيق ويب وتطبيق جوال لكل من iOS وAndroid. تتم مزامنة تقدمك وقوائم المفردات المخصصة وسجل المحادثات عبر جميع أجهزتك."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.faq.items[4].answer",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "Definitely. You can choose from dozens of preset scenarios—like ordering at a cafe, a business meeting, or a first date—or create your own custom topics. Sophie can handle almost any conversation you want to have.",
+      "target": "قطعاً. يمكنك الاختيار من بين العشرات من السيناريوهات المعدة مسبقًا - مثل الطلب في مقهى، أو اجتماع عمل، أو الموعد الأول - أو إنشاء موضوعاتك المخصصة. تستطيع صوفي التعامل مع أي محادثة ترغب في إجرائها تقريبًا."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.aboutPage.beginningP2",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "At Sophie.ai, we believe the fastest path to confidence in another language is daily speaking practice with intelligent feedback that feels natural and human-like. Sophie isn't just an AI — she's a speaking partner that listens, adapts, and helps you practice real-world conversations from day one.",
+      "target": "في Sophie.ai، نعتقد أن أسرع طريق للثقة في لغة أخرى هو ممارسة التحدث يوميًا مع ردود فعل ذكية تبدو طبيعية وشبيهة بالبشر. صوفي ليست مجرد ذكاء اصطناعي - إنها شريكة متحدثة تستمع وتتكيف وتساعدك على ممارسة المحادثات الواقعية من اليوم الأول."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.aboutPage.approachP1",
+      "sourceClauses": 7,
+      "targetClauses": 2,
+      "source": "Our approach is built around immersive dialogue, instant correction, and personalized learning paths. Instead of repeating lists of vocabulary, you talk, respond, and grow your skills through meaningful interaction.",
+      "target": "يعتمد نهجنا على الحوار الشامل والتصحيح الفوري ومسارات التعلم المخصصة. بدلاً من تكرار قوائم المفردات، يمكنك التحدث والرد وتنمية مهاراتك من خلال التفاعل الهادف."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.aboutPage.approachP2",
+      "sourceClauses": 5,
+      "targetClauses": 2,
+      "source": "Over time, Sophie.ai remembers your progress, understands your unique patterns, and tailors practice sessions to help you improve faster.",
+      "target": "بمرور الوقت، تتذكر Sophie.ai التقدم الذي أحرزته، وتفهم أنماطك الفريدة، وتخصص جلسات تدريب لمساعدتك على التحسن بشكل أسرع."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.aboutPage.foundersP1",
+      "sourceClauses": 11,
+      "targetClauses": 3,
+      "source": "We, Luis Alberto Olguin Reyes and Ernesto Olguin Roman, built this platform on one belief: anyone should be able to speak a new language with confidence, without fear, without judgment, and without boring drills. We created Sophie.ai to help learners everywhere speak boldly, frequently, and naturally.",
+      "target": "نحن لويس ألبرتو أولغوين رييس وإرنستو أولغوين رومان نشكل هذه المنصة مع الإيمان بأن أي شخص يجب أن يكون قادرًا على التحدث بثقة بلغة جديدة - دون خوف، دون إصدار أحكام، ودون تدريبات مملة. لقد أنشأنا Sophie.ai لتمكين المتعلمين في كل مكان من التحدث بجرأة، والتحدث كثيرًا، والتحدث بشكل طبيعي."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.aboutPage.forYouP1",
+      "sourceClauses": 7,
+      "targetClauses": 2,
+      "source": "Whether you're preparing for travel, work, study, or just want real conversational fluency, Sophie.ai is here to practice with you — anytime, anywhere.",
+      "target": "سواء كنت تستعد للسفر أو العمل أو الدراسة أو تريد فقط طلاقة حقيقية في المحادثة، فإن Sophie.ai موجودة للتدرب معك - في أي وقت وفي أي مكان."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[1].description",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "We don't just repeat words. We repeat *patterns* within new contexts. If you struggle with the Spanish subjunctive, Sophie will weave it into a debate about politics, then a date scenario.",
+      "target": "نحن لا نكرر الكلمات فقط. نكرر *الأنماط* ضمن سياقات جديدة. إذا كنت تواجه صعوبة في استخدام صيغة الشرط الإسبانية، فسوف تنسجها صوفي في نقاش حول السياسة، ثم في سيناريو التاريخ."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.methodologyPage.principles[2].description",
+      "sourceClauses": 5,
+      "targetClauses": 1,
+      "source": "Fear blocks learning. By simulating a safe, judgment-free environment with AI, we lower your cortisol levels, allowing your brain to take risks and retain information 3x faster.",
+      "target": "الخوف يمنع التعلم من خلال محاكاة بيئة آمنة خالية من الأحكام باستخدام الذكاء الاصطناعي، نقوم بخفض مستويات الكورتيزول لديك، مما يسمح لعقلك بالمخاطرة والاحتفاظ بالمعلومات بشكل أسرع 3 مرات."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[0].a",
+      "sourceClauses": 5,
+      "targetClauses": 2,
+      "source": "Open the app, go to the Talk tab, select the language you want to learn, and hold the microphone button to start speaking. Sophie will respond in real-time.",
+      "target": "افتح التطبيق، وانتقل إلى علامة تبويب \"التحدث\"، وحدد اللغة التي تريد تعلمها، واضغط مع الاستمرار على زر الميكروفون لبدء التحدث. سوف تستجيب صوفي في الوقت الحقيقي."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.supportPage.faqs[1].a",
+      "sourceClauses": 7,
+      "targetClauses": 1,
+      "source": "Sophie currently supports English, Spanish, French, German, Japanese, Chinese (Mandarin), and Hindi — with more languages coming soon.",
+      "target": "تدعم صوفي حاليًا اللغة الإنجليزية والإسبانية والفرنسية والألمانية واليابانية والصينية (الماندرين) والهندية - مع توفر المزيد من اللغات قريبًا."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.privacyPage.useDataIntro",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Your data is used to personalize your learning experience, track your progress, and improve our AI's accuracy. We do not sell your personal data to third parties.",
+      "target": "يتم استخدام بياناتك لتخصيص تجربة التعلم الخاصة بك، وتتبع التقدم المحرز الخاص بك، وتحسين دقة الذكاء الاصطناعي لدينا. نحن لا نبيع بياناتك الشخصية لأطراف ثالثة."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.privacyPage.dataSecurityBody",
+      "sourceClauses": 7,
+      "targetClauses": 3,
+      "source": "We implement industry-standard security measures to protect your information from unauthorized access, alteration, disclosure, or destruction. All data in transit is encrypted via TLS, and data at rest is encrypted using AES-256. Your conversation transcripts are stored in isolated containers and are only accessible by you.",
+      "target": "نحن ننفذ إجراءات أمنية متوافقة مع معايير الصناعة لحماية معلوماتك من الوصول غير المصرح به أو التغيير أو الكشف أو التدمير. يتم تشفير جميع البيانات أثناء النقل عبر TLS، ويتم تشفير البيانات غير النشطة باستخدام AES-256. يتم تخزين نصوص المحادثة الخاصة بك في حاويات معزولة ولا يمكن الوصول إليها إلا بواسطتك."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.privacyPage.thirdPartyBody",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "We use third-party services including Supabase (authentication and database), Google Gemini (AI language processing), and analytics tools to operate the app. These services process data in accordance with their own privacy policies and are bound by data processing agreements.",
+      "target": "نحن نستخدم خدمات الجهات الخارجية بما في ذلك Supabase (المصادقة وقاعدة البيانات)، وGoogle Gemini (معالجة لغة الذكاء الاصطناعي)، وأدوات التحليلات لتشغيل التطبيق. تعالج هذه الخدمات البيانات وفقًا لسياسات الخصوصية الخاصة بها وتلتزم باتفاقيات معالجة البيانات."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.termsPage.acceptanceBody",
+      "sourceClauses": 5,
+      "targetClauses": 3,
+      "source": "By accessing and using Sophie.ai (\"Service\"), you agree to be bound by these terms. If you disagree with any part of the terms, you may not access the Service.",
+      "target": "من خلال الوصول إلى Sophie.ai (\"الخدمة\") واستخدامها، فإنك توافق على الالتزام بهذه الشروط. إذا كنت لا توافق على أي جزء من الشروط، فلا يجوز لك الوصول إلى الخدمة."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.termsPage.permittedBody",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Personal language learning, educational purposes, and normal conversational practice.",
+      "target": "تعلم اللغة الشخصية، والأغراض التعليمية، وممارسة المحادثة العادية."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.termsPage.prohibitedBody",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "Automated scraping, reverse engineering the AI model, or using the service for harassment/hate speech.",
+      "target": "الاستخلاص الآلي، أو الهندسة العكسية لنموذج الذكاء الاصطناعي، أو استخدام الخدمة للتحرش/خطاب الكراهية."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.termsPage.subscriptionsBody",
+      "sourceClauses": 8,
+      "targetClauses": 4,
+      "source": "Sophie.ai offers Free and Paid tiers. Paid subscriptions are billed monthly, quarterly, semi-annually, or annually. You may cancel at any time, and access will continue until the end of your billing period.",
+      "target": "تقدم Sophie.ai مستويات مجانية ومدفوعة. تتم محاسبة الاشتراكات المدفوعة شهريًا، أو ربع سنويًا، أو نصف سنويًا، أو سنويًا. يمكنك الإلغاء في أي وقت، وسيستمر الوصول حتى نهاية فترة الفاتورة الخاصة بك."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.termsPage.ipBody",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "The Service and its original content (excluding user-generated voice data), features, and functionality are the exclusive property of Sophie.ai.",
+      "target": "الخدمة ومحتواها الأصلي (باستثناء البيانات الصوتية التي أنشأها المستخدم) والميزات والوظائف هي ملكية حصرية لشركة Sophie.ai."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.termsPage.terminationBody",
+      "sourceClauses": 3,
+      "targetClauses": 1,
+      "source": "We reserve the right to terminate or suspend access to our Service immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users of the Service.",
+      "target": "نحن نحتفظ بالحق في إنهاء أو تعليق الوصول إلى خدمتنا على الفور، دون إشعار مسبق، بسبب السلوك الذي نعتقد أنه ينتهك هذه الشروط أو يضر بالمستخدمين الآخرين للخدمة."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.hero.intro",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "Stop translating in your head, just ask Sophie. She will help you to conquer real conversation to speak like a native, not like a textbook student.",
+      "target": "توقف عن الترجمة في ذهنك واسأل Sophie مباشرة. ستساعدك على إتقان المحادثات الحقيقية لتتحدث مثل الناطق الأصلي، لا مثل طالب كتاب مدرسي."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.lead",
+      "sourceClauses": 9,
+      "targetClauses": 3,
+      "source": "You know the feeling. Someone asks you a simple question in Spanish, and your brain freezes. You hear the words, translate them to English, formulate a response in English, translate it back to Spanish, check grammar tables in your mind, and finally speak too late.",
+      "target": "أنت تعرف هذا الشعور. يسألك شخص ما سؤالاً بسيطًا باللغة الإسبانية، فيتجمد دماغك. تسمع الكلمات، وتترجمها إلى الإنجليزية، وتصوغ ردًا باللغة الإنجليزية، ثم تترجمها مرة أخرى إلى الإسبانية، وتتحقق من الجداول النحوية في عقلك، وأخيرًا تتحدث بعد فوات الأوان."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionNeuroP1",
+      "sourceClauses": 6,
+      "targetClauses": 3,
+      "source": "Fear matters too. The amygdala, the brain's fear center, activates when social pressure rises. In classrooms or real-world settings, fear of looking wrong can shut down language production.",
+      "target": "الخوف مهم أيضا. اللوزة الدماغية، مركز الخوف في الدماغ، تنشط عندما يرتفع الضغط الاجتماعي. في الفصول الدراسية أو في بيئات العالم الحقيقي، يمكن للخوف من الظهور بشكل خاطئ أن يوقف إنتاج اللغة."
+    },
+    {
+      "locale": "ar",
+      "type": "clause_density",
+      "path": "messages.blogPostPage.sectionBreakingP1",
+      "sourceClauses": 4,
+      "targetClauses": 2,
+      "source": "To break translation dependence, practice production, not only reception. You need to speak a lot.",
+      "target": "لكسر الاعتماد على الترجمة، مارس الإنتاج، وليس الاستقبال فقط. تحتاج إلى التحدث كثيرا."
+    }
+  ]
+}

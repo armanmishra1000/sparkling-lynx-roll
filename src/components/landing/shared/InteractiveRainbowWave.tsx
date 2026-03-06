@@ -3,6 +3,7 @@
 import React, { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useDemo } from "@/context/DemoContext";
+import type { LanguageConfig } from "@/lib/demo-languages";
 import {
   getWavePoints,
   getWaveSampleStep,
@@ -17,6 +18,7 @@ interface InteractiveRainbowWaveProps {
   initialPhase?: number;
   lineWidth?: number;
   sampleStep?: number;
+  languageOverride?: LanguageConfig;
 }
 
 const InteractiveRainbowWave = ({
@@ -27,8 +29,10 @@ const InteractiveRainbowWave = ({
   initialPhase = 0,
   lineWidth = 4,
   sampleStep,
+  languageOverride,
 }: InteractiveRainbowWaveProps) => {
-  const { currentLanguage } = useDemo();
+  const { currentLanguage: demoLanguage } = useDemo();
+  const currentLanguage = languageOverride ?? demoLanguage;
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

@@ -2,14 +2,13 @@
 
 import React, { useState } from "react";
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import SignupModal from "@/components/landing/modals/SignupModal";
-import { useDemo } from "@/context/DemoContext";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { RainbowIcon } from "@/components/ui/RainbowIcon";
 import { RainbowText } from "@/components/ui/RainbowText";
 import { useLanguage } from "@/context/LanguageContext";
+import { useLandingDemoLanguage } from "@/components/landing/sections/HeroDemoLanguage";
 
 type SbbPlanId = "6mo" | "12mo" | "18mo" | "24mo";
 
@@ -48,7 +47,7 @@ const sbbPlans: readonly SbbPlan[] = [
 ];
 
 const Pricing = () => {
-  const { currentLanguage } = useDemo();
+  const currentLanguage = useLandingDemoLanguage();
   const { messages } = useLanguage();
   const [activeSbbPlanId, setActiveSbbPlanId] = useState<SbbPlanId>("6mo");
   const activeSbbPlan =
@@ -65,6 +64,10 @@ const Pricing = () => {
     "18mo": messages.pricing.proCycle18,
     "24mo": messages.pricing.proCycle24,
   };
+  const withLanguage = (text: string) =>
+    text
+      .replaceAll("{language}", currentLanguage.name)
+      .replaceAll("{nativeLanguage}", currentLanguage.nativeName);
 
   return (
     <section id="pricing" className="py-16 bg-white relative overflow-hidden">
@@ -156,7 +159,6 @@ const Pricing = () => {
                   <div className="flex items-start justify-between">
                     <h3 className="text-2xl font-bold text-black flex items-center gap-2">
                       {messages.pricing.premiumTierName}
-                      {/* <Sparkles className="w-5 h-5 text-[#FFD700] fill-current" /> */}
                     </h3>
                     <span
                       style={{
@@ -169,7 +171,7 @@ const Pricing = () => {
                     </span>
                   </div>
                   <p className="text-gray-500 text-sm">
-                    {messages.pricing.premiumTierSubtitle}
+                    {withLanguage(messages.pricing.premiumTierSubtitle)}
                   </p>
                 </div>
               </div>
@@ -189,7 +191,6 @@ const Pricing = () => {
                     className="flex items-center space-x-3 text-sm font-medium text-gray-600"
                   >
                     <div
-                      key={`check-${currentLanguage.id}`}
                       style={{
                         backgroundImage: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
                       }}
@@ -197,7 +198,7 @@ const Pricing = () => {
                     >
                       <Check size={14} strokeWidth={2.5} />
                     </div>
-                    <span>{feature}</span>
+                    <span>{withLanguage(feature)}</span>
                   </li>
                 ))}
               </ul>
@@ -210,7 +211,7 @@ const Pricing = () => {
                       background: `linear-gradient(to right, ${currentLanguage.from}, ${currentLanguage.via}, ${currentLanguage.to})`,
                     }}
                   >
-                    <div className="h-full px-12 rounded-full bg-white flex items-center justify-center font-medium text-black hover:bg-white/90 transition-colors">
+                    <div className="h-full px-12 rounded-full bg-white flex items-center justify-center font-medium text-black hover:bg-white/70 transition-colors">
                       {messages.pricing.startFreeTrial}
                     </div>
                   </button>
@@ -227,7 +228,6 @@ const Pricing = () => {
                   <div className="flex items-start justify-between">
                     <h3 className="text-2xl font-bold text-black flex items-center gap-2">
                       {messages.pricing.proTierName}
-                      {/* <RainbowIcon icon={Sparkles} size={18} strokeWidth={2.3} /> */}
                     </h3>
                     <RainbowBorder
                       borderWidth={1}

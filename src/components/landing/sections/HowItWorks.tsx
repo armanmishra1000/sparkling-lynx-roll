@@ -8,6 +8,7 @@ import { RainbowText } from "@/components/ui/RainbowText";
 import { ArrowRight } from "lucide-react";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { useLanguage } from "@/context/LanguageContext";
+import { getBrandTerms } from "@/lib/i18n/brand";
 
 const listVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -35,7 +36,8 @@ const itemVariants: Variants = {
 };
 
 const HowItWorks = () => {
-  const { messages } = useLanguage();
+  const { messages, locale } = useLanguage();
+  const brand = getBrandTerms(locale);
   const steps = messages.howItWorks.steps;
 
   return (
@@ -70,7 +72,7 @@ const HowItWorks = () => {
                 >
                   <Image
                     src="/SOPHIE no background.png"
-                    alt="Sophie AI Mascot"
+                    alt={`${brand.ai} Mascot`}
                     width={600}
                     height={800}
                     className="relative z-10 h-[470px] w-full object-contain lg:h-[520px]"

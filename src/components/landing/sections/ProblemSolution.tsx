@@ -8,10 +8,12 @@ import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowText } from "@/components/ui/RainbowText";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { useLanguage } from "@/context/LanguageContext";
+import { getBrandTerms } from "@/lib/i18n/brand";
 
 const ProblemSolution = () => {
   const { currentLanguage } = useDemo();
-  const { messages } = useLanguage();
+  const { messages, locale } = useLanguage();
+  const brand = getBrandTerms(locale);
   return (
     <section className="py-16 bg-white relative overflow-hidden">
       <div className="container mx-auto max-w-6xl px-6 relative z-10">
@@ -82,7 +84,7 @@ const ProblemSolution = () => {
                   {/* <RainbowGradient className="absolute inset-0 opacity-30" /> */}
                   <Image
                     src="/SOPHIE no background.png"
-                    alt="Sophie Agent"
+                    alt={`${brand.name} Agent`}
                     width={60}
                     height={60}
                     className="object-contain w-full h-full relative z-10"

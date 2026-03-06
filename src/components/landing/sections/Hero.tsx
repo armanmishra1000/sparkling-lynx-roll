@@ -9,18 +9,20 @@ import { trackEvent } from "@/lib/analytics";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
 import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
 import Logo from "@/components/landing/shared/Logo";
-import { useDemo } from "@/context/DemoContext";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
+import { useLandingDemoLanguage } from "@/components/landing/sections/HeroDemoLanguage";
 import { useLanguage } from "@/context/LanguageContext";
+import { getBrandTerms } from "@/lib/i18n/brand";
 
 const Hero = () => {
-  const { currentLanguage } = useDemo();
-  const { messages } = useLanguage();
+  const currentLanguage = useLandingDemoLanguage();
+  const { messages, locale } = useLanguage();
+  const brand = getBrandTerms(locale);
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pb-24">
-      <RainbowWaveBackground />
+      <RainbowWaveBackground languageOverride={currentLanguage} />
 
       <div className="container mx-auto max-w-7xl px-4">
 
@@ -184,7 +186,7 @@ const Hero = () => {
                       </div>
                       <div>
                         <div className="text-base font-bold text-gray-900">
-                          Sophie
+                          {brand.name}
                         </div>
                         <div className="text-xs text-gray-500 font-medium tracking-wide">
                           {currentLanguage.name}
@@ -269,7 +271,7 @@ const Hero = () => {
 
                   {/* Interactive Rainbow Wave */}
                   <div className="pt-2">
-                    <InteractiveRainbowWave />
+                    <InteractiveRainbowWave languageOverride={currentLanguage} />
                   </div>
                 </div>
               </div>

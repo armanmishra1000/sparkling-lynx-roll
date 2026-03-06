@@ -4,12 +4,15 @@ import { AlertCircle, CheckCircle, FileText } from "lucide-react";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
-import { getRequestMessages } from "@/lib/i18n/server";
+import { getBrandTerms } from "@/lib/i18n/brand";
+import { getRequestLocale, getRequestMessages } from "@/lib/i18n/server";
 
 export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getRequestLocale();
+  const brand = getBrandTerms(locale);
   const pageCopy = (await getRequestMessages()).termsPage;
   return {
-    title: `${pageCopy.title} | Speak With Sophie`,
+    title: `${pageCopy.title} | ${brand.dotAi}`,
     description: pageCopy.acceptanceBody
   };
 };
