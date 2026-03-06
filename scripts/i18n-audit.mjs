@@ -1,4 +1,6 @@
 ﻿import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { MESSAGES } from "../src/lib/i18n/messages.ts";
 
 const locales = Object.keys(MESSAGES);
@@ -17,12 +19,28 @@ const findPlaceholders = (value) => {
   return matches ? [...new Set(matches)].sort() : [];
 };
 
-const hasEscapedUnicodeInSource = () => {
-  const messagesSource = fs.readFileSync(new URL("../src/lib/i18n/messages.ts", import.meta.url), "utf8");
-  return /\\u[0-9a-fA-F]{4}/.test(messagesSource);
+const findEscapedUnicodeFiles = () => {
+  const i18nRoot = new URL("../src/lib/i18n/", import.meta.url);
+  const filesToScan = [new URL("messages.ts", i18nRoot)];
+  const localesDirPath = fileURLToPath(new URL("messages/", i18nRoot));
+
+  if (fs.existsSync(localesDirPath)) {
+    const localeFiles = fs
+      .readdirSync(localesDirPath)
+      .filter((filename) => filename.endsWith(".ts"))
+      .map((filename) => new URL(`messages/${filename}`, i18nRoot));
+    filesToScan.push(...localeFiles);
+  }
+
+  return filesToScan
+    .filter((fileUrl) => /\\u[0-9a-fA-F]{4}/.test(fs.readFileSync(fileUrl, "utf8")))
+    .map((fileUrl) => path.basename(fileURLToPath(fileUrl)));
 };
 
-const isLikelyMojibake = (value) => /Ã|Â|â€|â€™|â€œ|â€¢|â€”|â€“/.test(value);
+const isLikelyMojibake = (value) =>
+  /(?:Ã[\u0080-\u00BF]|Â[\u0080-\u00BF]|â[\u0080-\u00BF]{1,2}|Ø[\u0080-\u00BF]|Ù[\u0080-\u00BF]|à[\u0080-\u00BF]|ç[\u0080-\u00BF]|ï¼|ã€|�)/u.test(
+    value
+  );
 
 const skipEqualityPath = (path) =>
   path.endsWith(".id") ||
@@ -37,10 +55,47 @@ const allowSameValue = (value) => {
   if (/^\s*$/.test(value)) return true;
   if (/^[.]+$/.test(value)) return true;
   if (/^(Sophie(\.ai)?|WhatsApp|AI|SBB|P1M|Sophie AI Inc\.|Alex Chen|Legal|M&G|SCF|Popular)$/.test(value)) return true;
-  if (/^(Tengo vergüenza\.|El museo está cerrado ahora\.|sophie@example\.com|hello@example\.com)$/.test(value)) return true;
+  if (
+    /^(Estoy embarazado\.|Tengo vergüenza\.|El museo es cerrado ahora\.|El museo está cerrado ahora\.|Ser vs Estar:|sophie@example\.com|hello@example\.com)$/.test(
+      value
+    )
+  )
+    return true;
   if (/^\$?\d[\d$+%/ .:-]*$/.test(value)) return true;
   if (/^support@speakwithsophie\.ai$/i.test(value)) return true;
   return false;
+};
+
+const scanCorruption = (node, localeId, path) => {
+  const nodeType = getType(node);
+
+  if (nodeType === "string") {
+    if (node.includes("??")) {
+      errors.push(`[${localeId}] Suspicious text at "${path}": contains "??"`);
+    }
+
+    if (isLikelyMojibake(node)) {
+      errors.push(`[${localeId}] Possible mojibake at "${path}": "${node}"`);
+    }
+
+    if (/^[\u3010\[].*?[\u3011\]]\s*/u.test(node)) {
+      errors.push(`[${localeId}] Fallback prefix left at "${path}": "${node}"`);
+    }
+    return;
+  }
+
+  if (nodeType === "array") {
+    for (let i = 0; i < node.length; i += 1) {
+      scanCorruption(node[i], localeId, `${path}[${i}]`);
+    }
+    return;
+  }
+
+  if (nodeType === "object") {
+    for (const [key, value] of Object.entries(node)) {
+      scanCorruption(value, localeId, `${path}.${key}`);
+    }
+  }
 };
 
 const walk = (baseNode, localeNode, localeId, path) => {
@@ -53,18 +108,6 @@ const walk = (baseNode, localeNode, localeId, path) => {
   }
 
   if (baseType === "string") {
-    if (localeNode.includes("??")) {
-      errors.push(`[${localeId}] Suspicious text at "${path}": contains "??"`);
-    }
-
-    if (isLikelyMojibake(localeNode)) {
-      errors.push(`[${localeId}] Possible mojibake at "${path}": "${localeNode}"`);
-    }
-
-    if (/^[\u3010\[].*?[\u3011\]]\s*/u.test(localeNode)) {
-      errors.push(`[${localeId}] Fallback prefix left at "${path}": "${localeNode}"`);
-    }
-
     const basePlaceholders = findPlaceholders(baseNode);
     const localePlaceholders = findPlaceholders(localeNode);
     if (basePlaceholders.join("|") !== localePlaceholders.join("|")) {
@@ -112,11 +155,15 @@ const walk = (baseNode, localeNode, localeId, path) => {
   }
 };
 
-if (hasEscapedUnicodeInSource()) {
-  errors.push("messages.ts contains escaped Unicode literals (\\uXXXX). Use direct UTF-8 script text.");
+const escapedUnicodeFiles = findEscapedUnicodeFiles();
+if (escapedUnicodeFiles.length > 0) {
+  errors.push(
+    `Escaped Unicode literals (\\uXXXX) found in: ${escapedUnicodeFiles.join(", ")}. Use direct UTF-8 script text.`
+  );
 }
 
 for (const locale of locales) {
+  scanCorruption(MESSAGES[locale], locale, "messages");
   if (locale === "en") continue;
   walk(source, MESSAGES[locale], locale, "messages");
 }
