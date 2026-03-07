@@ -339,7 +339,7 @@ export const es: Messages = {
     "premiumBadge": "Popular",
     "premiumTierSubtitle": "Sophie Amiga Cercana",
     "premiumRegularPriceSuffix": "precio mensual regular",
-    "premiumLaunchPrice": "$14/mes precio de lanzamiento",
+    "premiumLaunchPrice": "$20/mes precio de lanzamiento",
     "premiumFeatures": [
       "Todo está incluido en la prueba gratuita.",
       "Atención al cliente 24 horas al día, 7 días a la semana. Garantizado.",

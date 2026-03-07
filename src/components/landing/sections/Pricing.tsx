@@ -178,7 +178,7 @@ const Pricing = () => {
 
               <div className="mb-6 space-y-2">
                 <div className="text-5xl font-bold tracking-tight text-black">
-                  <span>$20/</span>{" "}
+                  <span>$14/</span>{" "}
                   <span className="text-xl font-medium">{messages.pricing.premiumRegularPriceSuffix}</span>
                 </div>
                 <div className="text-gray-500 font-medium text-lg">{messages.pricing.premiumLaunchPrice}</div>
@@ -265,7 +265,7 @@ const Pricing = () => {
                 </RainbowBorder>
               </div>
 
-              <div className="mb-8 grid grid-cols-4 gap-3">
+              <div className="mb-8 flex flex-wrap items-center gap-2.5">
                 {sbbPlans.map((plan) => {
                   const isActive = activeSbbPlan.id === plan.id;
 
@@ -274,13 +274,14 @@ const Pricing = () => {
                       key={plan.id}
                       borderWidth={1}
                       borderRadius={9999}
-                      className="h-8 w-full"
+                      className="h-8 w-fit shrink-0"
                       innerClassName="h-full w-full rounded-full overflow-hidden"
                     >
                       <button
                         type="button"
                         onClick={() => setActiveSbbPlanId(plan.id)}
-                        className={`relative h-full w-full text-base font-medium transition-colors duration-200 ${
+                        aria-pressed={isActive}
+                        className={`relative h-full w-full px-4 text-base font-medium whitespace-nowrap transition-colors duration-200 ${
                           isActive
                             ? "text-white"
                             : "bg-white text-gray-700 hover:bg-gray-50"

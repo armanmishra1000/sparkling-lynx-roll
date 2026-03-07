@@ -5,14 +5,15 @@ export interface LocaleMeta {
   label: string;
   langTag: string;
   dir: "ltr" | "rtl";
+  countryCode: string;
 }
 
 export const APP_LOCALES: readonly LocaleMeta[] = [
-  { id: "en", label: "English", langTag: "en", dir: "ltr" },
-  { id: "zh", label: "Mandarin Chinese", langTag: "zh-CN", dir: "ltr" },
-  { id: "hi", label: "Hindi", langTag: "hi", dir: "ltr" },
-  { id: "es", label: "Spanish", langTag: "es", dir: "ltr" },
-  { id: "ar", label: "Modern Standard Arabic", langTag: "ar", dir: "rtl" }
+  { id: "en", label: "English", langTag: "en", dir: "ltr", countryCode: "gb" },
+  { id: "zh", label: "Mandarin Chinese", langTag: "zh-CN", dir: "ltr", countryCode: "cn" },
+  { id: "hi", label: "Hindi", langTag: "hi", dir: "ltr", countryCode: "in" },
+  { id: "es", label: "Spanish", langTag: "es", dir: "ltr", countryCode: "es" },
+  { id: "ar", label: "Modern Standard Arabic", langTag: "ar", dir: "rtl", countryCode: "sa" }
 ] as const;
 
 export const DEFAULT_LOCALE: AppLocale = "en";
