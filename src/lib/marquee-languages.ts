@@ -1,4 +1,4 @@
-import type { AppLocale } from "@/lib/i18n/locales";
+import { getLocaleMeta, type AppLocale } from "@/lib/i18n/locales";
 
 export interface MarqueeLanguageItem {
   id: string;
@@ -64,9 +64,79 @@ interface LocalizedMarqueeLanguageItem extends MarqueeLanguageItem {
   label: string;
 }
 
-export const getLocalizedMarqueeLanguages = (_locale: AppLocale): LocalizedMarqueeLanguageItem[] => {
+const LOCALE_LANGUAGE_NAME_OVERRIDES: Record<AppLocale, Partial<Record<string, string>>> = {
+  en: {},
+  es: {
+    "western-punjabi": "Punjabi occidental",
+    "nigerian-pidgin": "Pidgin nigeriano",
+    "egyptian-arabic": "Árabe egipcio",
+    "levantine-arabic": "Árabe levantino",
+    "sudanese-arabic": "Árabe sudanés",
+    "wu-chinese": "Chino wu",
+    "chinese-jinyu": "Chino jinyu",
+    "chinese-xiang": "Chino xiang",
+    "chinese-hakka": "Chino hakka"
+  },
+  hi: {
+    "western-punjabi": "पश्चिमी पंजाबी",
+    "nigerian-pidgin": "नाइजीरियाई पिजिन",
+    "egyptian-arabic": "मिस्री अरबी",
+    "levantine-arabic": "लेवैंटाइन अरबी",
+    "sudanese-arabic": "सूडानी अरबी",
+    "wu-chinese": "वू चीनी",
+    "chinese-jinyu": "जिन्यू चीनी",
+    "chinese-xiang": "श्यांग चीनी",
+    "chinese-hakka": "हक्का चीनी"
+  },
+  zh: {
+    "western-punjabi": "西旁遮普语",
+    "nigerian-pidgin": "尼日利亚皮钦语",
+    "egyptian-arabic": "埃及阿拉伯语",
+    "levantine-arabic": "黎凡特阿拉伯语",
+    "sudanese-arabic": "苏丹阿拉伯语",
+    "wu-chinese": "吴语",
+    "chinese-jinyu": "晋语",
+    "chinese-xiang": "湘语",
+    "chinese-hakka": "客家话"
+  },
+  ar: {
+    "western-punjabi": "البنجابية الغربية",
+    "nigerian-pidgin": "البدجن النيجيرية",
+    "egyptian-arabic": "العربية المصرية",
+    "levantine-arabic": "العربية الشامية",
+    "sudanese-arabic": "العربية السودانية",
+    "wu-chinese": "الصينية وو",
+    "chinese-jinyu": "الصينية جينيو",
+    "chinese-xiang": "الصينية شيانغ",
+    "chinese-hakka": "الصينية الهاكا"
+  }
+};
+
+const SHORT_CODE_PATTERN = /^[a-z]{2,4}$/i;
+
+const isCodeLikeLabel = (label: string, tag: string): boolean =>
+  label.trim().toLowerCase() === tag.trim().toLowerCase() || SHORT_CODE_PATTERN.test(label.trim());
+
+const resolveLanguageLabel = (item: MarqueeLanguageItem, locale: AppLocale, displayNames: Intl.DisplayNames): string => {
+  const localeOverride = LOCALE_LANGUAGE_NAME_OVERRIDES[locale]?.[item.id];
+  if (localeOverride) {
+    return localeOverride;
+  }
+
+  const localizedName = displayNames.of(item.languageTag);
+  if (localizedName && !isCodeLikeLabel(localizedName, item.languageTag)) {
+    return localizedName;
+  }
+
+  return item.name;
+};
+
+export const getLocalizedMarqueeLanguages = (locale: AppLocale): LocalizedMarqueeLanguageItem[] => {
+  const { langTag } = getLocaleMeta(locale);
+  const displayNames = new Intl.DisplayNames([langTag], { type: "language" });
+
   return marqueeLanguages.map((item) => ({
     ...item,
-    label: item.name
+    label: resolveLanguageLabel(item, locale, displayNames)
   }));
 };
