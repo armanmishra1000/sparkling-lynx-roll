@@ -339,7 +339,7 @@ export const hi: Messages = {
     "premiumBadge": "लोकप्रिय",
     "premiumTierSubtitle": "सोफी करीबी दोस्त",
     "premiumRegularPriceSuffix": "माह नियमित मूल्य",
-    "premiumLaunchPrice": "$14/माह लॉन्च कीमत",
+    "premiumLaunchPrice": "$20/माह लॉन्च कीमत",
     "premiumFeatures": [
       "नि:शुल्क परीक्षण में सब कुछ शामिल है।",
       "24/7 ग्राहक सहायता। गारंटीशुदा.",

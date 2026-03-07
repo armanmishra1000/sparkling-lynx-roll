@@ -339,7 +339,7 @@ export const ar: Messages = {
     "premiumBadge": "الأكثر شيوعًا",
     "premiumTierSubtitle": "صوفي صديق مقرب",
     "premiumRegularPriceSuffix": "سعر الشهر العادي",
-    "premiumLaunchPrice": "سعر الإطلاق 14 دولارًا شهريًا",
+    "premiumLaunchPrice": "سعر الإطلاق 20 دولارًا شهريًا",
     "premiumFeatures": [
       "يتم تضمين كل شيء في النسخة التجريبية المجانية.",
       "دعم العملاء 24/7. مضمون.",

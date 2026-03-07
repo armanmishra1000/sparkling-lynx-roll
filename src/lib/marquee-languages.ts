@@ -1,4 +1,4 @@
-import { getLocaleMeta, type AppLocale } from "@/lib/i18n/locales";
+import type { AppLocale } from "@/lib/i18n/locales";
 
 export interface MarqueeLanguageItem {
   id: string;
@@ -64,45 +64,9 @@ interface LocalizedMarqueeLanguageItem extends MarqueeLanguageItem {
   label: string;
 }
 
-const LANGUAGE_FALLBACK_BY_ID: Readonly<Record<string, string>> = {
-  "nigerian-pidgin": "en",
-  "egyptian-arabic": "ar",
-  "levantine-arabic": "ar",
-  "sudanese-arabic": "ar",
-  "western-punjabi": "pa",
-  "yue-chinese": "zh",
-  "wu-chinese": "zh",
-  "chinese-jinyu": "zh",
-  "chinese-xiang": "zh",
-  "chinese-hakka": "zh",
-  "bhojpuri": "hi",
-  "maithili": "hi",
-  "sunda": "id"
-};
-
-const resolveLanguageLabel = (item: MarqueeLanguageItem, displayNames: Intl.DisplayNames): string => {
-  const displayName = displayNames.of(item.languageTag);
-  if (displayName) {
-    return displayName;
-  }
-
-  const fallbackTag = LANGUAGE_FALLBACK_BY_ID[item.id];
-  if (fallbackTag) {
-    const fallbackName = displayNames.of(fallbackTag);
-    if (fallbackName) {
-      return fallbackName;
-    }
-  }
-
-  return item.name;
-};
-
-export const getLocalizedMarqueeLanguages = (locale: AppLocale): LocalizedMarqueeLanguageItem[] => {
-  const { langTag } = getLocaleMeta(locale);
-  const displayNames = new Intl.DisplayNames([langTag], { type: "language" });
-
+export const getLocalizedMarqueeLanguages = (_locale: AppLocale): LocalizedMarqueeLanguageItem[] => {
   return marqueeLanguages.map((item) => ({
     ...item,
-    label: resolveLanguageLabel(item, displayNames)
+    label: item.name
   }));
 };

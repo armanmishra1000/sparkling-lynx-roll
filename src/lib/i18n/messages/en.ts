@@ -339,7 +339,7 @@ export const en: Messages = {
     "premiumBadge": "Popular",
     "premiumTierSubtitle": "Sophie Close Friend",
     "premiumRegularPriceSuffix": "Month regular price",
-    "premiumLaunchPrice": "$14/Month launch price",
+    "premiumLaunchPrice": "$20/Month launch price",
     "premiumFeatures": [
       "Everything is included in the free trial.",
       "24/7 Customer support. Guaranteed.",

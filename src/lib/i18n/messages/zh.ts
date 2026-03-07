@@ -339,7 +339,7 @@ export const zh: Messages = {
     "premiumBadge": "最受欢迎",
     "premiumTierSubtitle": "苏菲亲密朋友",
     "premiumRegularPriceSuffix": "月度常规价",
-    "premiumLaunchPrice": "$14/月 首发价",
+    "premiumLaunchPrice": "$20/月 首发价",
     "premiumFeatures": [
       "一切都包含在免费试用中。",
       "24/7 客户支持。有保证。",

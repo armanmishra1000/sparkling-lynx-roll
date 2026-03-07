@@ -3,16 +3,72 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import * as SelectPrimitive from "@radix-ui/react-select";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectTrigger } from "@/components/ui/select";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, MessageCircle, X } from "lucide-react";
 import Logo from "@/components/landing/shared/Logo";
+import CircleFlag from "@/components/landing/shared/CircleFlag";
+import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { useDemo } from "@/context/DemoContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { APP_LOCALES, isAppLocale, type AppLocale } from "@/lib/i18n/locales";
+
+interface NavbarLanguageOption {
+  id: AppLocale;
+  label: string;
+  countryCode: string;
+}
+
+interface LanguageSelectItemProps {
+  option: NavbarLanguageOption;
+  selectedLocale: AppLocale;
+}
+
+const LanguageSelectItem = ({ option, selectedLocale }: LanguageSelectItemProps) => {
+  const isSelected = selectedLocale === option.id;
+
+  const itemContent = (
+    <div dir="ltr" className="flex min-w-0 items-center gap-2.5 rounded-full px-2.5 py-1.5">
+      <span aria-hidden="true" className="shrink-0">
+        <CircleFlag countryCode={option.countryCode} size={26} alt="" />
+      </span>
+      <span className="truncate font-medium text-gray-700">{option.label}</span>
+    </div>
+  );
+
+  return (
+    <SelectPrimitive.Item
+      value={option.id}
+      textValue={option.label}
+      className={cn(
+        "group relative flex w-full cursor-pointer select-none items-center rounded-xl p-1 text-sm outline-none",
+        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+      )}
+    >
+      <SelectPrimitive.ItemText asChild>
+        <span className="sr-only">{option.label}</span>
+      </SelectPrimitive.ItemText>
+      {isSelected ? (
+        <RainbowBorder
+          borderRadius={9999}
+          borderWidth={2}
+          className="block w-full"
+          innerClassName="bg-white"
+        >
+          {itemContent}
+        </RainbowBorder>
+      ) : (
+        <div className="w-full rounded-full transition-colors group-data-[highlighted]:bg-gray-100/80">
+          {itemContent}
+        </div>
+      )}
+    </SelectPrimitive.Item>
+  );
+};
 
 const Navbar = () => {
   const whatsappUrl = "https://wa.me/971505814567";
@@ -21,7 +77,8 @@ const Navbar = () => {
   const { locale, setLocale, messages } = useLanguage();
   const headerLanguageOptions = APP_LOCALES.map((item) => ({
     id: item.id,
-    label: item.label
+    label: item.label,
+    countryCode: item.countryCode
   }));
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,6 +110,29 @@ const Navbar = () => {
     { href: "/#pricing", label: messages.navbar.pricing },
     { href: "/#faq", label: messages.navbar.faq }
   ];
+  const selectedLanguageOption = headerLanguageOptions.find((option) => option.id === locale);
+
+  const renderLanguageSelect = (triggerClassName: string) => (
+    <Select value={locale} onValueChange={handleLanguageChange}>
+      <SelectTrigger aria-label={messages.navbar.selectLanguage} className={triggerClassName}>
+        <div dir="ltr" className="flex min-w-0 items-center gap-2.5">
+          {selectedLanguageOption ? (
+            <span aria-hidden="true" className="shrink-0">
+              <CircleFlag countryCode={selectedLanguageOption.countryCode} size={20} alt="" />
+            </span>
+          ) : null}
+          <span className="truncate font-medium text-gray-700">
+            {selectedLanguageOption?.label ?? messages.navbar.selectLanguage}
+          </span>
+        </div>
+      </SelectTrigger>
+      <SelectContent className="p-1">
+        {headerLanguageOptions.map((option) => (
+          <LanguageSelectItem key={option.id} option={option} selectedLocale={locale} />
+        ))}
+      </SelectContent>
+    </Select>
+  );
 
   return (
     <motion.nav
@@ -101,24 +181,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden xl:flex items-center gap-3">
-          <Select
-            value={locale}
-            onValueChange={handleLanguageChange}
-          >
-            <SelectTrigger
-              aria-label={messages.navbar.selectLanguage}
-              className="h-10 w-[220px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm"
-            >
-              <SelectValue placeholder={messages.navbar.selectLanguage} />
-            </SelectTrigger>
-            <SelectContent>
-              {headerLanguageOptions.map((option) => (
-                <SelectItem key={option.id} value={option.id}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          {renderLanguageSelect("h-10 w-[220px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm")}
           <Link href="/login" className="font-semibold text-black transition-colors">
             {messages.navbar.login}
           </Link>
@@ -129,24 +192,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="hidden lg:flex xl:hidden items-center gap-2">
-          <Select
-            value={locale}
-            onValueChange={handleLanguageChange}
-          >
-            <SelectTrigger
-              aria-label={messages.navbar.selectLanguage}
-              className="h-9 w-[170px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm text-sm"
-            >
-              <SelectValue placeholder={messages.navbar.selectLanguage} />
-            </SelectTrigger>
-            <SelectContent>
-              {headerLanguageOptions.map((option) => (
-                <SelectItem key={option.id} value={option.id}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          {renderLanguageSelect("h-9 w-[170px] rounded-full border-gray-200 bg-white/80 text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm text-sm")}
           <Link href="/login" className="text-sm font-semibold text-black transition-colors whitespace-nowrap">
             {messages.navbar.login}
           </Link>
@@ -215,24 +261,7 @@ const Navbar = () => {
                       </Link>
                     ))}
                     <div>
-                      <Select
-                        value={locale}
-                        onValueChange={handleLanguageChange}
-                      >
-                        <SelectTrigger
-                          aria-label={messages.navbar.selectLanguage}
-                          className="h-12 w-full rounded-full border-gray-200 bg-white text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm"
-                        >
-                          <SelectValue placeholder={messages.navbar.selectLanguage} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {headerLanguageOptions.map((option) => (
-                            <SelectItem key={option.id} value={option.id}>
-                              {option.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      {renderLanguageSelect("h-12 w-full rounded-full border-gray-200 bg-white text-gray-700 focus:ring-0 focus:ring-offset-0 shadow-sm")}
                     </div>
                   </div>
                 </div>
