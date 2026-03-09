@@ -5,18 +5,19 @@ export interface MarqueeLanguageItem {
   name: string;
   countryCode: string;
   languageTag: string;
+  youtubeShortsUrl?: string;
 }
 
 export const marqueeLanguages: MarqueeLanguageItem[] = [
   { id: "english", name: "English", countryCode: "gb", languageTag: "en" },
-  { id: "mandarin-chinese", name: "Mandarin Chinese", countryCode: "cn", languageTag: "zh" },
-  { id: "hindi", name: "Hindi", countryCode: "in", languageTag: "hi" },
-  { id: "spanish", name: "Spanish", countryCode: "es", languageTag: "es" },
-  { id: "modern-standard-arabic", name: "Modern Standard Arabic", countryCode: "sa", languageTag: "ar" },
+  { id: "mandarin-chinese", name: "Mandarin Chinese", countryCode: "cn", languageTag: "zh", youtubeShortsUrl: "https://www.youtube.com/shorts/SLEZ4VT1l3E" },
+  { id: "hindi", name: "Hindi", countryCode: "in", languageTag: "hi", youtubeShortsUrl: "https://www.youtube.com/shorts/tYv8_HgTtsA" },
+  { id: "spanish", name: "Spanish", countryCode: "es", languageTag: "es", youtubeShortsUrl: "https://www.youtube.com/shorts/7tu8vj7kyRg" },
+  { id: "modern-standard-arabic", name: "Modern Standard Arabic", countryCode: "sa", languageTag: "ar", youtubeShortsUrl: "https://www.youtube.com/shorts/awFxWUvGAKg" },
   { id: "french", name: "French", countryCode: "fr", languageTag: "fr" },
   { id: "bengali", name: "Bengali", countryCode: "bd", languageTag: "bn" },
   { id: "portuguese", name: "Portuguese", countryCode: "pt", languageTag: "pt" },
-  { id: "russian", name: "Russian", countryCode: "ru", languageTag: "ru" },
+  { id: "russian", name: "Russian", countryCode: "ru", languageTag: "ru", youtubeShortsUrl: "https://www.youtube.com/shorts/dxmVX3QHQTo" },
   { id: "indonesian", name: "Indonesian", countryCode: "id", languageTag: "id" },
   { id: "urdu", name: "Urdu", countryCode: "pk", languageTag: "ur" },
   { id: "standard-german", name: "Standard German", countryCode: "de", languageTag: "de" },

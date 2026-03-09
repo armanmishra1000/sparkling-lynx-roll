@@ -7,6 +7,44 @@ import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import { RainbowGradient } from "@/components/ui/RainbowGradient";
 import { useLanguage } from "@/context/LanguageContext";
 
+type LocalizedMarqueeLanguageItem = ReturnType<typeof getLocalizedMarqueeLanguages>[number];
+
+interface LanguagePillProps {
+  language: LocalizedMarqueeLanguageItem;
+}
+
+const languagePillBaseClass = "relative flex h-12 items-center rounded-full border border-gray-200 bg-white pl-14";
+const languagePillInteractiveClass = "cursor-pointer transition-colors duration-200 hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2";
+
+const LanguagePill = ({ language }: LanguagePillProps) => {
+  const content = (
+    <>
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 shrink-0 rounded-full">
+        <CircleFlag countryCode={language.countryCode} size={48} alt={language.label} />
+      </div>
+      <span className="truncate text-base sm:text-lg font-semibold text-black leading-tight">
+        {language.label}
+      </span>
+    </>
+  );
+
+  if (!language.youtubeShortsUrl) {
+    return <div className={languagePillBaseClass}>{content}</div>;
+  }
+
+  return (
+    <a
+      href={language.youtubeShortsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${languagePillBaseClass} ${languagePillInteractiveClass}`}
+      title={`${language.label} • YouTube Shorts`}
+    >
+      {content}
+    </a>
+  );
+};
+
 const LanguagesMarqueeSection = () => {
   const { locale, messages } = useLanguage();
   const languageItems = useMemo(() => getLocalizedMarqueeLanguages(locale), [locale]);
@@ -40,33 +78,13 @@ const LanguagesMarqueeSection = () => {
 
           <div className="hidden lg:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {languageItems.map((language) => (
-              <div
-                key={language.id}
-                className="relative flex h-12 items-center rounded-full border border-gray-200 bg-white pl-14 "
-              >
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 shrink-0 rounded-full">
-                  <CircleFlag countryCode={language.countryCode} size={48} alt={language.label} />
-                </div>
-                <span className="truncate text-base sm:text-lg font-semibold text-black leading-tight">
-                  {language.label}
-                </span>
-              </div>
+              <LanguagePill key={language.id} language={language} />
             ))}
           </div>
 
           <div className="grid lg:hidden grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {visibleLanguages.map((language) => (
-              <div
-                key={language.id}
-                className="relative flex h-12 items-center rounded-full border border-gray-200 bg-white pl-14 "
-              >
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 shrink-0 rounded-full">
-                  <CircleFlag countryCode={language.countryCode} size={48} alt={language.label} />
-                </div>
-                <span className="truncate text-base sm:text-lg font-semibold text-black leading-tight">
-                  {language.label}
-                </span>
-              </div>
+              <LanguagePill key={language.id} language={language} />
             ))}
           </div>
           {languageItems.length > 16 ? (
