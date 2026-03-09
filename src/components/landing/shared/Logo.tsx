@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
+import BrandText from "@/components/i18n/BrandText";
 import { useLanguage } from "@/context/LanguageContext";
 import { getBrandTerms } from "@/lib/i18n/brand";
 
@@ -45,7 +46,7 @@ const Logo = ({
           />
         </span>
       </span>
-      {showText ? <span className={textClassName}>{brand.dotAi}</span> : null}
+      {showText ? <BrandText className={textClassName}>{brand.dotAi}</BrandText> : null}
     </span>
   );
 

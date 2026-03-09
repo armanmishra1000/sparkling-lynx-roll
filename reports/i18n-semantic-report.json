@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-06T11:11:49.171Z",
+  "generatedAt": "2026-03-09T06:14:36.781Z",
   "warningCount": 97,
   "warningCountByLocale": {
     "zh": 13,
@@ -15,7 +15,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
-      "target": "旅行、工作、约会或与房东争吵。苏菲使模拟适应您的实际生活，而不是教科书。"
+      "target": "旅行、工作、约会或与房东争吵。Sophie使模拟适应您的实际生活，而不是教科书。"
     },
     {
       "locale": "zh",
@@ -133,7 +133,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
-      "target": "यात्रा, काम, डेटिंग, या अपने मकान मालिक के साथ बहस करना। सोफी अनुकरण को पाठ्यपुस्तक के बजाय आपके वास्तविक जीवन के अनुरूप ढालती है।"
+      "target": "यात्रा, काम, डेटिंग, या अपने मकान मालिक के साथ बहस करना। Sophie अनुकरण को पाठ्यपुस्तक के बजाय आपके वास्तविक जीवन के अनुरूप ढालती है।"
     },
     {
       "locale": "hi",
@@ -142,7 +142,7 @@
       "sourceClauses": 5,
       "targetClauses": 3,
       "source": "Yes! You can toggle between different regional accents and dialects of {language} in your settings. Sophie adapts her vocabulary, common expressions, and pronunciation to match the specific region you're focusing on.",
-      "target": "हाँ! आप अपनी सेटिंग में {language} के विभिन्न क्षेत्रीय लहजों और बोलियों के बीच टॉगल कर सकते हैं। जिस विशिष्ट क्षेत्र पर आप ध्यान केंद्रित कर रहे हैं, उससे मेल खाने के लिए सोफी अपनी शब्दावली, सामान्य अभिव्यक्ति और उच्चारण को अनुकूलित करती है।"
+      "target": "हाँ! आप अपनी सेटिंग में {language} के विभिन्न क्षेत्रीय लहजों और बोलियों के बीच टॉगल कर सकते हैं। जिस विशिष्ट क्षेत्र पर आप ध्यान केंद्रित कर रहे हैं, उससे मेल खाने के लिए Sophie अपनी शब्दावली, सामान्य अभिव्यक्ति और उच्चारण को अनुकूलित करती है।"
     },
     {
       "locale": "hi",
@@ -151,7 +151,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "Not at all. Sophie is designed to adapt to your specific level. If a conversation is too complex, you can simply ask her to slow down, use simpler words, or even provide instant translations to help you follow along.",
-      "target": "बिल्कुल नहीं। सोफी को आपके विशिष्ट स्तर के अनुकूल बनाने के लिए डिज़ाइन किया गया है। यदि बातचीत बहुत जटिल है, तो आप उसे धीरे-धीरे बोलने, सरल शब्दों का उपयोग करने, या यहां तक ​​कि आपको आगे बढ़ने में मदद करने के लिए त्वरित अनुवाद प्रदान करने के लिए कह सकते हैं।"
+      "target": "बिल्कुल नहीं। Sophie को आपके विशिष्ट स्तर के अनुकूल बनाने के लिए डिज़ाइन किया गया है। यदि बातचीत बहुत जटिल है, तो आप उसे धीरे-धीरे बोलने, सरल शब्दों का उपयोग करने, या यहां तक ​​कि आपको आगे बढ़ने में मदद करने के लिए त्वरित अनुवाद प्रदान करने के लिए कह सकते हैं।"
     },
     {
       "locale": "hi",
@@ -160,7 +160,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "Sophie uses a \"context-first\" approach. Instead of drills, she places you in real-world scenarios that naturally require complex {language} grammar. If you make a mistake, she provides gentle, constructive feedback in real-time.",
-      "target": "सोफी \"संदर्भ-प्रथम\" दृष्टिकोण का उपयोग करती है। अभ्यास के बजाय, वह आपको वास्तविक दुनिया के परिदृश्यों में रखती है जिसके लिए स्वाभाविक रूप से जटिल {language} व्याकरण की आवश्यकता होती है। यदि आप कोई गलती करते हैं, तो वह वास्तविक समय में सौम्य, रचनात्मक प्रतिक्रिया प्रदान करती है।"
+      "target": "Sophie \"संदर्भ-प्रथम\" दृष्टिकोण का उपयोग करती है। अभ्यास के बजाय, वह आपको वास्तविक दुनिया के परिदृश्यों में रखती है जिसके लिए स्वाभाविक रूप से जटिल {language} व्याकरण की आवश्यकता होती है। यदि आप कोई गलती करते हैं, तो वह वास्तविक समय में सौम्य, रचनात्मक प्रतिक्रिया प्रदान करती है।"
     },
     {
       "locale": "hi",
@@ -169,7 +169,7 @@
       "sourceClauses": 4,
       "targetClauses": 1,
       "source": "Sophie is currently available as a web application and a mobile app for both iOS and Android. Your progress, custom vocabulary lists, and conversation history are synced across all your devices.",
-      "target": "सोफी वर्तमान में आईओएस और एंड्रॉइड दोनों के लिए एक वेब एप्लिकेशन और एक मोबाइल ऐप के रूप में उपलब्ध है। आपकी प्रगति, कस्टम शब्दावली सूचियाँ और वार्तालाप इतिहास आपके सभी उपकरणों पर समन्वयित हैं।"
+      "target": "Sophie वर्तमान में आईओएस और एंड्रॉइड दोनों के लिए एक वेब एप्लिकेशन और एक मोबाइल ऐप के रूप में उपलब्ध है। आपकी प्रगति, कस्टम शब्दावली सूचियाँ और वार्तालाप इतिहास आपके सभी उपकरणों पर समन्वयित हैं।"
     },
     {
       "locale": "hi",
@@ -178,7 +178,7 @@
       "sourceClauses": 5,
       "targetClauses": 2,
       "source": "Definitely. You can choose from dozens of preset scenarios—like ordering at a cafe, a business meeting, or a first date—or create your own custom topics. Sophie can handle almost any conversation you want to have.",
-      "target": "निश्चित रूप से। आप दर्जनों पूर्व निर्धारित परिदृश्यों में से चुन सकते हैं—जैसे किसी कैफे में ऑर्डर करना, कोई व्यावसायिक मीटिंग, या पहली डेट—या अपने स्वयं के कस्टम विषय बना सकते हैं। सोफी आपकी इच्छित लगभग किसी भी बातचीत को संभाल सकती है।"
+      "target": "निश्चित रूप से। आप दर्जनों पूर्व निर्धारित परिदृश्यों में से चुन सकते हैं—जैसे किसी कैफे में ऑर्डर करना, कोई व्यावसायिक मीटिंग, या पहली डेट—या अपने स्वयं के कस्टम विषय बना सकते हैं। Sophie आपकी इच्छित लगभग किसी भी बातचीत को संभाल सकती है।"
     },
     {
       "locale": "hi",
@@ -187,7 +187,7 @@
       "sourceClauses": 3,
       "targetClauses": 1,
       "source": "Sophie currently supports 20 major world languages, and we're adding more every month. Each language is backed by native-level AI models to ensure the most accurate and natural learning experience possible.",
-      "target": "सोफी वर्तमान में विश्व की 20 प्रमुख भाषाओं का समर्थन करती है, और हम हर महीने और भाषाएँ जोड़ रहे हैं। सबसे सटीक और प्राकृतिक सीखने का अनुभव सुनिश्चित करने के लिए प्रत्येक भाषा को मूल-स्तरीय एआई मॉडल द्वारा समर्थित किया जाता है।"
+      "target": "Sophie वर्तमान में विश्व की 20 प्रमुख भाषाओं का समर्थन करती है, और हम हर महीने और भाषाएँ जोड़ रहे हैं। सबसे सटीक और प्राकृतिक सीखने का अनुभव सुनिश्चित करने के लिए प्रत्येक भाषा को मूल-स्तरीय एआई मॉडल द्वारा समर्थित किया जाता है।"
     },
     {
       "locale": "hi",
@@ -196,7 +196,7 @@
       "sourceClauses": 3,
       "targetClauses": 1,
       "source": "Sophie pushed me to speak from Day 1. Its Incredibly seamingless, natural & effective.",
-      "target": "सोफी ने मुझे पहले दिन से ही बोलने के लिए प्रेरित किया। यह अविश्वसनीय रूप से सहज, प्राकृतिक और प्रभावी है।"
+      "target": "Sophie ने मुझे पहले दिन से ही बोलने के लिए प्रेरित किया। यह अविश्वसनीय रूप से सहज, प्राकृतिक और प्रभावी है।"
     },
     {
       "locale": "hi",
@@ -214,7 +214,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "At Sophie.ai, we believe the fastest path to confidence in another language is daily speaking practice with intelligent feedback that feels natural and human-like. Sophie isn't just an AI — she's a speaking partner that listens, adapts, and helps you practice real-world conversations from day one.",
-      "target": "Sophie.ai में, हमारा मानना ​​है कि किसी अन्य भाषा में आत्मविश्वास का सबसे तेज़ रास्ता बुद्धिमान प्रतिक्रिया के साथ दैनिक बोलने का अभ्यास है जो प्राकृतिक और मानव जैसा लगता है। सोफी सिर्फ एक एआई नहीं है - वह एक बोलने वाली भागीदार है जो पहले दिन से ही वास्तविक दुनिया की बातचीत को सुनती है, अपनाती है और आपको वास्तविक दुनिया की बातचीत का अभ्यास करने में मदद करती है।"
+      "target": "Sophie.ai में, हमारा मानना ​​है कि किसी अन्य भाषा में आत्मविश्वास का सबसे तेज़ रास्ता बुद्धिमान प्रतिक्रिया के साथ दैनिक बोलने का अभ्यास है जो प्राकृतिक और मानव जैसा लगता है। Sophie सिर्फ एक एआई नहीं है - वह एक बोलने वाली भागीदार है जो पहले दिन से ही वास्तविक दुनिया की बातचीत को सुनती है, अपनाती है और आपको वास्तविक दुनिया की बातचीत का अभ्यास करने में मदद करती है।"
     },
     {
       "locale": "hi",
@@ -259,7 +259,7 @@
       "sourceClauses": 5,
       "targetClauses": 3,
       "source": "We don't just repeat words. We repeat *patterns* within new contexts. If you struggle with the Spanish subjunctive, Sophie will weave it into a debate about politics, then a date scenario.",
-      "target": "हम सिर्फ शब्द नहीं दोहराते. हम नए संदर्भों में *पैटर्न* दोहराते हैं। यदि आप स्पैनिश सब्जेक्टिव के साथ संघर्ष करते हैं, तो सोफी इसे राजनीति के बारे में एक बहस में बुन देगी, फिर एक तारीख परिदृश्य में।"
+      "target": "हम सिर्फ शब्द नहीं दोहराते. हम नए संदर्भों में *पैटर्न* दोहराते हैं। यदि आप स्पैनिश सब्जेक्टिव के साथ संघर्ष करते हैं, तो Sophie इसे राजनीति के बारे में एक बहस में बुन देगी, फिर एक तारीख परिदृश्य में।"
     },
     {
       "locale": "hi",
@@ -277,7 +277,7 @@
       "sourceClauses": 3,
       "targetClauses": 1,
       "source": "Neuroplasticity requires instant error correction. Sophie intervenes the moment a mistake happens, rewriting the neural pathway before the bad habit (fossilization) sets in.",
-      "target": "न्यूरोप्लास्टिकिटी के लिए तत्काल त्रुटि सुधार की आवश्यकता होती है। गलती होते ही सोफी हस्तक्षेप करती है, बुरी आदत (जीवाश्मीकरण) शुरू होने से पहले तंत्रिका मार्ग को फिर से लिखती है।"
+      "target": "न्यूरोप्लास्टिकिटी के लिए तत्काल त्रुटि सुधार की आवश्यकता होती है। गलती होते ही Sophie हस्तक्षेप करती है, बुरी आदत (जीवाश्मीकरण) शुरू होने से पहले तंत्रिका मार्ग को फिर से लिखती है।"
     },
     {
       "locale": "hi",
@@ -295,7 +295,7 @@
       "sourceClauses": 5,
       "targetClauses": 2,
       "source": "Open the app, go to the Talk tab, select the language you want to learn, and hold the microphone button to start speaking. Sophie will respond in real-time.",
-      "target": "ऐप खोलें, टॉक टैब पर जाएं, वह भाषा चुनें जिसे आप सीखना चाहते हैं और बोलना शुरू करने के लिए माइक्रोफ़ोन बटन दबाए रखें। सोफी वास्तविक समय में जवाब देगी।"
+      "target": "ऐप खोलें, टॉक टैब पर जाएं, वह भाषा चुनें जिसे आप सीखना चाहते हैं और बोलना शुरू करने के लिए माइक्रोफ़ोन बटन दबाए रखें। Sophie वास्तविक समय में जवाब देगी।"
     },
     {
       "locale": "hi",
@@ -304,7 +304,7 @@
       "sourceClauses": 7,
       "targetClauses": 5,
       "source": "Sophie currently supports English, Spanish, French, German, Japanese, Chinese (Mandarin), and Hindi — with more languages coming soon.",
-      "target": "सोफी वर्तमान में अंग्रेजी, स्पेनिश, फ्रेंच, जर्मन, जापानी, चीनी (मंदारिन) और हिंदी का समर्थन करती है - जल्द ही और भी भाषाएँ आने वाली हैं।"
+      "target": "Sophie वर्तमान में अंग्रेजी, स्पेनिश, फ्रेंच, जर्मन, जापानी, चीनी (मंदारिन) और हिंदी का समर्थन करती है - जल्द ही और भी भाषाएँ आने वाली हैं।"
     },
     {
       "locale": "hi",
@@ -358,7 +358,7 @@
       "sourceClauses": 4,
       "targetClauses": 1,
       "source": "Speak With Sophie is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal data, please contact us so we can take appropriate action.",
-      "target": "स्पीक विद सोफी 13 वर्ष से कम उम्र के बच्चों के लिए निर्देशित नहीं है। हम जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते हैं। यदि आप माता-पिता या अभिभावक हैं और मानते हैं कि आपके बच्चे ने हमें व्यक्तिगत डेटा प्रदान किया है, तो कृपया हमसे संपर्क करें ताकि हम उचित कार्रवाई कर सकें।"
+      "target": "स्पीक विद Sophie 13 वर्ष से कम उम्र के बच्चों के लिए निर्देशित नहीं है। हम जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते हैं। यदि आप माता-पिता या अभिभावक हैं और मानते हैं कि आपके बच्चे ने हमें व्यक्तिगत डेटा प्रदान किया है, तो कृपया हमसे संपर्क करें ताकि हम उचित कार्रवाई कर सकें।"
     },
     {
       "locale": "hi",
@@ -430,7 +430,7 @@
       "sourceClauses": 3,
       "targetClauses": 1,
       "source": "Most apps reset every session. Sophie builds a persistent, evolving model of your language patterns.",
-      "target": "अधिकांश ऐप्स हर सत्र में रीसेट हो जाते हैं। सोफी आपके भाषा पैटर्न का एक सतत, विकसित मॉडल बनाती है।"
+      "target": "अधिकांश ऐप्स हर सत्र में रीसेट हो जाते हैं। Sophie आपके भाषा पैटर्न का एक सतत, विकसित मॉडल बनाती है।"
     },
     {
       "locale": "hi",
@@ -502,7 +502,7 @@
       "sourceClauses": 4,
       "targetClauses": 1,
       "source": "That is why AI can be a strong practice partner. Sophie does not judge and does not rush you. She corrects and moves on, which lowers the affective filter and helps your brain take risks.",
-      "target": "इसीलिए AI एक मजबूत अभ्यास भागीदार हो सकता है। सोफी आपको जज नहीं करती और न ही आपको परेशान करती है। वह सुधार करती है और आगे बढ़ती है, जो भावात्मक फ़िल्टर को कम करती है और आपके मस्तिष्क को जोखिम लेने में मदद करती है।"
+      "target": "इसीलिए AI एक मजबूत अभ्यास भागीदार हो सकता है। Sophie आपको जज नहीं करती और न ही आपको परेशान करती है। वह सुधार करती है और आगे बढ़ती है, जो भावात्मक फ़िल्टर को कम करती है और आपके मस्तिष्क को जोखिम लेने में मदद करती है।"
     },
     {
       "locale": "hi",
@@ -628,7 +628,7 @@
       "sourceClauses": 6,
       "targetClauses": 2,
       "source": "Travel, work, dating, or arguing with your landlord. Sophie adapts the simulation to your actual life, not a textbook.",
-      "target": "السفر أو العمل أو المواعدة أو الجدال مع مالك العقار. تقوم صوفي بتكييف المحاكاة مع حياتك الفعلية، وليس مع كتاب مدرسي."
+      "target": "السفر أو العمل أو المواعدة أو الجدال مع مالك العقار. تقوم Sophie بتكييف المحاكاة مع حياتك الفعلية، وليس مع كتاب مدرسي."
     },
     {
       "locale": "ar",
@@ -646,7 +646,7 @@
       "sourceClauses": 5,
       "targetClauses": 3,
       "source": "Yes! You can toggle between different regional accents and dialects of {language} in your settings. Sophie adapts her vocabulary, common expressions, and pronunciation to match the specific region you're focusing on.",
-      "target": "نعم! يمكنك التبديل بين اللهجات الإقليمية المختلفة ولهجات {language} في إعداداتك. تقوم صوفي بتكييف مفرداتها وتعبيراتها الشائعة ونطقها لتتناسب مع المنطقة المحددة التي تركز عليها."
+      "target": "نعم! يمكنك التبديل بين اللهجات الإقليمية المختلفة ولهجات {language} في إعداداتك. تقوم Sophie بتكييف مفرداتها وتعبيراتها الشائعة ونطقها لتتناسب مع المنطقة المحددة التي تركز عليها."
     },
     {
       "locale": "ar",
@@ -655,7 +655,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "Not at all. Sophie is designed to adapt to your specific level. If a conversation is too complex, you can simply ask her to slow down, use simpler words, or even provide instant translations to help you follow along.",
-      "target": "مُطْلَقاً. تم تصميم صوفي للتكيف مع مستواك المحدد. إذا كانت المحادثة معقدة للغاية، يمكنك ببساطة أن تطلب منها التباطؤ، أو استخدام كلمات أبسط، أو حتى توفير ترجمة فورية لمساعدتك على المتابعة."
+      "target": "مُطْلَقاً. تم تصميم Sophie للتكيف مع مستواك المحدد. إذا كانت المحادثة معقدة للغاية، يمكنك ببساطة أن تطلب منها التباطؤ، أو استخدام كلمات أبسط، أو حتى توفير ترجمة فورية لمساعدتك على المتابعة."
     },
     {
       "locale": "ar",
@@ -664,7 +664,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "Sophie uses a \"context-first\" approach. Instead of drills, she places you in real-world scenarios that naturally require complex {language} grammar. If you make a mistake, she provides gentle, constructive feedback in real-time.",
-      "target": "تستخدم صوفي نهج \"السياق أولاً\". بدلاً من التدريبات، تضعك في سيناريوهات من العالم الحقيقي تتطلب بطبيعة الحال قواعد نحوية معقدة. إذا ارتكبت خطأً ما، فإنها تقدم تعليقات لطيفة وبناءة في الوقت الفعلي. ({language})"
+      "target": "تستخدم Sophie نهج \"السياق أولاً\". بدلاً من التدريبات، تضعك في سيناريوهات من العالم الحقيقي تتطلب بطبيعة الحال قواعد نحوية معقدة. إذا ارتكبت خطأً ما، فإنها تقدم تعليقات لطيفة وبناءة في الوقت الفعلي. ({language})"
     },
     {
       "locale": "ar",
@@ -673,7 +673,7 @@
       "sourceClauses": 4,
       "targetClauses": 2,
       "source": "Sophie is currently available as a web application and a mobile app for both iOS and Android. Your progress, custom vocabulary lists, and conversation history are synced across all your devices.",
-      "target": "صوفي متاحة حاليًا كتطبيق ويب وتطبيق جوال لكل من iOS وAndroid. تتم مزامنة تقدمك وقوائم المفردات المخصصة وسجل المحادثات عبر جميع أجهزتك."
+      "target": "Sophie متاحة حاليًا كتطبيق ويب وتطبيق جوال لكل من iOS وAndroid. تتم مزامنة تقدمك وقوائم المفردات المخصصة وسجل المحادثات عبر جميع أجهزتك."
     },
     {
       "locale": "ar",
@@ -682,7 +682,7 @@
       "sourceClauses": 5,
       "targetClauses": 3,
       "source": "Definitely. You can choose from dozens of preset scenarios—like ordering at a cafe, a business meeting, or a first date—or create your own custom topics. Sophie can handle almost any conversation you want to have.",
-      "target": "قطعاً. يمكنك الاختيار من بين العشرات من السيناريوهات المعدة مسبقًا - مثل الطلب في مقهى، أو اجتماع عمل، أو الموعد الأول - أو إنشاء موضوعاتك المخصصة. تستطيع صوفي التعامل مع أي محادثة ترغب في إجرائها تقريبًا."
+      "target": "قطعاً. يمكنك الاختيار من بين العشرات من السيناريوهات المعدة مسبقًا - مثل الطلب في مقهى، أو اجتماع عمل، أو الموعد الأول - أو إنشاء موضوعاتك المخصصة. تستطيع Sophie التعامل مع أي محادثة ترغب في إجرائها تقريبًا."
     },
     {
       "locale": "ar",
@@ -691,7 +691,7 @@
       "sourceClauses": 6,
       "targetClauses": 3,
       "source": "At Sophie.ai, we believe the fastest path to confidence in another language is daily speaking practice with intelligent feedback that feels natural and human-like. Sophie isn't just an AI — she's a speaking partner that listens, adapts, and helps you practice real-world conversations from day one.",
-      "target": "في Sophie.ai، نعتقد أن أسرع طريق للثقة في لغة أخرى هو ممارسة التحدث يوميًا مع ردود فعل ذكية تبدو طبيعية وشبيهة بالبشر. صوفي ليست مجرد ذكاء اصطناعي - إنها شريكة متحدثة تستمع وتتكيف وتساعدك على ممارسة المحادثات الواقعية من اليوم الأول."
+      "target": "في Sophie.ai، نعتقد أن أسرع طريق للثقة في لغة أخرى هو ممارسة التحدث يوميًا مع ردود فعل ذكية تبدو طبيعية وشبيهة بالبشر. Sophie ليست مجرد ذكاء اصطناعي - إنها شريكة متحدثة تستمع وتتكيف وتساعدك على ممارسة المحادثات الواقعية من اليوم الأول."
     },
     {
       "locale": "ar",
@@ -736,7 +736,7 @@
       "sourceClauses": 5,
       "targetClauses": 3,
       "source": "We don't just repeat words. We repeat *patterns* within new contexts. If you struggle with the Spanish subjunctive, Sophie will weave it into a debate about politics, then a date scenario.",
-      "target": "نحن لا نكرر الكلمات فقط. نكرر *الأنماط* ضمن سياقات جديدة. إذا كنت تواجه صعوبة في استخدام صيغة الشرط الإسبانية، فسوف تنسجها صوفي في نقاش حول السياسة، ثم في سيناريو التاريخ."
+      "target": "نحن لا نكرر الكلمات فقط. نكرر *الأنماط* ضمن سياقات جديدة. إذا كنت تواجه صعوبة في استخدام صيغة الشرط الإسبانية، فسوف تنسجها Sophie في نقاش حول السياسة، ثم في سيناريو التاريخ."
     },
     {
       "locale": "ar",
@@ -754,7 +754,7 @@
       "sourceClauses": 5,
       "targetClauses": 2,
       "source": "Open the app, go to the Talk tab, select the language you want to learn, and hold the microphone button to start speaking. Sophie will respond in real-time.",
-      "target": "افتح التطبيق، وانتقل إلى علامة تبويب \"التحدث\"، وحدد اللغة التي تريد تعلمها، واضغط مع الاستمرار على زر الميكروفون لبدء التحدث. سوف تستجيب صوفي في الوقت الحقيقي."
+      "target": "افتح التطبيق، وانتقل إلى علامة تبويب \"التحدث\"، وحدد اللغة التي تريد تعلمها، واضغط مع الاستمرار على زر الميكروفون لبدء التحدث. سوف تستجيب Sophie في الوقت الحقيقي."
     },
     {
       "locale": "ar",
@@ -763,7 +763,7 @@
       "sourceClauses": 7,
       "targetClauses": 1,
       "source": "Sophie currently supports English, Spanish, French, German, Japanese, Chinese (Mandarin), and Hindi — with more languages coming soon.",
-      "target": "تدعم صوفي حاليًا اللغة الإنجليزية والإسبانية والفرنسية والألمانية واليابانية والصينية (الماندرين) والهندية - مع توفر المزيد من اللغات قريبًا."
+      "target": "تدعم Sophie حاليًا اللغة الإنجليزية والإسبانية والفرنسية والألمانية واليابانية والصينية (الماندرين) والهندية - مع توفر المزيد من اللغات قريبًا."
     },
     {
       "locale": "ar",

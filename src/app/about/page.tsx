@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Heart, MessageCircle, Target, Users } from "lucide-react";
+import BrandText from "@/components/i18n/BrandText";
 import Navbar from "@/components/landing/shared/Navbar";
 import Footer from "@/components/landing/shared/Footer";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
@@ -41,9 +42,9 @@ export default async function AboutPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             {pageCopy.titlePrefix}{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] via-[#FFD700] to-[#7B61FF]">
+            <BrandText className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF0080] via-[#FFD700] to-[#7B61FF]">
               {brand.dotAi}
-            </span>
+            </BrandText>
           </h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">{pageCopy.subtitle}</p>
         </div>

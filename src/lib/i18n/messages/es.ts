@@ -66,7 +66,7 @@ export const es: Messages = {
         "description": "Practica la vida real: preguntando direcciones en Madrid, pidiendo tapas o negociando un taxi en Bogotá."
       },
       {
-        "title": "¿No sabes cómo decirlo? Pregúntale a Sofía.",
+        "title": "¿No sabes cómo decirlo? Pregúntale a Sophie.",
         "description": "No te quedes estancado más. Si necesita encontrar una palabra o frase mientras verbaliza, pregúntele a Sophie."
       },
       {
@@ -588,7 +588,7 @@ export const es: Messages = {
     "sectionCognitiveTitle": "El cuello de botella cognitivo",
     "sectionCognitiveP1": "Este proceso se llama dependencia de la traducción y es uno de los mayores asesinos de la fluidez. La educación de idiomas tradicional a menudo entrena este hábito centrándose en listas de vocabulario y reglas gramaticales en lugar del contexto.",
     "sectionCognitiveP2": "Cuando aprendes que \"Gato\" significa \"Gato\", creas una dependencia neuronal. No puedes acceder al concepto directamente sin pasar primero por tu lengua materna.",
-    "approachTitle": "El enfoque de Sofía",
+    "approachTitle": "El enfoque de Sophie",
     "approachBody": "Usamos el Método Directo. Te mostramos una imagen o te situamos en un escenario real y forzamos la interacción directa en el idioma de destino. Sin puente de inglés ni búfer de traducción.",
     "sectionNeuroTitle": "Neuroplasticidad y estrés",
     "sectionNeuroP1": "El miedo también importa. La amígdala, el centro del miedo del cerebro, se activa cuando aumenta la presión social. En las aulas o en entornos del mundo real, el miedo a quedar mal puede frenar la producción del lenguaje.",
