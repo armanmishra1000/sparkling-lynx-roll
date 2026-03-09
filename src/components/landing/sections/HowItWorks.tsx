@@ -61,7 +61,7 @@ const HowItWorks = () => {
         <div className="relative overflow-hidden rounded-[2rem] border p-5 shadow-sm backdrop-blur-sm md:p-8">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.1)_1px,transparent_1px)] bg-[size:28px_28px] opacity-40" />
           <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-12">
-            <div className="order-2 lg:order-1 lg:col-span-5">
+            <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-28">
                 <motion.div
                   className="relative isolate overflow-hidden rounded-[1.6rem] border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-slate-100 p-6"
@@ -83,7 +83,7 @@ const HowItWorks = () => {
             </div>
 
             <motion.div
-              className="relative order-1 lg:order-2 lg:col-span-7"
+              className="relative lg:col-span-7"
               variants={listVariants}
               initial="hidden"
               whileInView="visible"

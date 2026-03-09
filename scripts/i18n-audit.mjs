@@ -2,7 +2,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { MESSAGES } from "../src/lib/i18n/messages.ts";
-import { localizeBrandInMessages } from "../src/lib/i18n/brand.ts";
 
 const locales = Object.keys(MESSAGES);
 const source = MESSAGES.en;
@@ -128,7 +127,12 @@ const skipEqualityPath = (pathValue) =>
 const allowSameValue = (value) => {
   if (/^\s*$/.test(value)) return true;
   if (/^[.]+$/.test(value)) return true;
-  if (/^(Sophie(\.ai)?|WhatsApp|AI|SBB|P1M|Sophie AI Inc\.|Alex Chen|Legal|M&G|SCF|Popular)$/.test(value)) return true;
+  if (
+    /^(Sophie(\.ai)?|Sophie AI|Sophia AI|WhatsApp|AI|SBB|P1M|Sophie AI Inc\.|Alex Chen|Legal|M&G|SCF|Popular)$/.test(
+      value
+    )
+  )
+    return true;
   if (
     /^(Estoy embarazado\.|Tengo vergüenza\.|El museo es cerrado ahora\.|El museo está cerrado ahora\.|Ser vs Estar:|sophie@example\.com|hello@example\.com)$/.test(
       value
@@ -140,18 +144,17 @@ const allowSameValue = (value) => {
   return false;
 };
 
-const shouldSkipBrandLeakPath = (pathValue) =>
+const shouldSkipBrandAliasPath = (pathValue) =>
   pathValue.endsWith(".id") ||
   pathValue.endsWith(".slug") ||
-  pathValue.endsWith(".emailPlaceholder") ||
-  pathValue.endsWith(".copyrightSuffix");
+  pathValue.endsWith(".emailPlaceholder");
 
-const hasEnglishBrandLeak = (value) =>
-  /\bSophie\.ai\b/u.test(value) ||
-  /\bSophie AI\b(?!\s+Inc\.)/u.test(value) ||
-  /\bSophie\b/u.test(value) ||
-  /\bSophia AI\b/u.test(value) ||
-  /\bSophia\b/u.test(value);
+const DISALLOWED_BRAND_ALIASES = {
+  zh: [/苏菲(?:\.ai)?/u, /索菲(?:\.ai)?/u, /Sophie\s*人工智能/u],
+  hi: [/सोफी(?:\.एआई)?/u, /सॉफी(?:\.एआई)?/u, /सॉफ़ी(?:\.एआई)?/u, /Sophie\s*एआई/u],
+  es: [/\bSof[ií]a(?:\.ai)?\b/iu, /\bSof[ií]a IA\b/iu, /\bSophie IA\b/iu],
+  ar: [/صوفي(?:\.ai)?/u, /Sophie\s*(?:ايه آي|للذكاء الاصطناعي)/u]
+};
 
 const scanCorruption = (node, localeId, currentPath) => {
   const nodeType = getType(node);
@@ -272,19 +275,22 @@ const runSemanticChecks = (localeId, localeMessages) => {
   }
 };
 
-const checkBrandLocalizationLeaks = (localeId, localizedMessages) => {
+const checkBrandAliasLeaks = (localeId, localeMessages) => {
   if (localeId === "en") return;
 
-  const localizedStrings = flattenStrings(localizedMessages);
+  const localizedStrings = flattenStrings(localeMessages);
+  const aliasPatterns = DISALLOWED_BRAND_ALIASES[localeId] ?? [];
+
   for (const entry of localizedStrings) {
-    if (shouldSkipBrandLeakPath(entry.path) || allowSameValue(entry.value)) {
+    if (shouldSkipBrandAliasPath(entry.path) || allowSameValue(entry.value)) {
       continue;
     }
 
-    if (hasEnglishBrandLeak(entry.value)) {
-      errors.push(
-        `[${localeId}] English brand token leaked at "${entry.path}" after localization: "${entry.value}"`
-      );
+    for (const pattern of aliasPatterns) {
+      if (pattern.test(entry.value)) {
+        errors.push(`[${localeId}] Translated brand alias found at "${entry.path}": "${entry.value}"`);
+        break;
+      }
     }
   }
 };
@@ -376,11 +382,10 @@ if (escapedUnicodeFiles.length > 0) {
 
 for (const locale of locales) {
   scanCorruption(MESSAGES[locale], locale, "messages");
-  const localizedMessages = localizeBrandInMessages(MESSAGES[locale], locale);
   if (locale === "en") continue;
   walk(source, MESSAGES[locale], locale, "messages");
   runSemanticChecks(locale, MESSAGES[locale]);
-  checkBrandLocalizationLeaks(locale, localizedMessages);
+  checkBrandAliasLeaks(locale, MESSAGES[locale]);
 }
 
 const reportPath = writeWarningsReport();

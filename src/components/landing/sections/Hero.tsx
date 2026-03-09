@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SignupModal from "@/components/landing/modals/SignupModal";
 import VideoModal from "@/components/landing/modals/VideoModal";
 import { trackEvent } from "@/lib/analytics";
+import BrandText from "@/components/i18n/BrandText";
 import RainbowWaveBackground from "@/components/landing/shared/RainbowWaveBackground";
 import InteractiveRainbowWave from "@/components/landing/shared/InteractiveRainbowWave";
 import Logo from "@/components/landing/shared/Logo";
@@ -185,9 +186,9 @@ const Hero = () => {
                         <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full z-10"></div>
                       </div>
                       <div>
-                        <div className="text-base font-bold text-gray-900">
+                        <BrandText className="text-base font-bold text-gray-900">
                           {brand.name}
-                        </div>
+                        </BrandText>
                         <div className="text-xs text-gray-500 font-medium tracking-wide">
                           {currentLanguage.name}
                         </div>
