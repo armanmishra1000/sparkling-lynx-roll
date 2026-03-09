@@ -69,10 +69,14 @@ const LanguagesMarqueeSection = () => {
       <div className="container mx-auto max-w-7xl">
         <div className="space-y-10">
 
-          <div className="text-center">
+          <div className="text-center space-y-4">
 
             <p className="text-2xl md:text-3xl font-semibold italic text-black">
               {messages.era.languageTitle}
+            </p>
+
+            <p className="text-xl font-medium text-black">
+              {messages.era.languageSubTitle}
             </p>
           </div>
 

@@ -32,6 +32,7 @@ export const en: Messages = {
     "line2": "Speak with Sophie for Fast & Efficient Fluency",
     "meetButton": "Meet Sophie",
     "languageTitle": "Sophie can assist you in 50+ languages",
+    "languageSubTitle": "Click on your language",
     "learnAnyLanguage": "Learn any language in any language, no English required!",
     "seeMore": "See more",
     "seeLess": "See less"

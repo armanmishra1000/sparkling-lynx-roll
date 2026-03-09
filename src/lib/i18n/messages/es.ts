@@ -32,6 +32,7 @@ export const es: Messages = {
     "line2": "Habla con Sophie para lograr fluidez rápida y efectiva",
     "meetButton": "Conoce a Sophie",
     "languageTitle": "Sophie puede ayudarte en más de 50 idiomas",
+    "languageSubTitle": "Haga clic en su idioma",
     "learnAnyLanguage": "¡Aprende cualquier idioma en cualquier idioma, sin necesidad de inglés!",
     "seeMore": "Ver más",
     "seeLess": "Ver menos"

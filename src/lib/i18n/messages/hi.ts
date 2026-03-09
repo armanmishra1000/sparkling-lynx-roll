@@ -32,6 +32,7 @@ export const hi: Messages = {
     "line2": "Sophie से बात करें और तेज़, प्रभावी प्रवाह हासिल करें",
     "meetButton": "Sophie से मिलें",
     "languageTitle": "Sophie 50+ भाषाओं में आपकी मदद कर सकती है",
+    "languageSubTitle": "अपनी भाषा पर क्लिक करें",
     "learnAnyLanguage": "किसी भी भाषा को किसी भी भाषा में सीखें, अंग्रेज़ी की ज़रूरत नहीं!",
     "seeMore": "और देखें",
     "seeLess": "कम देखें"

@@ -32,6 +32,7 @@ export const ar: Messages = {
     "line2": "تحدث مع Sophie للوصول إلى الطلاقة بسرعة وكفاءة",
     "meetButton": "تعرّف على Sophie",
     "languageTitle": "يمكن لـ Sophie مساعدتك في أكثر من 50 لغة",
+    "languageSubTitle": "انقر على لغتك",
     "learnAnyLanguage": "تعلّم أي لغة بأي لغة، دون الحاجة إلى الإنجليزية!",
     "seeMore": "عرض المزيد",
     "seeLess": "عرض أقل"

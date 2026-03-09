@@ -32,6 +32,7 @@ export const zh: Messages = {
  "line2": "和 Sophie 对话，更快更高效地获得流利表达",
  "meetButton": "认识 Sophie",
  "languageTitle": "Sophie 可协助你学习 50+ 种语言",
+ "languageSubTitle": "点击您的语言",
  "learnAnyLanguage": "用任何语言学习任何语言，无需英语！",
  "seeMore": "查看更多",
  "seeLess": "收起"

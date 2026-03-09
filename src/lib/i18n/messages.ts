@@ -32,6 +32,7 @@ export interface Messages {
     line2: string;
     meetButton: string;
     languageTitle: string;
+    languageSubTitle: string;
     learnAnyLanguage: string;
     seeMore: string;
     seeLess: string;
