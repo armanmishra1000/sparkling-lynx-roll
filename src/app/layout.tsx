@@ -78,6 +78,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
       icon: "/favicon-preview/wave-favicon-preview-512.png",
       shortcut: "/favicon-preview/wave-favicon-preview-512.png",
       apple: "/favicon-preview/wave-favicon-preview-512.png"
+    },
+    verification: {
+      google: "TQWlmFlTU8Ej6OGIkfJxKT2Y0bec--QB5sGitZMXna40"
     }
   };
 };
