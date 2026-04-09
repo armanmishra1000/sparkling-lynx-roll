@@ -50,7 +50,7 @@ export default function Home() {
       <HowItWorks />
       <ProblemSolution />
       <Hero />
-      {/* <SocialProof /> */}
+      <SocialProof />
       <Features />
       <PersonalizationEngine />
       <ProductTour />
