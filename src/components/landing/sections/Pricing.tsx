@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Check } from "lucide-react";
 import { RainbowBorder } from "@/components/ui/RainbowBorder";
 import SignupModal from "@/components/landing/modals/SignupModal";
@@ -10,60 +10,11 @@ import { RainbowText } from "@/components/ui/RainbowText";
 import { useLanguage } from "@/context/LanguageContext";
 import { useLandingDemoLanguage } from "@/components/landing/sections/HeroDemoLanguage";
 
-type SbbPlanId = "6mo" | "12mo" | "18mo" | "24mo";
-
-type SbbPlan = {
-  id: SbbPlanId;
-  monthlyPrice: number;
-  billedTotal: number;
-  savePercent: number;
-};
-
-const sbbPlans: readonly SbbPlan[] = [
-  {
-    id: "6mo",
-    monthlyPrice: 10,
-    billedTotal: 60,
-    savePercent: 50,
-  },
-  {
-    id: "12mo",
-    monthlyPrice: 9,
-    billedTotal: 108,
-    savePercent: 55,
-  },
-  {
-    id: "18mo",
-    monthlyPrice: 8,
-    billedTotal: 144,
-    savePercent: 60,
-  },
-  {
-    id: "24mo",
-    monthlyPrice: 7,
-    billedTotal: 168,
-    savePercent: 65,
-  },
-];
+const SBB_MONTHLY_PRICE = 12;
 
 const Pricing = () => {
   const currentLanguage = useLandingDemoLanguage();
   const { messages } = useLanguage();
-  const [activeSbbPlanId, setActiveSbbPlanId] = useState<SbbPlanId>("6mo");
-  const activeSbbPlan =
-    sbbPlans.find((plan) => plan.id === activeSbbPlanId) ?? sbbPlans[0];
-  const sbbTabLabels: Record<SbbPlanId, string> = {
-    "6mo": messages.pricing.proTab6,
-    "12mo": messages.pricing.proTab12,
-    "18mo": messages.pricing.proTab18,
-    "24mo": messages.pricing.proTab24,
-  };
-  const sbbCycleLabels: Record<SbbPlanId, string> = {
-    "6mo": messages.pricing.proCycle6,
-    "12mo": messages.pricing.proCycle12,
-    "18mo": messages.pricing.proCycle18,
-    "24mo": messages.pricing.proCycle24,
-  };
   const withLanguage = (text: string) =>
     text
       .replaceAll("{language}", currentLanguage.name)
@@ -178,10 +129,9 @@ const Pricing = () => {
 
               <div className="mb-6 space-y-2">
                 <div className="text-5xl font-bold tracking-tight text-black">
-                  <span>$14/</span>{" "}
+                  <span>$8/</span>{" "}
                   <span className="text-xl font-medium">{messages.pricing.premiumRegularPriceSuffix}</span>
                 </div>
-                <div className="text-gray-500 font-medium text-lg">{messages.pricing.premiumLaunchPrice}</div>
               </div>
 
               <ul className="space-y-4 mb-10">
@@ -246,55 +196,9 @@ const Pricing = () => {
 
               <div className="mb-7 space-y-3">
                 <div className="text-5xl font-bold tracking-tight text-black">
-                  <span>${activeSbbPlan.monthlyPrice}/</span>{" "}
+                  <span>${SBB_MONTHLY_PRICE}/</span>{" "}
                   <span className="text-xl font-medium">{messages.pricing.proMonth}</span>
                 </div>
-                <div className="text-gray-500 font-medium text-lg">
-                  {messages.pricing.proBilledEvery
-                    .replace("{total}", String(activeSbbPlan.billedTotal))
-                    .replace("{cycle}", sbbCycleLabels[activeSbbPlan.id])}
-                </div>
-                <RainbowBorder
-                  borderWidth={1}
-                  borderRadius={9999}
-                  className="inline-flex"
-                  innerClassName="px-5 py-2 text-sm font-semibold bg-white text-black"
-                >
-                  <span className="mr-2" aria-hidden>$</span>
-                  {messages.pricing.saveVsMonthly.replace("{percent}", String(activeSbbPlan.savePercent))}
-                </RainbowBorder>
-              </div>
-
-              <div className="mb-8 flex flex-wrap items-center gap-2.5">
-                {sbbPlans.map((plan) => {
-                  const isActive = activeSbbPlan.id === plan.id;
-
-                  return (
-                    <RainbowBorder
-                      key={plan.id}
-                      borderWidth={1}
-                      borderRadius={9999}
-                      className="h-8 w-fit shrink-0"
-                      innerClassName="h-full w-full rounded-full overflow-hidden"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setActiveSbbPlanId(plan.id)}
-                        aria-pressed={isActive}
-                        className={`relative h-full w-full px-4 text-base font-medium whitespace-nowrap transition-colors duration-200 ${
-                          isActive
-                            ? "text-white"
-                            : "bg-white text-gray-700 hover:bg-gray-50"
-                        }`}
-                      >
-                        {isActive ? (
-                          <RainbowGradient className="absolute inset-0 opacity-30" />
-                        ) : null}
-                        <span className="relative text-black">{sbbTabLabels[plan.id]}</span>
-                      </button>
-                    </RainbowBorder>
-                  );
-                })}
               </div>
 
               <ul className="space-y-4 mb-10">
